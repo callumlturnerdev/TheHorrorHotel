@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScareCorp", "ScareCorp.csproj", "{3AEBDF96-9916-AC40-531D-3695D48FEB47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScareCorp.Editor", "ScareCorp.Editor.csproj", "{A9084C2B-2BA9-1765-E381-D85A7466B9B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3AEBDF96-9916-AC40-531D-3695D48FEB47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AEBDF96-9916-AC40-531D-3695D48FEB47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AEBDF96-9916-AC40-531D-3695D48FEB47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AEBDF96-9916-AC40-531D-3695D48FEB47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9084C2B-2BA9-1765-E381-D85A7466B9B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9084C2B-2BA9-1765-E381-D85A7466B9B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9084C2B-2BA9-1765-E381-D85A7466B9B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9084C2B-2BA9-1765-E381-D85A7466B9B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 437bda01b83938640aa8edf91b591509
+timeCreated: 1510749080
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - navAgent: {instanceID: 0}
+  - aiNeeds: {fileID: 11400000, guid: a7fcb9055cad1f446b7165f113c1db75, type: 2}
+  - treasureSeek: {instanceID: 0}
+  - fearTarget: {instanceID: 0}
+  - eyes: {instanceID: 0}
+  - StateText: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

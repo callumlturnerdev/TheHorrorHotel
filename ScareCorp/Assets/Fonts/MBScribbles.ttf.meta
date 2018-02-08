@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 8c5ceebc18d2dca4284d7bc778eb94df
+timeCreated: 1507733204
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: MBScribbles
+  fontNames:
+  - MBScribbles
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
