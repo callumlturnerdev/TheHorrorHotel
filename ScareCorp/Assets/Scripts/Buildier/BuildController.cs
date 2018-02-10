@@ -38,15 +38,10 @@ public class BuildController : MonoBehaviour {
 	private GameObject playerCursor;
 	private GameObject heldObjectRef;
 
-
-
     bool SnapMode = true;
     // UI elements
-
     Text ScreamPointsUI;
      float screamPoints = 9999;
-
- 
 
     // Use this for initialization
     void Awake () {
@@ -59,7 +54,6 @@ public class BuildController : MonoBehaviour {
 		}
 		DontDestroyOnLoad (this.gameObject);
 		Init ();
-
 	}
 
     public float GetScreamPoints() { return screamPoints; }
@@ -68,7 +62,6 @@ public class BuildController : MonoBehaviour {
 
 	void Init()
 	{
-      
         currentObject = buildObjects [0];
 		playerCursor = GameObject.FindGameObjectWithTag ("cursor");
 		heldObjectRef = playerCursor.transform.GetChild (0).gameObject;
@@ -198,7 +191,7 @@ public class BuildController : MonoBehaviour {
 			} 
 		} 
 
-		if (Input.GetKeyDown (KeyCode.R)) { rotZ += 90; DebugConsole.Log("ROTATING OBJEct"); Debug.Log("Rotate obj"); rotated = !rotated; }
+		if (Input.GetKeyDown (KeyCode.R)) { rotZ += 90;  Debug.Log("Rotate obj"); rotated = !rotated; }
 		if (Input.GetKeyDown ("1")) {currentObject = buildObjects [0];}
 		if (Input.GetKeyDown ("2")) {currentObject = buildObjects [1];}
 		if (Input.GetKeyDown ("3")) {currentObject = buildObjects [2];}

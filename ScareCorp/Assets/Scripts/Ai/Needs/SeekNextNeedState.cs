@@ -38,17 +38,11 @@ public class SeekNextNeedState : State<AI>
         _owner.UpdateStateUI("Going to thing");
         _owner.switchState = false;
         seeker();
-       
-      
-
-        DebugConsole.Log("Entering PatrolState");
     }
 
     public override void ExitState(AI _owner)
     {
 
-        DebugConsole.Log("Exiting PatrolState");
-        
     }
 
     public override void UpdateState(AI _owner)
@@ -115,7 +109,6 @@ public class SeekNextNeedState : State<AI>
 
     private void Seek(AI _owner)
     {
-        DebugConsole.Log("Seeking happening");
         float lowestNeed = _owner.aiNeeds.lowestNeedValue();
 
         if (_owner.hygiene <= _owner.aiNeeds.lowestNeedValue() )

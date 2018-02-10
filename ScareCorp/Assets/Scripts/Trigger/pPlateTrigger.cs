@@ -11,7 +11,6 @@ public class pPlateTrigger : TriggerBase {
 
         if (( other.tag == "scary" ||other.tag == "visitor") && !beenUsed) 
 		{
-			DebugConsole.Log(gameObject.name + " was triggered");
 			triggered = true;
             if (otherTrigger != null)
             {

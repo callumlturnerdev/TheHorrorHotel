@@ -37,13 +37,11 @@ public class ScaredState : State<AI>
         _owner.switchState = false;
        
         Scared(_owner);
-        DebugConsole.Log("Entering ScaredState");
     }
 
     public override void ExitState(AI _owner)
     {
         _owner.usedScares.Add(_owner.fearTarget);
-        DebugConsole.Log("Exiting ScaredState");
         _owner.navAgent.speed = 2;
         _owner.switchState = false;
     }

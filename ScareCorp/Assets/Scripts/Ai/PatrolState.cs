@@ -32,14 +32,10 @@ public class PatrolState : State<AI>
     {
         _owner.UpdateStateUI("Patroling");
         _owner.switchState = false;
-        
-        DebugConsole.Log("Entering PatrolState");
     }
 
     public override void ExitState(AI _owner)
     {
-     
-        DebugConsole.Log("Exiting PatrolState");
         _owner.switchState = false;
     }
 

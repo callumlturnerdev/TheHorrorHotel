@@ -42,14 +42,11 @@ public class ScanState : State<AI>
     {
         _owner.UpdateStateUI("Searching");
          seconds = 0;
-        DebugConsole.Log("Entering ScanState");
-       
-       
     }
 
     public override void ExitState(AI _owner)
     {
-        DebugConsole.Log("Exiting ScanState");
+
     }
 
     public override void UpdateState(AI _owner)

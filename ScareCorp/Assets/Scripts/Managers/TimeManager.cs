@@ -110,7 +110,7 @@ public class TimeManager : MonoBehaviour {
 
     private void HourPassed()
     {
-        DebugConsole.Log("HOUR PASSED.........................................");
+      
         if (HourTick != null)
         {
             HourTick();

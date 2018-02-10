@@ -34,14 +34,11 @@ public class SeekExit : State<AI>
     {
         _owner.UpdateStateUI("Leaving");
         Seek(_owner);
-        DebugConsole.Log("Entering SeekTreasureState");
     }
 
     public override void ExitState(AI _owner)
     {
 
-        DebugConsole.Log("Exiting SeekTreasureState");
-      
     }
 
     public override void UpdateState(AI _owner)

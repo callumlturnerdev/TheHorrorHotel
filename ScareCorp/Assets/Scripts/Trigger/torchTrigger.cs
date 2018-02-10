@@ -14,7 +14,6 @@ public class torchTrigger : TriggerBase {
 	{
         if (!beenUsed)
         {
-            DebugConsole.Log(gameObject.name + " was triggered");
             ToggleLights();
             if (otherTrigger) otherTrigger.ObjectEvent();
         }

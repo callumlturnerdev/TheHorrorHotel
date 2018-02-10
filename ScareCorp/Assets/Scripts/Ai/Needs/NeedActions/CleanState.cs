@@ -43,14 +43,13 @@ public class CleanState : State<AI>
         currentNeedFullfillment = 0;
         _owner.UpdateStateUI("Washing");
         seconds = 0;
-        DebugConsole.Log("Entering ScanState");
         _owner.navAgent.speed = 0;
 
     }
 
     public override void ExitState(AI _owner)
     {
-        DebugConsole.Log("Exiting ScanState");
+        
         _owner.navAgent.speed = 2;
     }
 

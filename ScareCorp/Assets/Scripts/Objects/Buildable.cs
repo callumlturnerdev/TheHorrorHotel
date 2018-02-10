@@ -50,7 +50,6 @@ public class Buildable : MonoBehaviour {
     {
 
         yield return new WaitForSeconds(3);
-        DebugConsole.Log("RigidDestroyed");
         Destroy(rb);
     }
 

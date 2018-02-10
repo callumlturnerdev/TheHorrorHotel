@@ -52,7 +52,7 @@ public class SavingLoading : MonoBehaviour
     {
         if (vis == null)
         {
-            DebugConsole.Log("No vis object found");
+            
         }
         currentVisitors.Add(vis);
     }

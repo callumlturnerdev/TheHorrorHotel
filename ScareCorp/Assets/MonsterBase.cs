@@ -66,7 +66,7 @@ public class MonsterBase : MonoBehaviour {
     {
         if (Input.GetMouseButtonDown(1))
         {
-            DebugConsole.Log("WORKING");
+           
             WayPointObj.GetComponent<Waypoint>().SetIndex(this.gameObject);
             BuildController.instance.SetBuildObject(WayPointObj);
             BuildController.instance.WayPointMode();

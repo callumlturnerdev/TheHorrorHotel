@@ -30,11 +30,9 @@ public class ScareZone : MonoBehaviour {
     private void TimedUpdate()
     {
         float distanceToTarg = 9999999;
-        DebugConsole.Log("TimedUpdate");
         switch (state)
         {
             case AIStates.Idle:
-                DebugConsole.Log("InIdle");
                 if (CheckForVisitors() != null)
                 {
                     state = AIStates.Chase;
@@ -78,7 +76,6 @@ public class ScareZone : MonoBehaviour {
 
      GameObject CheckForVisitors() // Should check for visitors and if found set as target if not check for patrol route.
     {
-        DebugConsole.Log("running");
         target = null;
         float currentClosestDistance = 999;
         visitorTargets = GameObject.FindGameObjectsWithTag("visitor");

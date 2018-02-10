@@ -38,7 +38,7 @@ public class MoveTowards : MonoBehaviour, IPausable
     {
         if (currentlyPaused)
         {
-            DebugConsole.Log("Pause was uncalled");
+           
             nav.enabled = true;
             rb.isKinematic = false;
             anim.speed = 2;
@@ -47,7 +47,7 @@ public class MoveTowards : MonoBehaviour, IPausable
         }
         else
         {
-            DebugConsole.Log("Pause was called");
+         
             nav.enabled = false;
             rb.isKinematic = true;
             anim.speed = 0;
@@ -57,7 +57,7 @@ public class MoveTowards : MonoBehaviour, IPausable
 
     public void FastForward()
     {
-        DebugConsole.Log("FastF");
+       
         if (!currentlyPaused)
         {
             if (currentlyFastF)

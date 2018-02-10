@@ -26,11 +26,11 @@ public class DirLightRotation : MonoBehaviour {
         transform.Rotate(transform.rotation.x + -11.25f, 0, 0);
         if ((Mathf.Floor(TimeManager.instance.GetCurrentTime() / 60) < 07 || Mathf.Floor(TimeManager.instance.GetCurrentTime() / 60) > 23))
         {
-            lightRef.intensity = 0.25f;
+            lightRef.intensity = 0.15f;
         }
         else
         {
-            lightRef.intensity = 0.710f;
+            lightRef.intensity = 1.10f;
         }
     }
 
