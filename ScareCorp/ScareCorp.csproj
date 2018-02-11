@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.3.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -347,8 +349,6 @@
     <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
     <Compile Include="Assets\Retro Bit FX\Scripts\SmoothCameraOrbit.cs" />
     <Compile Include="Assets\Scripts\Ai\AI.cs" />
-    <Compile Include="Assets\Scripts\Ai\ForwardWalkState.cs" />
-    <Compile Include="Assets\Scripts\Ai\MoveTowards.cs" />
     <Compile Include="Assets\Scripts\Ai\Needs\AINeeds.cs" />
     <Compile Include="Assets\Scripts\Ai\Needs\NeedActions\CleanState.cs" />
     <Compile Include="Assets\Scripts\Ai\Needs\NeedActions\EatState.cs" />
@@ -357,11 +357,6 @@
     <Compile Include="Assets\Scripts\Ai\Needs\NeedScanState.cs" />
     <Compile Include="Assets\Scripts\Ai\Needs\NeedTypes.cs" />
     <Compile Include="Assets\Scripts\Ai\Needs\SeekNextNeedState.cs" />
-    <Compile Include="Assets\Scripts\Ai\PatrolState.cs" />
-    <Compile Include="Assets\Scripts\Ai\ScanState.cs" />
-    <Compile Include="Assets\Scripts\Ai\ScaredState.cs" />
-    <Compile Include="Assets\Scripts\Ai\ScareZone.cs" />
-    <Compile Include="Assets\Scripts\Ai\SeekExit.cs" />
     <Compile Include="Assets\Scripts\Ai\StateMachine.cs" />
     <Compile Include="Assets\Scripts\Buildier\BuildController.cs" />
     <Compile Include="Assets\Scripts\Buildier\BuildOnGrid.cs" />

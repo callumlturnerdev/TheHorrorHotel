@@ -18,8 +18,6 @@ public class AI : MonoBehaviour
 
     [Header("Navigation")]
     //NAVIGATION
-    public List<GameObject> pointsOfInterest;
-    public List<GameObject> pointsExplored;
     public List<GameObject> usedScares; // Temp way of stopping the scared loop.
     public GameObject fearTarget;
     public int nextWayPoint;
@@ -64,7 +62,8 @@ public class AI : MonoBehaviour
         TimeManager.PlayRateChange += SetSpeed;
         TimeManager.timeStopped += SetSpeed;
         GameManager.ObjectAdd += GetNeedObjects;
-        //GetNeedObjects();
+
+
         GetNeedObjects();
         aiNeeds = gameObject.GetComponent<AINeeds>();
         hunger = 1.0f;
@@ -155,7 +154,7 @@ public class AI : MonoBehaviour
     {
      
              switchState = true;
-            pointsExplored.Add(other.gameObject);
+
      }
     
     private void OnDrawGizmos()
@@ -204,40 +203,6 @@ public class AI : MonoBehaviour
         }
                 return e[0];
     }
-
-    public GameObject GetRandomDoor()
-    {
-        List<GameObject> doors =  new List<GameObject>();
-        if (nextWayPoint < pointsOfInterest.Count)
-        {
-
-            foreach (GameObject point in pointsOfInterest)
-            {
-                if (point.GetComponent<doorTrigger>())
-                {
-                    doors.Add(point);
-
-                }
-            }
-            int randnum = Random.Range(0, doors.Count - 1);
-            return doors[randnum];
-        }
-        else if (pointsExplored != null)
-        {
-            foreach (GameObject point in pointsExplored)
-            {
-                if (point.GetComponent<doorTrigger>())
-                {
-                    doors.Add(point);
-                }
-            }
-            int randnum = Random.Range(0, doors.Count - 1);
-            return doors[randnum];
-        }
-        return null;
-
-    }
-
 
     static int SortByPriority(GameObject p1, GameObject p2)
     {

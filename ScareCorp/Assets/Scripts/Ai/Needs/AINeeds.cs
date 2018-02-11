@@ -51,7 +51,6 @@ public class AINeeds : MonoBehaviour
 
     private void UpdateNeeds()
     {
-
         needHunger =  Mathf.Clamp(needHunger -= decreaseRate, 0,1);
         needHygiene = Mathf.Clamp(needHygiene -= decreaseRate, 0, 1);
         needBoredom = Mathf.Clamp(needBoredom -= decreaseRate, 0, 1);
