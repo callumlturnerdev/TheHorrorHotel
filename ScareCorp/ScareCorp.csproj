@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.3.0f3</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -296,12 +294,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CheckFileExists.cs" />
-    <Compile Include="Assets\ColourVariation.cs" />
-    <Compile Include="Assets\DirLightRotation.cs" />
-    <Compile Include="Assets\menuHide.cs" />
-    <Compile Include="Assets\MonsterBase.cs" />
-    <Compile Include="Assets\Painting.cs" />
+    <Compile Include="Assets\Characters\Car.cs" />
+    <Compile Include="Assets\Characters\CarSpawner.cs" />
+    <Compile Include="Assets\Characters\Visitor.cs" />
+    <Compile Include="Assets\Characters\VisitorSpawner.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
@@ -349,6 +345,7 @@
     <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
     <Compile Include="Assets\Retro Bit FX\Scripts\SmoothCameraOrbit.cs" />
     <Compile Include="Assets\Scripts\Ai\AI.cs" />
+    <Compile Include="Assets\Scripts\Ai\MoveTowards.cs" />
     <Compile Include="Assets\Scripts\Ai\Needs\AINeeds.cs" />
     <Compile Include="Assets\Scripts\Ai\Needs\NeedActions\CleanState.cs" />
     <Compile Include="Assets\Scripts\Ai\Needs\NeedActions\EatState.cs" />
@@ -357,30 +354,33 @@
     <Compile Include="Assets\Scripts\Ai\Needs\NeedScanState.cs" />
     <Compile Include="Assets\Scripts\Ai\Needs\NeedTypes.cs" />
     <Compile Include="Assets\Scripts\Ai\Needs\SeekNextNeedState.cs" />
+    <Compile Include="Assets\Scripts\Ai\ScaredState.cs" />
+    <Compile Include="Assets\Scripts\Ai\SeekExit.cs" />
     <Compile Include="Assets\Scripts\Ai\StateMachine.cs" />
     <Compile Include="Assets\Scripts\Buildier\BuildController.cs" />
     <Compile Include="Assets\Scripts\Buildier\BuildOnGrid.cs" />
     <Compile Include="Assets\Scripts\Buildier\GridBuilder.cs" />
-    <Compile Include="Assets\Scripts\Characters\Car.cs" />
-    <Compile Include="Assets\Scripts\Characters\CarSpawner.cs" />
-    <Compile Include="Assets\Scripts\Characters\Visitor.cs" />
-    <Compile Include="Assets\Scripts\Characters\VisitorSpawner.cs" />
+    <Compile Include="Assets\Scripts\CheckFileExists.cs" />
+    <Compile Include="Assets\Scripts\ColourVariation.cs" />
     <Compile Include="Assets\Scripts\Controls\CameraControls.cs" />
     <Compile Include="Assets\Scripts\Controls\MouseController.cs" />
     <Compile Include="Assets\Scripts\Controls\SnapToMouse.cs" />
     <Compile Include="Assets\Scripts\Controls\SwapCategory.cs" />
     <Compile Include="Assets\Scripts\Controls\VanishOnKeyPress.cs" />
+    <Compile Include="Assets\Scripts\DirLightRotation.cs" />
     <Compile Include="Assets\Scripts\Interfaces\PauseTime.cs" />
     <Compile Include="Assets\Scripts\Managers\EventManager.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\Managers\TimeManager.cs" />
+    <Compile Include="Assets\Scripts\menuHide.cs" />
+    <Compile Include="Assets\Scripts\MonsterBase.cs" />
     <Compile Include="Assets\Scripts\ObjectFinder.cs" />
     <Compile Include="Assets\Scripts\Objects\Buildable.cs" />
     <Compile Include="Assets\Scripts\Objects\Chest.cs" />
+    <Compile Include="Assets\Scripts\Objects\Painting.cs" />
     <Compile Include="Assets\Scripts\Objects\spriteLookAtCam.cs" />
     <Compile Include="Assets\Scripts\Objects\WallCheck.cs" />
     <Compile Include="Assets\Scripts\SavingLoading.cs" />
-    <Compile Include="Assets\Scripts\testScript.cs" />
     <Compile Include="Assets\Scripts\Trigger\BodyBusterTrigger.cs" />
     <Compile Include="Assets\Scripts\Trigger\doorTrigger.cs" />
     <Compile Include="Assets\Scripts\Trigger\pPlateToggleTrigger.cs" />
@@ -395,10 +395,10 @@
     <Compile Include="Assets\Scripts\UI\HUDGetElements.cs" />
     <Compile Include="Assets\Scripts\UI\HUDMouseCheck.cs" />
     <Compile Include="Assets\Scripts\UI\HUDObject.cs" />
-    <Compile Include="Assets\UIInfoPanel.cs" />
+    <Compile Include="Assets\Scripts\UIInfoPanel.cs" />
+    <Compile Include="Assets\Scripts\Waypoint.cs" />
     <Compile Include="Assets\Unfinity Games\uNote\Examples\uNoteHeroExample.cs" />
     <Compile Include="Assets\Unfinity Games\uNote\Note.cs" />
-    <Compile Include="Assets\Waypoint.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Gamedev Toolbelt\Editor\TODOs\Docs\CHANGELOG.txt" />

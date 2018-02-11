@@ -14,11 +14,9 @@ public class UIInfoPanel : MonoBehaviour {
     private Text description;
 	// Use this for initialization
 	void Awake () {
-
         Icon = ObjectIcon.GetComponent<Image>();
         name = ObjectName.GetComponent<Text>();
         description = ObjectDescription.GetComponent<Text>();
-        
 	}
 	
     public void UpdateUIInfoPanel(Sprite _icon, string _name, string _text)
@@ -26,12 +24,5 @@ public class UIInfoPanel : MonoBehaviour {
         Icon.sprite =_icon;
         name.text = _name;
         description.text = _text;
-
-    }
-
-
-	// Update is called once per frame
-	void Update () {
-  
     }
 }

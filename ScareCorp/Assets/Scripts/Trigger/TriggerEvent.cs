@@ -16,21 +16,16 @@ public class TriggerEvent : MonoBehaviour {
 		cursor = GameObject.FindGameObjectWithTag ("cursor");
 	}
 
-
 	public void ObjectEvent()
 	{
-		
 		if (transform.GetChild (0).gameObject.activeSelf) {
 			transform.GetChild (0).gameObject.SetActive (false);
 		} else 
 		{
 			transform.GetChild (0).gameObject.SetActive (true);
 		}
-
-		//trigBase.SetTriggered (false);
-
 	}
-	// Update is called once per frame
+
 	void Update () {
 		LineRendMouse ();
 		if (trigBase != null) {
@@ -63,6 +58,5 @@ public class TriggerEvent : MonoBehaviour {
 			lineToMouse = true;
 			TriggerController.instance.SetCurrentTriggerable (this.gameObject);
 		}
-
 	}
 }

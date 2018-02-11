@@ -14,7 +14,6 @@ public class TimeManager : MonoBehaviour {
     public delegate void ClickAction();
     public static TimeManager instance = null;
 
-
     float currentDay;
     private float time;
     float seconds;
@@ -26,13 +25,12 @@ public class TimeManager : MonoBehaviour {
     float FFplayRate = 2.0f;
     bool timeIsStopped = false;
 
-
     float currentHour = 0;
     public static event ClickAction DayChanged;
     public static event ClickAction PlayRateChange;
     public static event ClickAction timeStopped;
     public static event ClickAction HourTick;
-    // Use this for initialization
+
     void Awake () {
         if (instance == null)
         {
@@ -61,7 +59,6 @@ public class TimeManager : MonoBehaviour {
     {
         if (!timeIsStopped)
         {
-
             time++;
             if (currentHour != Mathf.Floor(time / 60))
             {
@@ -81,12 +78,11 @@ public class TimeManager : MonoBehaviour {
         }
         StartCoroutine(WaitforSeconds(0.01f));
     }
-    // USed for saving information with savingloading script
     public float GetCurrentTime() { return time; }
     public void SetCurrentTime(float newtime) { time = newtime; }
     public float GetCurrentDay() { return currentDay; }
     public void  SetCurrentDay(float day) { currentDay = day; }
-    //
+
     public void TogglePlayRate()
     {
         if (playRate == defaultPlayRate) { playRate = FFplayRate; }
@@ -110,7 +106,6 @@ public class TimeManager : MonoBehaviour {
 
     private void HourPassed()
     {
-      
         if (HourTick != null)
         {
             HourTick();

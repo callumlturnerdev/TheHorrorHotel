@@ -40,8 +40,6 @@ public class SavingLoading : MonoBehaviour
         objFind = gameObject.GetComponent<ObjectFinder>();
         gridBuilderRef = GameObject.FindGameObjectWithTag("gridbuilder").GetComponent<GridBuilder>();
         grids = gridBuilderRef.grids;
-
-
         if (!Directory.Exists(Application.dataPath + "/Saves/"))
           {
             Directory.CreateDirectory(Application.dataPath + "/Saves/");
@@ -80,6 +78,7 @@ public class SavingLoading : MonoBehaviour
       
         if (File.Exists(Application.dataPath + "/Saves/" + filepath))
         {
+            GameManager.instance.ClearObjects();
             gridBuilderRef.ResetGrid();
             //  SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             BinaryFormatter bf = new BinaryFormatter();
@@ -99,9 +98,7 @@ public class SavingLoading : MonoBehaviour
                     grids[i].GetComponent<BuildOnGrid>().LoadObject(objFind.FindObjectBasedOnID(data.objectIDs[i]), data.objectsRots[i]);
                 }
             }
-
             VisitorLoadData(data);
-
         }
     }
 
@@ -111,9 +108,7 @@ public class SavingLoading : MonoBehaviour
     {
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.dataPath + "/Saves/" + filepath);
-
         PlayerData data = new PlayerData();
-
         data.scarepoints = BuildController.instance.GetScreamPoints();
         data.time = TimeManager.instance.GetCurrentTime();
         data.day = TimeManager.instance.GetCurrentDay();
@@ -122,7 +117,6 @@ public class SavingLoading : MonoBehaviour
         {
             if (grids[i].GetComponent<BuildOnGrid>())
             {
-
                 if (grids[i].GetComponent<BuildOnGrid>().GetCurrentlyBuiltObject() != null)
                 {
                     GameObject obj = grids[i].GetComponent<BuildOnGrid>().GetCurrentlyBuiltObject();
@@ -142,7 +136,6 @@ public class SavingLoading : MonoBehaviour
                 }
             }
         }
-
         VisitorDataSave(data);
         bf.Serialize(file, data);
         file.Close();
@@ -157,14 +150,14 @@ public class SavingLoading : MonoBehaviour
             {
                 GameObject _vis = Instantiate(visitorGameobject) as GameObject;
                 SaveVisitor(_vis);
-                AI _visAI = _vis.GetComponent<AI>();
+                AINeeds _visAI = _vis.GetComponent<AINeeds>();
                 Visitor _visScript = _vis.GetComponent<Visitor>();
                 
                 _vis.transform.position =  new Vector3( data.visitorPosX[i], 0, data.visitorPosY[i]);
-                _visAI.hunger = data.visitorHunger[i];
-                _visAI.tiredness = data.visitorTiredness[i];
-                _visAI.boredom = data.visitorBoredom[i];
-                _visAI.hygiene = data.visitorHygiene[i];
+                _visAI.SetHunger(data.visitorHunger[i]);
+                _visAI.SetTiredness(data.visitorTiredness[i]);
+                _visAI.SetBoredom(data.visitorBoredom[i]);
+                _visAI.SetHygiene(data.visitorHygiene[i]);
                 _visScript.SetCurrentFear(data.visitorCurrentFear[i]);
                 _vis.SetActive(true);
 
@@ -182,20 +175,17 @@ public class SavingLoading : MonoBehaviour
                 if (currentVisitors[i].GetComponent<Visitor>())
                 {
                     Visitor _visitor = currentVisitors[i].GetComponent<Visitor>();
-                    AI _visitorAI = currentVisitors[i].GetComponent<AI>();
+                    AINeeds _visitorAI = currentVisitors[i].GetComponent<AINeeds>();
                     data.visitorPosX[i] = _visitor.gameObject.transform.position.x;
                     data.visitorPosY[i] = _visitor.gameObject.transform.position.z;
-                    data.visitorHunger[i] = _visitorAI.hunger;
-                    data.visitorTiredness[i] = _visitorAI.tiredness;
-                    data.visitorBoredom[i] = _visitorAI.boredom;
-                    data.visitorHygiene[i] = _visitorAI.hygiene;
+                    data.visitorHunger[i] = _visitorAI.GetHunger();
+                    data.visitorTiredness[i] = _visitorAI.GetTiredness();
+                    data.visitorBoredom[i] = _visitorAI.GetBoredom();
+                    data.visitorHygiene[i] = _visitorAI.GetHygiene();
                     data.visitorCurrentFear[i] = _visitor.GetCurrentFear();
-
                 }
-
             }
         }
-
     }
 
 
@@ -219,7 +209,6 @@ public class SavingLoading : MonoBehaviour
         public float time;
         public float day;
 
-        //
         public int visitorCount = 0;
         public float[] visitorPosX = new float[200];
         public float[] visitorPosY = new float[200];

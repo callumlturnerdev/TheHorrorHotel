@@ -53,8 +53,6 @@ public class AI : MonoBehaviour
     [HideInInspector] public float scarelookRange = 4;
     public float stateTimeElapsed;
 
-
-
     private bool timerFinished;
     private void Start()
     {
@@ -62,7 +60,6 @@ public class AI : MonoBehaviour
         TimeManager.PlayRateChange += SetSpeed;
         TimeManager.timeStopped += SetSpeed;
         GameManager.ObjectAdd += GetNeedObjects;
-
 
         GetNeedObjects();
         aiNeeds = gameObject.GetComponent<AINeeds>();
@@ -80,8 +77,8 @@ public class AI : MonoBehaviour
         gameTimer = Time.time;
         UpdateNeeds();
         SetSpeed();
-
     }
+
 
     private void DayChange()
     {
@@ -89,7 +86,6 @@ public class AI : MonoBehaviour
         {
             stateMachine.ChangeState(SeekExit.Instance);
         }
-
     }
 
     private void SetSpeed()
@@ -100,17 +96,11 @@ public class AI : MonoBehaviour
 
     private void GetNeedObjects()
     {
-      
         hungerObjects = new List<GameObject>(GameManager.instance.hungerObjects);
         tirednessObjects = new List<GameObject>(GameManager.instance.tirednessObjects);
         boredomObjects = new List<GameObject>(GameManager.instance.boredomObjects);
         hygieneObjects = new List<GameObject>(GameManager.instance.hygieneObjects);
         hidingPlaces = new List<GameObject>(GameManager.instance.hidingPlaces);
-        //   tirednessObjects;
-        //  boredomObjects;
-        //   hygieneObjects;
-        //  hidingPlaces;
-
     }
 
 
@@ -125,7 +115,6 @@ public class AI : MonoBehaviour
             gameTimer = Time.time;
             seconds++;
         }
-
         if (seconds == duration)
         {
             seconds = 0;
@@ -141,8 +130,6 @@ public class AI : MonoBehaviour
         currentState = stateMachine.currentState;
         hunger = gameObject.GetComponent<AINeeds>().GetHunger();
         UpdateNeeds();
-
-       
     }
 
     public void DestroyOwner()
@@ -152,9 +139,7 @@ public class AI : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-     
-             switchState = true;
-
+       switchState = true;
      }
     
     private void OnDrawGizmos()
@@ -163,8 +148,7 @@ public class AI : MonoBehaviour
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(eyes.position, lookSphereCastRadius);
-            Gizmos.DrawIcon(gameObject.transform.position, "test");
-            
+            Gizmos.DrawIcon(gameObject.transform.position, "test"); 
         }
     }
 
@@ -182,7 +166,6 @@ public class AI : MonoBehaviour
         if (aiNeeds.lowestNeedValue() == 0)
         {
             stateMachine.ChangeState(SeekExit.Instance);
-           
         }
     }
 
@@ -197,7 +180,6 @@ public class AI : MonoBehaviour
         }
         if (e.Count > 1)
         {
-
             e.Sort(SortByPriority);
             e.Reverse();
         }
@@ -206,7 +188,6 @@ public class AI : MonoBehaviour
 
     static int SortByPriority(GameObject p1, GameObject p2)
     {
-      
         return p1.GetComponent<Buildable>().needFulfillment.CompareTo(p2.GetComponent<Buildable>().needFulfillment);
     }
 }

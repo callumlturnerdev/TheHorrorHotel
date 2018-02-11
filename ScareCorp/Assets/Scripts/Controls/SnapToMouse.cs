@@ -38,7 +38,6 @@ public class SnapToMouse : MonoBehaviour
         else
         {
             line.material = lineRendMats[0];
-
         }
     }
     void OnTriggerStay(Collider other)
@@ -62,7 +61,6 @@ public class SnapToMouse : MonoBehaviour
             SelectSystem = !SelectSystem;
             Debug.Log("Select System Toggled");
         }
-
         if (Input.GetMouseButtonDown(0))
         {
             mouseIsDown = true;
@@ -72,19 +70,14 @@ public class SnapToMouse : MonoBehaviour
             mouseIsDown = false;
         }
         boxType.transform.rotation = Quaternion.Euler(0, BuildController.instance.GetRotation(), 0);
-        //boxType.GetComponent<MeshFilter> ().sharedMesh = BuildController.instance.GetCurrentObject ().GetComponent<MeshFilter> ().sharedMesh;
         boxType.GetComponent<WallCheck>().ChangeMesh(BuildController.instance.GetCurrentObject().GetComponent<MeshFilter>().sharedMesh);
         boxType.transform.localScale = BuildController.instance.GetCurrentObject().transform.localScale;
-        // Casts a ray from cam to mouse cursor
         cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-
         int layer_mask;
-
         layer_mask = LayerMask.GetMask("Grid", "Builder");
         if (Physics.Raycast(cameraRay, out cameraRayHit, Mathf.Infinity, layer_mask))
         {
             Vector3 targetPos;
-
             if (currentlySelecting)
             {
                 
@@ -92,28 +85,19 @@ public class SnapToMouse : MonoBehaviour
             if (BuildController.instance.GetSnapMode())
             {
                 targetPos = new Vector3(cameraRayHit.transform.position.x, transform.position.y, cameraRayHit.transform.position.z);
-                
             }
             else
             {
                 targetPos = new Vector3(cameraRayHit.point.x, transform.position.y, cameraRayHit.point.z);
             }
-
             transform.position = targetPos;
-
         }
-
     }
-
 
     void DragSelection(Collider other, bool enabled)
     {
-
-
-
         if (enabled)
         {
-
             if (other.GetComponent<BuildOnGrid>())
             {
                 if (Input.GetMouseButtonDown(0) && other.tag == "grid")
@@ -128,8 +112,6 @@ public class SnapToMouse : MonoBehaviour
                     if (other.GetComponent<BuildOnGrid>())
                     {
                         currentlySelecting = true;
-
-
                         currentX = other.GetComponent<BuildOnGrid>().GetGridPos()[0];
                         currentY = other.GetComponent<BuildOnGrid>().GetGridPos()[1];
                         //  Vector3 pos = new Vector3(this.transform.position.x, this.transform.position.y, currentY);
@@ -154,19 +136,13 @@ public class SnapToMouse : MonoBehaviour
         GameObject[] grid = GameObject.FindGameObjectsWithTag("grid");
         foreach (GameObject cell in grid)
         {
-
             if (cell.GetComponent<BuildOnGrid>())
             {
-
-
                 if ((cell.GetComponent<BuildOnGrid>().gridX >= minX && cell.GetComponent<BuildOnGrid>().gridX <= maxX) || (cell.GetComponent<BuildOnGrid>().gridX <= maxX && cell.GetComponent<BuildOnGrid>().gridX >= minX))
-                {
-                   
+                {                  
                     if ((cell.GetComponent<BuildOnGrid>().gridY >= minY && cell.GetComponent<BuildOnGrid>().gridY <= maxY) || (cell.GetComponent<BuildOnGrid>().gridY <= maxY && cell.GetComponent<BuildOnGrid>().gridY >= minY))
                     {
-                        cell.GetComponent<BuildOnGrid>().HighlightGird(true);
-                       
-
+                        cell.GetComponent<BuildOnGrid>().HighlightGird(true);       
                     }
                     else
                     {
@@ -177,10 +153,7 @@ public class SnapToMouse : MonoBehaviour
                 {
                     cell.GetComponent<BuildOnGrid>().HighlightGird(false);
                 }
-
             }
-
         }
     }
-
 }

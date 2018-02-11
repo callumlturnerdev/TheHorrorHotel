@@ -16,7 +16,6 @@ public class SeekNextNeedState : State<AI>
         }
         _instance = this;
     }
-
     public static SeekNextNeedState Instance
     {
         get
@@ -25,11 +24,9 @@ public class SeekNextNeedState : State<AI>
             {
                 new SeekNextNeedState();
             }
-
             return _instance;
         }
     }
-
 
     public override void EnterState(AI _owner)
     {
@@ -42,19 +39,15 @@ public class SeekNextNeedState : State<AI>
 
     public override void ExitState(AI _owner)
     {
-
     }
 
     public override void UpdateState(AI _owner)
     {
-        
         ScareScan(_owner);
         if (_owner.navAgent.remainingDistance <= _owner.navAgent.stoppingDistance + 1.5f && !_owner.navAgent.pathPending)
         {
-
             if (currentTarget != null)
             {
-                
                 switch (currentTarget.GetComponent<Buildable>().needtype)
                 {
                     case eNeedTypes.boredom:
@@ -160,17 +153,12 @@ public class SeekNextNeedState : State<AI>
         }
         if (currentTarget != null)
         {
-
-
         }
         else
         {
             _owner.navAgent.isStopped = true;
             _owner.UpdateStateUI("No Target");
-      
-
         }
-
     }
 
 

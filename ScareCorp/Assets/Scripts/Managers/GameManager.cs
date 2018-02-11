@@ -4,11 +4,9 @@ using UnityEngine;
 using needTypes;
 public class GameManager : MonoBehaviour {
 
-       public List<Transform> wayPointList;
-
+    public List<Transform> wayPointList;
     public static GameManager instance = null;
 
-    // Use this for initialization
     public delegate void ClickAction();
     public static event ClickAction ObjectAdd;
     public static event ClickAction DayChanged;
@@ -41,7 +39,6 @@ public class GameManager : MonoBehaviour {
             Destroy(gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
-        Init();
         ObjectsAddedEvent();
         screamPoints = 2000;
     }
@@ -55,9 +52,16 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void AddObject(GameObject obj)
+    public void ClearObjects()
     {
-        
+        boredomObjects.Clear();
+        hungerObjects.Clear();
+        hygieneObjects.Clear();
+        tirednessObjects.Clear();
+    }
+
+    public void AddObject(GameObject obj)
+    { 
         if (obj.GetComponent<Buildable>())
         {
             switch (obj.GetComponent<Buildable>().needtype)
@@ -81,7 +85,6 @@ public class GameManager : MonoBehaviour {
                     break;
                 default:
                     break;
-
             }
         }
         StartCoroutine(WaitforSeconds(1));
@@ -89,7 +92,6 @@ public class GameManager : MonoBehaviour {
 
     public void RemoveObject(GameObject obj)
     {
-
         if (obj.GetComponent<Buildable>())
         {
             switch (obj.GetComponent<Buildable>().needtype)
@@ -113,19 +115,9 @@ public class GameManager : MonoBehaviour {
                     break;
                 default:
                     break;
-
             }
         }
         StartCoroutine(WaitforSeconds(1));
-
-
-        /* foreach (GameObject tiredObject in tirednessObjects)
-         {
-             if (tiredObject.GetComponent<Buildable>() == null)
-             {
-                 tirednessObjects.Remove(tiredObject);
-             }
-         }*/
     }
 
 
@@ -152,30 +144,21 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    private void Init()
-    {
-        
-    }
-
     public void AddToWayPointList(Transform trans)
     {
         wayPointList.Add(trans);
     }
-
-  
 
     public List<Transform> GetWayPoints()
     {
         if (wayPointList != null)
         {
             return wayPointList;
-         }
+        }
         else
         {
             return null;
-
         }
-
     }
 
 

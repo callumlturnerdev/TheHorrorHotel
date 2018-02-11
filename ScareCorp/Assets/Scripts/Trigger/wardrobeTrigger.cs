@@ -11,12 +11,7 @@ public class wardrobeTrigger : TriggerBase {
     private void OnEnable()
     {
         spawnPos = gameObject.transform.Find("SpawnPoint");
-        //zombie = this.transform.Find("Zombie").gameObject;
     }
-
-
-
-
 
     public override void ObjectEvent()
 	{
@@ -33,5 +28,4 @@ public class wardrobeTrigger : TriggerBase {
 			beenUsed = true;
 		}
 	}
-		
 }

@@ -9,9 +9,7 @@ public class pPlateToggleTrigger : TriggerBase
 
     void OnTriggerEnter(Collider other)
     {
-
         if (other.tag == "visitor"  || other.tag == "scary" )
-
         {
             if (toggle)
             {
@@ -32,5 +30,4 @@ public class pPlateToggleTrigger : TriggerBase
             StartCoroutine(resetTrigger());
         }
     }
-
 }

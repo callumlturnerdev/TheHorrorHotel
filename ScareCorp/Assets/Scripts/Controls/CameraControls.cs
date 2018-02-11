@@ -31,21 +31,16 @@ public class CameraControls : MonoBehaviour {
 			mainCam.orthographicSize -= 1;
 		}
 
-
-
-			float yPos = -zoomSpeed * Input.GetAxis ("Mouse ScrollWheel") * Time.deltaTime ;
-			float zPos = speed * Input.GetAxis ("Vertical") * Time.deltaTime;
+	    float yPos = -zoomSpeed * Input.GetAxis ("Mouse ScrollWheel") * Time.deltaTime ;
+		float zPos = speed * Input.GetAxis ("Vertical") * Time.deltaTime;
         float xPos = speed * Input.GetAxis ("Horizontal") * Time.deltaTime;
         Vector3 newPos = new Vector3 (xPos, yPos, zPos);
-			transform.Translate(newPos);
-
-
+		transform.Translate(newPos);
 
 		if (Input.GetMouseButton (2)) {
 			Vector3 rot = new Vector3 (0, -120, 0);
 			float mouseX = Input.GetAxis ("Mouse X");
 			transform.Rotate (rot * mouseX *Time.deltaTime, Space.Self);
-		
 		}
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -61,13 +56,11 @@ public class CameraControls : MonoBehaviour {
             StopAllCoroutines();
             StartCoroutine(Rotate(45));
         }
-
     }
 
     IEnumerator Rotate(float rotationAmount)
     {
         Quaternion finalRotation = Quaternion.Euler(0, rotationAmount, 0) * originalRotation;
-
         while (this.transform.rotation != finalRotation)
         {
             this.transform.rotation = Quaternion.Lerp(this.transform.rotation, finalRotation, Time.deltaTime * 10);

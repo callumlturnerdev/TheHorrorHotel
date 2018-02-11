@@ -40,7 +40,6 @@ public class SleepState : State<AI>
         _owner.UpdateStateUI("Sleeping");
         seconds = 0;
         _owner.navAgent.speed = 0;
-
     }
 
     public override void ExitState(AI _owner)
@@ -62,7 +61,6 @@ public class SleepState : State<AI>
         }
         else
         {
-
             _owner.stateMachine.ChangeState(SeekNextNeedState.Instance);
         }
     }

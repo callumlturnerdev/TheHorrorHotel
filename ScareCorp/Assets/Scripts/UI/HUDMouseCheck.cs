@@ -14,27 +14,22 @@ public class HUDMouseCheck : MonoBehaviour {
 
     public void Init()
     {
-
-       
         mybutton = GetComponent<Button>();
     }
     public void Awake()
     {
         mycol = this.gameObject.GetComponent<BoxCollider>();
-
     }
 
 
     void OnMouseEnter()
 	{
-
 		Debug.Log ("entered hud area");
         BuildController.instance.NotOnHud = false;
 	}
 
 	void OnMouseExit()
 	{
-
 		Debug.Log ("exited hud area");
         BuildController.instance.NotOnHud = true;
 	}

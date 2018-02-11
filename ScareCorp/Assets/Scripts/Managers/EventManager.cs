@@ -34,7 +34,6 @@ public class EventManager : MonoBehaviour {
         {
             DeleteClicked();
         }
-
     }
 
     public void ToggleWalls()

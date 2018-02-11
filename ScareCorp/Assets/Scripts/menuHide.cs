@@ -18,6 +18,5 @@ public class menuHide : MonoBehaviour {
             menuToHide.SetActive(false);
             hidden = true;
         }
-
     }
 }

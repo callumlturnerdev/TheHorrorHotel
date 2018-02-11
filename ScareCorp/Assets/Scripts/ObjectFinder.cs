@@ -7,11 +7,9 @@ using UnityEngine;
 public class ObjectFinder : MonoBehaviour {
 
 	public List<GameObject> obj;
-
     public GameObject FindObjectBasedOnID(int ID)
     {
         if (ID == -1) { return null; }
         return obj[ID];
-
     }
 }

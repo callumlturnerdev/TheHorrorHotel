@@ -29,7 +29,6 @@ namespace StateAI
                 currentState.ExitState(Owner);
             currentState = _newstate;
              currentState.EnterState(Owner);
-            
         }
 
         public void Update()

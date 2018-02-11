@@ -56,7 +56,6 @@ public class GridBuilder : MonoBehaviour {
             foreach (GameObject vis in currentVisitors)
             {
                 Destroy(vis);
-               
             }
             currentVisitors.Clear();
         }
@@ -88,7 +87,6 @@ public class GridBuilder : MonoBehaviour {
 
         }
         DestroyAllVisitors();
-
     }
 
 
@@ -110,7 +108,6 @@ public class GridBuilder : MonoBehaviour {
                     grid.name = "" + xNum + " " + zNum;
                     zPos += 2.0f;
                     zNum++;
-
                 }
                 xNum++;
                 zNum = 0;

@@ -25,7 +25,6 @@ public class ScaredState : State<AI>
             {
                 new ScaredState();
             }
-
             return _instance;
         }
     }
@@ -35,7 +34,6 @@ public class ScaredState : State<AI>
     {
         _owner.UpdateStateUI("Scared");
         _owner.switchState = false;
-       
         Scared(_owner);
     }
 
@@ -49,7 +47,6 @@ public class ScaredState : State<AI>
     public override void UpdateState(AI _owner)
     {
         HidingPlaceScan(_owner);
-       
         if ( _owner.CheckifCountDownElapsed(10))
            _owner.stateMachine.ChangeState(SeekNextNeedState.Instance);
     }
@@ -57,14 +54,11 @@ public class ScaredState : State<AI>
 
     void Scared(AI _owner)
     {
-        
             _owner.gameObject.GetComponent<Visitor>().Scare(10.0f);
             _owner.navAgent.isStopped = false;
             Debug.DrawRay(_owner.eyes.position, _owner.eyes.forward.normalized * -10, Color.red);
             _owner.navAgent.speed = 4;
             _owner.navAgent.destination = _owner.transform.position + (_owner.transform.forward.normalized * -30);
-
-      
      }
 
     void HidingPlaceScan(AI _owner)

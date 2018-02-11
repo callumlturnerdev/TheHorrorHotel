@@ -34,13 +34,10 @@ public class BuildOnGrid : MonoBehaviour {
 		myRend = GetComponent<Renderer> ();
 		originalMat = myRend.material;
         builtObjectRotationZ = 0;
-
-
         switch (BuildController.instance.GetCurrentBuildMode())
         {
             case eBuildMode.building:
                 break;
-
             case eBuildMode.deleting:
                 break;
 
@@ -54,7 +51,6 @@ public class BuildOnGrid : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
         if (isHighlighted)
         {
             canBuildOn = true;
@@ -89,7 +85,6 @@ public class BuildOnGrid : MonoBehaviour {
                                     break;
                         }
                         }
-
                 }
             }
         }
@@ -118,7 +113,6 @@ public class BuildOnGrid : MonoBehaviour {
 
                 if (BuildController.instance.CheckCost(tempToBuild.GetComponent<Buildable>().GetCost()))
                 {
-
                     GameObject obj = Instantiate(tempToBuild) as GameObject;
                     ObjectBuiltOnGrid = obj;
                     obj.transform.parent = this.transform;
@@ -154,7 +148,6 @@ public class BuildOnGrid : MonoBehaviour {
                     {
                         if (child.transform.GetChild(i).GetComponent<MeshRenderer>())
                             child.transform.GetChild(i).GetComponent<MeshRenderer>().material = destroyMat;
-
                     }
                 }
                 if (child.gameObject.GetComponent<MeshRenderer>())
@@ -286,7 +279,4 @@ public class BuildOnGrid : MonoBehaviour {
 		gridArray[1] = gridY;
 		return gridArray;
 	}
-
-
-
 }

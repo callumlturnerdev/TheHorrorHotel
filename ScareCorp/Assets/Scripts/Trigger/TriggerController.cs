@@ -26,12 +26,10 @@ public class TriggerController : MonoBehaviour {
 	void Init()
 	{
 		line = GetComponent<LineRenderer> ();
-
 	}
 
 	public void SetCurrentTrigger(GameObject trigger)
 	{
-
 		if (trigger.gameObject.GetComponent<TriggerBase>()) 
 		{
 			if (firstTrigger == null) {
@@ -41,14 +39,12 @@ public class TriggerController : MonoBehaviour {
 			{
 				secondTrigger = trigger;
 			}
-				
 			CheckConnection ();
 		}
 	}
 		
 	public void SetCurrentTriggerable(GameObject triggerable)
 	{
-
 		if (triggerable.tag == "triggerable") 
 		{
 			secondTrigger = triggerable;
@@ -72,7 +68,5 @@ public class TriggerController : MonoBehaviour {
 			firstTrigger = null;
 			secondTrigger = null;
 		}
-
 	}
-
 }

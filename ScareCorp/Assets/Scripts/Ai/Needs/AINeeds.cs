@@ -28,12 +28,11 @@ public class AINeeds : MonoBehaviour
     {
         daysToStay = 0;
         daysStayed = 0;
-
         TimeManager.DayChanged += DayChange;
         needHunger = 1.0f;
          needHygiene = 1.0f;
          needBoredom = 1.0f;
-         needTiredness = 0.50f;
+         needTiredness = 0.5f;
         StartCoroutine(WaitFor(3.0f / TimeManager.instance.GetPlayRate()));
     }
 
@@ -83,12 +82,10 @@ public class AINeeds : MonoBehaviour
         float boredom;
         float hunger;
 
-
         if (ai.hungerObjects.Count > 0) { hunger = needHunger; } else { hunger = 10; }
         if (ai.hygieneObjects.Count > 0) { hygiene = needHygiene; } else { hygiene = 10; }
         if (ai.boredomObjects.Count > 0) { boredom = needBoredom ; } else { boredom = 10; }
         if (ai.tirednessObjects.Count > 0) { tiredness = needTiredness; } else { tiredness = 10; }
-
         return Mathf.Min(tiredness, hygiene, boredom, hunger);
     }
 

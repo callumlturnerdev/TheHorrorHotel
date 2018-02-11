@@ -20,8 +20,6 @@ public class MonsterBase : MonoBehaviour {
         nav = GetComponent<NavMeshAgent>();
         nav.enabled = true;
     }
-
-
     void SetNextDestination()
     {
         if (waypoints.Count > 0)
@@ -45,7 +43,6 @@ public class MonsterBase : MonoBehaviour {
         {
             SetNextDestination();
         }
-       
     }
 
     public GameObject GetLastWayPoint()
@@ -66,12 +63,10 @@ public class MonsterBase : MonoBehaviour {
     {
         if (Input.GetMouseButtonDown(1))
         {
-           
             WayPointObj.GetComponent<Waypoint>().SetIndex(this.gameObject);
             BuildController.instance.SetBuildObject(WayPointObj);
             BuildController.instance.WayPointMode();
         }
-
         if (Input.GetMouseButtonDown(1))
         {
             foreach (GameObject waypoint in waypoints)

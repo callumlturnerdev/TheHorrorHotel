@@ -5,7 +5,5 @@ using UnityEngine;
 
  namespace needTypes
 {
-   
         public enum eNeedTypes { none, tiredness, boredom, hygiene, hunger, hidden };
-    
 }

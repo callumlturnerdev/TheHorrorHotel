@@ -10,14 +10,11 @@ public class EntertainmentState : State<AI>
     ///  INTEREST ARRAY IN GAMEOBJECTS
     /// </summary>
     /// 
-
-
     private float gameTimer;
     private float seconds;
     private bool timerReached = false;
     private static EntertainmentState _instance;
     private float currentNeedFullfillment;
-
 
     private EntertainmentState()
     {
@@ -46,7 +43,6 @@ public class EntertainmentState : State<AI>
         _owner.UpdateStateUI("Reading");
         seconds = 0;
         _owner.navAgent.speed = 0;
-
     }
 
     public override void ExitState(AI _owner)
@@ -57,8 +53,6 @@ public class EntertainmentState : State<AI>
     public override void UpdateState(AI _owner)
     {
         Eat(_owner);
-
-
     }
 
     private void Eat(AI _owner)
@@ -69,7 +63,6 @@ public class EntertainmentState : State<AI>
             float newValue = _owner.aiNeeds.GetBoredom() + 0.001f * TimeManager.instance.GetPlayRate();
             _owner.aiNeeds.SetBoredom(newValue);
             currentNeedFullfillment += 0.001f;
-
         }
         else
         {

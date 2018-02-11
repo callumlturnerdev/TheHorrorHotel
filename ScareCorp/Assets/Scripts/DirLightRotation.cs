@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DirLightRotation : MonoBehaviour {
+public class DirLightRotation : MonoBehaviour
+{
     [SerializeField]
     private float rotationSpeed = 1;
     private GameObject DirectionalLight;
@@ -11,8 +12,9 @@ public class DirLightRotation : MonoBehaviour {
 
     private Color dayColor;
     private Color nightColor;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         DirectionalLight = transform.GetChild(0).gameObject;
         lightRef = DirectionalLight.GetComponent<Light>();
         DirectionalLight.transform.LookAt(this.transform);
@@ -33,27 +35,4 @@ public class DirLightRotation : MonoBehaviour {
             lightRef.intensity = 1.10f;
         }
     }
-
-
-    /*
-    void SetToNight()
-    {
-        if (!nightTime)
-        {
-            DebugConsole.Log("NIGHTTIME");
-            lightRef.color = Color.Lerp(dayColor, nightColor, 0.5f); 
-            lightRef.intensity = 0.01f;
-            nightTime = true;
-        }
-    }
-
-    void SetToDay()
-    {
-        if (nightTime)
-        {
-            lightRef.color = Color.Lerp(nightColor, dayColor, 0.5f);
-            lightRef.intensity = 0.003f;
-            nightTime = false;
-        }
-    }*/
 }

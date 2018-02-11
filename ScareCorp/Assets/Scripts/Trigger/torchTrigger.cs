@@ -5,11 +5,6 @@ using UnityEngine;
 public class torchTrigger : TriggerBase {
 
 	float collisionCounter = 0;
-
-
-    
-
-
     public override void ObjectEvent()
 	{
         if (!beenUsed)
@@ -21,14 +16,12 @@ public class torchTrigger : TriggerBase {
 
     public override void ObjectOffEvent()
     {
-
         ToggleLights();
         if (otherTrigger)
         {
             otherTrigger.ObjectOffEvent();
         }
     }
-
 
     private void ToggleLights()
     {
@@ -41,5 +34,4 @@ public class torchTrigger : TriggerBase {
             transform.GetChild(0).gameObject.SetActive(true);
         }
     }
-
 }

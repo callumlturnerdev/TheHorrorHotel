@@ -11,7 +11,6 @@ public class doorTrigger : TriggerBase {
     {
         Transform trans;
         trans = this.gameObject.transform;
-       // GameManager.instance.AddToWayPointList(trans);
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -22,7 +21,6 @@ public class doorTrigger : TriggerBase {
             bCol.enabled = false;
             anim = GetComponent<Animator>();
             anim.SetBool("Open", true);
-
             triggered = true;
             beenUsed = true;
             StartCoroutine(CloseDoor());
@@ -36,24 +34,19 @@ public class doorTrigger : TriggerBase {
         bCol.enabled = true;
         anim = GetComponent<Animator>();
         anim.SetBool("Open", false);
-
         triggered = false;
         beenUsed = false;
     }
     public override void ObjectEvent()
 	{
-
-
 		if (!beenUsed)
 		{
 			bCol = GetComponent<BoxCollider> ();
 			bCol.enabled = false;
 			anim = GetComponent<Animator> ();
 			anim.SetBool ("Open", true);
-
 			triggered = true;
 			beenUsed = true;
 		}
-	}
-		
+	}	
 }

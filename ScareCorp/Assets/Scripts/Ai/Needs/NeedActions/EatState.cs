@@ -10,8 +10,6 @@ public class EatState : State<AI>
     ///  INTEREST ARRAY IN GAMEOBJECTS
     /// </summary>
     /// 
-
-
     private float gameTimer;
     private float seconds;
     private bool timerReached = false;
@@ -25,7 +23,6 @@ public class EatState : State<AI>
         }
         _instance = this;
     }
-
     public static EatState Instance
     {
         get
@@ -34,7 +31,6 @@ public class EatState : State<AI>
             {
                 new EatState();
             }
-
             return _instance;
         }
     }
@@ -44,19 +40,15 @@ public class EatState : State<AI>
         _owner.UpdateStateUI("Eating");
         seconds = 0;
         _owner.navAgent.speed = 0;
-
     }
 
     public override void ExitState(AI _owner)
     {
         _owner.navAgent.speed = 2;
     }
-
     public override void UpdateState(AI _owner)
     {
         Eat(_owner);
-
-
     }
 
     private void Eat(AI _owner)
@@ -67,7 +59,6 @@ public class EatState : State<AI>
             float newValue = _owner.aiNeeds.GetHunger() + 0.001f * TimeManager.instance.GetPlayRate();
             _owner.aiNeeds.SetHunger(newValue);
             currentNeedFullfillment += 0.001f;
-
         }
         else
         {

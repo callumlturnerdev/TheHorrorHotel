@@ -8,7 +8,6 @@ public class pPlateTrigger : TriggerBase {
 	void OnTriggerEnter(Collider other)
 	{
         reTriggerTimer = 4;
-
         if (( other.tag == "scary" ||other.tag == "visitor") && !beenUsed) 
 		{
 			triggered = true;
@@ -22,7 +21,6 @@ public class pPlateTrigger : TriggerBase {
             StartCoroutine(resetTrigger());
         }
 	}
-
     public override void ObjectOffEvent()
     {
         if (otherTrigger)
@@ -30,8 +28,6 @@ public class pPlateTrigger : TriggerBase {
             otherTrigger.ObjectOffEvent();
         }
     }
-
-
 	public override void ObjectEvent()
 	{
         StartCoroutine(resetTrigger());

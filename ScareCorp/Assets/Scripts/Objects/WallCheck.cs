@@ -10,9 +10,8 @@ public class WallCheck : MonoBehaviour {
 	// only be built on walls
 	// Use this for initialization
 	Renderer rend;
-
-	void Start () {
-
+	void Start ()
+    {
 		rend = GetComponent<Renderer> ();
 		if (isOnWall) {
 			rend.enabled = false;
@@ -35,16 +34,12 @@ public class WallCheck : MonoBehaviour {
 		if (other.tag == "wall") {
 			collisionCount++;
 				rend.enabled = true;
-
 		}
-
 	}
 
 	public void ChangeMesh(Mesh newMesh)
 	{
 		rend.GetComponent<MeshFilter> ().sharedMesh = newMesh;
-	
-
 	}
 
 	void Update()
@@ -55,7 +50,6 @@ public class WallCheck : MonoBehaviour {
 	{
 		if (other.tag == "wall") {
 			collisionCount--;
-
 			if (collisionCount < 1 && isOnWall) 
 			{
 				rend.enabled = false;
@@ -72,11 +66,8 @@ public class WallCheck : MonoBehaviour {
 	{
 		return collisionCount;
 	}
-
-
 	IEnumerator CheckCollisions()
 	{
-
 		yield return new WaitForSeconds (1);
 	}
 }

@@ -12,29 +12,25 @@ abstract public class TriggerBase : MonoBehaviour {
 	protected LineRenderer line;
 	protected bool lineToMouse;
 	protected GameObject cursor;
-
-
 	public bool triggered = false;
 	protected bool beenUsed = false;
-    // Use this for initialization
+
     protected float reTriggerTimer = 5;
 
-	 void  Awake () {
+	 void  Awake ()
+    {
 		line = GetComponent<LineRenderer> ();
 		cursor = GameObject.FindGameObjectWithTag ("cursor");
         reTriggerTimer = 10;
-        Init();
 	}
-		
 
     protected virtual void Init()
     {
 
-
     }
-	  void Update () {
+	  void Update ()
+    {
 		LineRendMouse ();
-      
 	}
 
 	public   bool GetTriggered()
@@ -52,7 +48,6 @@ abstract public class TriggerBase : MonoBehaviour {
         parentTrigger = triggerObject.GetComponent<TriggerBase>();
         line.SetPosition(0, this.transform.position);
         line.SetPosition(1, parentTrigger.transform.position);
-
     }
 
 	public  void SetTriggerObject(GameObject trigger)
@@ -62,7 +57,6 @@ abstract public class TriggerBase : MonoBehaviour {
 		otherTrigger = triggerObject.GetComponent<TriggerBase> ();
 		line.SetPosition(0, this.transform.position);
 		line.SetPosition (1, triggerObject.transform.position);
-
 	}
 
 	 void LineRendMouse()
@@ -83,15 +77,11 @@ abstract public class TriggerBase : MonoBehaviour {
 			Debug.Log ("has been selected");
 			TriggerController.instance.SetCurrentTrigger (this.gameObject);
 		}
-
 	}
 
 
 	public  virtual void ObjectEvent()
 	{
-
-       
-        
 	}
 
     public virtual void ObjectOffEvent()
@@ -102,10 +92,7 @@ abstract public class TriggerBase : MonoBehaviour {
 
     protected IEnumerator resetTrigger()
     {
-
         yield return new WaitForSeconds(reTriggerTimer);
-       
-
         ObjectOffEvent();
     }
 }

@@ -211,9 +211,7 @@ public class BuildController : MonoBehaviour {
 
             if (heldObjectRef.GetComponent<WallCheck>().GetCollisionCount() < 1)
             {
-
                 rotZ += 90;
-                
             }
         }
         else if (currentObject.tag == "groundTexture")
@@ -253,10 +251,6 @@ public class BuildController : MonoBehaviour {
 
     public void AddObjectForDeletion(GameObject grid)
     {
-
-       
         objectsToDelete.Add(grid);
-
-
     }
 }

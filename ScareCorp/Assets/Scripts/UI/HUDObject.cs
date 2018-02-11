@@ -15,8 +15,6 @@ public class HUDObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 	public GameObject itemToBuild;
     private Text itemCost;
     private float cost;
-
-    //
     public string name;
     public string description;
     private Image image;
@@ -29,19 +27,16 @@ public class HUDObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         cost = itemToBuild.GetComponent<Buildable>().GetCost();
         itemCost.text = " " + cost;
     }
-
     public void OnMouseDown()
 	{
 		BuildController.instance.SetBuildObject (itemToBuild);
 		Debug.Log ("Item Selected =" + itemToBuild.name);
     }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         isOver = true;
         infoPanel.UpdateUIInfoPanel(image.sprite, name, description);
     }
-
     public void OnPointerExit(PointerEventData eventData)
     {
         isOver = false;

@@ -32,11 +32,9 @@ public class Buildable : MonoBehaviour {
             case eNeedTypes.hidden:
                 if (!GameManager.instance.hidingPlaces.Contains(this.gameObject)) { GameManager.instance.hidingPlaces.Add(this.gameObject); }
                 break;
-
         }
         if ( transform.childCount > 0 )
         {
-
             if (transform.GetChild(0).GetComponent<Rigidbody>() != null)
             {
                 rb = transform.GetChild(0).GetComponent<Rigidbody>();
@@ -44,20 +42,15 @@ public class Buildable : MonoBehaviour {
             }
         }
 	}
-
-
     IEnumerator DestroyRigidBodies()
     {
-
         yield return new WaitForSeconds(3);
         Destroy(rb);
     }
 
-
     public void hasBeenUsed()
     {
         uses -= 1;
-
         if (uses < 1)
         {
             GameManager.instance.RemoveObject(this.gameObject);
@@ -69,8 +62,4 @@ public class Buildable : MonoBehaviour {
     {
         return itemCost;
     }
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

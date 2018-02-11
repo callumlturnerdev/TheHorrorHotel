@@ -11,16 +11,13 @@ public class BodyBusterTrigger : TriggerBase {
     private void OnEnable()
     {
         spawnPos = gameObject.transform.Find("SpawnPoint");
-        //zombie = this.transform.Find("Zombie").gameObject;
     }
-
 
     protected override void Init()
     {
         base.Init();
         anim = transform.GetChild(1).GetComponent<Animator>();
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -30,14 +27,12 @@ public class BodyBusterTrigger : TriggerBase {
         }
     }
 
-
     public override void ObjectEvent()
 	{
 		if (!beenUsed)
 		{
             hasZombie = true;
             anim = GetComponent<Animator> ();
-			
             GameObject zomb;
             zomb = Instantiate(zombie) as GameObject;
             zomb.transform.position = new Vector3(spawnPos.position.x, spawnPos.transform.position.y , spawnPos.position.z);

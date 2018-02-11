@@ -34,8 +34,7 @@ public class TvTrigger : TriggerBase {
 		if (!beenUsed)
 		{
             hasZombie = true;
-            anim = GetComponent<Animator> ();
-			
+            anim = GetComponent<Animator> ();	
             GameObject zomb;
             zomb = Instantiate(zombie) as GameObject;
             zomb.transform.position = new Vector3(spawnPos.position.x, spawnPos.transform.position.y , spawnPos.position.z);

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour {
 
-
-
     [SerializeField]
     private GameObject monsterRef;
     private bool lineToMouse;
@@ -13,6 +11,7 @@ public class Waypoint : MonoBehaviour {
     private GameObject cursor;
     [SerializeField]
     private GameObject previousWaypoint;
+
 
 	void Awake () {
         lineToMouse = true;
@@ -23,15 +22,13 @@ public class Waypoint : MonoBehaviour {
         {
             previousWaypoint = monsterRef.GetComponent<MonsterBase>().GetLastWayPoint();
             monsterRef.GetComponent<MonsterBase>().AddWayPoint(this.gameObject);
-           
         }
 	}
 
     public void ToggleVisibiltiy()
     {
         this.gameObject.GetComponent<Renderer>().enabled = !GetComponent<Renderer>().enabled;
-        line.enabled = !line.enabled;
-        
+        line.enabled = !line.enabled; 
     }
     void LineRendMouse()
     {

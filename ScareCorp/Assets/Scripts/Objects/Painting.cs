@@ -9,27 +9,21 @@ public class Painting : MonoBehaviour {
     private List<Sprite> possibleImages;
     private GameObject paintingRef;
     private int randNum;
-    // Use this for initialization
+ 
+
     void Awake() {
-
         paintingRef = transform.GetChild(0).gameObject;
-
         if (!Directory.Exists(Application.dataPath + "/Images/"))
         {
             Directory.CreateDirectory(Application.dataPath + "/Images/");
         }
-
         var files = new DirectoryInfo((Application.dataPath + "/Images/"));
         var fileInfo = files.GetFiles("*.jpg");
         
         foreach (var file in fileInfo)
         {
-            
-                possibleImages.Add(LoadNextImage(Application.dataPath + "/Images/" + file.Name));
-            
+            possibleImages.Add(LoadNextImage(Application.dataPath + "/Images/" + file.Name));
         }
-
-
         randNum = Random.Range(0, fileInfo.Length);
         paintingRef.GetComponent<SpriteRenderer>().sprite = possibleImages[randNum];
     }
@@ -47,17 +41,13 @@ public class Painting : MonoBehaviour {
     {
         Texture2D Tex2D;
         byte[] FileData;
-
         if (File.Exists(filepath))
         {
             FileData = File.ReadAllBytes(filepath);
             Tex2D = new Texture2D(2, 2);
             if (Tex2D.LoadImage(FileData))
                 return Tex2D; 
-
         }
         return null;
     }
-
-
 }

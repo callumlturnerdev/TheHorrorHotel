@@ -12,7 +12,6 @@ using needTypes;
 
 public class NeedScanState : State<AI>
 {
-
     private float gameTimer;
     private float seconds;
     private bool timerReached = false;
