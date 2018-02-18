@@ -6,33 +6,41 @@ public class DirLightRotation : MonoBehaviour
 {
     [SerializeField]
     private float rotationSpeed = 1;
-    private GameObject DirectionalLight;
+    public GameObject DayLight;
+    public GameObject NightLight;
     private Light lightRef;
     bool nightTime = false;
+
 
     private Color dayColor;
     private Color nightColor;
     // Use this for initialization
     void Start()
     {
-        DirectionalLight = transform.GetChild(0).gameObject;
-        lightRef = DirectionalLight.GetComponent<Light>();
-        DirectionalLight.transform.LookAt(this.transform);
-        dayColor = new Color(210, 210, 210);
-        nightColor = new Color(23, 1, 16);
+     
+  
+        NightLight.transform.LookAt(this.transform);
+        DayLight.transform.LookAt(this.transform);
+        NightLight.SetActive(true);
+        DayLight.SetActive(false);
+
         TimeManager.HourTick += HourlyTick;
     }
     void HourlyTick()
     {
-        DirectionalLight.transform.LookAt(this.transform);
+        NightLight.transform.LookAt(this.transform);
+        DayLight.transform.LookAt(this.transform);
         transform.Rotate(transform.rotation.x + -11.25f, 0, 0);
         if ((Mathf.Floor(TimeManager.instance.GetCurrentTime() / 60) < 07 || Mathf.Floor(TimeManager.instance.GetCurrentTime() / 60) > 23))
         {
-            lightRef.intensity = 0.15f;
+          DayLight.SetActive(false);
+            NightLight.SetActive(true);
         }
         else
         {
-            lightRef.intensity = 1.10f;
+            
+            DayLight.SetActive(true);
+            NightLight.SetActive(false);
         }
     }
 }

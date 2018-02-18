@@ -10,21 +10,45 @@ public class Waypoint : MonoBehaviour {
     private LineRenderer line;
     private GameObject cursor;
     [SerializeField]
-    private GameObject previousWaypoint;
-
+    public GameObject previousWaypoint;
+    public GameObject nextWayPoint;
 
 	void Awake () {
+        nextWayPoint = null;
         lineToMouse = true;
         line = GetComponent<LineRenderer>();
-        
         cursor = GameObject.FindGameObjectWithTag("cursor");
         if (monsterRef != null)
         {
-            previousWaypoint = monsterRef.GetComponent<MonsterBase>().GetLastWayPoint();
-            monsterRef.GetComponent<MonsterBase>().AddWayPoint(this.gameObject);
+            previousWaypoint = monsterRef.GetComponent<MonsterBase>().GetLastPoint();
+            monsterRef.GetComponent<MonsterBase>().SetCurrentWaypoint(this.gameObject);
+        }
+        if (previousWaypoint != null)
+        {
+            previousWaypoint.GetComponent<Waypoint>().SetNextWayPoint(this.gameObject);
         }
 	}
 
+    public GameObject GetNextWayPoint() { return nextWayPoint; }
+    public GameObject GetPreviousWayPoint() { return previousWaypoint; }
+
+    public void SetPreviousWayPoint(GameObject prv)
+    {
+        previousWaypoint = prv;
+    }
+    public void SetNextWayPoint(GameObject nxt)
+    {
+        nextWayPoint = nxt;
+    }
+
+    public void DestroyWaypoint()
+    {
+        monsterRef.GetComponent<MonsterBase>().RemoveWayPoint(this.gameObject);
+        previousWaypoint.GetComponent<Waypoint>().SetNextWayPoint(nextWayPoint);
+        nextWayPoint.GetComponent<Waypoint>().SetPreviousWayPoint(previousWaypoint);
+        monsterRef.GetComponent<MonsterBase>().SetWaypoint(nextWayPoint);
+        Destroy(this.gameObject);
+    }
     public void ToggleVisibiltiy()
     {
         this.gameObject.GetComponent<Renderer>().enabled = !GetComponent<Renderer>().enabled;
@@ -35,14 +59,10 @@ public class Waypoint : MonoBehaviour {
         if (lineToMouse)
         {
             line.SetPosition(0, this.transform.position);
-            if (previousWaypoint != null)
+            if (nextWayPoint != null)
             {
-                line.SetPosition(1, previousWaypoint.transform.position);
-            }
-            else
-            {
-                line.SetPosition(1, new Vector3( monsterRef.transform.position.x,this.transform.position.y,monsterRef.transform.position.z));
-            }
+                line.SetPosition(1, nextWayPoint.transform.position);
+            }  
         }
     }
 

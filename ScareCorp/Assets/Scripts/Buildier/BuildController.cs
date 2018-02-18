@@ -19,8 +19,9 @@ public class BuildController : MonoBehaviour {
 	public static BuildController instance = null;
     private eBuildMode currentBuildMode = eBuildMode.building;
     public List<GameObject> objectsToDelete;
-	public List<GameObject> buildObjects;
+	public GameObject defaultBuildObject;
 	public GameObject currentObject;
+    private GameObject lastBuildObject;
 	private int objIndex;
 
 	// USED TO PASS ON MAT INDEX TO BUILT OBJECT
@@ -62,10 +63,10 @@ public class BuildController : MonoBehaviour {
 
 	void Init()
 	{
-        currentObject = buildObjects [0];
+        currentObject = defaultBuildObject;
 		playerCursor = GameObject.FindGameObjectWithTag ("cursor");
 		heldObjectRef = playerCursor.transform.GetChild (0).gameObject;
-        EventManager.DeleteClicked += DeleteMode;
+       // EventManager.DeleteClicked += DeleteMode;
         HUDSetup();
     }
 
@@ -136,8 +137,9 @@ public class BuildController : MonoBehaviour {
 		notOnHud = t;
 	}
 
-    void DeleteMode()
+    public void DeleteMode()
     {
+       
         inDeleteMode = !inDeleteMode;
         heldObjectRef.GetComponent<WallCheck>().SetCollisionCount(0);
 
@@ -161,9 +163,20 @@ public class BuildController : MonoBehaviour {
         }
     }
 
-    public void WayPointMode()
+    public void WayPointMode(bool t)
     {
-        currentBuildMode = eBuildMode.waypoints;
+        if (t)
+        {
+            Debug.Log("SWAPPING TO WAYPOINT MODE");
+            currentBuildMode = eBuildMode.waypoints;
+        }
+        else
+        {
+            currentObject = lastBuildObject;
+            SetBuildObject(currentObject);
+            currentBuildMode = eBuildMode.building;
+           
+        }
     }
     public bool GetInDeleteMode(){return inDeleteMode; }
     public bool GetInMaterialMode() { return inMaterailMode; }
@@ -185,24 +198,17 @@ public class BuildController : MonoBehaviour {
 		if (currentObject.tag == "onWall") {
 			
 			if (heldObjectRef.GetComponent<WallCheck> ().GetCollisionCount () < 1) {
-
 				rotZ += 90;
-
 			} 
 		} 
-
 		if (Input.GetKeyDown (KeyCode.R)) { rotZ += 90;  Debug.Log("Rotate obj"); rotated = !rotated; }
-		if (Input.GetKeyDown ("1")) {currentObject = buildObjects [0];}
-		if (Input.GetKeyDown ("2")) {currentObject = buildObjects [1];}
-		if (Input.GetKeyDown ("3")) {currentObject = buildObjects [2];}
-		if (Input.GetKeyDown ("4")) {currentObject = buildObjects [3];}
-		if (Input.GetKeyDown ("5")) {currentObject = buildObjects [4];}
-		if (Input.GetKeyDown ("6")) {currentObject = buildObjects [5];}
 	}
 
 
 	public void SetBuildObject(GameObject newObject)
 	{
+        lastBuildObject = currentObject;
+        if (newObject == null) { currentObject = defaultBuildObject; }
 		currentObject = newObject;
         if (currentObject.tag == "onWall")
         {

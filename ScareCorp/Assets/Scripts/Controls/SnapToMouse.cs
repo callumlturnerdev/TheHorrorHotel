@@ -30,15 +30,8 @@ public class SnapToMouse : MonoBehaviour
 
     void DeleteMode()
     {
-        deleteModeOn = !deleteModeOn;
-        if (deleteModeOn)
-        {
-            line.material = lineRendMats[1];
-        }
-        else
-        {
-            line.material = lineRendMats[0];
-        }
+      
+       
     }
     void OnTriggerStay(Collider other)
     {
@@ -56,6 +49,16 @@ public class SnapToMouse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (BuildController.instance.GetInDeleteMode())
+        {
+            line.material = lineRendMats[1];
+        }
+        else
+        {
+            line.material = lineRendMats[0];
+        }
+
         if (Input.GetKeyDown(KeyCode.C))
         {
             SelectSystem = !SelectSystem;

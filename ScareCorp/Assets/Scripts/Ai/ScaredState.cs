@@ -3,6 +3,7 @@ using UnityEngine;
 using StateAI;
 using needTypes;
 using UnityEngine.AI;
+using fearTypes;
 
 public class ScaredState : State<AI>
 {
@@ -54,7 +55,7 @@ public class ScaredState : State<AI>
 
     void Scared(AI _owner)
     {
-            _owner.gameObject.GetComponent<Visitor>().Scare(10.0f);
+            _owner.gameObject.GetComponent<Visitor>().Scare(50.0f);
             _owner.navAgent.isStopped = false;
             Debug.DrawRay(_owner.eyes.position, _owner.eyes.forward.normalized * -10, Color.red);
             _owner.navAgent.speed = 4;

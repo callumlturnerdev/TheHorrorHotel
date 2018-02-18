@@ -158,7 +158,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1221075240768592}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9429762, y: 0.91195524, z: 6.3294916}
+  m_LocalPosition: {x: 5.8018417, y: 0.89000005, z: 37.443024}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4441713693445062}
@@ -443,6 +443,7 @@ MonoBehaviour:
   objectID: 2
   index: 0
   needtype: 0
+  fearType: 0
   uses: 999999
   needFulfillment: 0
   itemCost: 10

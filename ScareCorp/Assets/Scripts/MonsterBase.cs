@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using buildModes;
 public class MonsterBase : MonoBehaviour {
 
     GameObject WayPointButton;
@@ -14,6 +15,8 @@ public class MonsterBase : MonoBehaviour {
     NavMeshAgent nav;
     [SerializeField]
     int currentWaypoint;
+    GameObject currentWayPointobj;
+    GameObject firstWaypoint, lastWayPoint;
     private void Awake()
     {
         currentWaypoint = 0;
@@ -22,14 +25,10 @@ public class MonsterBase : MonoBehaviour {
     }
     void SetNextDestination()
     {
-        if (waypoints.Count > 0)
+        if (currentWayPointobj != null)
         {
-            nav.destination = waypoints[currentWaypoint].transform.position;
-            currentWaypoint++;
-            if (currentWaypoint >= waypoints.Count)
-            {
-                currentWaypoint = 0;
-            }
+            nav.destination = currentWayPointobj.transform.position;
+         
         }
     }
     private void Update()
@@ -37,14 +36,30 @@ public class MonsterBase : MonoBehaviour {
         CheckDestinationIsReached();
     }
 
+    public void SetCurrentWayPoint(GameObject wpoint) { currentWayPointobj = wpoint; }
     void CheckDestinationIsReached()
     {
         if ((nav.remainingDistance <= nav.stoppingDistance  ) )
         {
+            if (currentWayPointobj)
+            {
+                if (currentWayPointobj.GetComponent<Waypoint>().GetNextWayPoint() != null)
+                {
+                    currentWayPointobj = currentWayPointobj.GetComponent<Waypoint>().GetNextWayPoint();
+                }
+            }
             SetNextDestination();
         }
     }
+    public GameObject GetLastPoint()
+    {
+        if (lastWayPoint)
+        {
+            return lastWayPoint;
+        }
+        return firstWaypoint;
 
+    }
     public GameObject GetLastWayPoint()
     {
         if (waypoints.Count > 0)
@@ -53,19 +68,57 @@ public class MonsterBase : MonoBehaviour {
         }
         else return null;
     }
-
-    public void AddWayPoint(GameObject waypoint)
+    public void RemoveWayPoint(GameObject waypoint)
     {
-        waypoints.Add(waypoint);
+        if (waypoint == firstWaypoint)
+        {
+           firstWaypoint = waypoint.GetComponent<Waypoint>().GetNextWayPoint();
+        }
+        waypoints.Remove(waypoint);
+     
     }
+    public void SetWaypoint(GameObject wpoint)
+    {
+            currentWayPointobj = wpoint;
+ 
+    }
+    public void SetCurrentWaypoint(GameObject wpoint)
+    {
+        if (firstWaypoint == null)
+        {
+            firstWaypoint = wpoint;
+        }
+        else
+        {
+            lastWayPoint = wpoint;
+            lastWayPoint.GetComponent<Waypoint>().SetNextWayPoint(firstWaypoint);
+            firstWaypoint.GetComponent<Waypoint>().SetPreviousWayPoint(lastWayPoint);
+        }
+
+        if (currentWayPointobj == null)
+        {
+            currentWayPointobj = wpoint;
+        }
+        waypoints.Add(wpoint);
+    }
+
+
 
     private void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(1))
         {
             WayPointObj.GetComponent<Waypoint>().SetIndex(this.gameObject);
-            BuildController.instance.SetBuildObject(WayPointObj);
-            BuildController.instance.WayPointMode();
+            if (BuildController.instance.GetCurrentBuildMode() == eBuildMode.building)
+            {
+                BuildController.instance.SetBuildObject(WayPointObj);
+                BuildController.instance.WayPointMode(true);
+            }
+            else
+            {
+                BuildController.instance.WayPointMode(false);
+                Debug.Log("Swapping to building mode");
+            }
         }
         if (Input.GetMouseButtonDown(1))
         {

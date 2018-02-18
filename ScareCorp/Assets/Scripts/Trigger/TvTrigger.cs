@@ -10,6 +10,7 @@ public class TvTrigger : TriggerBase {
     private Transform spawnPos;
     private void OnEnable()
     {
+        anim = transform.GetChild(1).GetComponent<Animator>();
         spawnPos = gameObject.transform.Find("SpawnPoint");
         //zombie = this.transform.Find("Zombie").gameObject;
     }

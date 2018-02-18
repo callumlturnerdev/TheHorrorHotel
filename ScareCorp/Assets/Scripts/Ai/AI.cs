@@ -6,6 +6,8 @@ using UnityEngine.AI;
 using StateAI;
 using UnityEngine.UI;
 using needTypes;
+using fearTypes;
+
 public class AI : MonoBehaviour
 {
     public bool switchState = false;
@@ -35,6 +37,16 @@ public class AI : MonoBehaviour
     public List<GameObject> hygieneObjects;
     public List<GameObject> hidingPlaces;
 
+    [Header("FearStats")]
+    [Range(0, 1)]
+    public float enviroment = 1.0f;
+    [Range(0, 1)]
+    public float gore = 1.0f;
+    [Range(0, 1)]
+    public float jumpScare = 1.0f;
+    [Range(0, 1)]
+    public float seperation = 1.0f;
+
     [Header("Debug")]
     // NEEDS
     [Range(0, 1)]
@@ -62,6 +74,14 @@ public class AI : MonoBehaviour
         GameManager.ObjectAdd += GetNeedObjects;
 
         GetNeedObjects();
+        // FEAR SETUP
+        enviroment = Random.Range(0,1.0F);
+        gore = Random.Range(0, 1.0F);
+        jumpScare = Random.Range(0, 1.0F);
+        seperation = Random.Range(0, 1.0F);
+
+
+        // NEEDS SETUP
         aiNeeds = gameObject.GetComponent<AINeeds>();
         hunger = 1.0f;
         hygiene = 1.0f;

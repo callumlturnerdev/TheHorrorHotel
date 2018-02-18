@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using needTypes;
+using fearTypes;
 public class Buildable : MonoBehaviour {
     public int objectID;
     public int index;
     public eNeedTypes needtype;
+    public eFearTypes fearType;
     public float uses =999999;
     [Range(0,1)]
     public float needFulfillment;
@@ -58,6 +60,10 @@ public class Buildable : MonoBehaviour {
         }
     }
 
+    public eFearTypes GetFearType()
+    {
+        return fearType;
+    }
     public float GetCost()
     {
         return itemCost;

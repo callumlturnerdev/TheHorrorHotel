@@ -70,11 +70,10 @@ abstract public class TriggerBase : MonoBehaviour {
 
 	protected  void OnMouseOver()
 	{
-        Debug.Log("Mouse overe trigger");
 		if (Input.GetMouseButtonDown (1)) 
 		{
 			lineToMouse = true;
-			Debug.Log ("has been selected");
+	
 			TriggerController.instance.SetCurrentTrigger (this.gameObject);
 		}
 	}

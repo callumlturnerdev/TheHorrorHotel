@@ -18,7 +18,8 @@ public class HUDObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public string name;
     public string description;
     private Image image;
-
+    [SerializeField]
+    private bool DeleteModeObj; // Really dodgy way to approach this should replace at some point
     void Awake()
     {
         infoPanel = GameObject.FindGameObjectWithTag("UIInfoPanel").GetComponent<UIInfoPanel>();
@@ -30,7 +31,11 @@ public class HUDObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnMouseDown()
 	{
 		BuildController.instance.SetBuildObject (itemToBuild);
-		Debug.Log ("Item Selected =" + itemToBuild.name);
+        if (DeleteModeObj)
+        {
+            BuildController.instance.DeleteMode();
+        }
+        Debug.Log ("Item Selected =" + itemToBuild.name);
     }
     public void OnPointerEnter(PointerEventData eventData)
     {

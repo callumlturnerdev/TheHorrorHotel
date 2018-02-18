@@ -89,7 +89,9 @@ public class SeekNextNeedState : State<AI>
                 Debug.DrawRay(_owner.eyes.position, _owner.eyes.forward.normalized * 8, Color.red);
             if (hit.transform.gameObject.tag == "scary")
             {
+                
                 _owner.fearTarget = hit.transform.gameObject;
+                _owner.gameObject.GetComponent<Visitor>().SetNextFearObject(hit.transform.gameObject);
                 if (!_owner.usedScares.Contains(_owner.fearTarget))
                 {
                     _owner.stateMachine.ChangeState(ScaredState.Instance);

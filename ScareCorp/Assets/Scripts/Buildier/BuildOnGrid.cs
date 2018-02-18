@@ -167,7 +167,7 @@ public class BuildOnGrid : MonoBehaviour {
             
             if (transform.childCount > 0 && transform.GetChild(0).GetComponent<Waypoint>())
             {
-                Destroy(transform.GetChild(0).gameObject);
+                transform.GetChild(0).GetComponent<Waypoint>().DestroyWaypoint();
             }
             else
             {
