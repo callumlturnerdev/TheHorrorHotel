@@ -75,6 +75,7 @@ public class MonsterBase : MonoBehaviour {
            firstWaypoint = waypoint.GetComponent<Waypoint>().GetNextWayPoint();
         }
         waypoints.Remove(waypoint);
+        
      
     }
     public void SetWaypoint(GameObject wpoint)

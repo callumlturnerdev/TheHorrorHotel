@@ -51,7 +51,21 @@ public class GameManager : MonoBehaviour {
             ToggleWalls();
         }
     }
-
+    public GameObject GetABed() // USed by visitor to assign bed
+    {
+        GameObject bed = null;
+        foreach(GameObject obj in tirednessObjects)
+        {
+            if(obj != null)
+            {
+                bed = obj;
+                break;
+            }
+        }
+        tirednessObjects.Remove(bed);
+        return bed;
+    }
+    
     public void ClearObjects()
     {
         boredomObjects.Clear();

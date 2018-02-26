@@ -31,6 +31,7 @@ public class AI : MonoBehaviour
     public Text StateText;
 
     [Header("NeedObjects")]
+    public GameObject assignedBed;
     public List<GameObject> hungerObjects;
     public List<GameObject> tirednessObjects;
     public List<GameObject> boredomObjects;
@@ -116,8 +117,16 @@ public class AI : MonoBehaviour
 
     private void GetNeedObjects()
     {
+        if(assignedBed == null)
+        {
+            assignedBed = GameManager.instance.GetABed();
+            if(assignedBed)
+            {
+                assignedBed.GetComponent<Bed>().SetBedName(gameObject.GetComponent<Visitor>().GetName());
+            }
+        }
         hungerObjects = new List<GameObject>(GameManager.instance.hungerObjects);
-        tirednessObjects = new List<GameObject>(GameManager.instance.tirednessObjects);
+        
         boredomObjects = new List<GameObject>(GameManager.instance.boredomObjects);
         hygieneObjects = new List<GameObject>(GameManager.instance.hygieneObjects);
         hidingPlaces = new List<GameObject>(GameManager.instance.hidingPlaces);

@@ -144,10 +144,10 @@ public class SeekNextNeedState : State<AI>
 
         if (_owner.tiredness <= _owner.aiNeeds.lowestNeedValue() )
         {
-            if (_owner.tirednessObjects.Count > 0)
+            if (_owner.assignedBed)
             {
                 _owner.navAgent.isStopped = false;
-                currentTarget = _owner.SelectTarget(_owner.tirednessObjects);
+                currentTarget = _owner.assignedBed;
                 _owner.currentTarget = currentTarget;
                 _owner.navAgent.destination = currentTarget.transform.position;
                 _owner.UpdateStateUI("Tired");

@@ -183,7 +183,7 @@ e5741214dc6a5c23499bfcdf8e85e643 Assembly-CSharp.dll:.MonsterBase
 da2cdeeaf2482c22c9f23f92ee9f3932 Assembly-CSharp.dll:.doorTrigger
 da2cdeeaf2482c22c9f23f92ee9f3932 Assembly-CSharp.dll:.pPlateTrigger
 50ed0247f2392ecc9715a632805873d9 Assembly-CSharp.dll:.BuildController
-f17ea0150f457d327cc4ba43021d005a Assembly-CSharp.dll:.Waypoint
+6e45cd25660e7579428264ddc3d1472b Assembly-CSharp.dll:.Waypoint
 8bbc4d887ec3e1951ccf0444ae6ddbbb Assembly-CSharp.dll:.WallCheck
 7a5bbf983df94a6d58f62c96ca3e03e4 Assembly-CSharp.dll:.DebugConsole
 e44b80580faaad15cc28a5809a77d55e Assembly-CSharp.dll:.BuildOnGrid

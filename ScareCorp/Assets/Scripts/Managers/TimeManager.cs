@@ -15,6 +15,7 @@ public class TimeManager : MonoBehaviour {
     public static TimeManager instance = null;
 
     float currentDay;
+    [SerializeField] [Range(0,1440)]
     private float time;
     float seconds;
     float minutes;

@@ -5,6 +5,7 @@ using UnityEngine;
 public class torchTrigger : TriggerBase {
 
 	float collisionCounter = 0;
+    public GameObject particleObj;
     public override void ObjectEvent()
 	{
         if (!beenUsed)
@@ -32,6 +33,15 @@ public class torchTrigger : TriggerBase {
         else
         {
             transform.GetChild(0).gameObject.SetActive(true);
+        }
+
+        if(particleObj.activeSelf)
+        {
+            particleObj.SetActive(false);
+        }
+        else
+        {
+           particleObj.SetActive(true);
         }
     }
 }

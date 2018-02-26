@@ -14,6 +14,8 @@ public class Buildable : MonoBehaviour {
     public float itemCost;
     [Range(0,10)]
     public int priority;
+    [SerializeField]
+    private bool largeObject = false; // TEMP VARIABLE FOR DETERMINING HOW MANY GRID SLOTS TO USE WHEN BUILDING
     Rigidbody rb;
     // Use this for initialization
     void Start() {
@@ -68,4 +70,8 @@ public class Buildable : MonoBehaviour {
     {
         return itemCost;
     }
+
+
+
+    public bool IsLargeObject() {return largeObject;}
 }

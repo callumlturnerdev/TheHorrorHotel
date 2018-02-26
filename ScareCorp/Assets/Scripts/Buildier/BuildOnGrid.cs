@@ -13,7 +13,9 @@ using buildModes;
 /// </summary>
 public class BuildOnGrid : MonoBehaviour {
 
-    
+    [SerializeField]
+    GameObject[] gridNeighbours;
+    private int neighbourInd;
      GameObject ObjectBuiltOnGrid;
     private float builtObjectRotationZ;
 	public GameObject tempToBuild;
@@ -31,6 +33,8 @@ public class BuildOnGrid : MonoBehaviour {
 
 
 	void Start () {
+        neighbourInd = 0;
+        gridNeighbours = new GameObject[4];
 		myRend = GetComponent<Renderer> ();
 		originalMat = myRend.material;
         builtObjectRotationZ = 0;
@@ -47,10 +51,21 @@ public class BuildOnGrid : MonoBehaviour {
                 break;
 
         }
+        FindConnectedGrids();
 	}
+
+    void FindConnectedGrids()  // used to find neighbours used for big object placement
+    {
+        // this function will find the grids connected to this one.
+        gridNeighbours[0] = GameObject.Find("" + (gridX-1) + " " + gridY);
+        gridNeighbours[1] = GameObject.Find("" + (gridX+1) + " " + gridY);
+        gridNeighbours[2] = GameObject.Find("" + gridX + " " + (gridY+1));
+        gridNeighbours[3] = GameObject.Find("" + gridX + " " + (gridY-1));
+    }
     // Update is called once per frame
     void Update()
     {
+        SelectNeighbourBasedOnRotation();
         if (isHighlighted)
         {
             canBuildOn = true;
@@ -109,11 +124,35 @@ public class BuildOnGrid : MonoBehaviour {
         {
             if (!EventSystem.current.IsPointerOverGameObject())
             {
+                
                 tempToBuild = BuildController.instance.GetCurrentObject();
-
-                if (BuildController.instance.CheckCost(tempToBuild.GetComponent<Buildable>().GetCost()))
+                  if (BuildController.instance.CheckCost(tempToBuild.GetComponent<Buildable>().GetCost()))
                 {
-                    GameObject obj = Instantiate(tempToBuild) as GameObject;
+                    if(tempToBuild.GetComponent<Buildable>().IsLargeObject())
+                    {
+                        
+                        if(gridNeighbours[neighbourInd])
+                        {
+                            if(gridNeighbours[neighbourInd].GetComponent<BuildOnGrid>().canBuildOn || !gridNeighbours[neighbourInd].GetComponent<BuildOnGrid>().beenBuiltOn )
+                            {
+                                gridNeighbours[neighbourInd].GetComponent<BuildOnGrid>().canBuildOn = false;
+                                gridNeighbours[neighbourInd].GetComponent<BuildOnGrid>().beenBuiltOn = true;
+                                BuildObject(tempToBuild);      
+                            }
+                        }
+                    }
+                    else
+                    {
+                        BuildObject(tempToBuild);  
+                    }
+                }
+
+            }
+        }
+    }
+    private void BuildObject(GameObject tempToBuild)
+    {
+        GameObject obj = Instantiate(tempToBuild) as GameObject;
                     ObjectBuiltOnGrid = obj;
                     obj.transform.parent = this.transform;
                     GameManager.instance.AddObject(this.gameObject);
@@ -128,12 +167,7 @@ public class BuildOnGrid : MonoBehaviour {
                     }
                     obj.transform.rotation = Quaternion.Euler(0, BuildController.instance.GetRotation(), 0);
                     builtObjectRotationZ = BuildController.instance.GetRotation();
-                }
-
-            }
-        }
     }
-
     private void Deleting()
     {
         if (transform.childCount > 0 && BuildController.instance.GetInDeleteMode()) // IF IN DELETE MODE
@@ -222,8 +256,25 @@ public class BuildOnGrid : MonoBehaviour {
         isHighlighted = false;
         if (!EventSystem.current.IsPointerOverGameObject())
         {
+            
             if (a)
             {
+                
+                if(tempToBuild.GetComponent<Buildable>().IsLargeObject() && gridNeighbours[neighbourInd])
+                {
+                gridNeighbours[neighbourInd].GetComponent<Renderer>().material = highlightText;
+                }
+                else if(BuildController.instance.paintMode)
+                {
+                 foreach(GameObject neighbour in gridNeighbours)
+                    {
+                        if(neighbour)
+                        {
+                            neighbour.GetComponent<Renderer>().material = highlightText;
+                            neighbour.GetComponent<BuildOnGrid>().isHighlighted = true;
+                        }
+                    }
+                }
                     myRend.material = highlightText;
                     isHighlighted = true;
             }
@@ -279,4 +330,29 @@ public class BuildOnGrid : MonoBehaviour {
 		gridArray[1] = gridY;
 		return gridArray;
 	}
+
+
+
+    void  SelectNeighbourBasedOnRotation() // Gets build rotation and uses this to determine what neighbour to also build on for larger objects
+    {
+        float rot = BuildController.instance.GetRotation();
+        
+        if(rot == 0)
+        {
+            neighbourInd = 0; 
+        }
+        if(rot == 90)
+        {
+            neighbourInd = 2; 
+        }
+        if(rot == 180)
+        {
+            neighbourInd = 1; 
+        }
+        if(rot == 270)
+        {
+            neighbourInd = 3; 
+        }
+        
+    }
 }

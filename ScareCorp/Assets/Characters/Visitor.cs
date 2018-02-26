@@ -7,6 +7,7 @@ using fearTypes;
 
 public class Visitor : MonoBehaviour
 { 
+    public Text visitorName;
     SavingLoading saveSystem;
     AI aiScriptRef;
     Rigidbody rb;
@@ -17,8 +18,11 @@ public class Visitor : MonoBehaviour
     private Animator anim;
     GridBuilder gridBuilderRef;
     public GameObject lastFearObject;
+    [SerializeField]
+    bool man = true;
     void Awake()
     {
+        visitorName.text = GetRandomName(man);
         aiScriptRef = gameObject.GetComponent<AI>();
         saveSystem = GameObject.FindGameObjectWithTag("save").GetComponent<SavingLoading>();
         agent = GetComponent<NavMeshAgent>();
@@ -90,6 +94,25 @@ public class Visitor : MonoBehaviour
         BuildController.instance.AddPoints(amount * 10);
         fearBar = transform.GetChild(0).Find("VisitorUI").Find(name: "fearFill").GetComponent<Image>();
         fearBar.fillAmount = currentFear / maxFear;
+    }
+
+
+
+    public string GetName() {return visitorName.text;}
+    private string  GetRandomName(bool man)
+    {
+        string[] menNames = new string[] {"Bob", "Dave" , "Malcolm" , "Justin" , "Bruce" , "Alan" , "Jerry" , "Mark" , "Jeremy"};
+         string[] womenNames = new string[] {"Sarah", "Ripley" , "Clair" , "Jill" , "Barbara" , "Lola" , "Ramona" , "Tracy" , "Margaret"};
+        if(man)
+        {
+            int randnum = Random.Range(0, menNames.Length);
+            return menNames[randnum];
+        }
+        else
+        {
+            int randnum = Random.Range(0, womenNames.Length);
+            return womenNames[randnum];
+        }
     }
 
 }

@@ -40,6 +40,7 @@ public class BuildController : MonoBehaviour {
 	private GameObject heldObjectRef;
 
     bool SnapMode = true;
+    public bool paintMode = false;
     // UI elements
     Text ScreamPointsUI;
      float screamPoints = 9999;
@@ -108,6 +109,11 @@ public class BuildController : MonoBehaviour {
 	void Update () {
 
 		SwapObject ();
+        if(Input.GetMouseButtonDown(2))
+        {
+            paintMode = !paintMode;
+        }
+
         if (Input.GetKeyDown(KeyCode.L))
         {
             screamPoints = 0;
@@ -201,7 +207,17 @@ public class BuildController : MonoBehaviour {
 				rotZ += 90;
 			} 
 		} 
-		if (Input.GetKeyDown (KeyCode.R)) { rotZ += 90;  Debug.Log("Rotate obj"); rotated = !rotated; }
+		if (Input.GetKeyDown (KeyCode.R)) 
+        { 
+            if(rotZ >= 270)
+            { rotZ = 0;}
+            else
+            {
+            rotZ += 90; 
+            } 
+            Debug.Log("Rotate obj"); 
+            rotated = !rotated; 
+        }
 	}
 
 

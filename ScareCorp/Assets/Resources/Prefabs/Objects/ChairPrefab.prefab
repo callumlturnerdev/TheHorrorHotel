@@ -341,12 +341,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectID: 9
   index: 0
-  needtype: 0
+  needtype: 1
   fearType: 0
   uses: 999999
-  needFulfillment: 0
+  needFulfillment: 0.64
   itemCost: 25
   priority: 0
+  largeObject: 0
 --- !u!208 &208498579943476848
 NavMeshObstacle:
   m_ObjectHideFlags: 1
