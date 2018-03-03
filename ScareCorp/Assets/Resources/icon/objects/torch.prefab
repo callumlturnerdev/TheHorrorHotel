@@ -99,6 +99,7 @@ MonoBehaviour:
     type: 2}
   name: Torch
   description: Used for lighting, can be linked with pressure plates.
+  DeleteModeObj: 0
 --- !u!114 &114508362508216820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -218,7 +219,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 479.10986, y: -161.50612}
   m_SizeDelta: {x: 417.14285, y: 318.57144}
   m_Pivot: {x: 0.5, y: 0.5}

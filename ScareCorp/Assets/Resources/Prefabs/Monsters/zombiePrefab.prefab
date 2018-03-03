@@ -488,6 +488,7 @@ MonoBehaviour:
   needFulfillment: 0
   itemCost: 100
   priority: 1
+  largeObject: 0
 --- !u!114 &114757035779686044
 MonoBehaviour:
   m_ObjectHideFlags: 1

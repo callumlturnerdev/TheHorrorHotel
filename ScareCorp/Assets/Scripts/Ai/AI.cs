@@ -106,9 +106,11 @@ public class AI : MonoBehaviour
         if (aiNeeds.CheckIfTimeToLeave())
         {
             stateMachine.ChangeState(SeekExit.Instance);
-            assignedBed.GetComponent<Bed>().UnassignBed();
-            assignedBed = null;
-
+            if(assignedBed)
+            {
+                assignedBed.GetComponent<Bed>().UnassignBed();
+                assignedBed = null;
+            }
         }
     }
 

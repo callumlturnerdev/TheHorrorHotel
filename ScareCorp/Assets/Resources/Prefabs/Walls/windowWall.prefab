@@ -448,6 +448,7 @@ MonoBehaviour:
   needFulfillment: 0
   itemCost: 10
   priority: 0
+  largeObject: 0
 --- !u!114 &114567918766996956
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -541,7 +542,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 0.65, y: 0.65, z: 0.65}
+  m_Extents: {x: 1, y: 1, z: 1}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1

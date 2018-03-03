@@ -20,6 +20,7 @@ public class HUDGetElements : MonoBehaviour {
            
             GameObject obj = Instantiate (item) as GameObject;
             obj.transform.SetParent(this.transform); 
+	
 			obj.transform.position = new Vector3 (xPos, this.transform.position.y- 30, this.transform.position.z);
             
             obj.GetComponent<HUDMouseCheck>().Init();

@@ -98,7 +98,7 @@ public class BuildOnGrid : MonoBehaviour {
                                 break;
 
                                 case eBuildMode.materials:
-                                    Materials();
+                                    Materials(null);
                                     break;
                         }
                         }
@@ -228,11 +228,28 @@ public class BuildOnGrid : MonoBehaviour {
             }
         }
     }
-    private void Materials()
+    public void Materials(GameObject calledGrid)
     {
         originalMat = BuildController.instance.GetCurrentObjectMaterial();
         myRend.material = originalMat;
         isHighlighted = false;
+        foreach(GameObject gridN in gridNeighbours)
+        {
+            if(gridN)
+            {
+                if(gridN != calledGrid)
+                {
+                if(gridN.GetComponent<BuildOnGrid>() != null)
+                { 
+                    if(gridN.GetComponent<BuildOnGrid>().originalMat != BuildController.instance.GetCurrentObjectMaterial())
+                    {
+                        if(gridN.transform.childCount < 1 || ((gridN.transform.GetChild(0).tag != "wall") && (gridN.transform.GetChild(0).tag != "Door")))
+                             gridN.GetComponent<BuildOnGrid>().Materials(this.gameObject);
+                    }
+                }
+                }
+            }
+        }
     }
 
     public void LoadObject(GameObject objToLoad, float Zrotation)

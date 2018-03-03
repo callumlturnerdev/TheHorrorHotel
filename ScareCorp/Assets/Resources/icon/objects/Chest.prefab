@@ -64,6 +64,7 @@ MonoBehaviour:
     type: 2}
   name: Chest
   description: Currently just decoration.
+  DeleteModeObj: 0
 --- !u!114 &114508362508216820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -218,7 +219,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 449.68457, y: -146.24858}
   m_SizeDelta: {x: 412.85715, y: 312.85715}
   m_Pivot: {x: 0.5, y: 0.5}

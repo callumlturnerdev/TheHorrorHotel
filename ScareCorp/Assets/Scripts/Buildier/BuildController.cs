@@ -109,7 +109,7 @@ public class BuildController : MonoBehaviour {
 	void Update () {
 
 		SwapObject ();
-        if(Input.GetMouseButtonDown(2))
+        if(Input.GetKeyDown(KeyCode.CapsLock))
         {
             paintMode = !paintMode;
         }

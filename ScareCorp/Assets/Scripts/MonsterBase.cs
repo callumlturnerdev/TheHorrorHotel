@@ -20,8 +20,7 @@ public class MonsterBase : MonoBehaviour {
     private void Awake()
     {
         currentWaypoint = 0;
-        nav = GetComponent<NavMeshAgent>();
-        nav.enabled = true;
+        StartCoroutine(activateAIAfterWait(0.1f));
     }
     void SetNextDestination()
     {
@@ -103,7 +102,12 @@ public class MonsterBase : MonoBehaviour {
         waypoints.Add(wpoint);
     }
 
-
+    IEnumerator activateAIAfterWait(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+          nav = GetComponent<NavMeshAgent>();
+            nav.enabled = true;
+    }
 
     private void OnMouseOver()
     {
