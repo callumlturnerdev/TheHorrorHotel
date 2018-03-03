@@ -31,6 +31,8 @@ public class BuildOnGrid : MonoBehaviour {
 	bool isHighlighted = false;
 	// Use this for initialization
 
+    //Deals with multigrid objects
+    GameObject linkedGrid;
 
 	void Start () {
         neighbourInd = 0;
@@ -135,8 +137,9 @@ public class BuildOnGrid : MonoBehaviour {
                         {
                             if(gridNeighbours[neighbourInd].GetComponent<BuildOnGrid>().canBuildOn || !gridNeighbours[neighbourInd].GetComponent<BuildOnGrid>().beenBuiltOn )
                             {
-                                gridNeighbours[neighbourInd].GetComponent<BuildOnGrid>().canBuildOn = false;
-                                gridNeighbours[neighbourInd].GetComponent<BuildOnGrid>().beenBuiltOn = true;
+                                linkedGrid = gridNeighbours[neighbourInd];
+                                linkedGrid.GetComponent<BuildOnGrid>().canBuildOn = false;
+                                linkedGrid.GetComponent<BuildOnGrid>().beenBuiltOn = true;
                                 BuildObject(tempToBuild);      
                             }
                         }
@@ -172,6 +175,7 @@ public class BuildOnGrid : MonoBehaviour {
     {
         if (transform.childCount > 0 && BuildController.instance.GetInDeleteMode()) // IF IN DELETE MODE
         {
+
             GameObject childObj = this.transform.GetChild(0).gameObject;
             BuildController.instance.AddObjectForDeletion(this.gameObject);
             foreach (Transform child in childObj.transform)
@@ -254,6 +258,8 @@ public class BuildOnGrid : MonoBehaviour {
 	public void HighlightGird(bool a)  // USED FOR DRAG SELECTION AND ADDING OBJECTS FOR DELETION IN DELETE MODE
 	{
         isHighlighted = false;
+        if(beenBuiltOn == false || BuildController.instance.GetCurrentBuildMode() != eBuildMode.building)
+        {
         if (!EventSystem.current.IsPointerOverGameObject())
         {
             
@@ -283,6 +289,7 @@ public class BuildOnGrid : MonoBehaviour {
 					myRend.material = originalMat;
 					isHighlighted = false;
 				}
+        }
 	}
 
     public GameObject GetCurrentlyBuiltObject() { return ObjectBuiltOnGrid; }
@@ -295,6 +302,11 @@ public class BuildOnGrid : MonoBehaviour {
         isHighlighted = !b;
         beenBuiltOn = !b;
         ObjectBuiltOnGrid = null;
+        if(linkedGrid != null)
+        {
+            linkedGrid.GetComponent<BuildOnGrid>().SetCanBuildOnGrid(true);
+            linkedGrid = null;
+        }
     }
 
 

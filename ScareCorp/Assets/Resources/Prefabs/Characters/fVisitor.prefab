@@ -614,6 +614,7 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   eyes: {fileID: 4201081915901252}
   StateText: {fileID: 114172858777611232}
+  assignedBed: {fileID: 0}
   hungerObjects: []
   tirednessObjects: []
   boredomObjects: []

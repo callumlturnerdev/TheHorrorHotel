@@ -66,6 +66,13 @@ public class GameManager : MonoBehaviour {
         return bed;
     }
     
+    public void AddBed(GameObject bed)
+    {
+        if(!tirednessObjects.Contains(bed))
+        {
+            tirednessObjects.Add(bed);
+        }
+    }
     public void ClearObjects()
     {
         boredomObjects.Clear();

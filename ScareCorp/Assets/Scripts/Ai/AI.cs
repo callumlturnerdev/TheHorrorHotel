@@ -69,7 +69,7 @@ public class AI : MonoBehaviour
     private bool timerFinished;
     private void Start()
     {
-        TimeManager.DayChanged += DayChange;
+        TimeManager.DepartTime += DayChange;
         TimeManager.PlayRateChange += SetSpeed;
         TimeManager.timeStopped += SetSpeed;
         GameManager.ObjectAdd += GetNeedObjects;
@@ -106,6 +106,9 @@ public class AI : MonoBehaviour
         if (aiNeeds.CheckIfTimeToLeave())
         {
             stateMachine.ChangeState(SeekExit.Instance);
+            assignedBed.GetComponent<Bed>().UnassignBed();
+            assignedBed = null;
+
         }
     }
 
@@ -113,8 +116,6 @@ public class AI : MonoBehaviour
     {
         navAgent.speed = 1 * (TimeManager.instance.GetPlayRate() * 3);
     }
-
-
     private void GetNeedObjects()
     {
         if(assignedBed == null)

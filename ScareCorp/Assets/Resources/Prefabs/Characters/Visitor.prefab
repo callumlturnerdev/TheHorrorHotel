@@ -604,6 +604,7 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   eyes: {fileID: 4022970395384692}
   StateText: {fileID: 114460881598619276}
+  assignedBed: {fileID: 0}
   hungerObjects: []
   tirednessObjects: []
   boredomObjects: []
@@ -633,6 +634,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visitorName: {fileID: 114202740258393162}
   lastFearObject: {fileID: 0}
+  man: 1
 --- !u!114 &114376710695562752
 MonoBehaviour:
   m_ObjectHideFlags: 1

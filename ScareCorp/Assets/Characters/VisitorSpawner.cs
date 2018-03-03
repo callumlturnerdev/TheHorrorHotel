@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 public class VisitorSpawner : MonoBehaviour {
 
     private SavingLoading saveRef;
@@ -32,15 +32,15 @@ public class VisitorSpawner : MonoBehaviour {
             GameObject vis = Instantiate (visitor[randnum]) as GameObject;
             
           
-            vis.transform.position = transform.position;
+            vis.GetComponent<NavMeshAgent>().Warp(transform.position);
 			vis.SetActive (true);
             if (vis != null)
             {
                 saveRef.SaveVisitor(vis);
             }
             // vis.GetComponent<StateController>().SetupAI(true, GameManager.instance.GetWayPoints()); // Starts StateCOntroller
-
-            vis.transform.position = transform.position;
+            vis.GetComponent<NavMeshAgent>().Warp(transform.position);
+     
             if (spawnFF)
             {
                 vis.GetComponent<MoveTowards>().FastForward();

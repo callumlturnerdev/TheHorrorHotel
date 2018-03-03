@@ -14,11 +14,13 @@ public class CarSpawner : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        TimeManager.DayChanged += DayChange;
+       // TimeManager.DayChanged += DayChange;
+        TimeManager.ArriveTime += DayChange;
         canSpawn = true;
         spawnFF = false;
         EventManager.PauseClicked += Pause;
         EventManager.FastFClicked += FastForward;
+
         //SpawnMoreVisitors (0);
     }
 

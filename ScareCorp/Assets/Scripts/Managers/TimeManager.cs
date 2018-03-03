@@ -26,8 +26,12 @@ public class TimeManager : MonoBehaviour {
     float FFplayRate = 2.0f;
     bool timeIsStopped = false;
 
+    private float arrivalTimef = 9;
+    private float departureTimef = 7;
     float currentHour = 0;
-    public static event ClickAction DayChanged;
+    public static event ClickAction DayChanged; // Tracks when a day changes 
+    public static event ClickAction ArriveTime; 
+    public static event ClickAction DepartTime;
     public static event ClickAction PlayRateChange;
     public static event ClickAction timeStopped;
     public static event ClickAction HourTick;
@@ -76,6 +80,16 @@ public class TimeManager : MonoBehaviour {
             string minutes = (time % 60).ToString("00");
             UIDay.text = "Day " + currentDay;
             UItime.text = hours + ":" + minutes;
+
+
+            if(GetCurrentTime() / 60 == arrivalTimef) // Used for determining when a visitor should arrive
+            {
+                ArriveT();
+            }
+            if(GetCurrentTime() / 60 == departureTimef) // Used for determining when a visitor should arrive
+            {
+                DepartT();
+            }
         }
         StartCoroutine(WaitforSeconds(0.01f));
     }
@@ -117,6 +131,21 @@ public class TimeManager : MonoBehaviour {
         if (DayChanged != null)
         {
             DayChanged();
+        }
+    }
+
+    public void ArriveT()
+    {
+        if(ArriveTime != null)
+        {
+            ArriveTime();
+        }
+    }
+        public void DepartT()
+    {
+        if(DepartTime != null)
+        {
+            DepartTime();
         }
     }
 

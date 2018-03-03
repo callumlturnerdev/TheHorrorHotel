@@ -16,4 +16,12 @@ public class Bed : MonoBehaviour {
 	{
 		text.text = name + "'s Bed";
 	}
+
+
+	public void UnassignBed()
+	{
+		GameManager.instance.AddBed(this.gameObject);
+		text.text =  "";
+	}
+
 }
