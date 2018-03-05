@@ -35,7 +35,6 @@ public class HUDObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             BuildController.instance.DeleteMode();
         }
-        Debug.Log ("Item Selected =" + itemToBuild.name);
     }
     public void OnPointerEnter(PointerEventData eventData)
     {

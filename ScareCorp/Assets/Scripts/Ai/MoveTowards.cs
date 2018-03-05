@@ -64,7 +64,7 @@ public class MoveTowards : MonoBehaviour, IPausable
             }
             else
             {
-                SetSpeed(defaultSpeed * 4);
+                SetSpeed(defaultSpeed * 2);
                 currentlyFastF = true;
             }
         }

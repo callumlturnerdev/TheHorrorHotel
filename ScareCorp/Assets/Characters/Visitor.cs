@@ -7,6 +7,7 @@ using fearTypes;
 
 public class Visitor : MonoBehaviour
 { 
+    private ParticleSystem particleSys;
     public Text visitorName;
     SavingLoading saveSystem;
     AI aiScriptRef;
@@ -22,6 +23,7 @@ public class Visitor : MonoBehaviour
     bool man = true;
     void Awake()
     {
+        particleSys = GetComponent<ParticleSystem>();
         visitorName.text = GetRandomName(man);
         aiScriptRef = gameObject.GetComponent<AI>();
         saveSystem = GameObject.FindGameObjectWithTag("save").GetComponent<SavingLoading>();
@@ -40,13 +42,11 @@ public class Visitor : MonoBehaviour
 
     public void SetNextFearObject(GameObject newFearObject)
     {
-        Debug.Log("Set fear object");
         lastFearObject = newFearObject.transform.parent.gameObject;
     }
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "exit") {
-            Debug.Log("hi");
             Destroy(this.gameObject);
         }
     }
@@ -54,7 +54,7 @@ public class Visitor : MonoBehaviour
     public float GetCurrentFear() { return currentFear; }
     public void Update()
     {
-        anim.speed = agent.speed;
+       // anim.speed = agent.speed;
         //agent.speed
     }
 
@@ -64,7 +64,6 @@ public class Visitor : MonoBehaviour
         {
             if (lastFearObject.GetComponent<Buildable>())
             {
-                Debug.Log("BOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOB");
                 switch (lastFearObject.GetComponent<Buildable>().GetFearType())
                 {
                     case eFearTypes.Enviroment:
@@ -89,14 +88,20 @@ public class Visitor : MonoBehaviour
                 }
             }
         }
-        Debug.Log("BzzzzzzzzzzzzzzzzzzzzzzzzzzOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOB");
+       
         currentFear += amount;
         BuildController.instance.AddPoints(amount * 10);
         fearBar = transform.GetChild(0).Find("VisitorUI").Find(name: "fearFill").GetComponent<Image>();
         fearBar.fillAmount = currentFear / maxFear;
+        particleSys.Play();
     }
 
-
+    public void TurnOffScareParticle()
+    {
+       // particleSys.Pause();
+        particleSys.Stop();
+        DebugConsole.Log("hi", "error");
+    }
 
     public string GetName() {return visitorName.text;}
     private string  GetRandomName(bool man)

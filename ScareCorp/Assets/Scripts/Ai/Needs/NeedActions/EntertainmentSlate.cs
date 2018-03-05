@@ -60,7 +60,7 @@ public class EntertainmentState : State<AI>
         if (_owner.aiNeeds.GetBoredom() < 1 && currentNeedFullfillment < _owner.currentTarget.GetComponent<Buildable>().needFulfillment)
         {
 
-            float newValue = _owner.aiNeeds.GetBoredom() + 0.001f * TimeManager.instance.GetPlayRate();
+            float newValue = _owner.aiNeeds.GetBoredom() + 0.001f *  TimeManager.instance.GetPlayRate();
             _owner.aiNeeds.SetBoredom(newValue);
             currentNeedFullfillment += 0.001f;
         }

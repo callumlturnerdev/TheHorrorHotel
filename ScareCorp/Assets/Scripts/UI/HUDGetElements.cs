@@ -24,8 +24,7 @@ public class HUDGetElements : MonoBehaviour {
 			obj.transform.position = new Vector3 (xPos, this.transform.position.y- 30, this.transform.position.z);
             
             obj.GetComponent<HUDMouseCheck>().Init();
-            Debug.Log(obj.name);
-			Debug.Log ("Spawned");
+
 		}
 	}
 }

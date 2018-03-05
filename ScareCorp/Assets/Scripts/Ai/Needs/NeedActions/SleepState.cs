@@ -38,13 +38,14 @@ public class SleepState : State<AI>
     public override void EnterState(AI _owner)
     {
         _owner.UpdateStateUI("Sleeping");
+        
         seconds = 0;
         _owner.navAgent.speed = 0;
     }
 
     public override void ExitState(AI _owner)
     {
-        _owner.navAgent.speed = 1 * (TimeManager.instance.GetPlayRate() * 3);
+        _owner.navAgent.speed = 1 * ( TimeManager.instance.GetPlayRate() * 3); 
     }
 
     public override void UpdateState(AI _owner)

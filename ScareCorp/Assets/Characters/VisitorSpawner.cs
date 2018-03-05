@@ -25,8 +25,6 @@ public class VisitorSpawner : MonoBehaviour {
 
 	public void SpawnMoreVisitors( int num)
 	{
-		Debug.Log ("spawning");
-		
 		for (int i = 0; i < num; i++) {
             int randnum = Random.Range(0, visitor.Length);
             GameObject vis = Instantiate (visitor[randnum]) as GameObject;

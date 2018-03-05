@@ -62,7 +62,6 @@ public class SnapToMouse : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             SelectSystem = !SelectSystem;
-            Debug.Log("Select System Toggled");
         }
         if (Input.GetMouseButtonDown(0))
         {

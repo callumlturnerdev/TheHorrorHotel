@@ -42,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1304685447563428}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.372054, y: 0.91195524, z: 6.968294}
+  m_LocalPosition: {x: 10.302532, y: 0.76000005, z: -23.282188}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -114,8 +114,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.04, y: 2, z: 2}
-  m_Center: {x: -0.01, y: 1.02, z: 0}
+  m_Size: {x: 2.04, y: 2.4911275, z: 2}
+  m_Center: {x: -0.00999999, y: 0.77443624, z: 0}
 --- !u!65 &65775178171909104
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -126,8 +126,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.842247, y: 1, z: 1.86343}
+  m_Center: {x: -0.21904564, y: 0, z: -0.034687042}
 --- !u!114 &114186267531714022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -157,10 +157,12 @@ MonoBehaviour:
   objectID: 7
   index: 0
   needtype: 0
+  fearType: 0
   uses: 999999
   needFulfillment: 0
   itemCost: 50
   priority: 0
+  largeObject: 0
 --- !u!120 &120061704120403614
 LineRenderer:
   m_ObjectHideFlags: 1

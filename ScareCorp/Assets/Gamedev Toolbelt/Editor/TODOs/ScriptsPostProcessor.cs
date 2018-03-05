@@ -14,7 +14,7 @@ namespace com.immortalhydra.gdtb.todos
             // Remove QQQs from deleted files.
             foreach (var asset in deletedAssets)
             {
-                //Debug.Log("deletedassets: " + asset);
+            
                 if (asset.EndsWith(".cs") || asset.EndsWith(".js"))
                 {
                     WindowMain.RemovedScripts.Add(asset);
@@ -25,7 +25,7 @@ namespace com.immortalhydra.gdtb.todos
             // Change the script reference for QQQs when a script is moved.
             for (var i = 0; i < movedAssets.Length; i++)
             {
-                //Debug.Log("movedassets: " + movedAssets[i]);
+               
                 if (movedAssets[i].EndsWith(".cs") || movedAssets[i].EndsWith(".js"))
                 {
                     WindowMain.MovedFromScripts.Add(movedFromAssetPaths[i]);
@@ -38,7 +38,7 @@ namespace com.immortalhydra.gdtb.todos
 
             foreach (var asset in importedAssets)
             {
-                //Debug.Log("Importedassets: " + asset);
+               
                 var shouldBeExcluded = false;
                 foreach (var exclusion in excludedScripts)
                 {
@@ -56,7 +56,7 @@ namespace com.immortalhydra.gdtb.todos
             // Add QQQs from a script if it was added or reimported (i.e. modified).
             foreach (var asset in importedAssetsCopy)
             {
-                //Debug.Log("Importedassetscopy: " + asset);
+            
                 if (asset.EndsWith(".cs") || asset.EndsWith(".js"))
                 {
                     WindowMain.ImportedScripts.Add(asset);

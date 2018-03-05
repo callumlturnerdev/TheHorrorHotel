@@ -10,6 +10,7 @@ using fearTypes;
 
 public class AI : MonoBehaviour
 {
+    public Animator anim;
     public bool switchState = false;
     public float gameTimer;
     public int seconds = 0;
@@ -89,6 +90,7 @@ public class AI : MonoBehaviour
         boredom = 1.0f;
         tiredness = 1.0f;
 
+        anim = transform.GetChild(0).GetComponent<Animator>();
         List<Transform> trans = GameManager.instance.GetWayPoints();
         exitSeek = GameManager.instance.wayPointList[0];
         searchingTurnSpeed = 180;
@@ -116,7 +118,12 @@ public class AI : MonoBehaviour
 
     private void SetSpeed()
     {
-        navAgent.speed = 1 * (TimeManager.instance.GetPlayRate() * 3);
+        if(navAgent)
+        {
+            navAgent.speed = (1 *  TimeManager.instance.GetPlayRate()) * 3;
+            //if(navAgent.speed == 0){anim.speed = 0;} 
+            anim.speed= navAgent.speed;
+        }
     }
     private void GetNeedObjects()
     {
@@ -187,6 +194,10 @@ public class AI : MonoBehaviour
     public void UpdateStateUI(string name)
     {
         StateText.text = name;
+        if(name == "Sleeping"){anim.SetBool("sleeping",true); }
+        else if(name == "Scared"){anim.SetBool("scared",true);}
+        else {anim.SetBool("sleeping",false); anim.SetBool("scared",false);}
+
     }
 
     private void UpdateNeeds()

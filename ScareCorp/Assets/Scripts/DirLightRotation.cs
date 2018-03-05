@@ -40,7 +40,7 @@ public class DirLightRotation : MonoBehaviour
         {
             
             DayLight.SetActive(true);
-            NightLight.SetActive(false);
+            //NightLight.SetActive(false);
         }
     }
 }

@@ -40,9 +40,11 @@ public class ScaredState : State<AI>
 
     public override void ExitState(AI _owner)
     {
+        _owner.gameObject.GetComponent<Visitor>().TurnOffScareParticle();
         _owner.usedScares.Add(_owner.fearTarget);
         _owner.navAgent.speed = 2;
         _owner.switchState = false;
+        
     }
 
     public override void UpdateState(AI _owner)

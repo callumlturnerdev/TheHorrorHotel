@@ -44,7 +44,7 @@ public class SeekNextNeedState : State<AI>
     public override void UpdateState(AI _owner)
     {
         ScareScan(_owner);
-        if (_owner.navAgent.remainingDistance <= _owner.navAgent.stoppingDistance + 1.5f && !_owner.navAgent.pathPending)
+        if (_owner.navAgent.remainingDistance <= _owner.navAgent.stoppingDistance + 1.3f && !_owner.navAgent.pathPending)
         {
             if (currentTarget != null)
             {
@@ -63,6 +63,7 @@ public class SeekNextNeedState : State<AI>
                         break;
 
                     case eNeedTypes.tiredness:
+                    
                         _owner.stateMachine.ChangeState(SleepState.Instance);
                         break;
                 }

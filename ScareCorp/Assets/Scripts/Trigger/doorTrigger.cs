@@ -17,16 +17,21 @@ public class doorTrigger : TriggerBase {
     {
         if (collision.gameObject.tag == "visitor")
         {
-            bCol = GetComponent<BoxCollider>();
+           OnCollision();
+        }
+    }
+
+    public override void OnCollision()
+    {
+         bCol = GetComponent<BoxCollider>();
             bCol.enabled = false;
             anim = GetComponent<Animator>();
             anim.SetBool("Open", true);
             triggered = true;
             beenUsed = true;
             StartCoroutine(CloseDoor());
-        }
     }
-
+    
     IEnumerator CloseDoor()
     {
         yield return new WaitForSeconds(1);
@@ -47,6 +52,7 @@ public class doorTrigger : TriggerBase {
 			anim.SetBool ("Open", true);
 			triggered = true;
 			beenUsed = true;
+            otherTrigger.ObjectEvent();
 		}
 	}	
 }

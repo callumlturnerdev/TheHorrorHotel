@@ -14,7 +14,8 @@ abstract public class TriggerBase : MonoBehaviour {
 	protected GameObject cursor;
 	public bool triggered = false;
 	protected bool beenUsed = false;
-
+	[SerializeField]
+	protected bool canCreateLink = false;
     protected float reTriggerTimer = 5;
 
 	 void  Awake ()
@@ -46,8 +47,8 @@ abstract public class TriggerBase : MonoBehaviour {
         lineToMouse = false;
         triggerObject = trigger;
         parentTrigger = triggerObject.GetComponent<TriggerBase>();
-        line.SetPosition(0, this.transform.position);
-        line.SetPosition(1, parentTrigger.transform.position);
+       // line.SetPosition(0, this.transform.position);
+       // line.SetPosition(1, parentTrigger.transform.position);
     }
 
 	public  void SetTriggerObject(GameObject trigger)
@@ -55,30 +56,59 @@ abstract public class TriggerBase : MonoBehaviour {
 		lineToMouse = false;
 		triggerObject = trigger;
 		otherTrigger = triggerObject.GetComponent<TriggerBase> ();
-		line.SetPosition(0, this.transform.position);
-		line.SetPosition (1, triggerObject.transform.position);
+		//line.SetPosition(0, this.transform.position);
+		//line.SetPosition (1, triggerObject.transform.position);
 	}
 
 	 void LineRendMouse()
 	{
 		if (lineToMouse)
 		{
-			line.SetPosition(0, this.transform.position);
-			line.SetPosition (1, cursor.transform.position);
+			if(TriggerController.instance.GetFirstTrigger() == this.gameObject)
+			{
+				line.SetPosition(0, this.transform.position);
+				line.SetPosition (1, cursor.transform.position);
+			}
+			else
+			{
+				line.SetPosition(0, this.transform.position);
+				line.SetPosition (1, this.transform.position);
+			}
 		}
 	}
+
+	public void LineRendToOtherObject()
+	{
+		if(otherTrigger)
+		{
+			line.SetPosition(0, this.transform.position);
+			line.SetPosition (1, otherTrigger.transform.position);
+		}
+	}
+	public void LineRendOff()
+	{lineToMouse = false;}
 
 	protected  void OnMouseOver()
 	{
-		if (Input.GetMouseButtonDown (1)) 
+		if (Input.GetMouseButtonDown (1) && (canCreateLink || TriggerController.instance.GetCanLink()))
 		{
+			if(otherTrigger == null)
+			{
+			//otherTrigger =null;
 			lineToMouse = true;
-	
 			TriggerController.instance.SetCurrentTrigger (this.gameObject);
+			}
+		}
+		if(Input.GetMouseButtonDown(2))
+		{
+			OnCollision();
 		}
 	}
 
+	public virtual void OnCollision()
+	{
 
+	}
 	public  virtual void ObjectEvent()
 	{
 	}
@@ -88,7 +118,7 @@ abstract public class TriggerBase : MonoBehaviour {
    
     }
 
-
+	public void SetCanLink(bool t){canCreateLink = t; }
     protected IEnumerator resetTrigger()
     {
         yield return new WaitForSeconds(reTriggerTimer);

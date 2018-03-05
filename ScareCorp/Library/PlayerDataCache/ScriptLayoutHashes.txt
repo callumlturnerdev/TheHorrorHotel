@@ -15,7 +15,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 6af7378a45ad6da4992a71ef50ddc2eb UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 6af7378a45ad6da4992a71ef50ddc2eb UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 9ca6347af5ceb6b0d1c105af31b6722e UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
-cdb97604653d0391f7c2851eb2d5da4d Assembly-CSharp.dll:.AI
+7f1b36d95be73ff04c162715af309b0b Assembly-CSharp.dll:.AI
 105f2b7a4320b27ed070b6198b25333b Assembly-CSharp.dll:.ObjectFinder
 a35dc9cca2faebc5f5f1aeb9e8e47bbe UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
@@ -83,6 +83,7 @@ f61c0793411f10cf5fbfa1473fef5ef2 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 86d36c43c53541d667100dc90b89cfba UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 1b8c02d0aa82fbf036a2b9b2d713eec3 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
 3ecea0c2e43f5d97a17c441bfcf59a7d Assembly-CSharp.dll:UnityEngine.PostProcessing.PostProcessingBehaviour
+da2cdeeaf2482c22c9f23f92ee9f3932 Assembly-CSharp.dll:.ClockTrigger
 ad37dc40b50266e7dc49dee5669b85d2 Assembly-CSharp.dll:.TriggerEvent
 80d949838951042e26ebf2a45626babb Assembly-CSharp.dll:.SmoothCameraOrbit
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Chest
@@ -98,7 +99,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 6af7378a45ad6da4992a71ef50ddc2eb UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 6af7378a45ad6da4992a71ef50ddc2eb UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 9ca6347af5ceb6b0d1c105af31b6722e UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
-b38e1b75feec29f5378448db43baad25 Assembly-CSharp.dll:.Buildable
+95a2cc69971cc6932525aa798fdc68e8 Assembly-CSharp.dll:.Buildable
 fb13663d7889d300df0bf8eadea8b666 Assembly-CSharp.dll:.Painting
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -128,9 +129,9 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.MouseController
 14f52cf390a0fa2c65f0a862591656f5 Assembly-CSharp.dll:.ColourVariation
 81f7efaf2d974a9b8483f9b561fdeaf5 Assembly-CSharp.dll:.SavingLoading
-d3356dab997a49b97c6b074b251b097f Assembly-CSharp.dll:.TimeManager
-da2cdeeaf2482c22c9f23f92ee9f3932 Assembly-CSharp.dll:.torchTrigger
-a1b2c3e866da337c2260680eea81a8e7 Assembly-CSharp.dll:.Visitor
+d2f59e42acb90a8357795bdabb8b2453 Assembly-CSharp.dll:.TimeManager
+082659e8eab870a342d457ece25cc7ed Assembly-CSharp.dll:.torchTrigger
+bb67c17ffabb8e025d58dfc41ea57678 Assembly-CSharp.dll:.Visitor
 6415646cb4a922903ec7cc0a4e3cf6f2 Assembly-CSharp.dll:.BodyBusterTrigger
 205965134a5874db410d674ebdf33ba7 Assembly-CSharp.dll:.ExampleWheelController
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
@@ -169,6 +170,7 @@ e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEng
 9a12bc147a1116fe31667509591333b3 Assembly-CSharp.dll:.VanishOnKeyPress
 e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 ce5317d3733b0763862d7114d0ea9d14 Assembly-CSharp.dll:.UIInfoPanel
+650c1e412dac0323d37ae3023565f947 Assembly-CSharp.dll:.Bed
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
@@ -182,11 +184,11 @@ e5741214dc6a5c23499bfcdf8e85e643 Assembly-CSharp.dll:.MonsterBase
 9718c3655aafdc56917fc52e3475ead8 Assembly-CSharp.dll:.DirLightRotation
 da2cdeeaf2482c22c9f23f92ee9f3932 Assembly-CSharp.dll:.doorTrigger
 da2cdeeaf2482c22c9f23f92ee9f3932 Assembly-CSharp.dll:.pPlateTrigger
-50ed0247f2392ecc9715a632805873d9 Assembly-CSharp.dll:.BuildController
+2763f924e367f74629928822927cba72 Assembly-CSharp.dll:.BuildController
 6e45cd25660e7579428264ddc3d1472b Assembly-CSharp.dll:.Waypoint
 8bbc4d887ec3e1951ccf0444ae6ddbbb Assembly-CSharp.dll:.WallCheck
 7a5bbf983df94a6d58f62c96ca3e03e4 Assembly-CSharp.dll:.DebugConsole
-e44b80580faaad15cc28a5809a77d55e Assembly-CSharp.dll:.BuildOnGrid
+7e433d2478f8b5c42c209dc1b4e82a7e Assembly-CSharp.dll:.BuildOnGrid
 af78322f061f9e7fe37226b8214ddd0d Assembly-CSharp.dll:.SwapCategory
 87c1efe971f0e5642cd927183a860872 Assembly-CSharp.dll:.TriggerController
 d0548837983e63914cd1812115ca6576 Assembly-CSharp.dll:UnfinityGames.uNote.uNoteHeroExample

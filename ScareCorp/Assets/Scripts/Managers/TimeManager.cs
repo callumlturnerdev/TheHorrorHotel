@@ -19,11 +19,11 @@ public class TimeManager : MonoBehaviour {
     private float time;
     float seconds;
     float minutes;
-    float baseplayRate = 1.5f;
+    float baseplayRate = 0.25f;
 
-    float playRate = 1;
-    float defaultPlayRate = 1.0f;
-    float FFplayRate = 2.0f;
+    float playRate = 0.25f;
+    float defaultPlayRate = 0.25f;
+    float FFplayRate = 0.125f;
     bool timeIsStopped = false;
 
     private float arrivalTimef = 9;
@@ -54,11 +54,11 @@ public class TimeManager : MonoBehaviour {
 
     IEnumerator WaitforSeconds(float time)
     {
-        yield return new WaitForSeconds(baseplayRate - playRate);
+        yield return new WaitForSeconds(playRate);
         InterateTime();
     }
 
-    public float GetPlayRate(){ return playRate; }
+    public float GetPlayRate(){ if(playRate == 0) {return  0;} else if(playRate == FFplayRate) {return 2;} else return 1; }
 
     void InterateTime()
     {
@@ -109,7 +109,8 @@ public class TimeManager : MonoBehaviour {
     }
     public void ToggleTime()
     {
-        if (playRate > 0) { playRate = 0; }
+        Debug.Log("Pause");
+        if (playRate > 0 || playRate < 0) { playRate = 0; }
         else if (playRate == 0) { playRate = defaultPlayRate; }
         timeIsStopped = !timeIsStopped;
         if (timeStopped != null)

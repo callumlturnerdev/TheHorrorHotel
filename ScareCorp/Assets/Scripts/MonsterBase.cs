@@ -38,6 +38,7 @@ public class MonsterBase : MonoBehaviour {
     public void SetCurrentWayPoint(GameObject wpoint) { currentWayPointobj = wpoint; }
     void CheckDestinationIsReached()
     {
+        
         if ((nav.remainingDistance <= nav.stoppingDistance  ) )
         {
             if (currentWayPointobj)
@@ -122,7 +123,7 @@ public class MonsterBase : MonoBehaviour {
             else
             {
                 BuildController.instance.WayPointMode(false);
-                Debug.Log("Swapping to building mode");
+
             }
         }
         if (Input.GetMouseButtonDown(1))

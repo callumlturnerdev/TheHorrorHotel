@@ -26,6 +26,27 @@ public class wardrobeTrigger : TriggerBase {
             zomb.transform.rotation = spawnPos.transform.rotation;
 			triggered = true;
 			beenUsed = true;
+            if(otherTrigger) otherTrigger.ObjectEvent();
 		}
 	}
+
+    public override void ObjectOffEvent()
+    {
+       
+             hasZombie = true;
+            anim = GetComponent<Animator> ();
+			anim.SetBool ("Open", false);
+            GameObject zomb;
+            zomb = Instantiate(zombie) as GameObject;
+            zomb.transform.position = new Vector3(spawnPos.position.x, spawnPos.transform.position.y , spawnPos.position.z);
+            zomb.transform.rotation = spawnPos.transform.rotation;
+			triggered = false;
+			beenUsed = false;
+            if(otherTrigger)otherTrigger.ObjectOffEvent();
+    }
+
+    private void ToggleWardrobeOpen()
+    {
+        
+    }
 }

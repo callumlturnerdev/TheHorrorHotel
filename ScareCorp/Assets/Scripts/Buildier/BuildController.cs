@@ -173,7 +173,6 @@ public class BuildController : MonoBehaviour {
     {
         if (t)
         {
-            Debug.Log("SWAPPING TO WAYPOINT MODE");
             currentBuildMode = eBuildMode.waypoints;
         }
         else
@@ -215,7 +214,6 @@ public class BuildController : MonoBehaviour {
             {
             rotZ += 90; 
             } 
-            Debug.Log("Rotate obj"); 
             rotated = !rotated; 
         }
 	}

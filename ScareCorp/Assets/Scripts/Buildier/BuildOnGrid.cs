@@ -11,6 +11,7 @@ using buildModes;
 /// 
 /// 
 /// </summary>
+
 public class BuildOnGrid : MonoBehaviour {
 
     [SerializeField]
@@ -215,7 +216,6 @@ public class BuildOnGrid : MonoBehaviour {
                 obj.transform.parent = this.transform;
                 GameManager.instance.AddObject(this.gameObject);
                 obj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z);
-
                 beenBuiltOn = true;
                 isHighlighted = false;
                 canBuildOn = false;
@@ -251,7 +251,6 @@ public class BuildOnGrid : MonoBehaviour {
             }
         }
     }
-
     public void LoadObject(GameObject objToLoad, float Zrotation)
     {
         if (objToLoad != null)

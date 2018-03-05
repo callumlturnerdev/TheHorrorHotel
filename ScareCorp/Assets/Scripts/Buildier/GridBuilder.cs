@@ -10,6 +10,7 @@ using UnityEngine;
 /// 
 /// 
 /// </summary>
+
 public class GridBuilder : MonoBehaviour {
 
 
@@ -116,10 +117,6 @@ public class GridBuilder : MonoBehaviour {
                 xPos += 2.0f;
             }
             hasBeenBuilt = true;
-        }
-       
+        }  
 	}
-
-
-
 }

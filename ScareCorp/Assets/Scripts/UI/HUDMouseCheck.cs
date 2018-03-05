@@ -24,13 +24,12 @@ public class HUDMouseCheck : MonoBehaviour {
 
     void OnMouseEnter()
 	{
-		Debug.Log ("entered hud area");
+
         BuildController.instance.NotOnHud = false;
 	}
 
 	void OnMouseExit()
 	{
-		Debug.Log ("exited hud area");
         BuildController.instance.NotOnHud = true;
 	}
 }

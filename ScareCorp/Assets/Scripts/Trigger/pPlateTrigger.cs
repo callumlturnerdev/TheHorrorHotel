@@ -5,20 +5,22 @@ using UnityEngine;
 public class pPlateTrigger : TriggerBase {
 
    
-    void FixedUpdate() // TEMP WAY TO ENABLE PPLATE TRIGGER FOR TESTING
+
+    void Start()
     {
-        if(triggered == true)
-        {
-            otherTrigger.ObjectEvent();
-            triggered = false;
-        }
+        canCreateLink = true;
     }
 	void OnTriggerEnter(Collider other)
 	{
         reTriggerTimer = 4;
         if (( other.tag == "scary" ||other.tag == "visitor") && !beenUsed) 
 		{
-			triggered = true;
+			OnCollision();
+        }
+	}
+    public override void OnCollision()
+    {
+        triggered = true;
             if (otherTrigger != null)
             {
                 if (triggered == true)
@@ -27,11 +29,14 @@ public class pPlateTrigger : TriggerBase {
                 }
             }
             StartCoroutine(resetTrigger());
-        }
-	}
+    }
 	public override void ObjectEvent()
 	{
-        StartCoroutine(resetTrigger());
+       // StartCoroutine(resetTrigger());
+    }
+    public override void ObjectOffEvent()
+    {
+        if(otherTrigger) otherTrigger.ObjectOffEvent();
     }
 		
 }

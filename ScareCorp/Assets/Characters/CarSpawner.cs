@@ -50,8 +50,6 @@ public class CarSpawner : MonoBehaviour {
 
     public void SpawnMoreCars(int num)
     {
-        Debug.Log("spawning");
-     
         for (int i = 0; i < num; i++)
         {
 

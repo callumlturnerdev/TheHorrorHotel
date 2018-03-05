@@ -7,11 +7,22 @@ public class pPlateToggleTrigger : TriggerBase
 
     private bool toggle = true;
 
+    void Start()
+    {
+        canCreateLink = true;
+    }
+    
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "visitor"  || other.tag == "scary" )
         {
-            if (toggle)
+            OnCollision();
+        }
+    }
+
+    public override void OnCollision()
+    {
+        if (toggle)
             {
                 if (otherTrigger != null)
                 {
@@ -28,6 +39,5 @@ public class pPlateToggleTrigger : TriggerBase
                 }
             }
             StartCoroutine(resetTrigger());
-        }
     }
 }
