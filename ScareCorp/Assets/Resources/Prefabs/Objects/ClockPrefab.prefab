@@ -312,6 +312,7 @@ MonoBehaviour:
   otherTrigger: {fileID: 0}
   triggerObject: {fileID: 0}
   triggered: 0
+  canCreateLink: 0
 --- !u!114 &114755693588366118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -323,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dbf6c63e1d39b144b1618f210c97ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectID: 9
+  objectID: 20
   index: 0
   needtype: 0
   fearType: 0
@@ -331,6 +332,7 @@ MonoBehaviour:
   needFulfillment: 0
   itemCost: 25
   priority: 0
+  largeObject: 0
 --- !u!120 &120672603794749258
 LineRenderer:
   m_ObjectHideFlags: 1

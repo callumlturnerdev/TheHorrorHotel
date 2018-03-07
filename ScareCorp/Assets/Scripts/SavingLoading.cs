@@ -39,13 +39,18 @@ public class SavingLoading : MonoBehaviour
         }
         objFind = gameObject.GetComponent<ObjectFinder>();
         gridBuilderRef = GameObject.FindGameObjectWithTag("gridbuilder").GetComponent<GridBuilder>();
-        grids = gridBuilderRef.grids;
+        
+       // grids = gridBuilderRef.grids;
         if (!Directory.Exists(Application.dataPath + "/Saves/"))
           {
             Directory.CreateDirectory(Application.dataPath + "/Saves/");
           }
     }
 
+    public void AddGrid(List<GameObject> _grid)
+    {
+        grids = _grid;
+    }  
     public void SaveVisitor(GameObject vis)
     {
         if (vis == null)
@@ -203,8 +208,8 @@ public class SavingLoading : MonoBehaviour
     [Serializable]
     class PlayerData
     {
-        public float[] objectsRots = new float[900];
-        public int[] objectIDs = new int[900];
+        public float[] objectsRots = new float[1300];
+        public int[] objectIDs = new int[1300];
         public float scarepoints;
         public float time;
         public float day;

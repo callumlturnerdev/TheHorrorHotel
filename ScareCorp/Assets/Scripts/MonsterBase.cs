@@ -15,7 +15,7 @@ public class MonsterBase : MonoBehaviour {
     NavMeshAgent nav;
     [SerializeField]
     int currentWaypoint;
-    GameObject currentWayPointobj;
+    public GameObject currentWayPointobj;
     GameObject firstWaypoint, lastWayPoint;
     private void Awake()
     {
@@ -46,9 +46,10 @@ public class MonsterBase : MonoBehaviour {
                 if (currentWayPointobj.GetComponent<Waypoint>().GetNextWayPoint() != null)
                 {
                     currentWayPointobj = currentWayPointobj.GetComponent<Waypoint>().GetNextWayPoint();
+                    nav.destination = currentWayPointobj.transform.position;
                 }
             }
-            SetNextDestination();
+            //SetNextDestination();
         }
     }
     public GameObject GetLastPoint()

@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dbf6c63e1d39b144b1618f210c97ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectID: -1111
+  objectID: 26
   index: 0
   needtype: 0
   fearType: 0
@@ -105,6 +105,7 @@ MonoBehaviour:
   needFulfillment: 0
   itemCost: 0
   priority: 0
+  largeObject: 0
 --- !u!114 &114907835198694650
 MonoBehaviour:
   m_ObjectHideFlags: 1

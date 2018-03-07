@@ -366,13 +366,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dbf6c63e1d39b144b1618f210c97ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectID: 0
+  objectID: 23
   index: 0
   needtype: 0
+  fearType: 0
   uses: 999999
   needFulfillment: 0
   itemCost: 10
   priority: 0
+  largeObject: 0
 --- !u!114 &114567918766996956
 MonoBehaviour:
   m_ObjectHideFlags: 1

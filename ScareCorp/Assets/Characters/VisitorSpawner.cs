@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using fearTypes;
 public class VisitorSpawner : MonoBehaviour {
 
     private SavingLoading saveRef;
@@ -26,10 +27,24 @@ public class VisitorSpawner : MonoBehaviour {
 	public void SpawnMoreVisitors( int num)
 	{
 		for (int i = 0; i < num; i++) {
-            int randnum = Random.Range(0, visitor.Length);
-            GameObject vis = Instantiate (visitor[randnum]) as GameObject;
+            int genderInd;
+            if(VisitorController.instance.GetIsGenderMale())
+            {
+               genderInd = 0;
+            }
+            else
+            {
+                genderInd = 1;
+            }
             
-          
+            GameObject vis = Instantiate (visitor[genderInd]) as GameObject;
+            if(vis.GetComponent<Visitor>())
+            {
+            vis.GetComponent<Visitor>().InitialiseVisitor(VisitorController.instance.GetAVisitorName(),
+                                                         VisitorController.instance.GetAVisitorStayDays(), 
+                                                         VisitorController.instance.GetVisitorFear());
+            }
+            VisitorController.instance.RandomiseVisitorInfo();
             vis.GetComponent<NavMeshAgent>().Warp(transform.position);
 			vis.SetActive (true);
             if (vis != null)

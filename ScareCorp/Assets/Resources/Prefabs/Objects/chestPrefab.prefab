@@ -223,7 +223,9 @@ MonoBehaviour:
   objectID: 4
   index: 0
   needtype: 0
+  fearType: 0
   uses: 999999
   needFulfillment: 0
   itemCost: 12
   priority: 0
+  largeObject: 0

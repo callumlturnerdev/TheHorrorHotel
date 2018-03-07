@@ -7,6 +7,15 @@ using UnityEngine;
 public class ObjectFinder : MonoBehaviour {
 
 	public List<GameObject> obj;
+
+ 
+    void Awake()
+    {
+        for(int i = 0; i < obj.Count; i++)
+        {
+            obj[i].GetComponent<Buildable>().SetIndex(i);
+        }
+    }
     public GameObject FindObjectBasedOnID(int ID)
     {
         if (ID == -1) { return null; }

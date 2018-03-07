@@ -102,6 +102,7 @@
      <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
      <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
      <Compile Include="Assets\Retro Bit FX\Scripts\SmoothCameraOrbit.cs" />
+     <Compile Include="Assets\SaveButton.cs" />
      <Compile Include="Assets\Scripts\Ai\AI.cs" />
      <Compile Include="Assets\Scripts\Ai\MoveTowards.cs" />
      <Compile Include="Assets\Scripts\Ai\Needs\AIFears.cs" />
@@ -156,6 +157,7 @@
      <Compile Include="Assets\Scripts\UI\HUDMouseCheck.cs" />
      <Compile Include="Assets\Scripts\UI\HUDObject.cs" />
      <Compile Include="Assets\Scripts\UIInfoPanel.cs" />
+     <Compile Include="Assets\Scripts\VisitorController.cs" />
      <Compile Include="Assets\Scripts\Waypoint.cs" />
      <Compile Include="Assets\Unfinity Games\uNote\Examples\uNoteHeroExample.cs" />
      <Compile Include="Assets\Unfinity Games\uNote\Note.cs" />

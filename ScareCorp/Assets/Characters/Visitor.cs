@@ -8,6 +8,10 @@ using fearTypes;
 public class Visitor : MonoBehaviour
 { 
     private ParticleSystem particleSys;
+    
+    private string name;
+    private int daysStaying;
+    private eFearTypes fear;
     public Text visitorName;
     SavingLoading saveSystem;
     AI aiScriptRef;
@@ -20,11 +24,20 @@ public class Visitor : MonoBehaviour
     GridBuilder gridBuilderRef;
     public GameObject lastFearObject;
     [SerializeField]
+
+    public void  InitialiseVisitor(string _name, int _daysStaying, eFearTypes _fear ) 
+    {
+        name = _name;
+        daysStaying = _daysStaying;
+        fear = _fear;
+         visitorName.text = name;
+    }
+
     bool man = true;
     void Awake()
     {
+        name = "";
         particleSys = GetComponent<ParticleSystem>();
-        visitorName.text = GetRandomName(man);
         aiScriptRef = gameObject.GetComponent<AI>();
         saveSystem = GameObject.FindGameObjectWithTag("save").GetComponent<SavingLoading>();
         agent = GetComponent<NavMeshAgent>();
@@ -103,21 +116,7 @@ public class Visitor : MonoBehaviour
         DebugConsole.Log("hi", "error");
     }
 
-    public string GetName() {return visitorName.text;}
-    private string  GetRandomName(bool man)
-    {
-        string[] menNames = new string[] {"Bob", "Dave" , "Malcolm" , "Justin" , "Bruce" , "Alan" , "Jerry" , "Mark" , "Jeremy"};
-         string[] womenNames = new string[] {"Sarah", "Ripley" , "Clair" , "Jill" , "Barbara" , "Lola" , "Ramona" , "Tracy" , "Margaret"};
-        if(man)
-        {
-            int randnum = Random.Range(0, menNames.Length);
-            return menNames[randnum];
-        }
-        else
-        {
-            int randnum = Random.Range(0, womenNames.Length);
-            return womenNames[randnum];
-        }
-    }
+   
+   public string GetName(){return name;}
 
 }

@@ -276,7 +276,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1264157614244948}
   m_LocalRotation: {x: -0, y: -0.9974114, z: -0, w: -0.071907245}
-  m_LocalPosition: {x: -3.3644965, y: 5.3635845, z: -13.629702}
+  m_LocalPosition: {x: -24.600893, y: 1.14, z: -24.774136}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children:
   - {fileID: 4722470479261708}
@@ -357,7 +357,7 @@ Transform:
   m_GameObject: {fileID: 1325425759938636}
   m_LocalRotation: {x: 0.0027788244, y: 0.96178657, z: -0.000057887497, w: 0.27378628}
   m_LocalPosition: {x: 0.026, y: -0.19529676, z: 0.035}
-  m_LocalScale: {x: -0.16182, y: 0.16182001, z: 0.16182001}
+  m_LocalScale: {x: 0.18, y: 0.18, z: 0.18}
   m_Children:
   - {fileID: 4822831389043700}
   - {fileID: 4051354064371946}
@@ -576,7 +576,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visitorName: {fileID: 114111481508262502}
   lastFearObject: {fileID: 0}
-  man: 0
 --- !u!114 &114603989756598414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -851,7 +850,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 189679994
+  randomSeed: -1277095904
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4526,7 +4525,7 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1668577857201302}
-  m_LocalRotation: {x: -0.0007981322, y: 0.0068995943, z: -0.0026623677, w: 0.9999724}
+  m_LocalRotation: {x: -0.0026770947, y: 0.9999581, z: 0.0007533914, w: 0.008728692}
   m_LocalPosition: {x: 0, y: 0, z: -0.41393903}
   m_LocalScale: {x: 0.004572985, y: 0.004572982, z: 0.0045729857}
   m_Children:
@@ -4537,7 +4536,7 @@ RectTransform:
   - {fileID: 224658998695474854}
   m_Father: {fileID: 4722470479261708}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: -210.989, z: 0}
+  m_LocalEulerAnglesHint: {x: -0.089, y: 179, z: -0.30600002}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -0.28969342, y: 9.130341}

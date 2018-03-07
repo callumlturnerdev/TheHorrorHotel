@@ -26,8 +26,6 @@ public class Car : MonoBehaviour {
 
     void SetCarSpeed()
     {
-
-        
         carSpeed = 20 * TimeManager.instance.GetPlayRate();
         wheelSpeed = carSpeed * 100;
     }

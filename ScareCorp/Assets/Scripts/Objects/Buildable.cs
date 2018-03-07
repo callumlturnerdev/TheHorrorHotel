@@ -71,7 +71,10 @@ public class Buildable : MonoBehaviour {
         return itemCost;
     }
 
-
+    public void SetIndex(int newIndex)
+    {
+        objectID =newIndex;
+    }
 
     public bool IsLargeObject() {return largeObject;}
 }

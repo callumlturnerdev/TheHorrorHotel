@@ -38,13 +38,15 @@ public class SleepState : State<AI>
     public override void EnterState(AI _owner)
     {
         _owner.UpdateStateUI("Sleeping");
-        
+        _owner.transform.GetChild(0).GetComponent<spriteLookAtCam>().SetIsActive(false);
+        //_owner.transform.GetChild(0).transform.rotation = Quaternion.Euler(-90,0,0);
         seconds = 0;
         _owner.navAgent.speed = 0;
     }
 
     public override void ExitState(AI _owner)
     {
+         _owner.transform.GetChild(0).GetComponent<spriteLookAtCam>().SetIsActive(true);
         _owner.navAgent.speed = 1 * ( TimeManager.instance.GetPlayRate() * 3); 
     }
 

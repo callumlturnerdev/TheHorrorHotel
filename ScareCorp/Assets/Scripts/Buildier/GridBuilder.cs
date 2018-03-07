@@ -18,7 +18,7 @@ public class GridBuilder : MonoBehaviour {
 	public GameObject cube;
 	public int XgridSize;
 	public int YgridSize;
-
+    private SavingLoading saveSys;
 	public Material[] mats;
 	private Renderer rend;
 
@@ -30,6 +30,7 @@ public class GridBuilder : MonoBehaviour {
     public List<GameObject> grids;
 	// Use this for initialization
 	void Start () {
+        saveSys = GameObject.FindGameObjectWithTag("save").GetComponent<SavingLoading>();
 		xPos = this.transform.position.x;
 		zPos = this.transform.position.z;
 
@@ -117,6 +118,7 @@ public class GridBuilder : MonoBehaviour {
                 xPos += 2.0f;
             }
             hasBeenBuilt = true;
+            saveSys.AddGrid(grids);
         }  
 	}
 }
