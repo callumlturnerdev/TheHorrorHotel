@@ -84,7 +84,7 @@ public class BuildController : MonoBehaviour {
     {
         if (ScreamPointsUI)
         {
-            ScreamPointsUI.text = " " + screamPoints + " SP";
+            ScreamPointsUI.text = " " + screamPoints ;
         }
     }
 

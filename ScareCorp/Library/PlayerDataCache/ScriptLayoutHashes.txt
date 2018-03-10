@@ -142,6 +142,7 @@ e6973dfb34d618499bdeaef37de88cd2 Assembly-UnityScript.dll:.GameObjectSpawner
 2f66e55bb1fb448724489e561bb27ac8 Assembly-CSharp.dll:.VisitorController
 610a927aa103090652dce128387d39d8 Assembly-CSharp.dll:.wardrobeTrigger
 01fba77332b7ead2e38deca501c3be0b Assembly-CSharp.dll:.HUDObject
+bb5d7c666b3a3f7db4c0df64b840bfcd Assembly-CSharp.dll:.MinimizeButton
 3f7d404ef014b622a47fce4879ff00e4 Assembly-CSharp.dll:.GameManager
 b40355f195cd5aadc2f49141127b58d7 Assembly-CSharp.dll:.Car
 eeced0c719f4bf4f08a7bd12b09ff58e Assembly-CSharp.dll:.HUDGetElements
@@ -186,6 +187,7 @@ f8e7debd283d2b616143f3d48e4de90a Assembly-CSharp.dll:.SnapToMouse
 7e435c366cd62afac549c527c3774c81 Assembly-CSharp.dll:.doorTrigger
 7e435c366cd62afac549c527c3774c81 Assembly-CSharp.dll:.pPlateTrigger
 2763f924e367f74629928822927cba72 Assembly-CSharp.dll:.BuildController
+c6b0b6ef96d92153a5eb0c76eb86ad71 Assembly-CSharp.dll:.SaveButton
 6e45cd25660e7579428264ddc3d1472b Assembly-CSharp.dll:.Waypoint
 8bbc4d887ec3e1951ccf0444ae6ddbbb Assembly-CSharp.dll:.WallCheck
 7a5bbf983df94a6d58f62c96ca3e03e4 Assembly-CSharp.dll:.DebugConsole
@@ -194,4 +196,3 @@ af78322f061f9e7fe37226b8214ddd0d Assembly-CSharp.dll:.SwapCategory
 86aea035726df9411e57634a6250bcfe Assembly-CSharp.dll:.TriggerController
 d0548837983e63914cd1812115ca6576 Assembly-CSharp.dll:UnfinityGames.uNote.uNoteHeroExample
 7f9ab572f68fd53930784930ed71c945 Assembly-CSharp.dll:.VisitorSpawner
-c6b0b6ef96d92153a5eb0c76eb86ad71 Assembly-CSharp.dll:.SaveButton

@@ -1,0 +1,51 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MinimizeButton : MonoBehaviour {	
+
+	public List<GameObject> objectsToHide;
+	public GameObject headerToMove;
+	private Vector2 trans;
+	private bool isHidden = false;
+	
+	// Use this for initialization
+	void Awake () {
+		if(headerToMove)
+		{
+			trans = headerToMove.transform.position;
+		}
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+	public void MoveHeader()
+	{
+		if(isHidden)
+		{
+		headerToMove.transform.Translate(0, -155,0);
+		}
+		else
+		{
+		headerToMove.transform.Translate(0, 155,0);		
+		}
+	}
+	public  void MinimizePressed()
+	{
+		foreach(GameObject obj in objectsToHide)
+		{
+			if(isHidden)
+			{
+			obj.SetActive(true);
+			}
+			else
+			{
+				obj.SetActive(false);
+			}
+		}
+		isHidden = !isHidden;
+
+	}
+}
