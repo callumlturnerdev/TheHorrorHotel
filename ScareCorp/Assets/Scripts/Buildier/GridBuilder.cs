@@ -10,7 +10,7 @@ using UnityEngine;
 /// 
 /// 
 /// </summary>
-
+[ExecuteInEditMode]
 public class GridBuilder : MonoBehaviour {
 
 
@@ -36,7 +36,10 @@ public class GridBuilder : MonoBehaviour {
 
 		xNum = 0;
 		zNum = 0;
+        if(grids.Count < 1)
+        {
 		CreateGrid ();
+        }
         currentVisitors = new List<GameObject>();
 	}
 
@@ -84,6 +87,7 @@ public class GridBuilder : MonoBehaviour {
                 {
                     Destroy(grid.GetComponent<BuildOnGrid>().GetCurrentlyBuiltObject());
                     grid.GetComponent<BuildOnGrid>().SetCanBuildOnGrid(true);
+                    grid.transform.SetParent(this.transform);
                 }
             }
 

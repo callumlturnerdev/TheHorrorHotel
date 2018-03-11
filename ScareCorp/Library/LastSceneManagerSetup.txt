@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/animationRiggingScene.unity
+- path: Assets/test 1.unity
   isLoaded: 1
   isActive: 1

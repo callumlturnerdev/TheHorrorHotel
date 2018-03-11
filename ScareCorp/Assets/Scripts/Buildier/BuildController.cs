@@ -15,7 +15,8 @@ namespace buildModes
 /// 
 /// </summary>
 public class BuildController : MonoBehaviour {
-
+    
+   
 	public static BuildController instance = null;
     private eBuildMode currentBuildMode = eBuildMode.building;
     public List<GameObject> objectsToDelete;
@@ -38,7 +39,7 @@ public class BuildController : MonoBehaviour {
 
 	private GameObject playerCursor;
 	private GameObject heldObjectRef;
-
+    private bool UINeedsEnabled;
     bool SnapMode = true;
     public bool paintMode = false;
     // UI elements
@@ -114,6 +115,10 @@ public class BuildController : MonoBehaviour {
             paintMode = !paintMode;
         }
 
+        if(Input.GetKeyDown(KeyCode.N))
+        {
+            UINeedsEnabled = !UINeedsEnabled;
+        }
         if (Input.GetKeyDown(KeyCode.L))
         {
             screamPoints = 0;
@@ -268,9 +273,13 @@ public class BuildController : MonoBehaviour {
 		return currentObject;
 	}
 
+    public bool UINeedsOn()
+    {return UINeedsEnabled;}
 
     public void AddObjectForDeletion(GameObject grid)
     {
         objectsToDelete.Add(grid);
     }
+
+
 }

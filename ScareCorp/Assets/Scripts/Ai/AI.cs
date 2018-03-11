@@ -10,6 +10,8 @@ using fearTypes;
 
 public class AI : MonoBehaviour
 {
+
+
     public Animator anim;
     public bool switchState = false;
     public float gameTimer;
@@ -66,7 +68,8 @@ public class AI : MonoBehaviour
     private float lookRange = 190;
     [HideInInspector] public float scarelookRange = 4;
     public float stateTimeElapsed;
-
+    [Header("UI")] 
+    public Slider hungerSlider,hygieneSlider,boredomSlider,tirednessSlider,fearSlider;
     private bool timerFinished;
     private void Start()
     {
@@ -197,7 +200,7 @@ public class AI : MonoBehaviour
         if(name == "Sleeping"){anim.SetBool("sleeping",true); }
         else if(name == "Scared"){anim.SetBool("scared",true);}
         else {anim.SetBool("sleeping",false); anim.SetBool("scared",false);}
-
+    
     }
 
     private void UpdateNeeds()
@@ -210,8 +213,19 @@ public class AI : MonoBehaviour
         {
             stateMachine.ChangeState(SeekExit.Instance);
         }
+        UpdateSliders();
     }
 
+    private void UpdateSliders()
+    {
+        if(boredomSlider && hygieneSlider && hungerSlider && tirednessSlider )
+        {
+            boredomSlider.value = boredom;
+            hygieneSlider.value = hygiene;
+            hungerSlider.value = hunger;
+            tirednessSlider.value = tiredness;
+        }
+    }
    public GameObject SelectTarget(List<GameObject> e)
     {
         foreach (GameObject _e in e)

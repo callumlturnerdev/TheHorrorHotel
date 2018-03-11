@@ -25,6 +25,11 @@ public class Visitor : MonoBehaviour
     public GameObject lastFearObject;
     [SerializeField]
 
+    [Header("UI")]
+    Slider fearSlider;
+      [SerializeField]
+    GameObject NeedsUI;
+
     public void  InitialiseVisitor(string _name, int _daysStaying, eFearTypes _fear ) 
     {
         name = _name;
@@ -43,8 +48,7 @@ public class Visitor : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         anim = this.transform.GetChild(0).GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-        fearBar = transform.GetChild(0).transform.Find( "VisitorUI").Find(name: "fearFill").GetComponent<Image>();
-        fearBar.fillAmount = currentFear / maxFear;
+         fearSlider.value = currentFear;
         gridBuilderRef = GameObject.FindGameObjectWithTag("gridbuilder").GetComponent<GridBuilder>();
         gridBuilderRef.AddVisitor(this.gameObject);
     }
@@ -69,6 +73,18 @@ public class Visitor : MonoBehaviour
     {
        // anim.speed = agent.speed;
         //agent.speed
+
+        if(Input.GetKeyDown(KeyCode.N))
+        {
+            if(BuildController.instance.UINeedsOn())
+            {
+                NeedsUI.SetActive(false);
+            }
+            else
+            {
+                NeedsUI.SetActive(true);
+            }
+        }
     }
 
     public void Scare(float amount ) // Is called when the visitor is scared
@@ -104,8 +120,7 @@ public class Visitor : MonoBehaviour
        
         currentFear += amount;
         BuildController.instance.AddPoints(amount * 10);
-        fearBar = transform.GetChild(0).Find("VisitorUI").Find(name: "fearFill").GetComponent<Image>();
-        fearBar.fillAmount = currentFear / maxFear;
+        fearSlider.value = currentFear;
         particleSys.Play();
     }
 
@@ -116,7 +131,6 @@ public class Visitor : MonoBehaviour
         DebugConsole.Log("hi", "error");
     }
 
-   
    public string GetName(){return name;}
 
 }
