@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 54860859503259602}
   - component: {fileID: 135159747185867620}
   - component: {fileID: 114258574331145142}
+  - component: {fileID: 114633628922069094}
   m_Layer: 0
   m_Name: BodyBuster
   m_TagString: scary
@@ -507,12 +508,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa751257cfd5b3c47af3e9dab18446e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentTrigger: {fileID: 0}
-  otherTrigger: {fileID: 0}
-  triggerObject: {fileID: 0}
   triggered: 0
+  canCreateLink: 0
   zombie: {fileID: 0}
   hasZombie: 0
+--- !u!114 &114633628922069094
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1876213373785872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d6ed70e9e2cdc449b24561f432f3d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedSender: {fileID: 0}
 --- !u!114 &114747784439963744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -543,6 +554,7 @@ MonoBehaviour:
   needFulfillment: 0
   itemCost: 100
   priority: 1
+  largeObject: 0
 --- !u!120 &120518736281827598
 LineRenderer:
   m_ObjectHideFlags: 1

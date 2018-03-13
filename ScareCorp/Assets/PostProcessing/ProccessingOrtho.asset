@@ -42,8 +42,8 @@ MonoBehaviour:
   ambientOcclusion:
     m_Enabled: 1
     m_Settings:
-      intensity: 4
-      radius: 0.24
+      intensity: 2.034
+      radius: 0.75
       sampleCount: 16
       downsampling: 1
       forceForwardCompatibility: 0
@@ -71,10 +71,10 @@ MonoBehaviour:
   depthOfField:
     m_Enabled: 0
     m_Settings:
-      focusDistance: 111.1
+      focusDistance: 9999
       aperture: 0.05
       focalLength: 50
-      useCameraFov: 0
+      useCameraFov: 1
       kernelSize: 0
   motionBlur:
     m_Enabled: 1
@@ -100,7 +100,7 @@ MonoBehaviour:
     m_Enabled: 0
     m_Settings:
       bloom:
-        intensity: 0
+        intensity: 4.98
         threshold: 1.1
         softKnee: 0.028
         radius: 4
@@ -113,19 +113,19 @@ MonoBehaviour:
     m_Settings:
       tonemapping:
         tonemapper: 2
-        neutralBlackIn: 0.0134
+        neutralBlackIn: 0.0007
         neutralWhiteIn: 9.23
         neutralBlackOut: 0
         neutralWhiteOut: 10
         neutralWhiteLevel: 5.3
         neutralWhiteClip: 10
       basic:
-        postExposure: 0
-        temperature: 37.3
+        postExposure: -0.38
+        temperature: 19.7
         tint: 0
-        hueShift: 0
-        saturation: 0.541
-        contrast: 1.38
+        hueShift: 0.8
+        saturation: 0.613
+        contrast: 1.147
       channelMixer:
         red: {x: 1, y: 0, z: 0}
         green: {x: 0, y: 1, z: 0}
@@ -281,15 +281,15 @@ MonoBehaviour:
       lut: {fileID: 0}
       contribution: 1
   chromaticAberration:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       spectralTexture: {fileID: 0}
-      intensity: 0
+      intensity: 0.035
   grain:
     m_Enabled: 1
     m_Settings:
       colored: 0
-      intensity: 0.298
+      intensity: 0.324
       size: 0.73
       luminanceContribution: 0.755
   vignette:
@@ -298,7 +298,7 @@ MonoBehaviour:
       mode: 0
       color: {r: 0, g: 0, b: 0, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.63
+      intensity: 0.632
       smoothness: 0.24
       roundness: 0.25
       mask: {fileID: 0}

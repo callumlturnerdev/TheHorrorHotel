@@ -28,6 +28,8 @@ GameObject:
   - component: {fileID: 120411600924225022}
   - component: {fileID: 114870034675664578}
   - component: {fileID: 54694902855122954}
+  - component: {fileID: 114133803592208516}
+  - component: {fileID: 114926759145220764}
   m_Layer: 8
   m_Name: doorPrefab
   m_TagString: Door
@@ -347,6 +349,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114133803592208516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1089833075040286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d6ed70e9e2cdc449b24561f432f3d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedSender: {fileID: 0}
 --- !u!114 &114870034675664578
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -361,10 +375,25 @@ MonoBehaviour:
   objectID: 5
   index: 0
   needtype: 0
+  fearType: 0
   uses: 999999
   needFulfillment: 0
   itemCost: 50
   priority: 5
+  largeObject: 0
+--- !u!114 &114926759145220764
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1089833075040286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fc7395d5b49ab844a2dea1d9e567b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggered: 0
+  canCreateLink: 0
 --- !u!114 &114940061875322268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -376,10 +405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc7395d5b49ab844a2dea1d9e567b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentTrigger: {fileID: 0}
-  otherTrigger: {fileID: 0}
-  triggerObject: {fileID: 0}
   triggered: 0
+  canCreateLink: 0
 --- !u!120 &120411600924225022
 LineRenderer:
   m_ObjectHideFlags: 1

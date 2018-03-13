@@ -10,17 +10,19 @@ public class torchTrigger : TriggerBase {
 	{
         if (!beenUsed)
         {
+            LightUpLineRend(null);
             ToggleLights();
-            if (otherTrigger) otherTrigger.ObjectEvent();
+            if (linkedTrigger) linkedTrigger.ObjectEvent();
         }
     }
 
     public override void ObjectOffEvent()
     {
         ToggleLights();
-        if (otherTrigger)
+        if (linkedTrigger)
         {
-            otherTrigger.ObjectOffEvent();
+            LightUpLineRend(null);
+            linkedTrigger.ObjectOffEvent();
         }
     }
 

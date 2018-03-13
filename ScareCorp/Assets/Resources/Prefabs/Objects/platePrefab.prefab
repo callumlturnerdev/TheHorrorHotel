@@ -25,9 +25,11 @@ GameObject:
   - component: {fileID: 65775178171909104}
   - component: {fileID: 208113408213121730}
   - component: {fileID: 120061704120403614}
-  - component: {fileID: 114186267531714022}
   - component: {fileID: 114584121909051678}
   - component: {fileID: 54865550621180364}
+  - component: {fileID: 114082178585197392}
+  - component: {fileID: 114183473908960216}
+  - component: {fileID: 114255957925850890}
   m_Layer: 11
   m_Name: platePrefab
   m_TagString: trigger
@@ -128,7 +130,32 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.842247, y: 1, z: 1.86343}
   m_Center: {x: -0.21904564, y: 0, z: -0.034687042}
---- !u!114 &114186267531714022
+--- !u!114 &114082178585197392
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1304685447563428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e83c2989d2da99b49be8d09ffac33df7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 1
+--- !u!114 &114183473908960216
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1304685447563428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39e452eca619a6943bfd2f671725f219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedReceiver: {fileID: 0}
+  defaultMat: {fileID: 0}
+--- !u!114 &114255957925850890
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -139,10 +166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0b851add0f22e647902478aa46f5594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentTrigger: {fileID: 0}
-  otherTrigger: {fileID: 0}
-  triggerObject: {fileID: 0}
+  triggerLineMat: {fileID: 2100000, guid: a50a06ccbd579644aae446ded17ef70c, type: 2}
   triggered: 0
+  canCreateLink: 0
 --- !u!114 &114584121909051678
 MonoBehaviour:
   m_ObjectHideFlags: 1

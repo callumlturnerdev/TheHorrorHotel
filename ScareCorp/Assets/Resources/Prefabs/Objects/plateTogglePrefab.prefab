@@ -28,6 +28,8 @@ GameObject:
   - component: {fileID: 114584121909051678}
   - component: {fileID: 54865550621180364}
   - component: {fileID: 114194425795479782}
+  - component: {fileID: 114095822569924798}
+  - component: {fileID: 114880730335032252}
   m_Layer: 11
   m_Name: plateTogglePrefab
   m_TagString: trigger
@@ -128,6 +130,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114095822569924798
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1304685447563428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39e452eca619a6943bfd2f671725f219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedReceiver: {fileID: 0}
 --- !u!114 &114194425795479782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,10 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92a0e174bd06843438ae90ee9e41805d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentTrigger: {fileID: 0}
-  otherTrigger: {fileID: 0}
-  triggerObject: {fileID: 0}
   triggered: 0
+  canCreateLink: 0
 --- !u!114 &114584121909051678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -157,10 +169,25 @@ MonoBehaviour:
   objectID: 8
   index: 0
   needtype: 0
+  fearType: 0
   uses: 999999
   needFulfillment: 0
   itemCost: 50
   priority: 0
+  largeObject: 0
+--- !u!114 &114880730335032252
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1304685447563428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92a0e174bd06843438ae90ee9e41805d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggered: 0
+  canCreateLink: 0
 --- !u!120 &120061704120403614
 LineRenderer:
   m_ObjectHideFlags: 1

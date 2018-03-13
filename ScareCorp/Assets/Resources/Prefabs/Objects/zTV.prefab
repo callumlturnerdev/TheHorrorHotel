@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 135346411366327592}
   - component: {fileID: 114649148887360660}
   - component: {fileID: 208276543825479042}
+  - component: {fileID: 114869651646508212}
   m_Layer: 0
   m_Name: zTV
   m_TagString: Untagged
@@ -652,10 +653,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45cde984536db47429fa8b4db43c289e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentTrigger: {fileID: 0}
-  otherTrigger: {fileID: 0}
-  triggerObject: {fileID: 0}
+  triggerLineMat: {fileID: 0}
   triggered: 0
+  canCreateLink: 0
   zombie: {fileID: 0}
   hasZombie: 0
 --- !u!114 &114732049748050406
@@ -677,6 +677,19 @@ MonoBehaviour:
   needFulfillment: 0
   itemCost: 100
   priority: 1
+  largeObject: 0
+--- !u!114 &114869651646508212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1907172457091012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d6ed70e9e2cdc449b24561f432f3d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedSender: {fileID: 0}
 --- !u!120 &120418819533956314
 LineRenderer:
   m_ObjectHideFlags: 1

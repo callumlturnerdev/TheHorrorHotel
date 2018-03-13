@@ -28,19 +28,25 @@ public class BodyBusterTrigger : TriggerBase {
         }
     }
 
+public override void ObjectOffEvent()
+	{
+		if(linkedTrigger)
+		{
+            LightUpLineRend(null);
+			linkedTrigger.ObjectOffEvent();
+		}
+	}
+
     public override void ObjectEvent()
 	{
-		if (!beenUsed)
-		{
+		
+        LightUpLineRend(null);
             hasZombie = true;
-            anim = GetComponent<Animator> ();
-            GameObject zomb;
-            zomb = Instantiate(zombie) as GameObject;
-            zomb.transform.position = new Vector3(spawnPos.position.x, spawnPos.transform.position.y , spawnPos.position.z);
-            zomb.transform.rotation = spawnPos.transform.rotation;
+           anim.SetTrigger("Scare"); 
+           if(linkedTrigger){linkedTrigger.ObjectEvent();}
 			triggered = true;
 			beenUsed = true;
-		}
+		
 	}
 		
 }

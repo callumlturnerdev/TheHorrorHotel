@@ -5,7 +5,7 @@ using UnityEngine;
 public class wardrobeTrigger : TriggerBase {
 
 	protected Animator anim;
-    public GameObject zombie;  // Probably temp
+   
     public bool hasZombie = false;
     private Transform spawnPos;
     private void OnEnable()
@@ -17,32 +17,25 @@ public class wardrobeTrigger : TriggerBase {
 	{
 		if (!beenUsed)
 		{
+            LightUpLineRend(null);
             hasZombie = true;
             anim = GetComponent<Animator> ();
 			anim.SetBool ("Open", true);
-            GameObject zomb;
-            zomb = Instantiate(zombie) as GameObject;
-            zomb.transform.position = new Vector3(spawnPos.position.x, spawnPos.transform.position.y , spawnPos.position.z);
-            zomb.transform.rotation = spawnPos.transform.rotation;
 			triggered = true;
 			beenUsed = true;
-            if(otherTrigger) otherTrigger.ObjectEvent();
+            if(linkedTrigger) linkedTrigger.ObjectEvent();
 		}
 	}
 
     public override void ObjectOffEvent()
     {
-       
+       LightUpLineRend(null);
              hasZombie = true;
             anim = GetComponent<Animator> ();
 			anim.SetBool ("Open", false);
-            GameObject zomb;
-            zomb = Instantiate(zombie) as GameObject;
-            zomb.transform.position = new Vector3(spawnPos.position.x, spawnPos.transform.position.y , spawnPos.position.z);
-            zomb.transform.rotation = spawnPos.transform.rotation;
 			triggered = false;
 			beenUsed = false;
-            if(otherTrigger)otherTrigger.ObjectOffEvent();
+            if(linkedTrigger)linkedTrigger.ObjectOffEvent();
     }
 
     private void ToggleWardrobeOpen()

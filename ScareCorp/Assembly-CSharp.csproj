@@ -136,6 +136,9 @@
      <Compile Include="Assets\Scripts\Managers\TimeManager.cs" />
      <Compile Include="Assets\Scripts\menuHide.cs" />
      <Compile Include="Assets\Scripts\MonsterBase.cs" />
+     <Compile Include="Assets\Scripts\NewTriggerSystem\TriggerLinker.cs" />
+     <Compile Include="Assets\Scripts\NewTriggerSystem\TriggerReceiver.cs" />
+     <Compile Include="Assets\Scripts\NewTriggerSystem\TriggerSender.cs" />
      <Compile Include="Assets\Scripts\ObjectFinder.cs" />
      <Compile Include="Assets\Scripts\Objects\Buildable.cs" />
      <Compile Include="Assets\Scripts\Objects\Chest.cs" />
@@ -150,8 +153,6 @@
      <Compile Include="Assets\Scripts\Trigger\pPlateTrigger.cs" />
      <Compile Include="Assets\Scripts\Trigger\torchTrigger.cs" />
      <Compile Include="Assets\Scripts\Trigger\TriggerBase.cs" />
-     <Compile Include="Assets\Scripts\Trigger\TriggerController.cs" />
-     <Compile Include="Assets\Scripts\Trigger\TriggerEvent.cs" />
      <Compile Include="Assets\Scripts\Trigger\TvTrigger.cs" />
      <Compile Include="Assets\Scripts\Trigger\wardrobeTrigger.cs" />
      <Compile Include="Assets\Scripts\UI\DebugConsole.cs" />
@@ -163,6 +164,7 @@
      <Compile Include="Assets\Scripts\Waypoint.cs" />
      <Compile Include="Assets\Unfinity Games\uNote\Examples\uNoteHeroExample.cs" />
      <Compile Include="Assets\Unfinity Games\uNote\Note.cs" />
+     <Compile Include="Assets\WindMovement.cs" />
      <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.cginc" />
      <None Include="Assets\PostProcessing\Resources\Shaders\Fog.shader" />
@@ -204,6 +206,7 @@
      <None Include="Assets\PostProcessing\Resources\Shaders\EyeAdaptation.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\ColorGrading.cginc" />
      <None Include="Assets\PostProcessing\Resources\Shaders\AmbientOcclusion.cginc" />
+     <None Include="Assets\Shaders\FoilageShader.shader" />
      <None Include="Assets\PostProcessing\Editor Resources\Monitors\WaveformCompute.compute" />
      <None Include="Assets\Unfinity Games\uNote\Readme.txt" />
  <Reference Include="UnityEngine.UI">

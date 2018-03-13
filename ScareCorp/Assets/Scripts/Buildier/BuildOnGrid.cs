@@ -48,7 +48,7 @@ public class BuildOnGrid : MonoBehaviour {
             case eBuildMode.deleting:
                 break;
 
-            case eBuildMode.none:
+            case eBuildMode.trigger:
                 break;
             case eBuildMode.waypoints:
                 break;
@@ -88,6 +88,10 @@ public class BuildOnGrid : MonoBehaviour {
 
                                 case eBuildMode.building:
                                  Building();
+                                break;
+
+                                case eBuildMode.trigger:
+                                    Triggers();
                                 break;
 
                                 case eBuildMode.deleting:
@@ -198,6 +202,16 @@ public class BuildOnGrid : MonoBehaviour {
             isHighlighted = true;
         }
     }
+
+    private void Triggers()
+    {
+        if(!EventSystem.current.IsPointerOverGameObject())
+        {
+
+            
+        }
+    }
+
 
     private void WayPoints()
     {

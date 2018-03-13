@@ -24,17 +24,19 @@ public class pPlateToggleTrigger : TriggerBase
     {
         if (toggle)
             {
-                if (otherTrigger != null)
+                if (linkedTrigger != null)
                 {
-                    otherTrigger.ObjectEvent();
+                    LightUpLineRend(null);
+                    linkedTrigger.ObjectEvent();
                     toggle = false;
                 }
             }
             else if (!toggle)
             {
-                if (otherTrigger != null)
+                if (linkedTrigger != null)
                 {
-                    otherTrigger.ObjectOffEvent();
+                    LightUpLineRend(null);
+                    linkedTrigger.ObjectOffEvent();
                     toggle = true;
                 }
             }

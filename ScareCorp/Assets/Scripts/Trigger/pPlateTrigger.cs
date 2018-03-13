@@ -21,22 +21,25 @@ public class pPlateTrigger : TriggerBase {
     public override void OnCollision()
     {
         triggered = true;
-            if (otherTrigger != null)
+            if (linkedTrigger != null)
             {
                 if (triggered == true)
                 {
-                    otherTrigger.ObjectEvent();
+                    LightUpLineRend(triggerLineMat);
+                    linkedTrigger.ObjectEvent();
                 }
             }
             StartCoroutine(resetTrigger());
     }
 	public override void ObjectEvent()
 	{
+        
        // StartCoroutine(resetTrigger());
     }
     public override void ObjectOffEvent()
     {
-        if(otherTrigger) otherTrigger.ObjectOffEvent();
+        LightUpLineRend(null);
+        if(linkedTrigger) linkedTrigger.ObjectOffEvent();
     }
 		
 }

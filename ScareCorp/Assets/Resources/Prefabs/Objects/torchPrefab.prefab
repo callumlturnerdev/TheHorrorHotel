@@ -26,6 +26,8 @@ GameObject:
   - component: {fileID: 65970886172603230}
   - component: {fileID: 114209866766431738}
   - component: {fileID: 54103206410735740}
+  - component: {fileID: 114060639675487344}
+  - component: {fileID: 114029453463524276}
   m_Layer: 8
   m_Name: torchPrefab
   m_TagString: onWall
@@ -242,6 +244,32 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114029453463524276
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1247548494817400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 902811d64180da94b8fb49cfb807afaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggered: 0
+  canCreateLink: 0
+  particleObj: {fileID: 0}
+--- !u!114 &114060639675487344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1247548494817400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d6ed70e9e2cdc449b24561f432f3d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedSender: {fileID: 0}
 --- !u!114 &114081889320311740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -253,10 +281,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902811d64180da94b8fb49cfb807afaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentTrigger: {fileID: 0}
-  otherTrigger: {fileID: 0}
-  triggerObject: {fileID: 0}
   triggered: 0
+  canCreateLink: 0
   particleObj: {fileID: 1782782450254232}
 --- !u!114 &114209866766431738
 MonoBehaviour:
@@ -277,6 +303,7 @@ MonoBehaviour:
   needFulfillment: 0
   itemCost: 10
   priority: 0
+  largeObject: 0
 --- !u!114 &114366090593237096
 MonoBehaviour:
   m_ObjectHideFlags: 1

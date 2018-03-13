@@ -28,6 +28,8 @@ GameObject:
   - component: {fileID: 82262916201786728}
   - component: {fileID: 120672603794749258}
   - component: {fileID: 54839384883350770}
+  - component: {fileID: 114778521004987998}
+  - component: {fileID: 114318350121564838}
   m_Layer: 8
   m_Name: ClockPrefab
   m_TagString: trigger
@@ -297,6 +299,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114318350121564838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1152730472968126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a00417b234de6bb4d8ce53710d94bdb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggered: 0
+  canCreateLink: 0
 --- !u!114 &114495889230925258
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -308,9 +323,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a00417b234de6bb4d8ce53710d94bdb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentTrigger: {fileID: 0}
-  otherTrigger: {fileID: 0}
-  triggerObject: {fileID: 0}
   triggered: 0
   canCreateLink: 0
 --- !u!114 &114755693588366118
@@ -324,7 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dbf6c63e1d39b144b1618f210c97ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectID: 20
+  objectID: 22
   index: 0
   needtype: 0
   fearType: 0
@@ -333,6 +345,18 @@ MonoBehaviour:
   itemCost: 25
   priority: 0
   largeObject: 0
+--- !u!114 &114778521004987998
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1152730472968126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d6ed70e9e2cdc449b24561f432f3d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedSender: {fileID: 0}
 --- !u!120 &120672603794749258
 LineRenderer:
   m_ObjectHideFlags: 1

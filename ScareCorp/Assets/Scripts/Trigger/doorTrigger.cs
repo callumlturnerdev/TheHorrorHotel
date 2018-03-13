@@ -41,18 +41,30 @@ public class doorTrigger : TriggerBase {
         anim.SetBool("Open", false);
         triggered = false;
         beenUsed = false;
+        LightUpLineRend(null);
     }
+
+    public override void ObjectOffEvent()
+	{
+		if(linkedTrigger)
+		{
+            LightUpLineRend(null);
+            LightUpLineRend(null);
+			linkedTrigger.ObjectOffEvent();
+		}
+	}
     public override void ObjectEvent()
 	{
 		if (!beenUsed)
 		{
+            LightUpLineRend(null);
 			bCol = GetComponent<BoxCollider> ();
 			bCol.enabled = false;
 			anim = GetComponent<Animator> ();
 			anim.SetBool ("Open", true);
 			triggered = true;
 			beenUsed = true;
-            otherTrigger.ObjectEvent();
+            linkedTrigger.ObjectEvent();
 		}
 	}	
 }

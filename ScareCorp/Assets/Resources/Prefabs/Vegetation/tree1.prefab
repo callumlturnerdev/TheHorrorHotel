@@ -51,21 +51,21 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1211432208935314}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00999497, y: 2.6299999, z: -0.00025889464}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0.01, y: 2.6299996, z: 0.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4989864945827410}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 88.51601, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4989864945827410
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1191324849706268}
-  m_LocalRotation: {x: -0, y: 0.6978919, z: -0, w: 0.71620315}
-  m_LocalPosition: {x: -25.12, y: 3.01, z: 66.69}
+  m_LocalRotation: {x: 0, y: -0.8694589, z: -0, w: 0.49400532}
+  m_LocalPosition: {x: 86.588806, y: 1.67, z: 31.697517}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4294232639009736}
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1211432208935314}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a05438ca3e056074c8376ddfff10c4d9, type: 3}
   m_Name: 
@@ -108,7 +108,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: fb73f1d6eaa6f3246b01abae5f9e51e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -173,7 +173,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300006, guid: 2c9c4a9823bce4c44b828fa755c669ce, type: 3}
-  m_Color: {r: 0.5514706, g: 0.5514706, b: 0.5514706, a: 1}
+  m_Color: {r: 0.2352941, g: 0.2352941, b: 0.2352941, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

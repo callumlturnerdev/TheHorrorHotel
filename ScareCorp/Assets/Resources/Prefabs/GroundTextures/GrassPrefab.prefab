@@ -55,11 +55,12 @@ MeshRenderer:
   m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9144cff3d3b6c6e4f9a1fe989e48c76d, type: 2}
+  - {fileID: 2100000, guid: 179a68aae8ff190408b1ca9619faf6b3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -70,6 +71,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -120,12 +122,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dbf6c63e1d39b144b1618f210c97ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectID: 0
   index: 0
   needtype: 0
+  fearType: 0
   uses: 999999
   needFulfillment: 0
   itemCost: 10
   priority: 0
+  largeObject: 0
 --- !u!114 &114999814479800136
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,27 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using buildModes;
 
 // BASE CLASS FOR AN OBJECTY THAT CHECKS FOR A COLLISION
 abstract public class TriggerBase : MonoBehaviour {
 
-    public TriggerBase parentTrigger;
-	public TriggerBase otherTrigger;
-	public GameObject triggerObject;
-	protected LineRenderer line;
-	protected bool lineToMouse;
-	protected GameObject cursor;
+	[SerializeField]
+	protected Material triggerLineMat;
+	[SerializeField]
+	
 	public bool triggered = false;
 	protected bool beenUsed = false;
 	[SerializeField]
 	protected bool canCreateLink = false;
     protected float reTriggerTimer = 5;
 
+	protected TriggerBase linkedTrigger;
+
 	 void  Awake ()
     {
-		line = GetComponent<LineRenderer> ();
-		cursor = GameObject.FindGameObjectWithTag ("cursor");
         reTriggerTimer = 10;
 	}
 
@@ -29,10 +27,6 @@ abstract public class TriggerBase : MonoBehaviour {
     {
 
     }
-	  void Update ()
-    {
-		LineRendMouse ();
-	}
 
 	public   bool GetTriggered()
 	{return triggered;}
@@ -44,59 +38,28 @@ abstract public class TriggerBase : MonoBehaviour {
 	}
     public void SetTriggerParent(GameObject trigger)
     {
-        lineToMouse = false;
-        triggerObject = trigger;
-        parentTrigger = triggerObject.GetComponent<TriggerBase>();
-       // line.SetPosition(0, this.transform.position);
-       // line.SetPosition(1, parentTrigger.transform.position);
+       
     }
 
-	public  void SetTriggerObject(GameObject trigger)
+	public  void SetTriggerObject(TriggerBase obj)
 	{
-		lineToMouse = false;
-		triggerObject = trigger;
-		otherTrigger = triggerObject.GetComponent<TriggerBase> ();
-		//line.SetPosition(0, this.transform.position);
-		//line.SetPosition (1, triggerObject.transform.position);
-	}
-
-	 void LineRendMouse()
-	{
-		if (lineToMouse)
+		if(obj)
 		{
-			if(TriggerController.instance.GetFirstTrigger() == this.gameObject)
-			{
-				line.SetPosition(0, this.transform.position);
-				line.SetPosition (1, cursor.transform.position);
-			}
-			else
-			{
-				line.SetPosition(0, this.transform.position);
-				line.SetPosition (1, this.transform.position);
-			}
+			linkedTrigger = obj;
+		}
+		if(obj == null)
+		{
+			linkedTrigger= null;
 		}
 	}
-
-	public void LineRendToOtherObject()
-	{
-		if(otherTrigger)
-		{
-			line.SetPosition(0, this.transform.position);
-			line.SetPosition (1, otherTrigger.transform.position);
-		}
-	}
-	public void LineRendOff()
-	{lineToMouse = false;}
 
 	protected  void OnMouseOver()
 	{
-		if (Input.GetMouseButtonDown (1) && (canCreateLink || TriggerController.instance.GetCanLink()))
+		if (Input.GetMouseButtonDown (1))
 		{
-			if(otherTrigger == null)
+			if(BuildController.instance.GetCurrentBuildMode() != eBuildMode.trigger)
 			{
-			//otherTrigger =null;
-			lineToMouse = true;
-			TriggerController.instance.SetCurrentTrigger (this.gameObject);
+				BuildController.instance.TrigggerMode(true);
 			}
 		}
 		if(Input.GetMouseButtonDown(2))
@@ -116,9 +79,15 @@ abstract public class TriggerBase : MonoBehaviour {
     public virtual void ObjectOffEvent()
     {
    
-    }
+	}
+	protected void LightUpLineRend(Material mat)
+	{
+		if(gameObject.GetComponent<TriggerSender>())
+		{
+			gameObject.GetComponent<TriggerSender>().SetTriggerLineMat(mat);
+		}
+	}
 
-	public void SetCanLink(bool t){canCreateLink = t; }
     protected IEnumerator resetTrigger()
     {
         yield return new WaitForSeconds(reTriggerTimer);

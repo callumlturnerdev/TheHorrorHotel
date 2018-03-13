@@ -14,10 +14,11 @@ public class ClockTrigger : TriggerBase {
 	
 	public override void ObjectOffEvent()
 	{
-
-		if(otherTrigger)
+	
+		if(linkedTrigger)
 		{
-			otherTrigger.ObjectOffEvent();
+			LightUpLineRend(null);
+			linkedTrigger.ObjectOffEvent();
 		}
 	}
 
@@ -25,10 +26,12 @@ public class ClockTrigger : TriggerBase {
 	{
 		if(!beenUsed)
 		{
+		
 			PlaySound();
-			if(otherTrigger)
+			if(linkedTrigger)
 			{
-				otherTrigger.ObjectEvent();
+				LightUpLineRend(null);
+				linkedTrigger.ObjectEvent();
 			}
 		}
 	}

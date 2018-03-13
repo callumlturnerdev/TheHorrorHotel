@@ -138,12 +138,13 @@ GameObject:
   - component: {fileID: 33533605356827014}
   - component: {fileID: 23528944790425264}
   - component: {fileID: 95578450778210038}
-  - component: {fileID: 114059147684121154}
   - component: {fileID: 120819987033738894}
   - component: {fileID: 65246567439276490}
   - component: {fileID: 114313205600302742}
   - component: {fileID: 54322808212579428}
   - component: {fileID: 208846528060867292}
+  - component: {fileID: 114812057605122806}
+  - component: {fileID: 114475019262876572}
   m_Layer: 8
   m_Name: wardrobePrefab
   m_TagString: trigger
@@ -588,23 +589,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &114059147684121154
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1838108299631010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e29beb181d9c1034aa2ad14774e59910, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentTrigger: {fileID: 0}
-  otherTrigger: {fileID: 0}
-  triggerObject: {fileID: 0}
-  triggered: 0
-  zombie: {fileID: 1623452726620556, guid: 16432314d992160458e25eeb0a1cab4b, type: 2}
-  hasZombie: 0
 --- !u!114 &114313205600302742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -619,10 +603,38 @@ MonoBehaviour:
   objectID: 11
   index: 0
   needtype: 5
+  fearType: 0
   uses: 99999
   needFulfillment: 0
   itemCost: 100
   priority: 1
+  largeObject: 0
+--- !u!114 &114475019262876572
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1838108299631010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29beb181d9c1034aa2ad14774e59910, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggered: 0
+  canCreateLink: 0
+  hasZombie: 0
+--- !u!114 &114812057605122806
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1838108299631010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d6ed70e9e2cdc449b24561f432f3d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  linkedSender: {fileID: 0}
 --- !u!120 &120819987033738894
 LineRenderer:
   m_ObjectHideFlags: 1

@@ -7,7 +7,7 @@ using buildModes;
 
 namespace buildModes
 {
-    public enum eBuildMode { none, building, deleting, waypoints, materials };
+    public enum eBuildMode { trigger, building, deleting, waypoints, materials };
 }
 /// <summary>
 /// 
@@ -174,6 +174,20 @@ public class BuildController : MonoBehaviour {
         }
     }
 
+    public void TrigggerMode(bool t)
+    {
+        if(t)
+        {
+            currentBuildMode = eBuildMode.trigger;
+            DebugConsole.Log("In Trigger Mode");
+        }
+        else
+        {
+             currentObject = lastBuildObject;
+            SetBuildObject(currentObject);
+            currentBuildMode = eBuildMode.building;
+        }
+    }
     public void WayPointMode(bool t)
     {
         if (t)

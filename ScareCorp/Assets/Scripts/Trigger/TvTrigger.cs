@@ -29,20 +29,21 @@ public class TvTrigger : TriggerBase {
             anim.SetTrigger("Scare");
         }
     }
-
+    public override void ObjectOffEvent()
+	{
+		if(linkedTrigger)
+		{
+            LightUpLineRend(null);
+			linkedTrigger.ObjectOffEvent();
+		}
+	}
     public override void ObjectEvent()
 	{
-		if (!beenUsed)
-		{
-            hasZombie = true;
-            anim = GetComponent<Animator> ();	
-            GameObject zomb;
-            zomb = Instantiate(zombie) as GameObject;
-            zomb.transform.position = new Vector3(spawnPos.position.x, spawnPos.transform.position.y , spawnPos.position.z);
-            zomb.transform.rotation = spawnPos.transform.rotation;
+		     LightUpLineRend(null);
+           anim.SetTrigger("Scare");
 			triggered = true;
 			beenUsed = true;
-		}
+		
 	}
 		
 }
