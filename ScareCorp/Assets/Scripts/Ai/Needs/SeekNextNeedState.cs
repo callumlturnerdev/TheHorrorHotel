@@ -106,8 +106,7 @@ public class SeekNextNeedState : State<AI>
     private void Seek(AI _owner)
     {
         float lowestNeed = _owner.aiNeeds.lowestNeedValue();
-        if(_owner.aiNeeds.lowestNeedValue() < 0.51f)
-        {
+        
         if (_owner.hygiene <= _owner.aiNeeds.lowestNeedValue() )
         {
             if (_owner.hygieneObjects.Count > 0)
@@ -155,18 +154,8 @@ public class SeekNextNeedState : State<AI>
                 _owner.UpdateStateUI("Tired");
             }
         }
-        }
-        else
-        {
-             if (_owner.boredomObjects.Count > 0)
-            {
-                _owner.navAgent.isStopped = false;
-                currentTarget = _owner.SelectTarget(_owner.boredomObjects);
-                _owner.currentTarget = currentTarget;
-                _owner.navAgent.destination = currentTarget.transform.position;
-                _owner.UpdateStateUI("Bored");
-            }
-        }
+        
+       
         if (currentTarget != null)
         {
         }
