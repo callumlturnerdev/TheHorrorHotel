@@ -17,7 +17,7 @@ public class AINeeds : MonoBehaviour
     [Range(0, 1)]
     private float needBoredom = 1.0f;
     [Range(0, 1)]
-    private float needTiredness = 1.0f;
+    private float needTiredness = 0.4f;
 
     public float daysStayed;
     private float daysToStay;
@@ -32,8 +32,8 @@ public class AINeeds : MonoBehaviour
         needHunger = 1.0f;
          needHygiene = 1.0f;
          needBoredom = 1.0f;
-         needTiredness = 0.5f;
-        StartCoroutine(WaitFor(3.0f /  TimeManager.instance.GetPlayRate()));
+         needTiredness = 0.4f;
+        StartCoroutine(WaitFor(1.0f *  TimeManager.instance.GetPlayRate()));
     }
 
     private void DayChange()
@@ -54,7 +54,7 @@ public class AINeeds : MonoBehaviour
         needHygiene = Mathf.Clamp(needHygiene -= decreaseRate, 0, 1);
         needBoredom = Mathf.Clamp(needBoredom -= decreaseRate, 0, 1);
         needTiredness = Mathf.Clamp(needTiredness -= decreaseRate, 0, 1);
-        StartCoroutine(WaitFor(3.0f /  TimeManager.instance.GetPlayRate()));
+        StartCoroutine(WaitFor(1.0f *  TimeManager.instance.GetPlayRate()));
     }
 
     public float GetHunger() { return needHunger; }

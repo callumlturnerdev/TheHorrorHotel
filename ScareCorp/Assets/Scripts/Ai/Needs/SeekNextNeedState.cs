@@ -106,8 +106,21 @@ public class SeekNextNeedState : State<AI>
     private void Seek(AI _owner)
     {
         float lowestNeed = _owner.aiNeeds.lowestNeedValue();
-        
-        if (_owner.hygiene <= _owner.aiNeeds.lowestNeedValue() )
+        DebugConsole.Log(_owner.tiredness.ToString());
+
+         if ( _owner.aiNeeds.GetTiredness() < 0.5f && _owner.tiredness <= _owner.aiNeeds.lowestNeedValue()) 
+        {
+            if (_owner.assignedBed)
+            {
+                _owner.navAgent.isStopped = false;
+                currentTarget = _owner.assignedBed;
+                _owner.currentTarget = currentTarget;
+                _owner.navAgent.destination = currentTarget.transform.position;
+                _owner.UpdateStateUI("Tired");
+            }
+        }
+
+        else if (_owner.hygiene <= _owner.aiNeeds.lowestNeedValue() && _owner.hygiene < 0.5f)
         {
             if (_owner.hygieneObjects.Count > 0)
             {
@@ -119,7 +132,7 @@ public class SeekNextNeedState : State<AI>
 
             }
         }
-        if (_owner.hunger <= _owner.aiNeeds.lowestNeedValue())
+        else if (_owner.hunger <= _owner.aiNeeds.lowestNeedValue() && _owner.hunger < 0.5f)
         {
             if (_owner.hungerObjects.Count > 0)
             {
@@ -131,9 +144,10 @@ public class SeekNextNeedState : State<AI>
             }
         }
 
-        if (_owner.boredom <= _owner.aiNeeds.lowestNeedValue() )
+        else
         {
-            if (_owner.boredomObjects.Count > 0)
+            DebugConsole.Log("BOOM");
+            if (_owner.boredomObjects.Count > 0 )
             {
                 _owner.navAgent.isStopped = false;
                 currentTarget = _owner.SelectTarget(_owner.boredomObjects);
@@ -143,17 +157,7 @@ public class SeekNextNeedState : State<AI>
             }
         }
 
-        if (_owner.tiredness <= _owner.aiNeeds.lowestNeedValue() )
-        {
-            if (_owner.assignedBed)
-            {
-                _owner.navAgent.isStopped = false;
-                currentTarget = _owner.assignedBed;
-                _owner.currentTarget = currentTarget;
-                _owner.navAgent.destination = currentTarget.transform.position;
-                _owner.UpdateStateUI("Tired");
-            }
-        }
+       
         
        
         if (currentTarget != null)
@@ -166,7 +170,7 @@ public class SeekNextNeedState : State<AI>
         }
     }
 
-
+    
 
 
 

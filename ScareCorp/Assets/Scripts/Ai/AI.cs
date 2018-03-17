@@ -60,7 +60,7 @@ public class AI : MonoBehaviour
     [Range(0, 1)]
     public float boredom = 1.0f;
     [Range(0, 1)]
-    public float tiredness = 1.0f;
+    public float tiredness = 0.3f;
 
     [Header("Stats")]
     [HideInInspector] public float searchingTurnSpeed = 360;
@@ -91,7 +91,7 @@ public class AI : MonoBehaviour
         hunger = 1.0f;
         hygiene = 1.0f;
         boredom = 1.0f;
-        tiredness = 1.0f;
+        tiredness = 0.4f;
 
         anim = transform.GetChild(0).GetComponent<Animator>();
         List<Transform> trans = GameManager.instance.GetWayPoints();

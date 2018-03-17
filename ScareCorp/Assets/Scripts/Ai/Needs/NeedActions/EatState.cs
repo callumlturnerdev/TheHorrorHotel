@@ -53,12 +53,12 @@ public class EatState : State<AI>
 
     private void Eat(AI _owner)
     {
-        if (_owner.aiNeeds.GetHunger() < 1 && currentNeedFullfillment < _owner.currentTarget.GetComponent<Buildable>().needFulfillment)
+        if (_owner.aiNeeds.GetHunger() < 1 )//&& currentNeedFullfillment)< _owner.currentTarget.GetComponent<Buildable>().needFulfillment)
         {
 
-            float newValue = _owner.aiNeeds.GetHunger() + 0.001f * TimeManager.instance.GetPlayRate();
+            float newValue = _owner.aiNeeds.GetHunger() + 0.002f * TimeManager.instance.GetPlayRate();
             _owner.aiNeeds.SetHunger(newValue);
-            currentNeedFullfillment += 0.001f;
+            currentNeedFullfillment += 0.002f;
         }
         else
         {

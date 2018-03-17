@@ -57,12 +57,11 @@ public class EntertainmentState : State<AI>
 
     private void Eat(AI _owner)
     {
-        if (_owner.aiNeeds.GetBoredom() < 1 && currentNeedFullfillment < _owner.currentTarget.GetComponent<Buildable>().needFulfillment)
+        if (_owner.hygiene > 0.49f && _owner.tiredness > 0.49f && _owner.hunger > 0.49f)
         {
-
-            float newValue = _owner.aiNeeds.GetBoredom() + 0.001f *  TimeManager.instance.GetPlayRate();
+            float newValue = _owner.aiNeeds.GetBoredom() + 0.002f *  TimeManager.instance.GetPlayRate();
             _owner.aiNeeds.SetBoredom(newValue);
-            currentNeedFullfillment += 0.001f;
+            currentNeedFullfillment += 0.002f;
         }
         else
         {

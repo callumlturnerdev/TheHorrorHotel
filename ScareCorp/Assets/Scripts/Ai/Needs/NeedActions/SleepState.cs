@@ -59,7 +59,7 @@ public class SleepState : State<AI>
     {
         if (_owner.currentTarget && _owner.aiNeeds.GetTiredness() < 1)
         {
-                float newValue = _owner.aiNeeds.GetTiredness() + 0.001f;
+                float newValue = _owner.aiNeeds.GetTiredness() + 0.002f;
                 _owner.aiNeeds.SetTiredness(newValue);
         }
         else
