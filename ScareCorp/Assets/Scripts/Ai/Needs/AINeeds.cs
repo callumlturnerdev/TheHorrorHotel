@@ -9,7 +9,7 @@ using needTypes;
 public class AINeeds : MonoBehaviour
 {
 
-    private float decreaseRate = 0.01f;
+    private float decreaseRate =0.03f; //0.01f;
     [Range(0,1)]
     private float needHunger = 1.0f;
     [Range(0, 1)]
@@ -74,6 +74,40 @@ public class AINeeds : MonoBehaviour
         UpdateNeeds();
     }
 
+    public bool NeedReachedZero()
+    {
+        if(GetTiredness() <= 0 || GetBoredom() <= 0 || GetHunger() <=0 || GetHygiene() <=0 )
+        {
+           return true; 
+        }
+        return false;
+    }
+   public eNeedTypes FindMostUrgentNeed()
+	{
+        AI ai = gameObject.GetComponent<AI>();
+		if(GetTiredness() <= lowestNeedValue() && ai.assignedBed)
+		{
+            DebugConsole.Log("tiredIsLowest");
+			return eNeedTypes.tiredness;
+		}
+        if(GetBoredom() <= lowestNeedValue() && ai.boredomObjects.Count > 0)
+        {
+            DebugConsole.Log("boredomLowest");
+            return eNeedTypes.boredom;
+        }
+        if(GetHygiene() <= lowestNeedValue() && ai.hygieneObjects.Count > 0)
+        {
+            DebugConsole.Log("hygieneLowest");
+            return eNeedTypes.hygiene;
+        }
+        if(GetHunger() <= lowestNeedValue() && ai.hungerObjects.Count >0)
+        {
+             DebugConsole.Log("hungerlowest");
+            return eNeedTypes.hunger;
+        }
+         DebugConsole.Log("nonlowest");
+        return eNeedTypes.none;
+	}
     public float lowestNeedValue()
     {
         AI ai = gameObject.GetComponent<AI>();
@@ -82,10 +116,10 @@ public class AINeeds : MonoBehaviour
         float boredom;
         float hunger;
 
-        if (ai.hungerObjects.Count > 0) { hunger = needHunger; } else { hunger = 10; }
-        if (ai.hygieneObjects.Count > 0) { hygiene = needHygiene; } else { hygiene = 10; }
-        if (ai.boredomObjects.Count > 0) { boredom = needBoredom ; } else { boredom = 10; }
-        if (ai.tirednessObjects.Count > 0) { tiredness = needTiredness; } else { tiredness = 10; }
+        if (ai.hungerObjects.Count > 0 && ai.hungerObjects[0]) { hunger = needHunger; } else { hunger = 10; }
+        if (ai.hygieneObjects.Count > 0 && ai.hygieneObjects[0]) { hygiene = needHygiene; } else { hygiene = 10; }
+        if (ai.boredomObjects.Count > 0 && ai.boredomObjects[0]) { boredom = needBoredom ; } else { boredom = 10; }
+        if (ai.assignedBed) { tiredness = needTiredness; } else { tiredness = 10; }
         return Mathf.Min(tiredness, hygiene, boredom, hunger);
     }
 

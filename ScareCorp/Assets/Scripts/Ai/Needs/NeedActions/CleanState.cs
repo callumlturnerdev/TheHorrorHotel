@@ -61,7 +61,7 @@ public class CleanState : State<AI>
         }
         else
         {
-            _owner.stateMachine.ChangeState(SeekNextNeedState.Instance);
+          //  _owner.stateMachine.ChangeState(SeekNextNeedState.Instance);
         }
     }
 }

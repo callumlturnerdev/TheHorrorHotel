@@ -50,8 +50,8 @@ public class ScaredState : State<AI>
     public override void UpdateState(AI _owner)
     {
         HidingPlaceScan(_owner);
-        if ( _owner.CheckifCountDownElapsed(10))
-           _owner.stateMachine.ChangeState(SeekNextNeedState.Instance);
+       // if ( _owner.CheckifCountDownElapsed(10))
+        //   _owner.stateMachine.ChangeState(SeekNextNeedState.Instance);
     }
 
 

@@ -293,6 +293,7 @@ GameObject:
   - component: {fileID: 114931718848690942}
   - component: {fileID: 199808953256271130}
   - component: {fileID: 198728362613233052}
+  - component: {fileID: 114903906307908206}
   m_Layer: 10
   m_Name: fVisitor
   m_TagString: visitor
@@ -2224,6 +2225,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a05438ca3e056074c8376ddfff10c4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114903906307908206
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1264157614244948}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2862a9459d7177041a12fd481eedbc3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114931718848690942
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2338,7 +2350,7 @@ NavMeshAgent:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1264157614244948}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.15
   m_Speed: 2

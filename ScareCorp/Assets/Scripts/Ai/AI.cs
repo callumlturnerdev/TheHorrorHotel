@@ -11,13 +11,12 @@ using fearTypes;
 public class AI : MonoBehaviour
 {
 
-
+    AI_StateNeeds stateNeeds;
     public Animator anim;
     public bool switchState = false;
     public float gameTimer;
     public int seconds = 0;
     [HideInInspector] public NavMeshAgent navAgent;
-    public StateMachine<AI> stateMachine { get; set; }
     public AINeeds aiNeeds;
     public Transform exitSeek;
 
@@ -73,12 +72,13 @@ public class AI : MonoBehaviour
     private bool timerFinished;
     private void Start()
     {
+        stateNeeds = GetComponent<AI_StateNeeds>();
         TimeManager.DepartTime += DayChange;
         TimeManager.PlayRateChange += SetSpeed;
         TimeManager.timeStopped += SetSpeed;
         GameManager.ObjectAdd += GetNeedObjects;
-
-        GetNeedObjects();
+        
+        
         // FEAR SETUP
         enviroment = Random.Range(0,1.0F);
         gore = Random.Range(0, 1.0F);
@@ -94,23 +94,24 @@ public class AI : MonoBehaviour
         tiredness = 0.4f;
 
         anim = transform.GetChild(0).GetComponent<Animator>();
+        GetNeedObjects();
         List<Transform> trans = GameManager.instance.GetWayPoints();
         exitSeek = GameManager.instance.wayPointList[0];
         searchingTurnSpeed = 180;
         navAgent = this.gameObject.GetComponent<NavMeshAgent>();
-        stateMachine = new StateMachine<AI>(this);
-        stateMachine.ChangeState(SeekNextNeedState.Instance);
+       
         gameTimer = Time.time;
         UpdateNeeds();
         SetSpeed();
+        
     }
 
-
+ 
     private void DayChange()
     {
         if (aiNeeds.CheckIfTimeToLeave())
         {
-            stateMachine.ChangeState(SeekExit.Instance);
+            
             if(assignedBed)
             {
                 assignedBed.GetComponent<Bed>().UnassignBed();
@@ -128,14 +129,15 @@ public class AI : MonoBehaviour
             anim.speed= navAgent.speed;
         }
     }
-    private void GetNeedObjects()
+    public void GetNeedObjects()
     {
         if(assignedBed == null)
         {
             assignedBed = GameManager.instance.GetABed();
             if(assignedBed)
             {
-                assignedBed.GetComponent<Bed>().SetBedName(gameObject.GetComponent<Visitor>().GetName());
+                assignedBed.GetComponent<Bed>().AssignBed(gameObject.GetComponent<Visitor>().GetName(), this.gameObject);
+                stateNeeds.enabled =true;
             }
         }
         hungerObjects = new List<GameObject>(GameManager.instance.hungerObjects);
@@ -145,7 +147,16 @@ public class AI : MonoBehaviour
         hidingPlaces = new List<GameObject>(GameManager.instance.hidingPlaces);
     }
 
-
+    void OnDestroy()
+    {
+        AI_StateNeeds stateNeeds = GetComponent<AI_StateNeeds>();
+        Destroy(stateNeeds);
+        GameManager.instance.AddToTakenBeds(-1);
+        if(assignedBed)
+        {
+            assignedBed.GetComponent<Bed>().UnassignBed();
+        }
+    }
     public float  GetLookRange(){return lookRange;}
     public float GetSphereCastRadius() { return lookSphereCastRadius; }
 
@@ -168,8 +179,8 @@ public class AI : MonoBehaviour
    
     private void Update()
     {
-        stateMachine.Update();
-        currentState = stateMachine.currentState;
+        
+       
         hunger = gameObject.GetComponent<AINeeds>().GetHunger();
         UpdateNeeds();
     }
@@ -211,7 +222,7 @@ public class AI : MonoBehaviour
         tiredness = aiNeeds.GetTiredness();
         if (aiNeeds.lowestNeedValue() == 0)
         {
-            stateMachine.ChangeState(SeekExit.Instance);
+            
         }
         UpdateSliders();
     }

@@ -63,7 +63,7 @@ public class EatState : State<AI>
         else
         {
             _owner.currentTarget.GetComponent<Buildable>().hasBeenUsed();
-            _owner.stateMachine.ChangeState(SeekNextNeedState.Instance);
+           // _owner.stateMachine.ChangeState(SeekNextNeedState.Instance);
            
         }
     }

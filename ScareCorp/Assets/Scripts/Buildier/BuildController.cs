@@ -161,6 +161,7 @@ public class BuildController : MonoBehaviour {
             {
                 foreach (GameObject Obj in objectsToDelete)
                 {
+                   
                     Obj.GetComponent<BuildOnGrid>().SetCanBuildOnGrid(true);
                     Destroy(Obj.transform.GetChild(0).gameObject);
                 }

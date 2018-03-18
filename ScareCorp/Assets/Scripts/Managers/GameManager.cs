@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using needTypes;
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
     public List<Transform> wayPointList;
@@ -26,8 +27,10 @@ public class GameManager : MonoBehaviour {
     public float screamPoints;
     public float time;
     public float day;
-
-
+    [Header("UI")]
+    public Text bedCountUI;
+    int maxBeds;
+    int takenBeds;
     void Awake()
     {
         if (instance == null)
@@ -41,6 +44,10 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(this.gameObject);
         ObjectsAddedEvent();
         screamPoints = 2000;
+        //UI stuff
+        maxBeds =0;
+        takenBeds = 0;
+        UpdateBedCountUI();
     }
 
     private void Update()
@@ -59,10 +66,12 @@ public class GameManager : MonoBehaviour {
             if(obj != null)
             {
                 bed = obj;
+                takenBeds++;
                 break;
             }
         }
         tirednessObjects.Remove(bed);
+         UpdateBedCountUI();
         return bed;
     }
     
@@ -71,6 +80,7 @@ public class GameManager : MonoBehaviour {
         if(!tirednessObjects.Contains(bed))
         {
             tirednessObjects.Add(bed);
+            
         }
     }
     public void ClearObjects()
@@ -107,6 +117,7 @@ public class GameManager : MonoBehaviour {
                 default:
                     break;
             }
+            UpdateBedCountUI();
         }
         StartCoroutine(WaitforSeconds(1));
     }
@@ -118,19 +129,23 @@ public class GameManager : MonoBehaviour {
             switch (obj.GetComponent<Buildable>().needtype)
             {
                 case eNeedTypes.boredom:
-                    boredomObjects.Remove(obj);
+                    if(boredomObjects.Contains(obj))
+                        boredomObjects.Remove(obj);
                     break;
                 case eNeedTypes.hidden:
 
                     break;
                 case eNeedTypes.hunger:
-                    hungerObjects.Remove(obj);
+                    if(hungerObjects.Contains(obj))
+                        hungerObjects.Remove(obj);
                     break;
                 case eNeedTypes.hygiene:
-                    hygieneObjects.Remove(obj);
+                    if(hygieneObjects.Contains(obj))
+                        hygieneObjects.Remove(obj);
                     break;
                 case eNeedTypes.tiredness:
-                    tirednessObjects.Remove(obj);
+                    if(tirednessObjects.Contains(obj))
+                        tirednessObjects.Remove(obj);
                     break;
                 case eNeedTypes.none:
                     break;
@@ -155,8 +170,25 @@ public class GameManager : MonoBehaviour {
             ToggleTopWalls();
         }
     }
-
-
+    public bool FreeBedCheck()
+    {
+        if ((maxBeds - takenBeds) > 0)
+        {
+            return true;
+        }
+        return false;
+        
+    }
+    public void AddToBedCount(int n)
+    {
+        maxBeds += n;
+        UpdateBedCountUI();
+    }
+    public void AddToTakenBeds(int n)
+    {
+        takenBeds += n;
+        UpdateBedCountUI();
+    }
     void ObjectsAddedEvent()
     {
         if (ObjectAdd != null)
@@ -182,7 +214,12 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-
+    public void UpdateBedCountUI()
+    {
+       
+        DebugConsole.Log(tirednessObjects.Count.ToString());
+        bedCountUI.text = "Beds: " + takenBeds + "/" + maxBeds + "";
+    }
 
 
 

@@ -58,9 +58,7 @@ public class VisitorSpawner : MonoBehaviour {
             {
                 vis.GetComponent<MoveTowards>().FastForward();
             }
-
 		}
-      
 	}
 
     void OnDisable()

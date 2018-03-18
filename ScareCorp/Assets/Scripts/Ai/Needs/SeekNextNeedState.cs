@@ -51,20 +51,20 @@ public class SeekNextNeedState : State<AI>
                 switch (currentTarget.GetComponent<Buildable>().needtype)
                 {
                     case eNeedTypes.boredom:
-                        _owner.stateMachine.ChangeState(EntertainmentState.Instance);
+                     //   _owner.stateMachine.ChangeState(EntertainmentState.Instance);
                         break;
 
                     case eNeedTypes.hunger:
-                        _owner.stateMachine.ChangeState(EatState.Instance);
+                    //    _owner.stateMachine.ChangeState(EatState.Instance);
                         break;
 
                     case eNeedTypes.hygiene:
-                        _owner.stateMachine.ChangeState(CleanState.Instance);
+                 //       _owner.stateMachine.ChangeState(CleanState.Instance);
                         break;
 
                     case eNeedTypes.tiredness:
                     
-                        _owner.stateMachine.ChangeState(SleepState.Instance);
+                   //     _owner.stateMachine.ChangeState(SleepState.Instance);
                         break;
                 }
             }
@@ -95,7 +95,7 @@ public class SeekNextNeedState : State<AI>
                 _owner.gameObject.GetComponent<Visitor>().SetNextFearObject(hit.transform.gameObject);
                 if (!_owner.usedScares.Contains(_owner.fearTarget))
                 {
-                    _owner.stateMachine.ChangeState(ScaredState.Instance);
+             //       _owner.stateMachine.ChangeState(ScaredState.Instance);
                 }
             }
         }

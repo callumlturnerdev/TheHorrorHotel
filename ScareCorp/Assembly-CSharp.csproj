@@ -106,6 +106,7 @@
      <Compile Include="Assets\Retro Bit FX\Scripts\SmoothCameraOrbit.cs" />
      <Compile Include="Assets\SaveButton.cs" />
      <Compile Include="Assets\Scripts\Ai\AI.cs" />
+     <Compile Include="Assets\Scripts\Ai\AI_StateNeeds.cs" />
      <Compile Include="Assets\Scripts\Ai\MoveTowards.cs" />
      <Compile Include="Assets\Scripts\Ai\Needs\AIFears.cs" />
      <Compile Include="Assets\Scripts\Ai\Needs\AINeeds.cs" />

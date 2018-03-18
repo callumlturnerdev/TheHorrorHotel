@@ -35,6 +35,7 @@ public class TimeManager : MonoBehaviour {
     public static event ClickAction PlayRateChange;
     public static event ClickAction timeStopped;
     public static event ClickAction HourTick;
+    public static event ClickAction MinuteTick;
 
     void Awake () {
         if (instance == null)
@@ -55,6 +56,7 @@ public class TimeManager : MonoBehaviour {
     IEnumerator WaitforSeconds(float time)
     {
         yield return new WaitForSeconds(playRate);
+        MinutePassed();
         InterateTime();
     }
 
@@ -119,7 +121,13 @@ public class TimeManager : MonoBehaviour {
         }
     }
 
-
+    private void MinutePassed()
+    {
+        if(MinuteTick != null)
+        {
+            MinuteTick();
+        }
+    }
     private void HourPassed()
     {
         if (HourTick != null)

@@ -50,19 +50,21 @@ public class CarSpawner : MonoBehaviour {
 
     public void SpawnMoreCars(int num)
     {
-        for (int i = 0; i < num; i++)
+        if(GameManager.instance.FreeBedCheck())
         {
-
-            GameObject car = Instantiate(carType) as GameObject;
-            car.GetComponent<Car>().passengers = 1;
-            car.transform.position = transform.position;
-            car.SetActive(true);
-            car.transform.position = transform.position;
-            if (spawnFF)
+            for (int i = 0; i < num; i++)
             {
-                //car.GetComponent<Car>().FastForward();
+                GameManager.instance.AddToTakenBeds(1);
+                GameObject car = Instantiate(carType) as GameObject;
+                car.GetComponent<Car>().passengers = 1;
+                car.transform.position = transform.position;
+                car.SetActive(true);
+                car.transform.position = transform.position;
+                if (spawnFF)
+                {
+                    //car.GetComponent<Car>().FastForward();
+                }
             }
-
         }
 
     }

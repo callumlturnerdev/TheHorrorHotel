@@ -57,7 +57,7 @@ public class NeedScanState : State<AI>
 
        if (_owner.CheckifCountDownElapsed(6) )
         {
-            _owner.stateMachine.ChangeState(SeekNextNeedState.Instance);
+         //   _owner.stateMachine.ChangeState(SeekNextNeedState.Instance);
         }
       
     }

@@ -31,7 +31,9 @@ public class Buildable : MonoBehaviour {
                 if (!GameManager.instance.hygieneObjects.Contains(this.gameObject)) { GameManager.instance.hygieneObjects.Add(this.gameObject); }
                 break;
             case eNeedTypes.tiredness:
-                if (!GameManager.instance.tirednessObjects.Contains(this.gameObject)) { GameManager.instance.tirednessObjects.Add(this.gameObject); }
+                if (!GameManager.instance.tirednessObjects.Contains(this.gameObject)) { GameManager.instance.tirednessObjects.Add(this.gameObject);
+                    GameManager.instance.AddToBedCount(1);
+                 }
                 break;
             case eNeedTypes.hidden:
                 if (!GameManager.instance.hidingPlaces.Contains(this.gameObject)) { GameManager.instance.hidingPlaces.Add(this.gameObject); }
@@ -52,6 +54,22 @@ public class Buildable : MonoBehaviour {
         Destroy(rb);
     }
 
+    void UnassignBed()
+    {
+       if (!GameManager.instance.tirednessObjects.Contains(this.gameObject)) 
+       { 
+           GameManager.instance.tirednessObjects.Add(this.gameObject);
+       }
+    }
+  
+    void OnDestroy()
+    {
+        if(GameManager.instance)
+        {
+            GameManager.instance.RemoveObject(this.gameObject);
+            GameManager.instance.AddToBedCount(-1);
+        }
+    }
     public void hasBeenUsed()
     {
         uses -= 1;
