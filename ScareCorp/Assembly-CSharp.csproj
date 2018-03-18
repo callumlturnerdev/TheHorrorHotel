@@ -57,6 +57,7 @@
      <Compile Include="Assets\Characters\Visitor.cs" />
      <Compile Include="Assets\Characters\VisitorSpawner.cs" />
      <Compile Include="Assets\FlipUVs.cs" />
+     <Compile Include="Assets\FollowCursor.cs" />
      <Compile Include="Assets\MinimizeButton.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />

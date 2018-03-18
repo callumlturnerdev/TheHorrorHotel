@@ -39,6 +39,7 @@ public class Buildable : MonoBehaviour {
                 if (!GameManager.instance.hidingPlaces.Contains(this.gameObject)) { GameManager.instance.hidingPlaces.Add(this.gameObject); }
                 break;
         }
+        /* 
         if ( transform.childCount > 0 )
         {
             if (transform.GetChild(0).GetComponent<Rigidbody>() != null)
@@ -47,7 +48,30 @@ public class Buildable : MonoBehaviour {
                 StartCoroutine(DestroyRigidBodies());
             }
         }
+        */
 	}
+
+    public void ActivateGravity()
+    {
+        DebugConsole.Log("working");
+        if(gameObject.GetComponent<Rigidbody>())
+        {
+            gameObject.GetComponent<Rigidbody>().useGravity = true;
+            StartCoroutine(DestroyRigidBodies());
+        }
+        else
+        {
+            if(transform.childCount > 0)
+            {
+                if (transform.GetChild(0).GetComponent<Rigidbody>() != null)
+                {
+                    rb = transform.GetChild(0).GetComponent<Rigidbody>();
+                    rb.useGravity = true;
+                    StartCoroutine(DestroyRigidBodies());
+                }
+            }
+        }
+    }
     IEnumerator DestroyRigidBodies()
     {
         yield return new WaitForSeconds(3);

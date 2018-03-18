@@ -264,7 +264,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -392,6 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc7395d5b49ab844a2dea1d9e567b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggerLineMat: {fileID: 0}
   triggered: 0
   canCreateLink: 0
 --- !u!114 &114940061875322268
@@ -405,6 +406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc7395d5b49ab844a2dea1d9e567b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggerLineMat: {fileID: 0}
   triggered: 0
   canCreateLink: 0
 --- !u!120 &120411600924225022

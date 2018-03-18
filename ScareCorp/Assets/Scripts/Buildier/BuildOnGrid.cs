@@ -163,6 +163,7 @@ public class BuildOnGrid : MonoBehaviour {
         GameObject obj = Instantiate(tempToBuild) as GameObject;
                     ObjectBuiltOnGrid = obj;
                     obj.transform.parent = this.transform;
+                    obj.GetComponent<Buildable>().ActivateGravity();
                     GameManager.instance.AddObject(this.gameObject);
                     obj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z);
                     //canBuildOn = false;

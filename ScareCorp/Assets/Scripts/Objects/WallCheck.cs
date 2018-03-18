@@ -39,7 +39,7 @@ public class WallCheck : MonoBehaviour {
 
 	public void ChangeMesh(Mesh newMesh)
 	{
-		rend.GetComponent<MeshFilter> ().sharedMesh = newMesh;
+		//rend.GetComponent<MeshFilter> ().sharedMesh = newMesh;
 	}
 
 	void Update()

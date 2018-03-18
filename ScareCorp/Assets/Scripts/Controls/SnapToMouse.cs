@@ -16,7 +16,7 @@ public class SnapToMouse : MonoBehaviour
     public Transform closestGrid;
     public bool SelectSystem = false;
     bool deleteModeOn = false;
-
+    public GameObject currentObjectOnCursor;
 
     bool snapX = false;
     bool currentlySelecting = false;
@@ -33,6 +33,9 @@ public class SnapToMouse : MonoBehaviour
       
        
     }
+
+   // public void SetCurrentObjectOnCursor(GameObject )
+
     void OnTriggerStay(Collider other)
     {
         if (boxType.GetComponent<WallCheck>().GetCollisionCount() > 0 || boxType.GetComponent<WallCheck>().isOnWall == false)
@@ -72,8 +75,8 @@ public class SnapToMouse : MonoBehaviour
             mouseIsDown = false;
         }
         boxType.transform.rotation = Quaternion.Euler(0, BuildController.instance.GetRotation(), 0);
-        boxType.GetComponent<WallCheck>().ChangeMesh(BuildController.instance.GetCurrentObject().GetComponent<MeshFilter>().sharedMesh);
-        boxType.transform.localScale = BuildController.instance.GetCurrentObject().transform.localScale;
+        //boxType.GetComponent<WallCheck>().ChangeMesh(BuildController.instance.GetCurrentObject().GetComponent<MeshFilter>().sharedMesh);
+        //boxType.transform.localScale = BuildController.instance.GetCurrentObject().transform.localScale;
         cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         int layer_mask;
         layer_mask = LayerMask.GetMask("Grid", "Builder");
