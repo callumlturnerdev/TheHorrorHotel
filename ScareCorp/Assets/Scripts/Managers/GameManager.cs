@@ -66,7 +66,6 @@ public class GameManager : MonoBehaviour {
             if(obj != null)
             {
                 bed = obj;
-                takenBeds++;
                 break;
             }
         }

@@ -179,8 +179,6 @@ public class AI : MonoBehaviour
    
     private void Update()
     {
-        
-       
         hunger = gameObject.GetComponent<AINeeds>().GetHunger();
         UpdateNeeds();
     }
