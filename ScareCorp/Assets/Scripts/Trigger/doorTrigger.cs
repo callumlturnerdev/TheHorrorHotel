@@ -29,6 +29,17 @@ public class doorTrigger : TriggerBase {
             anim.SetBool("Open", true);
             triggered = true;
             beenUsed = true;
+
+            if (linkedTrigger != null)
+            {
+                if (triggered == true)
+                {
+                    LightUpLineRend(triggerLineMat);
+                    linkedTrigger.ObjectEvent();
+                }
+            }
+            StartCoroutine(resetTrigger());
+
             StartCoroutine(CloseDoor());
     }
     

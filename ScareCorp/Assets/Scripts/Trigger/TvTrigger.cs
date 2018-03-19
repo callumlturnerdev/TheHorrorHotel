@@ -10,7 +10,7 @@ public class TvTrigger : TriggerBase {
     private Transform spawnPos;
     private void OnEnable()
     {
-        anim = transform.GetChild(1).GetComponent<Animator>();
+        anim = transform.GetChild(0).GetComponent<Animator>();
         spawnPos = gameObject.transform.Find("SpawnPoint");
         //zombie = this.transform.Find("Zombie").gameObject;
     }
@@ -18,7 +18,7 @@ public class TvTrigger : TriggerBase {
     protected override void Init()
     {
         base.Init();
-        anim = transform.GetChild(1).GetComponent<Animator>();
+        anim = transform.GetChild(0).GetComponent<Animator>();
     }
 
 

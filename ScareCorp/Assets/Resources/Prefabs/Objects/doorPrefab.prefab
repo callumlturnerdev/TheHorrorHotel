@@ -28,8 +28,7 @@ GameObject:
   - component: {fileID: 120411600924225022}
   - component: {fileID: 114870034675664578}
   - component: {fileID: 54694902855122954}
-  - component: {fileID: 114133803592208516}
-  - component: {fileID: 114926759145220764}
+  - component: {fileID: 114627582376366264}
   m_Layer: 8
   m_Name: doorPrefab
   m_TagString: Door
@@ -349,7 +348,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114133803592208516
+--- !u!114 &114627582376366264
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -357,10 +356,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1089833075040286}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d6ed70e9e2cdc449b24561f432f3d14, type: 3}
+  m_Script: {fileID: 11500000, guid: 39e452eca619a6943bfd2f671725f219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linkedSender: {fileID: 0}
+  linkedReceiver: {fileID: 0}
+  defaultMat: {fileID: 2100000, guid: 8c12cd75dfd7e3a4d9db6f6534e6ca7c, type: 2}
 --- !u!114 &114870034675664578
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -372,6 +372,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dbf6c63e1d39b144b1618f210c97ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floatingTextObj: {fileID: 1040756802173086, guid: e1d3d1bf190788145b413cd7f7ea4de7,
+    type: 2}
+  particleTimer: 0.6
   objectID: 5
   index: 0
   needtype: 0
@@ -381,20 +384,8 @@ MonoBehaviour:
   itemCost: 50
   priority: 5
   largeObject: 0
---- !u!114 &114926759145220764
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1089833075040286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fc7395d5b49ab844a2dea1d9e567b03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerLineMat: {fileID: 0}
-  triggered: 0
-  canCreateLink: 0
+  particleSmoke: {fileID: 1828968560238090, guid: ea773fed8314f4144a294a382ee98f84,
+    type: 2}
 --- !u!114 &114940061875322268
 MonoBehaviour:
   m_ObjectHideFlags: 1

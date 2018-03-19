@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedReceiver: {fileID: 0}
+  defaultMat: {fileID: 0}
 --- !u!114 &114194425795479782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,6 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92a0e174bd06843438ae90ee9e41805d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggerLineMat: {fileID: 0}
   triggered: 0
   canCreateLink: 0
 --- !u!114 &114584121909051678
@@ -166,6 +168,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dbf6c63e1d39b144b1618f210c97ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floatingTextObj: {fileID: 1040756802173086, guid: e1d3d1bf190788145b413cd7f7ea4de7,
+    type: 2}
+  particleTimer: 0.6
   objectID: 8
   index: 0
   needtype: 0
@@ -175,6 +180,8 @@ MonoBehaviour:
   itemCost: 50
   priority: 0
   largeObject: 0
+  particleSmoke: {fileID: 1828968560238090, guid: ea773fed8314f4144a294a382ee98f84,
+    type: 2}
 --- !u!114 &114880730335032252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -186,6 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92a0e174bd06843438ae90ee9e41805d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggerLineMat: {fileID: 0}
   triggered: 0
   canCreateLink: 0
 --- !u!120 &120061704120403614

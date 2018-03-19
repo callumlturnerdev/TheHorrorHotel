@@ -34,12 +34,14 @@ public class TriggerReceiver : MonoBehaviour {
 	{
 		if(Input.GetMouseButtonDown(0))
 		{
-			if(BuildController.instance.GetCurrentBuildMode() != eBuildMode.trigger)
+			/*if(BuildController.instance.GetCurrentBuildMode() != eBuildMode.trigger)
 			{
 				BuildController.instance.TrigggerMode(true);
+			}*/
+			if(BuildController.instance.GetCurrentBuildMode() == eBuildMode.trigger)
+			{
+				TriggerLinker.instance.SetCurrentReceiver(this.gameObject);
 			}
-
-			TriggerLinker.instance.SetCurrentReceiver(this.gameObject);
 		}
 	}
 

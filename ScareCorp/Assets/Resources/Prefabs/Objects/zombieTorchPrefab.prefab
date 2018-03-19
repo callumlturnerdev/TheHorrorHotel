@@ -223,10 +223,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902811d64180da94b8fb49cfb807afaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentTrigger: {fileID: 0}
-  otherTrigger: {fileID: 0}
-  triggerObject: {fileID: 0}
+  triggerLineMat: {fileID: 0}
   triggered: 0
+  canCreateLink: 0
+  particleObj: {fileID: 0}
 --- !u!114 &114209866766431738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -238,13 +238,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dbf6c63e1d39b144b1618f210c97ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floatingTextObj: {fileID: 1040756802173086, guid: e1d3d1bf190788145b413cd7f7ea4de7,
+    type: 2}
+  particleTimer: 0.6
   objectID: 16
   index: 0
   needtype: 0
+  fearType: 0
   uses: 0
   needFulfillment: 0
   itemCost: 10
   priority: 0
+  largeObject: 0
+  particleSmoke: {fileID: 1828968560238090, guid: ea773fed8314f4144a294a382ee98f84,
+    type: 2}
 --- !u!114 &114366090593237096
 MonoBehaviour:
   m_ObjectHideFlags: 1

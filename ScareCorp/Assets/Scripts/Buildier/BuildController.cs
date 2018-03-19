@@ -16,7 +16,8 @@ namespace buildModes
 /// </summary>
 public class BuildController : MonoBehaviour {
     
-   
+    public Text buildModeUI;
+    public GameObject CursorObj;
 	public static BuildController instance = null;
     private eBuildMode currentBuildMode = eBuildMode.building;
     public List<GameObject> objectsToDelete;
@@ -63,6 +64,10 @@ public class BuildController : MonoBehaviour {
     public void SetScreamPoints(float newVal) { screamPoints = newVal; UpdateHUD(); }
     public eBuildMode GetCurrentBuildMode() { return currentBuildMode; }
 
+    void SetBuildModeUI(string t)
+    {
+        buildModeUI.text = t;
+    }
 	void Init()
 	{
         currentObject = defaultBuildObject;
@@ -152,6 +157,7 @@ public class BuildController : MonoBehaviour {
     {
        
         inDeleteMode = !inDeleteMode;
+         SetBuildModeUI("Delete Mode");
         heldObjectRef.GetComponent<WallCheck>().SetCollisionCount(0);
 
         if (inDeleteMode == false)
@@ -179,6 +185,7 @@ public class BuildController : MonoBehaviour {
     {
         if(t)
         {
+            SetBuildModeUI("Trigger Mode");
             currentBuildMode = eBuildMode.trigger;
             DebugConsole.Log("In Trigger Mode");
         }
@@ -193,6 +200,7 @@ public class BuildController : MonoBehaviour {
     {
         if (t)
         {
+             SetBuildModeUI("Waypoint Mode");
             currentBuildMode = eBuildMode.waypoints;
         }
         else
@@ -235,6 +243,7 @@ public class BuildController : MonoBehaviour {
             rotZ += 90; 
             } 
             rotated = !rotated; 
+             CursorObj.GetComponent<FollowCursor>().SetRotation(rotZ);
         }
 	}
 
@@ -242,8 +251,10 @@ public class BuildController : MonoBehaviour {
 	public void SetBuildObject(GameObject newObject)
 	{
         lastBuildObject = currentObject;
+         SetBuildModeUI("Build Mode");
         if (newObject == null) { currentObject = defaultBuildObject; }
 		currentObject = newObject;
+        CursorObj.GetComponent<FollowCursor>().SetHeldObject(currentObject);
         if (currentObject.tag == "onWall")
         {
             currentBuildMode = eBuildMode.building;

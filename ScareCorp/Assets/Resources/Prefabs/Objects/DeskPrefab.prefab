@@ -223,7 +223,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1812325612391762}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.758, y: 6.75, z: 0.432}
+  m_LocalPosition: {x: -0.758, y: 6.75, z: 0.488}
   m_LocalScale: {x: 0.86206895, y: 0.86206895, z: 0.86206895}
   m_Children:
   - {fileID: 4558902622844972}
@@ -322,7 +322,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1714148730680310}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.591618, y: 0.62510306, z: 17.567703}
+  m_LocalPosition: {x: 19.779722, y: 0.62510306, z: -15.636095}
   m_LocalScale: {x: 1.16, y: 1.16, z: 1.16}
   m_Children:
   - {fileID: 4102676405666770}
@@ -842,6 +842,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dbf6c63e1d39b144b1618f210c97ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floatingTextObj: {fileID: 1040756802173086, guid: e1d3d1bf190788145b413cd7f7ea4de7,
+    type: 2}
+  particleTimer: 0.6
   objectID: 21
   index: 0
   needtype: 0
@@ -851,6 +854,8 @@ MonoBehaviour:
   itemCost: 25
   priority: 0
   largeObject: 0
+  particleSmoke: {fileID: 1828968560238090, guid: ea773fed8314f4144a294a382ee98f84,
+    type: 2}
 --- !u!208 &208615536406800420
 NavMeshObstacle:
   m_ObjectHideFlags: 1

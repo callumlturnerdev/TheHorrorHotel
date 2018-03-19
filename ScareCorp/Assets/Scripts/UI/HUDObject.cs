@@ -24,7 +24,7 @@ public class HUDObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         infoPanel = GameObject.FindGameObjectWithTag("UIInfoPanel").GetComponent<UIInfoPanel>();
         image = GetComponent<Image>();
-        itemCost = this.gameObject.transform.GetChild(0).gameObject.GetComponent<Text>();
+        itemCost = this.gameObject.transform.GetChild(1).gameObject.GetComponent<Text>();
         cost = itemToBuild.GetComponent<Buildable>().GetCost();
         itemCost.text = " " + cost;
     }

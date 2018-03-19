@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using needTypes;
 using fearTypes;
+using UnityEngine.UI;
 public class Buildable : MonoBehaviour {
+
+    public GameObject floatingTextObj;
+    public float particleTimer;
     public int objectID;
     public int index;
     public eNeedTypes needtype;
@@ -17,6 +21,7 @@ public class Buildable : MonoBehaviour {
     [SerializeField]
     private bool largeObject = false; // TEMP VARIABLE FOR DETERMINING HOW MANY GRID SLOTS TO USE WHEN BUILDING
     Rigidbody rb;
+    public GameObject particleSmoke;
     // Use this for initialization
     void Start() {
         switch (needtype)
@@ -53,6 +58,9 @@ public class Buildable : MonoBehaviour {
 
     public void ActivateGravity()
     {
+       
+         //obj.transform.position = transform.position;
+
         DebugConsole.Log("working");
         if(gameObject.GetComponent<Rigidbody>())
         {
@@ -70,14 +78,33 @@ public class Buildable : MonoBehaviour {
                     StartCoroutine(DestroyRigidBodies());
                 }
             }
+             
         }
+        StartCoroutine(PlaySmokeParticle(particleTimer));
+          
+        
     }
     IEnumerator DestroyRigidBodies()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(3.0f);
+           
         Destroy(rb);
     }
-
+    IEnumerator PlaySmokeParticle(float t)
+    {
+        yield return new WaitForSeconds(t);
+        Vector3 trans = new Vector3(this.transform.position.x,this.transform.position.y,this.transform.position.z);
+        GameObject obj = Instantiate(particleSmoke) as GameObject;
+        GameObject floatText = Instantiate(floatingTextObj) as GameObject;
+        floatText.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Text>().text = "-" + itemCost;
+        floatText.transform.parent = this.transform;
+      
+        Vector3 floatTrans = new Vector3(gameObject.transform.position.x-20,gameObject.transform.position.y,gameObject.transform.position.z);
+          floatText.transform.position = floatTrans;
+        floatText.transform.rotation = Quaternion.Euler(0,0,0);
+        obj.transform.parent = this.transform;
+        obj.transform.position = this.gameObject.transform.position;
+    }
     void UnassignBed()
     {
        if (!GameManager.instance.tirednessObjects.Contains(this.gameObject)) 

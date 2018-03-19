@@ -480,7 +480,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dbf6c63e1d39b144b1618f210c97ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectID: 19
+  floatingTextObj: {fileID: 1040756802173086, guid: e1d3d1bf190788145b413cd7f7ea4de7,
+    type: 2}
+  particleTimer: 0.6
+  objectID: 25
   index: 0
   needtype: 0
   fearType: 1
@@ -489,6 +492,8 @@ MonoBehaviour:
   itemCost: 100
   priority: 1
   largeObject: 0
+  particleSmoke: {fileID: 1828968560238090, guid: ea773fed8314f4144a294a382ee98f84,
+    type: 2}
 --- !u!114 &114757035779686044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -504,6 +509,7 @@ MonoBehaviour:
     type: 2}
   waypoints: []
   currentWaypoint: 0
+  currentWayPointobj: {fileID: 0}
 --- !u!120 &120819987033738894
 LineRenderer:
   m_ObjectHideFlags: 1
