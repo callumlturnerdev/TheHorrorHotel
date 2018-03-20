@@ -217,6 +217,7 @@ public class GameManager : MonoBehaviour {
     {
        
         DebugConsole.Log(tirednessObjects.Count.ToString());
+       // maxBeds = tirednessObjects.Count;
         bedCountUI.text = "Beds: " + takenBeds + "/" + maxBeds + "";
     }
 

@@ -216,8 +216,8 @@ MonoBehaviour:
   isOver: 0
   itemToBuild: {fileID: 1247548494817400, guid: 9a78d7421ff374646832b5db8feb576e,
     type: 2}
-  name: Chair
-  description: Simple Decoration
+  name: Torch
+  description: Simple Decoration. Can be linked with trigger.
   DeleteModeObj: 0
 --- !u!114 &114972266819356164
 MonoBehaviour:

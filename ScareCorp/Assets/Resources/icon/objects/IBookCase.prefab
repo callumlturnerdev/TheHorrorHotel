@@ -216,8 +216,8 @@ MonoBehaviour:
   isOver: 0
   itemToBuild: {fileID: 1617828478820854, guid: 857ea20b3edf35e4d90a509bcb9b39cd,
     type: 2}
-  name: Chair
-  description: Simple Decoration
+  name: BookCase
+  description: Restores Boredom.
   DeleteModeObj: 0
 --- !u!114 &114972266819356164
 MonoBehaviour:

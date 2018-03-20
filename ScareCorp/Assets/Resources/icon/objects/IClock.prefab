@@ -216,8 +216,8 @@ MonoBehaviour:
   isOver: 0
   itemToBuild: {fileID: 1152730472968126, guid: c299e4b0a94119a43bd3d5b1860546af,
     type: 2}
-  name: Chair
-  description: Simple Decoration
+  name: Clock
+  description: Decoration, Can be linked to make sounds.
   DeleteModeObj: 0
 --- !u!114 &114972266819356164
 MonoBehaviour:

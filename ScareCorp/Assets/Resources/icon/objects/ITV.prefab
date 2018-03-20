@@ -216,8 +216,8 @@ MonoBehaviour:
   isOver: 0
   itemToBuild: {fileID: 1907172457091012, guid: 9b488b7d3dc558949a4010df229bd304,
     type: 2}
-  name: Chair
-  description: Simple Decoration
+  name: TV
+  description: Simple Decoration. Can be linked to trigger for AOE scare.
   DeleteModeObj: 0
 --- !u!114 &114972266819356164
 MonoBehaviour:

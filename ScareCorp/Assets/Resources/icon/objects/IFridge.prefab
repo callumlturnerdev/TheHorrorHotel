@@ -216,8 +216,8 @@ MonoBehaviour:
   isOver: 0
   itemToBuild: {fileID: 1588686329343062, guid: 166e5bdceffb056409900ec803c2474b,
     type: 2}
-  name: Chair
-  description: Simple Decoration
+  name: Fridge
+  description: Restores Hunger
   DeleteModeObj: 0
 --- !u!114 &114972266819356164
 MonoBehaviour:

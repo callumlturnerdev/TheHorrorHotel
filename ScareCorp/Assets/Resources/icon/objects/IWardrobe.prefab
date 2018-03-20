@@ -216,8 +216,8 @@ MonoBehaviour:
   isOver: 0
   itemToBuild: {fileID: 1838108299631010, guid: c8b893d4aeb80cc44b8d31d2277d32ee,
     type: 2}
-  name: Chair
-  description: Simple Decoration
+  name: Wardrobe
+  description: HideSpot. Can be linked with trigger for scare.
   DeleteModeObj: 0
 --- !u!114 &114972266819356164
 MonoBehaviour:

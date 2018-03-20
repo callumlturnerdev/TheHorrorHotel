@@ -216,8 +216,8 @@ MonoBehaviour:
   isOver: 0
   itemToBuild: {fileID: 1518198806118924, guid: 98b781c7845fa7545ac5221fc1bf5521,
     type: 2}
-  name: Chair
-  description: Simple Decoration
+  name: Painting
+  description: Decoration. Visit /Images in the dir to import your own.
   DeleteModeObj: 0
 --- !u!114 &114972266819356164
 MonoBehaviour:

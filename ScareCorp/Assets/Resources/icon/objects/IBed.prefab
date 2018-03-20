@@ -216,8 +216,8 @@ MonoBehaviour:
   isOver: 0
   itemToBuild: {fileID: 1354544052113804, guid: 5bbf105808f636f47a6c64869b1734ff,
     type: 2}
-  name: Chair
-  description: Simple Decoration
+  name: Bed
+  description: Restores Tiredness. Increases Max Visitors
   DeleteModeObj: 0
 --- !u!114 &114972266819356164
 MonoBehaviour:

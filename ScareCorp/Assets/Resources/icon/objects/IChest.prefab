@@ -149,7 +149,7 @@ MonoBehaviour:
   isOver: 0
   itemToBuild: {fileID: 1312224425314564, guid: ba307ab1fce6250438a097f449d28529,
     type: 2}
-  name: Chair
+  name: Chest
   description: Simple Decoration
   DeleteModeObj: 0
 --- !u!114 &114446518171535278

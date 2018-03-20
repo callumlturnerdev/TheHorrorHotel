@@ -216,8 +216,8 @@ MonoBehaviour:
   isOver: 0
   itemToBuild: {fileID: 1876213373785872, guid: 9fa8c92fddec2f345af7089cf3c47e7c,
     type: 2}
-  name: Chair
-  description: Simple Decoration
+  name: BodyBuster
+  description: Simple AOE Trigger Scare.
   DeleteModeObj: 0
 --- !u!114 &114972266819356164
 MonoBehaviour:

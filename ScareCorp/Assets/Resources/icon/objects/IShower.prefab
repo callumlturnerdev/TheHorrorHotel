@@ -216,8 +216,8 @@ MonoBehaviour:
   isOver: 0
   itemToBuild: {fileID: 1161099320574962, guid: 5d73b584b9d07d04091246f0cf724990,
     type: 2}
-  name: Chair
-  description: Simple Decoration
+  name: Shower
+  description: Restores Hygiene.
   DeleteModeObj: 0
 --- !u!114 &114972266819356164
 MonoBehaviour:

@@ -24,7 +24,22 @@ public class Buildable : MonoBehaviour {
     public GameObject particleSmoke;
     // Use this for initialization
     void Start() {
-        switch (needtype)
+        
+        /* 
+        if ( transform.childCount > 0 )
+        {
+            if (transform.GetChild(0).GetComponent<Rigidbody>() != null)
+            {
+                rb = transform.GetChild(0).GetComponent<Rigidbody>();
+                StartCoroutine(DestroyRigidBodies());
+            }
+        }
+        */
+	}
+
+    public void ActivateGravity()
+    {
+       switch (needtype)
         {
             case eNeedTypes.boredom:
                 if (!GameManager.instance.boredomObjects.Contains(this.gameObject)) { GameManager.instance.boredomObjects.Add(this.gameObject); }
@@ -44,21 +59,6 @@ public class Buildable : MonoBehaviour {
                 if (!GameManager.instance.hidingPlaces.Contains(this.gameObject)) { GameManager.instance.hidingPlaces.Add(this.gameObject); }
                 break;
         }
-        /* 
-        if ( transform.childCount > 0 )
-        {
-            if (transform.GetChild(0).GetComponent<Rigidbody>() != null)
-            {
-                rb = transform.GetChild(0).GetComponent<Rigidbody>();
-                StartCoroutine(DestroyRigidBodies());
-            }
-        }
-        */
-	}
-
-    public void ActivateGravity()
-    {
-       
          //obj.transform.position = transform.position;
 
         DebugConsole.Log("working");
@@ -118,7 +118,7 @@ public class Buildable : MonoBehaviour {
         if(GameManager.instance)
         {
             GameManager.instance.RemoveObject(this.gameObject);
-            GameManager.instance.AddToBedCount(-1);
+           // GameManager.instance.AddToBedCount(-1);
         }
     }
     public void hasBeenUsed()

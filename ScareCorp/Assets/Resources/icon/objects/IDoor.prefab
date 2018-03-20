@@ -216,8 +216,8 @@ MonoBehaviour:
   isOver: 0
   itemToBuild: {fileID: 1089833075040286, guid: 03a075b104917b94588236efe6311d9f,
     type: 2}
-  name: Chair
-  description: Simple Decoration
+  name: Door
+  description: Used to seperate rooms. Can be used as a trigger object.
   DeleteModeObj: 0
 --- !u!114 &114972266819356164
 MonoBehaviour:
