@@ -35,7 +35,9 @@ public class BuildOnGrid : MonoBehaviour {
     //Deals with multigrid objects
     GameObject linkedGrid;
 
+    int materialID;
 	void Start () {
+        materialID = 0;
         neighbourInd = 0;
         gridNeighbours = new GameObject[4];
 		myRend = GetComponent<Renderer> ();
@@ -47,12 +49,10 @@ public class BuildOnGrid : MonoBehaviour {
                 break;
             case eBuildMode.deleting:
                 break;
-
             case eBuildMode.trigger:
                 break;
             case eBuildMode.waypoints:
                 break;
-
         }
         FindConnectedGrids();
 	}
@@ -243,9 +243,12 @@ public class BuildOnGrid : MonoBehaviour {
             }
         }
     }
+
+
     public void Materials(GameObject calledGrid)
     {
         originalMat = BuildController.instance.GetCurrentObjectMaterial();
+       
         myRend.material = originalMat;
         isHighlighted = false;
         foreach(GameObject gridN in gridNeighbours)
@@ -274,6 +277,7 @@ public class BuildOnGrid : MonoBehaviour {
             ObjectBuiltOnGrid = obj;
             obj.transform.parent = this.transform;
             GameManager.instance.AddObject(this.gameObject);
+            obj.GetComponent<Buildable>().ActivateGravity();
             obj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z);
             obj.transform.rotation = Quaternion.Euler(0, Zrotation, 0);
             //canBuildOn = false;
@@ -285,7 +289,7 @@ public class BuildOnGrid : MonoBehaviour {
     }
 
 
-   
+  
 	public void HighlightGird(bool a)  // USED FOR DRAG SELECTION AND ADDING OBJECTS FOR DELETION IN DELETE MODE
 	{
         isHighlighted = false;

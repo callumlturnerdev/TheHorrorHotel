@@ -8,7 +8,7 @@ using fearTypes;
 public class Visitor : MonoBehaviour
 { 
     private ParticleSystem particleSys;
-    
+    public GameObject floatingTextObj;
     private string name;
     private int daysStaying;
     private eFearTypes fear;
@@ -18,6 +18,7 @@ public class Visitor : MonoBehaviour
     Rigidbody rb;
     float maxFear = 100;
     float currentFear = 0;
+    float newFear;
     private Image fearBar;
     private NavMeshAgent agent;
     private Animator anim;
@@ -117,13 +118,43 @@ public class Visitor : MonoBehaviour
                 }
             }
         }
-       
-        currentFear += amount;
-        BuildController.instance.AddPoints(amount * 10);
+       DebugConsole.Log("WRRRRRRRRRRRRROKING");
+        newFear = currentFear + amount;
+        AddToFear();
+        
         fearSlider.value = currentFear;
-        particleSys.Play();
+        if(particleSys.isStopped)
+        {
+            particleSys.Play();
+        }
     }
 
+    IEnumerator waitforSecondsToAddfear(float f)
+    {
+        yield return new WaitForSeconds(f);
+        DebugConsole.Log("adding fear");
+        AddToFear();
+
+    }
+    void AddToFear()
+    {
+        currentFear += 1;
+         fearSlider.value = currentFear;
+         BuildController.instance.AddPoints(1 * 10);
+
+        GameObject floatText = Instantiate(floatingTextObj) as GameObject;
+        floatText.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Text>().color = Color.green;
+        floatText.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Text>().text = "+" + 1 *10;
+        floatText.transform.parent = this.transform;
+      
+        Vector3 floatTrans = new Vector3(gameObject.transform.position.x-20,gameObject.transform.position.y,gameObject.transform.position.z);
+          floatText.transform.position = floatTrans;
+        floatText.transform.rotation = Quaternion.Euler(0,0,0);
+        if(currentFear < newFear)
+        {
+            StartCoroutine(waitforSecondsToAddfear(1));
+        }
+    }
     public void TurnOffScareParticle()
     {
        // particleSys.Pause();

@@ -10,7 +10,7 @@ using UnityEngine;
 /// 
 /// 
 /// </summary>
-[ExecuteInEditMode]
+
 public class GridBuilder : MonoBehaviour {
 
 
@@ -27,9 +27,16 @@ public class GridBuilder : MonoBehaviour {
 	private int xNum,zNum;
     bool hasBeenBuilt = false;
 
-    public List<GameObject> grids;
+       List<GameObject> grids;
+     public GameObject GridContainer;
 	// Use this for initialization
 	void Start () {
+        grids = new List<GameObject>();
+         foreach(Transform grid in GridContainer.transform)
+        {
+            grids.Add(grid.gameObject);
+        }
+
         saveSys = GameObject.FindGameObjectWithTag("save").GetComponent<SavingLoading>();
 		xPos = this.transform.position.x;
 		zPos = this.transform.position.z;
@@ -95,7 +102,7 @@ public class GridBuilder : MonoBehaviour {
         DestroyAllVisitors();
     }
 
-
+    public List<GameObject> GetGrid(){return grids;}
 	void CreateGrid()
 	{
         if (!hasBeenBuilt)

@@ -32,7 +32,7 @@ public class TriggerReceiver : MonoBehaviour {
 
 	void OnMouseOver()
 	{
-		if(Input.GetMouseButtonDown(0))
+		if(Input.GetMouseButtonDown(1))
 		{
 			/*if(BuildController.instance.GetCurrentBuildMode() != eBuildMode.trigger)
 			{

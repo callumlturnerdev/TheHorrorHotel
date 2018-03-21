@@ -16,10 +16,13 @@ public class SavingLoading : MonoBehaviour
     private float currentTime;
     private float currentDay;
     public static SavingLoading saveLoad;
-    private GridBuilder gridBuilderRef;
+    public GridBuilder gridBuilderRef;
 
     public List<GameObject> currentVisitors;
-    public List<GameObject> grids;
+    [SerializeField]
+    public GameObject GridContainer;
+    
+     List<GameObject> grids;
     private ObjectFinder objFind;
 
     //string path = Application.dataPath + "/Saves";
@@ -27,6 +30,10 @@ public class SavingLoading : MonoBehaviour
     public GameObject visitorGameobject;
     private void Awake()
     {
+       
+       
+
+
         currentVisitors = new List<GameObject>();
         if (saveLoad == null)
         {
@@ -79,7 +86,7 @@ public class SavingLoading : MonoBehaviour
     }
     public void Load(string filepath)
     {
-       
+         grids = gridBuilderRef.GetGrid();
       
         if (File.Exists(Application.dataPath + "/Saves/" + filepath))
         {
@@ -94,12 +101,14 @@ public class SavingLoading : MonoBehaviour
             BuildController.instance.SetScreamPoints(data.scarepoints);
             TimeManager.instance.SetCurrentDay(data.day);
             TimeManager.instance.SetCurrentTime(data.time);
+
             // currentDay = data.day;
             // currentTime = data.time;
             for (int i = 0; i < grids.Count; i++)
             {
                 if (grids[i].GetComponent<BuildOnGrid>())
                 {
+                   // grids[i].GetComponent<BuildOnGrid>().LoadMaterial(data.matIDs[i]);
                     grids[i].GetComponent<BuildOnGrid>().LoadObject(objFind.FindObjectBasedOnID(data.objectIDs[i]), data.objectsRots[i]);
                 }
             }
@@ -111,6 +120,7 @@ public class SavingLoading : MonoBehaviour
 
     public void Save(string filepath)
     {
+         grids = gridBuilderRef.GetGrid();
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.dataPath + "/Saves/" + filepath);
         PlayerData data = new PlayerData();
@@ -122,6 +132,7 @@ public class SavingLoading : MonoBehaviour
         {
             if (grids[i].GetComponent<BuildOnGrid>())
             {
+                //data.matIDs[i] = grids[i].GetComponent<BuildOnGrid>().GetMatID();
                 if (grids[i].GetComponent<BuildOnGrid>().GetCurrentlyBuiltObject() != null)
                 {
                     GameObject obj = grids[i].GetComponent<BuildOnGrid>().GetCurrentlyBuiltObject();
@@ -208,8 +219,11 @@ public class SavingLoading : MonoBehaviour
     [Serializable]
     class PlayerData
     {
+
+
         public float[] objectsRots = new float[1300];
         public int[] objectIDs = new int[1300];
+       // public int[] matIDs =  new int[1300];
         public float scarepoints;
         public float time;
         public float day;

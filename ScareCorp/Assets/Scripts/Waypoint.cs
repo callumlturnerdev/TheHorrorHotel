@@ -13,7 +13,9 @@ public class Waypoint : MonoBehaviour {
     public GameObject previousWaypoint;
     public GameObject nextWayPoint;
 
+    Material normalMat;
 	void Awake () {
+        normalMat = this.GetComponent<MeshRenderer>().material;
         nextWayPoint = null;
         lineToMouse = true;
         line = GetComponent<LineRenderer>();
@@ -41,12 +43,23 @@ public class Waypoint : MonoBehaviour {
         nextWayPoint = nxt;
     }
 
+    public void SetMaterialBack(Material mat)
+    {
+        if(mat != null)
+        {
+            this.GetComponent<MeshRenderer>().material  = mat;
+        }
+        else
+        {
+           this.GetComponent<MeshRenderer>().material  = normalMat; 
+        }
+    }
     public void DestroyWaypoint()
     {
         monsterRef.GetComponent<MonsterBase>().RemoveWayPoint(this.gameObject);
         previousWaypoint.GetComponent<Waypoint>().SetNextWayPoint(nextWayPoint);
         nextWayPoint.GetComponent<Waypoint>().SetPreviousWayPoint(previousWaypoint);
-        monsterRef.GetComponent<MonsterBase>().SetWaypoint(nextWayPoint);
+       // monsterRef.GetComponent<MonsterBase>().SetWaypoint(nextWayPoint);
         Destroy(this.gameObject);
     }
     public void ToggleVisibiltiy()

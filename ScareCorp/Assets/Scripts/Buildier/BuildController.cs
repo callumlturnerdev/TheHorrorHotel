@@ -82,7 +82,7 @@ public class BuildController : MonoBehaviour {
         if (GameObject.FindGameObjectWithTag("ScarePoints") != null)
         {
             ScreamPointsUI = GameObject.FindGameObjectWithTag("ScarePoints").GetComponent<Text>();
-            ScreamPointsUI.text = " "  + screamPoints + " SP";
+            ScreamPointsUI.text = " "  + screamPoints;
         }
     }
 
@@ -120,6 +120,12 @@ public class BuildController : MonoBehaviour {
             paintMode = !paintMode;
         }
 
+        if(Input.GetMouseButtonDown(0) && GetCurrentBuildMode() == eBuildMode.trigger)
+        {
+            currentBuildMode = eBuildMode.building;
+            SetBuildObject(null);
+            CursorObj.GetComponent<FollowCursor>().SetHeldObject(null);
+        }
         if(Input.GetKeyDown(KeyCode.N))
         {
             UINeedsEnabled = !UINeedsEnabled;
@@ -155,13 +161,14 @@ public class BuildController : MonoBehaviour {
 
     public void DeleteMode()
     {
-       
+         currentObject = defaultBuildObject;
+         CursorObj.GetComponent<FollowCursor>().SetHeldObject(null);
         inDeleteMode = !inDeleteMode;
          SetBuildModeUI("Delete Mode");
         heldObjectRef.GetComponent<WallCheck>().SetCollisionCount(0);
-
         if (inDeleteMode == false)
         {
+            CursorObj.GetComponent<FollowCursor>().SetHeldObject(currentObject);
             currentBuildMode = eBuildMode.building;
             if (objectsToDelete.Count > 0)
             {
@@ -185,6 +192,7 @@ public class BuildController : MonoBehaviour {
     {
         if(t)
         {
+            CursorObj.GetComponent<FollowCursor>().SetHeldObject(null);
             SetBuildModeUI("Trigger Mode");
             currentBuildMode = eBuildMode.trigger;
             DebugConsole.Log("In Trigger Mode");
@@ -192,6 +200,7 @@ public class BuildController : MonoBehaviour {
         else
         {
              currentObject = lastBuildObject;
+             CursorObj.GetComponent<FollowCursor>().SetHeldObject(currentObject);
             SetBuildObject(currentObject);
             currentBuildMode = eBuildMode.building;
         }
@@ -200,12 +209,14 @@ public class BuildController : MonoBehaviour {
     {
         if (t)
         {
+            CursorObj.GetComponent<FollowCursor>().SetHeldObject(null);
              SetBuildModeUI("Waypoint Mode");
             currentBuildMode = eBuildMode.waypoints;
         }
         else
         {
             currentObject = lastBuildObject;
+            CursorObj.GetComponent<FollowCursor>().SetHeldObject(lastBuildObject);
             SetBuildObject(currentObject);
             currentBuildMode = eBuildMode.building;
            
@@ -228,7 +239,7 @@ public class BuildController : MonoBehaviour {
 
 	void SwapObject()
 	{
-		if (currentObject.tag == "onWall") {
+		if (currentObject && currentObject.tag == "onWall") {
 			
 			if (heldObjectRef.GetComponent<WallCheck> ().GetCollisionCount () < 1) {
 				rotZ += 90;
@@ -255,7 +266,7 @@ public class BuildController : MonoBehaviour {
         if (newObject == null) { currentObject = defaultBuildObject; }
 		currentObject = newObject;
         CursorObj.GetComponent<FollowCursor>().SetHeldObject(currentObject);
-        if (currentObject.tag == "onWall")
+        if (currentObject && currentObject.tag == "onWall")
         {
             currentBuildMode = eBuildMode.building;
             heldObjectRef.GetComponent<WallCheck>().SetIsOnWall(true);
@@ -265,9 +276,10 @@ public class BuildController : MonoBehaviour {
                 rotZ += 90;
             }
         }
-        else if (currentObject.tag == "groundTexture")
+        else if (currentObject && currentObject.tag == "groundTexture")
         {
             currentBuildMode = eBuildMode.materials;
+            heldObjectRef.GetComponent<WallCheck>().SetIsOnWall(false);
             inMaterailMode = true;
         }
         else

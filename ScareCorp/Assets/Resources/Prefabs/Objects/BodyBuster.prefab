@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 95840628410664578}
   - component: {fileID: 135100874409998686}
   - component: {fileID: 54012317683446660}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: BodyBuster
   m_TagString: scary
   m_Icon: {fileID: 0}
@@ -401,7 +401,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1876213373785872}
   m_LocalRotation: {x: -0, y: 0.7036814, z: -0, w: 0.7105157}
-  m_LocalPosition: {x: -27.545094, y: 0.83, z: -19.047163}
+  m_LocalPosition: {x: 4.1795063, y: 0.66, z: -14.136081}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4643386767073094}

@@ -26,8 +26,8 @@ public class TimeManager : MonoBehaviour {
     float FFplayRate = 0.125f;
     bool timeIsStopped = false;
 
-    private float arrivalTimef = 9;
-    private float departureTimef = 7;
+    private float arrivalTimef = 7;
+    private float departureTimef = 6;
     float currentHour = 0;
     public static event ClickAction DayChanged; // Tracks when a day changes 
     public static event ClickAction ArriveTime; 

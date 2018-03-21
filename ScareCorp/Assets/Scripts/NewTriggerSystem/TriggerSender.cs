@@ -10,14 +10,17 @@ public class TriggerSender : MonoBehaviour {
 	[SerializeField]
 	private Material defaultMat;
 	private Material litMat;
+	private bool enableLinking;
 	LineRenderer line;
 	private bool lightLine = false;
 	void Awake () {
+		enableLinking = false;
 		linkedReceiver = null;
 		line = gameObject.GetComponent<LineRenderer>();
 		defaultMat = Resources.Load("Materials/lineMat") as Material;
 		litMat = Resources.Load("Materials/TriggerMAt") as Material;
 		line.material = defaultMat;
+		StartCoroutine(EnableTriggerSystem(0.01f));
 	}
 	
 	// Update is called once per frame
@@ -27,7 +30,7 @@ public class TriggerSender : MonoBehaviour {
 
 	void OnMouseOver()
 	{
-		if(Input.GetMouseButtonDown(0))
+		if(Input.GetMouseButtonDown(1) && enableLinking)
 		{
 			if(BuildController.instance.GetCurrentBuildMode() != eBuildMode.trigger)
 			{
@@ -36,7 +39,7 @@ public class TriggerSender : MonoBehaviour {
 
 			TriggerLinker.instance.SetCurrentSender(this.gameObject);
 		}
-		if(Input.GetMouseButtonDown(1))
+		if(Input.GetMouseButtonDown(1) && Input.GetKeyDown(KeyCode.LeftShift))
 		{
 			if(BuildController.instance.GetCurrentBuildMode() != eBuildMode.trigger)
 			{
@@ -114,6 +117,12 @@ public class TriggerSender : MonoBehaviour {
 			gameObject.AddComponent<TriggerReceiver>();
 			Destroy(this);
 		}
+	}
+
+	IEnumerator  EnableTriggerSystem(float t)
+	{
+		yield return new WaitForSeconds(t);
+		enableLinking = true;
 	}
 	
 }

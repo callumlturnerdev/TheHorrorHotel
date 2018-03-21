@@ -17,9 +17,11 @@ public class FollowCursor : MonoBehaviour {
 	public void SetHeldObject(GameObject obj)
 	{
 		currentHeldObject = obj;
-		if(childObj != currentHeldObject)
+		Destroy(childObj);
+		if(currentHeldObject)
 		{
-			Destroy(childObj);
+			
+			
 			GameObject heldObj = Instantiate(currentHeldObject) as GameObject;
 			Destroy(heldObj.GetComponent<Buildable>());
 			if(heldObj.GetComponent<TriggerReceiver>())

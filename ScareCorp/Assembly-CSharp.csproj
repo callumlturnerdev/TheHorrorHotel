@@ -165,6 +165,7 @@
      <Compile Include="Assets\Scripts\UIInfoPanel.cs" />
      <Compile Include="Assets\Scripts\VisitorController.cs" />
      <Compile Include="Assets\Scripts\Waypoint.cs" />
+     <Compile Include="Assets\TutorialDisplay.cs" />
      <Compile Include="Assets\Unfinity Games\uNote\Examples\uNoteHeroExample.cs" />
      <Compile Include="Assets\Unfinity Games\uNote\Note.cs" />
      <Compile Include="Assets\WindMovement.cs" />
