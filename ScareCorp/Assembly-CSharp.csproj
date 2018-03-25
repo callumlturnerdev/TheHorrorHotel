@@ -51,15 +51,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Bed.cs" />
      <Compile Include="Assets\Characters\Car.cs" />
      <Compile Include="Assets\Characters\CarSpawner.cs" />
      <Compile Include="Assets\Characters\Visitor.cs" />
      <Compile Include="Assets\Characters\VisitorSpawner.cs" />
-     <Compile Include="Assets\DestroyAfterTime.cs" />
-     <Compile Include="Assets\FlipUVs.cs" />
-     <Compile Include="Assets\FollowCursor.cs" />
-     <Compile Include="Assets\MinimizeButton.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
@@ -106,7 +101,6 @@
      <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
      <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
      <Compile Include="Assets\Retro Bit FX\Scripts\SmoothCameraOrbit.cs" />
-     <Compile Include="Assets\SaveButton.cs" />
      <Compile Include="Assets\Scripts\Ai\AI.cs" />
      <Compile Include="Assets\Scripts\Ai\AI_StateNeeds.cs" />
      <Compile Include="Assets\Scripts\Ai\MoveTowards.cs" />
@@ -122,6 +116,7 @@
      <Compile Include="Assets\Scripts\Ai\ScaredState.cs" />
      <Compile Include="Assets\Scripts\Ai\SeekExit.cs" />
      <Compile Include="Assets\Scripts\Ai\StateMachine.cs" />
+     <Compile Include="Assets\Scripts\Bed.cs" />
      <Compile Include="Assets\Scripts\Buildier\BuildController.cs" />
      <Compile Include="Assets\Scripts\Buildier\BuildOnGrid.cs" />
      <Compile Include="Assets\Scripts\Buildier\GridBuilder.cs" />
@@ -132,12 +127,16 @@
      <Compile Include="Assets\Scripts\Controls\SnapToMouse.cs" />
      <Compile Include="Assets\Scripts\Controls\SwapCategory.cs" />
      <Compile Include="Assets\Scripts\Controls\VanishOnKeyPress.cs" />
+     <Compile Include="Assets\Scripts\DestroyAfterTime.cs" />
      <Compile Include="Assets\Scripts\DirLightRotation.cs" />
+     <Compile Include="Assets\Scripts\FlipUVs.cs" />
+     <Compile Include="Assets\Scripts\FollowCursor.cs" />
      <Compile Include="Assets\Scripts\Interfaces\PauseTime.cs" />
      <Compile Include="Assets\Scripts\Managers\EventManager.cs" />
      <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
      <Compile Include="Assets\Scripts\Managers\TimeManager.cs" />
      <Compile Include="Assets\Scripts\menuHide.cs" />
+     <Compile Include="Assets\Scripts\MinimizeButton.cs" />
      <Compile Include="Assets\Scripts\MonsterBase.cs" />
      <Compile Include="Assets\Scripts\NewTriggerSystem\TriggerLinker.cs" />
      <Compile Include="Assets\Scripts\NewTriggerSystem\TriggerReceiver.cs" />
@@ -148,6 +147,7 @@
      <Compile Include="Assets\Scripts\Objects\Painting.cs" />
      <Compile Include="Assets\Scripts\Objects\spriteLookAtCam.cs" />
      <Compile Include="Assets\Scripts\Objects\WallCheck.cs" />
+     <Compile Include="Assets\Scripts\SaveButton.cs" />
      <Compile Include="Assets\Scripts\SavingLoading.cs" />
      <Compile Include="Assets\Scripts\Trigger\BodyBusterTrigger.cs" />
      <Compile Include="Assets\Scripts\Trigger\ClockTrigger.cs" />
@@ -158,6 +158,7 @@
      <Compile Include="Assets\Scripts\Trigger\TriggerBase.cs" />
      <Compile Include="Assets\Scripts\Trigger\TvTrigger.cs" />
      <Compile Include="Assets\Scripts\Trigger\wardrobeTrigger.cs" />
+     <Compile Include="Assets\Scripts\TutorialDisplay.cs" />
      <Compile Include="Assets\Scripts\UI\DebugConsole.cs" />
      <Compile Include="Assets\Scripts\UI\HUDGetElements.cs" />
      <Compile Include="Assets\Scripts\UI\HUDMouseCheck.cs" />
@@ -165,10 +166,9 @@
      <Compile Include="Assets\Scripts\UIInfoPanel.cs" />
      <Compile Include="Assets\Scripts\VisitorController.cs" />
      <Compile Include="Assets\Scripts\Waypoint.cs" />
-     <Compile Include="Assets\TutorialDisplay.cs" />
+     <Compile Include="Assets\Scripts\WindMovement.cs" />
      <Compile Include="Assets\Unfinity Games\uNote\Examples\uNoteHeroExample.cs" />
      <Compile Include="Assets\Unfinity Games\uNote\Note.cs" />
-     <Compile Include="Assets\WindMovement.cs" />
      <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />
      <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.cginc" />
      <None Include="Assets\PostProcessing\Resources\Shaders\Fog.shader" />

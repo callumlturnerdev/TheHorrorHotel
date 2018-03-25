@@ -2240,7 +2240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LMask:
     serializedVersion: 2
-    m_Bits: 22528
+    m_Bits: 18432
 --- !u!114 &114931718848690942
 MonoBehaviour:
   m_ObjectHideFlags: 1
