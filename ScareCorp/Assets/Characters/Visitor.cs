@@ -68,7 +68,7 @@ public class Visitor : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    public void SetCurrentFear(float fear) {  currentFear = fear; }
+    public void SetCurrentFear(float fear) {  currentFear = fear;  fearSlider.value = currentFear; }
     public float GetCurrentFear() { return currentFear; }
     public void Update()
     {

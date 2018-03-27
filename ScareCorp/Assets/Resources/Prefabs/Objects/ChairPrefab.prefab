@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 114505139736031626}
   m_Layer: 8
   m_Name: ChairPrefab
-  m_TagString: wall
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

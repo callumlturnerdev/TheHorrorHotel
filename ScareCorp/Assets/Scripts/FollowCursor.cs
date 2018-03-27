@@ -23,7 +23,9 @@ public class FollowCursor : MonoBehaviour {
 			
 			
 			GameObject heldObj = Instantiate(currentHeldObject) as GameObject;
+			heldObj.transform.rotation = Quaternion.Euler(0, BuildController.instance.GetRotation(),0); 
 			Destroy(heldObj.GetComponent<Buildable>());
+			heldObj.layer = 5;
 			if(heldObj.GetComponent<TriggerReceiver>())
 			{
 				Destroy(heldObj.GetComponent<TriggerReceiver>());

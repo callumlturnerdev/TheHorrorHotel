@@ -71,26 +71,13 @@ public class MonsterBase : MonoBehaviour {
     }
     public GameObject GetLastWayPoint()
     {
-        if (waypoints.Count > 0)
+        if (lastWayPoint)
         {
-            return waypoints[waypoints.Count -1];
+            return lastWayPoint;
         }
-        else return null;
+        return null;
     }
-    public void RemoveWayPoint(GameObject waypoint)
-    {
-        if (waypoint == firstWaypoint)
-        {
-           firstWaypoint = waypoint.GetComponent<Waypoint>().GetNextWayPoint();
-        }
-        if(currentWayPointobj == waypoint)
-        {
-            currentWayPointobj = waypoint.GetComponent<Waypoint>().nextWayPoint;
-        }
-        waypoints.Remove(waypoint);
-        
-     
-    }
+
     public void SetWaypoint(GameObject wpoint)
     {
             currentWayPointobj = wpoint;
@@ -100,13 +87,18 @@ public class MonsterBase : MonoBehaviour {
     {
         if (firstWaypoint == null)
         {
+            DebugConsole.Log("test");
             firstWaypoint = wpoint;
+            lastWayPoint = wpoint;
         }
         else
         {
-            lastWayPoint = wpoint;
-            lastWayPoint.GetComponent<Waypoint>().SetNextWayPoint(firstWaypoint);
-            firstWaypoint.GetComponent<Waypoint>().SetPreviousWayPoint(lastWayPoint);
+            
+             wpoint.GetComponent<Waypoint>().SetPreviousWayPoint(lastWayPoint);
+             firstWaypoint.GetComponent<Waypoint>().SetPreviousWayPoint(wpoint);
+             lastWayPoint = wpoint;
+             lastWayPoint.GetComponent<Waypoint>().SetNextWayPoint(firstWaypoint);
+            // firstWaypoint.GetComponent<Waypoint>().SetPreviousWayPoint(lastWayPoint);
         }
 
         if (currentWayPointobj == null)
@@ -119,8 +111,12 @@ public class MonsterBase : MonoBehaviour {
     IEnumerator activateAIAfterWait(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
+        if(this.GetComponent<Buildable>())
+        {
           nav = GetComponent<NavMeshAgent>();
-            nav.enabled = true;
+          GetComponent<BoxCollider>().enabled = true;
+         nav.enabled = true;
+        }
     }
 
     private void OnMouseOver()
@@ -154,6 +150,7 @@ public class MonsterBase : MonoBehaviour {
                         if(waypoint.GetComponent<Waypoint>())
                         {
                         waypoint.GetComponent<Waypoint>().ToggleVisibiltiy();
+
                         }
                     }
                 }

@@ -55,6 +55,8 @@
      <Compile Include="Assets\Characters\CarSpawner.cs" />
      <Compile Include="Assets\Characters\Visitor.cs" />
      <Compile Include="Assets\Characters\VisitorSpawner.cs" />
+     <Compile Include="Assets\DelayTrigger.cs" />
+     <Compile Include="Assets\LoopTrigger.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />

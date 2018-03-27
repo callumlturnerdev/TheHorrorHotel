@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 114972266819356164}
   - component: {fileID: 23537292929805490}
   m_Layer: 0
-  m_Name: ITogglePlate
+  m_Name: _ITogglePlate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

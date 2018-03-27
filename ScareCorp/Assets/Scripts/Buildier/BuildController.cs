@@ -45,7 +45,7 @@ public class BuildController : MonoBehaviour {
     public bool paintMode = false;
     // UI elements
     Text ScreamPointsUI;
-     float screamPoints = 9999;
+     float screamPoints = 2000;
 
     // Use this for initialization
     void Awake () {

@@ -22,21 +22,21 @@ public class Waypoint : MonoBehaviour {
         cursor = GameObject.FindGameObjectWithTag("cursor");
         if (monsterRef != null)
         {
-            previousWaypoint = monsterRef.GetComponent<MonsterBase>().GetLastPoint();
             monsterRef.GetComponent<MonsterBase>().SetCurrentWaypoint(this.gameObject);
         }
-        if (previousWaypoint != null)
-        {
-            previousWaypoint.GetComponent<Waypoint>().SetNextWayPoint(this.gameObject);
-        }
+       
 	}
 
-    public GameObject GetNextWayPoint() { return nextWayPoint; }
+   public GameObject GetNextWayPoint() { return nextWayPoint; }
     public GameObject GetPreviousWayPoint() { return previousWaypoint; }
 
     public void SetPreviousWayPoint(GameObject prv)
     {
         previousWaypoint = prv;
+        if(previousWaypoint)
+        {
+            previousWaypoint.GetComponent<Waypoint>().SetNextWayPoint(this.gameObject);
+        }
     }
     public void SetNextWayPoint(GameObject nxt)
     {
@@ -56,9 +56,9 @@ public class Waypoint : MonoBehaviour {
     }
     public void DestroyWaypoint()
     {
-        monsterRef.GetComponent<MonsterBase>().RemoveWayPoint(this.gameObject);
-        previousWaypoint.GetComponent<Waypoint>().SetNextWayPoint(nextWayPoint);
-        nextWayPoint.GetComponent<Waypoint>().SetPreviousWayPoint(previousWaypoint);
+      //  monsterRef.GetComponent<MonsterBase>().RemoveWayPoint(this.gameObject);
+       previousWaypoint.GetComponent<Waypoint>().SetNextWayPoint(nextWayPoint);
+       nextWayPoint.GetComponent<Waypoint>().SetPreviousWayPoint(previousWaypoint);
        // monsterRef.GetComponent<MonsterBase>().SetWaypoint(nextWayPoint);
         Destroy(this.gameObject);
     }
@@ -78,7 +78,8 @@ public class Waypoint : MonoBehaviour {
             }  
         }
     }
-
+    
+   
     public void SetIndex(GameObject i)
     {
         monsterRef = i;

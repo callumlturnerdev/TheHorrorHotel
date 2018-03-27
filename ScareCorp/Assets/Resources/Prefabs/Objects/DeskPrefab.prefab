@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 114908447003114160}
   m_Layer: 8
   m_Name: DeskPrefab
-  m_TagString: wall
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

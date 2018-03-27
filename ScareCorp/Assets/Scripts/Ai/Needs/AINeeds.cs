@@ -9,7 +9,7 @@ using needTypes;
 public class AINeeds : MonoBehaviour
 {
 
-    private float decreaseRate =0.015f; //0.01f;
+    private float decreaseRate =0.005f; //0.01f;
     [Range(0,1)]
     private float needHunger = 1.0f;
     [Range(0, 1)]
@@ -33,14 +33,21 @@ public class AINeeds : MonoBehaviour
          needHygiene = 1.0f;
          needBoredom = 1.0f;
          needTiredness = 0.4f;
-        StartCoroutine(WaitFor(1.0f *  TimeManager.instance.GetPlayRate()));
+      //  StartCoroutine(WaitFor(1.0f *  TimeManager.instance.GetPlayRate()));
+        TimeManager.MinuteTick += MinTick;
     }
-
+    void OnDisable()
+    {
+        TimeManager.MinuteTick -= MinTick;
+    }
     private void DayChange()
     {
         daysStayed++;
     }
-
+    private void MinTick()
+    {
+        UpdateNeeds();
+    }
     public bool CheckIfTimeToLeave()
     {
         if (daysStayed >= daysToStay)
@@ -54,7 +61,7 @@ public class AINeeds : MonoBehaviour
         needHygiene = Mathf.Clamp(needHygiene -= decreaseRate, 0, 1);
         needBoredom = Mathf.Clamp(needBoredom -= decreaseRate, 0, 1);
         needTiredness = Mathf.Clamp(needTiredness -= decreaseRate, 0, 1);
-        StartCoroutine(WaitFor(1.0f *  TimeManager.instance.GetPlayRate()));
+       // StartCoroutine(WaitFor(1.0f *  TimeManager.instance.GetPlayRate()));
     }
 
     public float GetHunger() { return needHunger; }
@@ -71,7 +78,7 @@ public class AINeeds : MonoBehaviour
     IEnumerator WaitFor(float duration)
     {
         yield return new WaitForSeconds(duration);
-        UpdateNeeds();
+      //  UpdateNeeds();
     }
 
     public bool NeedReachedZero()

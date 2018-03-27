@@ -26,6 +26,7 @@ TagManager:
   - gridbuilder
   - save
   - tut
+  - Object
   layers:
   - Default
   - TransparentFX

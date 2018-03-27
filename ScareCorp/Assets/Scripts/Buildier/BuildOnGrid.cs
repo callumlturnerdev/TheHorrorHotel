@@ -105,8 +105,9 @@ public class BuildOnGrid : MonoBehaviour {
                                 case eBuildMode.materials:
                                     Materials(null);
                                     break;
+                            }
                         }
-                        }
+                        
                 }
             }
         }
@@ -124,6 +125,7 @@ public class BuildOnGrid : MonoBehaviour {
             isHighlighted = false;
         }
 
+       
     }
     private void Building()
     {
@@ -262,7 +264,13 @@ public class BuildOnGrid : MonoBehaviour {
                     if(gridN.GetComponent<BuildOnGrid>().originalMat != BuildController.instance.GetCurrentObjectMaterial())
                     {
                         if(gridN.transform.childCount < 1 || ((gridN.transform.GetChild(0).tag != "wall") && (gridN.transform.GetChild(0).tag != "Door")))
+                        {
                              gridN.GetComponent<BuildOnGrid>().Materials(this.gameObject);
+                        }
+                        else
+                        {
+                            gridN.GetComponent<MeshRenderer>().material = originalMat;
+                        }
                     }
                 }
                 }

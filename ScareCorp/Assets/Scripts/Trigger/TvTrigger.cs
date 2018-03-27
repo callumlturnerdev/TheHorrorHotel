@@ -34,16 +34,21 @@ public class TvTrigger : TriggerBase {
 		if(linkedTrigger)
 		{
             LightUpLineRend(null);
+             triggered = false;
+		     beenUsed = false;
 			linkedTrigger.ObjectOffEvent();
 		}
 	}
     public override void ObjectEvent()
 	{
+        if(!beenUsed)
+        {
 		     LightUpLineRend(null);
-           anim.SetTrigger("Scare");
-			triggered = true;
-			beenUsed = true;
-		
+             anim.SetTrigger("Scare");
+		     triggered = true;
+		     beenUsed = true;
+            if(linkedTrigger) linkedTrigger.ObjectEvent();
+        }
 	}
 		
 }

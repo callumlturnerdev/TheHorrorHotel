@@ -146,6 +146,9 @@ public class AI_StateNeeds : MonoBehaviour {
 
 				case eNeedTypes.hidden:
 					DebugConsole.Log("dwdw");
+					aI.UpdateStateUI("Hiding");
+					float newFear = gameObject.GetComponent<Visitor>().GetCurrentFear() - 5.0f;
+					gameObject.GetComponent<Visitor>().SetCurrentFear(newFear);
 					
 				break;
 
@@ -257,6 +260,7 @@ public class AI_StateNeeds : MonoBehaviour {
 			{
 				nav.isStopped = true;
 				ArrivalAction(currentNeed);
+				GameManager.instance.AddBed(aI.assignedBed);
 				Destroy(gameObject);
 			}
 		}
@@ -264,47 +268,8 @@ public class AI_StateNeeds : MonoBehaviour {
 
 	 void ScareScan()
     {
-		if(aI)
+		if(aI && currentNeed != eNeedTypes.hidden)
 		{
-			/* 
-			aI.eyes.transform.Rotate(0, aI.searchingTurnSpeed * Time.deltaTime, 0);
-			RaycastHit hit;
-
-			int onlyScaresLayerMask = LayerMask.GetMask("Scares");
-		
-			if (Physics.SphereCast(aI.eyes.position, 15, aI.eyes.forward, out hit, 8, onlyScaresLayerMask))
-				{
-				DebugConsole.Log("Scare in range");
-				if (hit.transform.gameObject.tag == "scary")
-				{	
-					int layerMask = 1;
-     				layerMask |= (1 << LayerMask.NameToLayer("PlaceableNoCast"));
-     				layerMask |= (1 << LayerMask.NameToLayer("Scares"));
-     			
-
-
-					possibleFearTarget = hit.transform.gameObject;	
-					RaycastHit hit2;
-					if(Physics.Raycast(aI.eyes.position,possibleFearTarget.transform.position, out hit2,layerMask))
-					{
-						if(hit2.transform.gameObject.tag == "scary")
-						{
-							DebugConsole.Log("Scare set");
-							Debug.DrawLine(aI.eyes.position,possibleFearTarget.transform.position, Color.red);
-							aI.fearTarget = hit.transform.gameObject;
-							currentlyScared = true;
-							aI.gameObject.GetComponent<Visitor>().SetNextFearObject(hit.transform.gameObject);	
-						}
-					}
-					else
-					{
-							
-					}
-					
-				
-				}
-				
-			}*/
 			
 			aI.eyes.transform.Rotate(0, aI.searchingTurnSpeed*2 * Time.deltaTime, 0);
        		 RaycastHit hit;
@@ -346,9 +311,9 @@ public class AI_StateNeeds : MonoBehaviour {
 	IEnumerator DisableCurrentlyScared(float seconds)
 	{
 		yield return new WaitForSeconds(seconds);
-		currentlyScared = false;
-		targetingNeed = false;
-		ChangeNeedState(aINeeds.FindMostUrgentNeed());
+		//currentlyScared = false;
+		//targetingNeed = false;
+		//ChangeNeedState(aINeeds.FindMostUrgentNeed());
 		aI.GetComponent<Visitor>().TurnOffScareParticle();
 	}
 	IEnumerator EnableTargetingNeed(float seconds)

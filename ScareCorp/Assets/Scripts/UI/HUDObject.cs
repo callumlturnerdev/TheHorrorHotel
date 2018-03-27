@@ -26,7 +26,8 @@ public class HUDObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         image = GetComponent<Image>();
         itemCost = this.gameObject.transform.GetChild(1).gameObject.GetComponent<Text>();
         cost = itemToBuild.GetComponent<Buildable>().GetCost();
-        itemCost.text = " " + cost;
+        if(itemCost)
+             itemCost.text = " " + cost;
     }
     public void OnMouseDown()
 	{

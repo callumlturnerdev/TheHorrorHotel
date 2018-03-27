@@ -26,6 +26,11 @@ public class DirLightRotation : MonoBehaviour
 
         TimeManager.HourTick += HourlyTick;
     }
+
+    void ToggleShadows(float shadowStrength)
+    {
+        DayLight.GetComponent<Light>().shadowStrength = shadowStrength;
+    }
     void HourlyTick()
     {
         NightLight.transform.LookAt(this.transform);
@@ -33,12 +38,16 @@ public class DirLightRotation : MonoBehaviour
         transform.Rotate(transform.rotation.x + -11.25f, 0, 0);
         if ((Mathf.Floor(TimeManager.instance.GetCurrentTime() / 60) < 07 || Mathf.Floor(TimeManager.instance.GetCurrentTime() / 60) > 23))
         {
-          DayLight.SetActive(false);
-            NightLight.SetActive(true);
+             //ToggleShadows(0.01f);
+             DayLight.SetActive(false);
+             NightLight.SetActive(true);
         }
         else
         {
-            
+            if ((Mathf.Floor(TimeManager.instance.GetCurrentTime() / 60) > 10 || Mathf.Floor(TimeManager.instance.GetCurrentTime() / 60) < 20))
+            {
+                ToggleShadows(0.5f);
+            }
             DayLight.SetActive(true);
             //NightLight.SetActive(false);
         }
