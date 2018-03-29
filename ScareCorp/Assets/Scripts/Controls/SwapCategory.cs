@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class SwapCategory : MonoBehaviour {
 
+    [SerializeField]
+    AudioClip UIClick;
+    AudioSource audioS;
     public GameObject[] catergories;
     public GameObject[] catButtons;
     public Color highlightedColor;
@@ -13,7 +16,9 @@ public class SwapCategory : MonoBehaviour {
 
     void Start ()
     {
-    catergories[1].SetActive(true);
+        catergories[1].SetActive(true);
+        audioS = gameObject.AddComponent(typeof(AudioSource)) as AudioSource;
+        audioS.clip = UIClick;
 	}
 	
     public void SetButtonToActive(GameObject buttonPressed)
@@ -27,6 +32,7 @@ public class SwapCategory : MonoBehaviour {
 
     public void SwapCat(int index )
     {
+       audioS.Play();
         foreach (GameObject cat in catergories)
         {
             cat.SetActive(false);

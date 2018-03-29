@@ -3,8 +3,11 @@ guid: 92930b68307fd4b4a87265dd8a8314c6
 timeCreated: 1507480385
 licenseType: Free
 MonoImporter:
+  externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - OnOverSound: {fileID: 8300000, guid: df1df69159c4c174ab488a52c91030bd, type: 3}
+  - itemToBuild: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -22,6 +22,7 @@ public class Buildable : MonoBehaviour {
     private bool largeObject = false; // TEMP VARIABLE FOR DETERMINING HOW MANY GRID SLOTS TO USE WHEN BUILDING
     Rigidbody rb;
     public GameObject particleSmoke;
+    AudioSource audioS;
     // Use this for initialization
     void Start() {
         

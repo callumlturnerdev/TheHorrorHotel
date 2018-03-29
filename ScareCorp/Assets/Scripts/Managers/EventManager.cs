@@ -10,10 +10,20 @@ public class EventManager : MonoBehaviour {
     public static event ClickAction DeleteClicked;
     public static event ClickAction ToggleTopWalls;
     
-
+    [SerializeField]
+    AudioClip UIclick;
+    AudioSource audioS;
     private bool wallsHidden = false;
+
+  
+    void Awake()
+    {
+        audioS = gameObject.AddComponent(typeof(AudioSource))as AudioSource;
+        audioS.clip = UIclick;
+    }
     public void Paused()
     {
+        audioS.Play();
         if (PauseClicked != null)
         {
             PauseClicked();
@@ -22,6 +32,7 @@ public class EventManager : MonoBehaviour {
 
     public void FastF()
     {
+         audioS.Play();
         if (FastFClicked != null)
         {
             FastFClicked();
@@ -30,6 +41,7 @@ public class EventManager : MonoBehaviour {
 
     public void DeleteMode()
     {
+         audioS.Play();
         if (DeleteClicked != null)
         {
             DeleteClicked();
@@ -38,6 +50,7 @@ public class EventManager : MonoBehaviour {
 
     public void ToggleWalls()
     {
+         audioS.Play();
         if (ToggleTopWalls != null)
         {
             ToggleTopWalls();

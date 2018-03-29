@@ -9,7 +9,9 @@ public class HUDObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     // This script is used on the hud versions of objects to allow the player to click them and 
     // and set that to the currentnyl held object for the player.
     // Use this for initialization
-
+    public AudioClip OnOverSound;
+    public AudioClip OnClick;
+    private AudioSource audioS;
     public bool isOver = false;
     private UIInfoPanel infoPanel;
 	public GameObject itemToBuild;
@@ -22,6 +24,7 @@ public class HUDObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private bool DeleteModeObj; // Really dodgy way to approach this should replace at some point
     void Awake()
     {
+        audioS = gameObject.AddComponent(typeof(AudioSource)) as AudioSource;     
         infoPanel = GameObject.FindGameObjectWithTag("UIInfoPanel").GetComponent<UIInfoPanel>();
         image = GetComponent<Image>();
         itemCost = this.gameObject.transform.GetChild(1).gameObject.GetComponent<Text>();
@@ -32,6 +35,8 @@ public class HUDObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnMouseDown()
 	{
 		BuildController.instance.SetBuildObject (itemToBuild);
+        audioS.clip = OnClick;
+        audioS.Play();
         if (DeleteModeObj)
         {
             BuildController.instance.DeleteMode();
@@ -39,6 +44,8 @@ public class HUDObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
+        audioS.clip = OnOverSound;
+        audioS.Play();
         isOver = true;
         infoPanel.UpdateUIInfoPanel(image.sprite, name, description);
     }

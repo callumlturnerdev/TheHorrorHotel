@@ -30,6 +30,10 @@ public class BuildOnGrid : MonoBehaviour {
     // The below Material is temp way of showing object thats going to be destroyed
     public Material destroyMat;
 	bool isHighlighted = false;
+
+    AudioSource audioS;
+    [SerializeField]
+    AudioClip[] clips;
 	// Use this for initialization
 
     //Deals with multigrid objects
@@ -43,6 +47,7 @@ public class BuildOnGrid : MonoBehaviour {
 		myRend = GetComponent<Renderer> ();
 		originalMat = myRend.material;
         builtObjectRotationZ = 0;
+        audioS = GetComponent<AudioSource>();
         switch (BuildController.instance.GetCurrentBuildMode())
         {
             case eBuildMode.building:
@@ -166,6 +171,8 @@ public class BuildOnGrid : MonoBehaviour {
                     ObjectBuiltOnGrid = obj;
                     obj.transform.parent = this.transform;
                     obj.GetComponent<Buildable>().ActivateGravity();
+                    audioS.clip = clips[1];
+                    audioS.Play();
                     GameManager.instance.AddObject(this.gameObject);
                     obj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z);
                     //canBuildOn = false;
@@ -325,7 +332,13 @@ public class BuildOnGrid : MonoBehaviour {
                     }
                 }
                     myRend.material = highlightText;
+                    if(!isHighlighted)
+                    {
+                        audioS.clip = clips[0];
+                        audioS.Play();
+                    }
                     isHighlighted = true;
+                   
             }
 				}
             else {

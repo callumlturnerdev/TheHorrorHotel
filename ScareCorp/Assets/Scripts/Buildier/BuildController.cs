@@ -16,6 +16,9 @@ namespace buildModes
 /// </summary>
 public class BuildController : MonoBehaviour {
     
+    [SerializeField]
+    AudioClip rotateSound;
+    AudioSource audioS;
     public Text buildModeUI;
     public GameObject CursorObj;
 	public static BuildController instance = null;
@@ -49,6 +52,8 @@ public class BuildController : MonoBehaviour {
 
     // Use this for initialization
     void Awake () {
+        audioS = gameObject.AddComponent(typeof(AudioSource))as AudioSource;
+        audioS.clip = rotateSound;
         inDeleteMode = false;
 		if (instance == null) {
 			instance = this;
@@ -247,6 +252,7 @@ public class BuildController : MonoBehaviour {
 		} 
 		if (Input.GetKeyDown (KeyCode.R)) 
         { 
+            audioS.Play();
             if(rotZ >= 270)
             { rotZ = 0;}
             else

@@ -213,6 +213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92930b68307fd4b4a87265dd8a8314c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnOverSound: {fileID: 8300000, guid: df1df69159c4c174ab488a52c91030bd, type: 3}
+  OnClick: {fileID: 8300000, guid: da57a47723986ac47bec7c6bf4c60848, type: 3}
   isOver: 0
   itemToBuild: {fileID: 1838108299631010, guid: c8b893d4aeb80cc44b8d31d2277d32ee,
     type: 2}

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MinimizeButton : MonoBehaviour {	
 
+	[SerializeField]
+	AudioClip UIClick;
+	AudioSource audioS;
 	public List<GameObject> objectsToHide;
 	public GameObject headerToMove;
 	private Vector2 trans;
@@ -15,6 +18,8 @@ public class MinimizeButton : MonoBehaviour {
 		{
 			trans = headerToMove.transform.position;
 		}
+		audioS = gameObject.AddComponent(typeof(AudioSource))as AudioSource;
+		audioS.clip = UIClick;
 	}
 	
 	// Update is called once per frame
@@ -34,6 +39,7 @@ public class MinimizeButton : MonoBehaviour {
 	}
 	public  void MinimizePressed()
 	{
+		audioS.Play();
 		foreach(GameObject obj in objectsToHide)
 		{
 			if(isHidden)
