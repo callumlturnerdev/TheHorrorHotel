@@ -5,14 +5,17 @@ using UnityEngine.UI;
 public class Bed : MonoBehaviour {
 
 
-	public Text text;
+	private Text text;
 	GameObject owner;
 	// Use this for initialization
 
-	void Awake()
+
+	void OnEnable()
 	{
+		text = this.transform.GetChild(1).transform.GetChild(1).GetComponent<Text>();
 		text.text = "";
 	}
+	
 	public void AssignBed(string name, GameObject _owner)
 	{
 		text.text = name + "'s Bed";
@@ -20,6 +23,16 @@ public class Bed : MonoBehaviour {
 	}
 
 
+	void OnDestroy()
+	{
+		if(gameObject.GetComponent<Buildable>())
+		{
+			if(gameObject.GetComponent<Buildable>().GetHasBeenActivated())
+			{
+				GameManager.instance.AddToBedCount(-1);
+			}
+		}
+	}
 	public void UnassignBed()
 	{
 		GameManager.instance.AddBed(this.gameObject);

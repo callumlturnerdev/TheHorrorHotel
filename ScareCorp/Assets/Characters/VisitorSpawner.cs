@@ -40,6 +40,7 @@ public class VisitorSpawner : MonoBehaviour {
             GameObject vis = Instantiate (visitor[genderInd]) as GameObject;
             if(vis.GetComponent<Visitor>())
             {
+                
             vis.GetComponent<Visitor>().InitialiseVisitor(VisitorController.instance.GetAVisitorName(),
                                                          VisitorController.instance.GetAVisitorStayDays(), 
                                                          VisitorController.instance.GetVisitorFear());
@@ -58,6 +59,7 @@ public class VisitorSpawner : MonoBehaviour {
             {
                 vis.GetComponent<MoveTowards>().FastForward();
             }
+            vis.GetComponent<AI>().GetABed();
 		}
 	}
 

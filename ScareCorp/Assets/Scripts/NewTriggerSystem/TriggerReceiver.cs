@@ -26,10 +26,15 @@ public class TriggerReceiver : MonoBehaviour {
 		if(gameObject.GetComponent<TriggerSender>() == null)
 		{
 			gameObject.AddComponent<TriggerSender>();
+			gameObject.GetComponent<TriggerSender>().PreviousSenderRef(linkedSender.GetComponent<TriggerSender>());
 			Destroy(this);
 		}
 	}
 
+	 void OnDestroy()
+	 {
+		 
+	 }
 	void OnMouseOver()
 	{
 		if(Input.GetMouseButtonDown(1))

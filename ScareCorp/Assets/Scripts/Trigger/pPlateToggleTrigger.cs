@@ -14,7 +14,7 @@ public class pPlateToggleTrigger : TriggerBase
     
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "visitor"  || other.tag == "scary" )
+        if (other.tag == "visitor"   )
         {
             OnCollision();
         }

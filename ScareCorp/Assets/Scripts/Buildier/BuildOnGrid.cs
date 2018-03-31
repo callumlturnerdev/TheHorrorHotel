@@ -3,14 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using buildModes;
-/// <summary>
-/// 
-/// 
-/// THE SCRIPT THAT DETERMINES HOW BUILDING ON A GRID WORK AND HOW THE HIGHLIGHT SYSTEM WORKS FOR BUILDING ON THE TILES.
-/// 
-/// 
-/// 
-/// </summary>
+
 
 public class BuildOnGrid : MonoBehaviour {
 

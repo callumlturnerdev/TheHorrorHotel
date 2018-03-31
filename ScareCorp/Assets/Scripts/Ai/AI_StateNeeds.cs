@@ -15,6 +15,8 @@ public class AI_StateNeeds : MonoBehaviour {
 	GameObject possibleFearTarget;
 	[SerializeField]
 	LayerMask LMask;
+	[SerializeField]
+	GameObject currentNeedObject;
 	void Awake()
 	{
 		currentlyScared = false;
@@ -39,10 +41,11 @@ public class AI_StateNeeds : MonoBehaviour {
 				break;
 
 				case eNeedTypes.boredom:
-					if(aI.boredomObjects[0])
+					currentNeedObject = aI.SelectTarget(aI.boredomObjects);
+					if(currentNeedObject)
 					{
 						nav.isStopped = false;
-						nav.destination = aI.boredomObjects[0].transform.position;
+						nav.destination = currentNeedObject.GetComponent<Buildable>().GetVisInteractPos().position;
 						currentNeed = eNeedTypes.boredom;
 						aI.UpdateStateUI("Bored");
 						targetingNeed =true;
@@ -55,26 +58,32 @@ public class AI_StateNeeds : MonoBehaviour {
 						aI.UpdateStateUI("Scared");
 						aI.navAgent.isStopped = false;
 						aI.navAgent.speed = 4;
-						DebugConsole.Log("ddd");
-						if(aI.hidingPlaces.Count > 0)
+						currentNeedObject  = aI.SelectTarget(aI.hidingPlaces);
+					
+						if( aI.hidingPlaces.Count > 0 && currentNeedObject)
 						{
-							nav.destination = aI.hidingPlaces[0].transform.position;
+							nav.destination = currentNeedObject.GetComponent<Buildable>().GetVisInteractPos().position;
+							currentNeed = eNeedTypes.hidden;
+							
 						}
 						else
 						{
-						nav.destination = GameManager.instance.wayPointList[0].transform.position;
+							currentNeedObject = GameManager.instance.leavePoint;
+							nav.destination = currentNeedObject.GetComponent<Buildable>().GetVisInteractPos().position;
+							currentNeed = eNeedTypes.hidden;
 						}
-						aI.gameObject.GetComponent<Visitor>().Scare(10.0f);
-						StartCoroutine(DisableCurrentlyScared(5));
-						currentNeed = eNeedTypes.hidden;
+						aI.gameObject.GetComponent<Visitor>().Scare(100.0f);
+						//StartCoroutine(DisableCurrentlyScared(5));
+						
 					}
 				break;
 
 				case eNeedTypes.hunger:
-					if(aI.hungerObjects[0])
+					currentNeedObject  = aI.SelectTarget(aI.hungerObjects);
+					if(currentNeedObject)
 					{
 						nav.isStopped = false;
-						nav.destination = aI.hungerObjects[0].transform.position;
+						nav.destination = currentNeedObject.GetComponent<Buildable>().GetVisInteractPos().position;
 						currentNeed = eNeedTypes.hunger;
 						aI.UpdateStateUI("Hungry");
 						targetingNeed =true;
@@ -82,10 +91,11 @@ public class AI_StateNeeds : MonoBehaviour {
 				break;
 
 				case eNeedTypes.hygiene:
-					if(aI.hygieneObjects[0])
+					currentNeedObject  = aI.SelectTarget(aI.hygieneObjects);
+					if(currentNeedObject)
 					{
 						nav.isStopped = false;
-						nav.destination = aI.hygieneObjects[0].transform.position;
+						nav.destination = currentNeedObject.GetComponent<Buildable>().GetVisInteractPos().position;
 						currentNeed = eNeedTypes.hygiene;
 						aI.UpdateStateUI("Dirty");
 						targetingNeed =true;
@@ -93,9 +103,10 @@ public class AI_StateNeeds : MonoBehaviour {
 				break;
 
 				case eNeedTypes.tiredness:
-					if(aI.assignedBed)
+					currentNeedObject  = aI.assignedBed;
+					if(currentNeedObject)
 					{
-						nav.destination = aI.assignedBed.transform.position;
+						nav.destination = currentNeedObject.GetComponent<Buildable>().GetVisInteractPos().position;
 						nav.isStopped = false;	
 						currentNeed = eNeedTypes.tiredness;
 						StartCoroutine(EnableTargetingNeed(0.1f));
@@ -119,6 +130,11 @@ public class AI_StateNeeds : MonoBehaviour {
 		targetingNeed = false;
 		ChangeNeedState(eNeedTypes.tiredness);
 	}
+
+	void OnDisable()
+	{
+		TimeManager.MinuteTick -= MinTick;
+	}
 	void ArrivalAction(eNeedTypes currentNeed)
 	{
 		
@@ -139,16 +155,18 @@ public class AI_StateNeeds : MonoBehaviour {
 						else
 						{
 							aI.UpdateStateUI("Reading");
-							float newBoredom = aINeeds.GetBoredom() + 0.05f;
+							float newBoredom = aINeeds.GetBoredom() + 0.01f;
 							aINeeds.SetBoredom(newBoredom);
 						}
 				break;
 
 				case eNeedTypes.hidden:
-					DebugConsole.Log("dwdw");
+					
 					aI.UpdateStateUI("Hiding");
-					float newFear = gameObject.GetComponent<Visitor>().GetCurrentFear() - 5.0f;
-					gameObject.GetComponent<Visitor>().SetCurrentFear(newFear);
+					
+					 aI.fearTarget = null;
+					DisableScared();
+					StartCoroutine(StopHiding(10));
 					
 				break;
 
@@ -163,7 +181,7 @@ public class AI_StateNeeds : MonoBehaviour {
 						else
 						{
 							aI.UpdateStateUI("Eating");
-							float newF = aINeeds.GetHunger() + 0.05f;
+							float newF = aINeeds.GetHunger() + 0.01f;
 							aINeeds.SetHunger(newF);
 						}
 				break;
@@ -179,7 +197,7 @@ public class AI_StateNeeds : MonoBehaviour {
 						else
 						{
 							aI.UpdateStateUI("Washing");
-							float newF = aINeeds.GetHygiene() + 0.05f;
+							float newF = aINeeds.GetHygiene() + 0.01f;
 							aINeeds.SetHygiene(newF);
 						}
 				break;
@@ -195,7 +213,7 @@ public class AI_StateNeeds : MonoBehaviour {
 					else
 					{
 						aI.UpdateStateUI("Sleeping");
-						float newTiredness = aINeeds.GetTiredness() + 0.05f;
+						float newTiredness = aINeeds.GetTiredness() + 0.01f;
 						aINeeds.SetTiredness(newTiredness);
 					}
 				break;
@@ -204,16 +222,14 @@ public class AI_StateNeeds : MonoBehaviour {
 				break;
 			}
 	}
-	void OnDisable()
-	{
-		TimeManager.HourTick -= HourlyTick;
-	}
+
 
 	void CheckForScared()
 	{
 		if(currentlyScared && currentNeed != eNeedTypes.hidden)
 		{
 			ChangeNeedState(eNeedTypes.hidden);
+			
 		}
 	}
 	void Update()
@@ -222,19 +238,34 @@ public class AI_StateNeeds : MonoBehaviour {
 	}
 	void MinTick()
 	{
-		
-			CheckForScared();
-		
-		if(!aINeeds.NeedReachedZero())
+		if(currentNeed == eNeedTypes.hidden  && nav.isStopped == true)
 		{
+			if(gameObject.GetComponent<Visitor>().GetCurrentFear() > 0)
+			{
+				float newFear = gameObject.GetComponent<Visitor>().GetCurrentFear() - 0.50f;
+				gameObject.GetComponent<Visitor>().SetCurrentFear(newFear);
+			}
+		}
+		
+		if(!aINeeds.NeedReachedZero() && gameObject.GetComponent<Visitor>().GetCurrentFear() < 99 )
+		{
+			DebugConsole.Log(gameObject.GetComponent<Visitor>().GetCurrentFear().ToString());
+			CheckForScared();
 			if(nav)
 			{
 				if(nav.isActiveAndEnabled && currentNeed != eNeedTypes.none)
 				{
-					if(nav.remainingDistance < 2 && targetingNeed == true)
+					if( currentNeedObject && currentNeedObject.GetComponent<Buildable>())
+					{
+					if((Vector3.Distance(this.transform.position, currentNeedObject.GetComponent<Buildable>().GetVisInteractPos().position) < 2)  && targetingNeed == true)
 					{
 						nav.isStopped = true;
 						ArrivalAction(currentNeed);
+					}
+					}
+					else
+					{
+						ChangeNeedState(aINeeds.FindMostUrgentNeed());
 					}
 				}
 			}
@@ -248,15 +279,16 @@ public class AI_StateNeeds : MonoBehaviour {
 	void Leave()
 	{
 		// Add code so that they leave.
-		if(GameManager.instance.wayPointList.Count > 0 && nav)
+		if(GameManager.instance.leavePoint && nav)
 		{
 
 			nav.isStopped = false;
-			nav.destination = GameManager.instance.wayPointList[0].transform.position;
+			currentNeedObject = GameManager.instance.leavePoint;
+			nav.destination = currentNeedObject.transform.position;
 			//currentNeed = eNeedTypes.hygiene;
 			aI.UpdateStateUI("Leaving");
 
-			if(Vector3.Distance(this.transform.position, GameManager.instance.wayPointList[0].position)< 10)
+			if(Vector3.Distance(this.transform.position, GameManager.instance.leavePoint.transform.position)< 5)
 			{
 				nav.isStopped = true;
 				ArrivalAction(currentNeed);
@@ -268,9 +300,9 @@ public class AI_StateNeeds : MonoBehaviour {
 
 	 void ScareScan()
     {
-		if(aI && currentNeed != eNeedTypes.hidden)
+		if(aI )
 		{
-			
+		
 			aI.eyes.transform.Rotate(0, aI.searchingTurnSpeed*2 * Time.deltaTime, 0);
        		 RaycastHit hit;
          Debug.DrawRay(aI.eyes.position, aI.eyes.forward.normalized *20, Color.green);
@@ -280,11 +312,9 @@ public class AI_StateNeeds : MonoBehaviour {
       if (Physics.Raycast(aI.eyes.position, aI.eyes.forward.normalized * 20, out hit, 20, LMask
             ))
             {
-				DebugConsole.Log("HITTTTT");
                 Debug.DrawRay(aI.eyes.position, aI.eyes.forward.normalized * 20, Color.red);
             if (hit.transform.gameObject.tag == "scary")
             {
-                DebugConsole.Log("scary hit");
                 aI.fearTarget = hit.transform.gameObject;
                 aI.gameObject.GetComponent<Visitor>().SetNextFearObject(hit.transform.gameObject);
 				currentlyScared = true;
@@ -303,23 +333,37 @@ public class AI_StateNeeds : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "scary")
+        {
+                aI.fearTarget = other.transform.gameObject;
+                aI.gameObject.GetComponent<Visitor>().SetNextFearObject(other.transform.gameObject);
+				currentlyScared = true;
+        }
+    }
 
 	void HourlyTick()
 	{
 	}
 
-	IEnumerator DisableCurrentlyScared(float seconds)
+	IEnumerator StopHiding(float seconds)
 	{
 		yield return new WaitForSeconds(seconds);
-		//currentlyScared = false;
-		//targetingNeed = false;
-		//ChangeNeedState(aINeeds.FindMostUrgentNeed());
+		ChangeNeedState(aINeeds.FindMostUrgentNeed());
+	}
+	void DisableScared()
+	{
+		currentlyScared = false;
+		targetingNeed = false;
+		aI.navAgent.speed = 2;
 		aI.GetComponent<Visitor>().TurnOffScareParticle();
 	}
 	IEnumerator EnableTargetingNeed(float seconds)
 	{
 		yield return new WaitForSeconds(seconds);
 		targetingNeed = true;
+			currentlyScared = false;
 	}
 
 }

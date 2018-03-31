@@ -62,6 +62,12 @@ public class TimeManager : MonoBehaviour {
 
     public float GetPlayRate(){ if(playRate == 0) {return  0;} else if(playRate == FFplayRate) {return 2;} else return 1; }
 
+ 
+    void OnDisable()
+    {
+        EventManager.FastFClicked -= TogglePlayRate;
+        EventManager.PauseClicked -= ToggleTime;
+    }
     void InterateTime()
     {
         if (!timeIsStopped)

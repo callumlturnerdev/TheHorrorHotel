@@ -41,7 +41,6 @@ GameObject:
   - component: {fileID: 33906430806397998}
   - component: {fileID: 23845508836399448}
   - component: {fileID: 65092736774397706}
-  - component: {fileID: 208635400722069654}
   - component: {fileID: 114638807929855028}
   - component: {fileID: 222002693926995874}
   m_Layer: 8
@@ -210,21 +209,6 @@ MonoBehaviour:
   largeObject: 0
   particleSmoke: {fileID: 1828968560238090, guid: ea773fed8314f4144a294a382ee98f84,
     type: 2}
---- !u!208 &208635400722069654
-NavMeshObstacle:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1373059481759602}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.86100006, y: 0.45200002, z: 0.85200006}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: -0.016, y: 0.568, z: -0.020000001}
-  m_TimeToStationary: 0.5
 --- !u!222 &222002693926995874
 CanvasRenderer:
   m_ObjectHideFlags: 1

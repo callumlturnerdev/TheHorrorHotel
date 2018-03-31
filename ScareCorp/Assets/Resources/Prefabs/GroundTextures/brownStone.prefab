@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 65671664074209396}
   - component: {fileID: 23606288668192162}
   - component: {fileID: 65906062230418900}
-  - component: {fileID: 208556419726385826}
   - component: {fileID: 114999814479800136}
   - component: {fileID: 114553080401824638}
   m_Layer: 11
@@ -150,18 +149,3 @@ MonoBehaviour:
   wallRend:
   - {fileID: 0}
   - {fileID: 0}
---- !u!208 &208556419726385826
-NavMeshObstacle:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1221075240768592}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.65, y: 0.65, z: 0.65}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5

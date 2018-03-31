@@ -129,17 +129,15 @@ public class AI : MonoBehaviour
             anim.speed= navAgent.speed;
         }
     }
+    public void GetABed()
+    {
+          assignedBed = GameManager.instance.GetABed();
+          assignedBed.GetComponent<Bed>().AssignBed(gameObject.GetComponent<Visitor>().GetName(), this.gameObject);
+          GetComponent<AI_StateNeeds>().enabled = true;
+    }
     public void GetNeedObjects()
     {
-        if(assignedBed == null)
-        {
-            assignedBed = GameManager.instance.GetABed();
-            if(assignedBed)
-            {
-                assignedBed.GetComponent<Bed>().AssignBed(gameObject.GetComponent<Visitor>().GetName(), this.gameObject);
-                stateNeeds.enabled =true;
-            }
-        }
+    
         hungerObjects = new List<GameObject>(GameManager.instance.hungerObjects);
         
         boredomObjects = new List<GameObject>(GameManager.instance.boredomObjects);
@@ -206,9 +204,25 @@ public class AI : MonoBehaviour
     public void UpdateStateUI(string name)
     {
         StateText.text = name;
-        if(name == "Sleeping"){anim.SetBool("sleeping",true); }
-        else if(name == "Scared"){anim.SetBool("scared",true);}
-        else {anim.SetBool("sleeping",false); anim.SetBool("scared",false);}
+        if(anim)
+        {
+            anim.SetBool("sleeping",false);
+            anim.SetBool("scared",false);
+            anim.SetBool("reading", false);
+            anim.SetBool("eating", false);
+
+            if(name == "Sleeping"){anim.SetBool("sleeping",true); }
+            else if(name == "Scared"){anim.SetBool("scared",true);}
+            else if(name == "Reading"){anim.SetBool("reading", true);}
+            else if(name == "Eating"){anim.SetBool("eating", true);}
+            else {anim.SetBool("sleeping",false); anim.SetBool("scared",false);
+            
+            }
+        }
+        else
+        {
+            anim = transform.GetChild(0).gameObject.GetComponent<Animator>();
+        }
     
     }
 
@@ -246,12 +260,16 @@ public class AI : MonoBehaviour
         }
         if (e.Count > 1)
         {
-            e.Sort(SortByPriority);
-            e.Reverse();
+            e.Sort(SortByDistance);
+            //e.Reverse();
         }
                 return e[0];
     }
 
+     int SortByDistance( GameObject p1, GameObject p2)
+    {
+            return Vector2.Distance(transform.position,p1.transform.position).CompareTo(Vector2.Distance(transform.position, p2.transform.position));
+    }
     static int SortByPriority(GameObject p1, GameObject p2)
     {
         return p1.GetComponent<Buildable>().needFulfillment.CompareTo(p2.GetComponent<Buildable>().needFulfillment);

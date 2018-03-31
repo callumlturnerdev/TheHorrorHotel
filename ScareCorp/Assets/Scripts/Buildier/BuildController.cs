@@ -9,11 +9,7 @@ namespace buildModes
 {
     public enum eBuildMode { trigger, building, deleting, waypoints, materials };
 }
-/// <summary>
-/// 
-/// BUILD CONTROLLER IS IN CHARGE OF ALL THINGS RELATED TO BUILDING AND UPDATING BUILD RELATED HUD ELEMENTS FOR THE GAME
-/// 
-/// </summary>
+
 public class BuildController : MonoBehaviour {
     
     [SerializeField]
@@ -48,7 +44,9 @@ public class BuildController : MonoBehaviour {
     public bool paintMode = false;
     // UI elements
     Text ScreamPointsUI;
-     float screamPoints = 2000;
+     float screamPoints = 6000;
+
+     private GameObject monsterRef;
 
     // Use this for initialization
     void Awake () {
@@ -64,7 +62,7 @@ public class BuildController : MonoBehaviour {
 		DontDestroyOnLoad (this.gameObject);
 		Init ();
 	}
-
+    public GameObject GetMonsterRef() {return monsterRef;}
     public float GetScreamPoints() { return screamPoints; }
     public void SetScreamPoints(float newVal) { screamPoints = newVal; UpdateHUD(); }
     public eBuildMode GetCurrentBuildMode() { return currentBuildMode; }
@@ -210,19 +208,21 @@ public class BuildController : MonoBehaviour {
             currentBuildMode = eBuildMode.building;
         }
     }
-    public void WayPointMode(bool t)
+    public void WayPointMode(bool t, GameObject mRef)
     {
         if (t)
         {
+            monsterRef = mRef;
             CursorObj.GetComponent<FollowCursor>().SetHeldObject(null);
              SetBuildModeUI("Waypoint Mode");
             currentBuildMode = eBuildMode.waypoints;
         }
         else
         {
+            monsterRef = null;
             currentObject = lastBuildObject;
-            CursorObj.GetComponent<FollowCursor>().SetHeldObject(lastBuildObject);
-            SetBuildObject(currentObject);
+            CursorObj.GetComponent<FollowCursor>().SetHeldObject(defaultBuildObject);
+            SetBuildObject(defaultBuildObject);
             currentBuildMode = eBuildMode.building;
            
         }

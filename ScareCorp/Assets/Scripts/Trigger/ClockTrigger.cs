@@ -5,11 +5,12 @@ using UnityEngine;
 public class ClockTrigger : TriggerBase {
 
 	private AudioSource _audio;
-
+	private Animator  _anim;
 	// Use this for initialization
 	private void OnEnable() 
 	{
 		_audio = GetComponent<AudioSource>();
+		_anim = GetComponent<Animator>();
 	}
 	
 	public override void ObjectOffEvent()
@@ -24,16 +25,14 @@ public class ClockTrigger : TriggerBase {
 
 	public override void ObjectEvent()
 	{
-		if(!beenUsed)
-		{
-		
+			LightUpLineRend(null);
 			PlaySound();
+			_anim.SetTrigger("ActivateScare");
 			if(linkedTrigger)
 			{
-				LightUpLineRend(null);
 				linkedTrigger.ObjectEvent();
 			}
-		}
+		
 	}
 
 	private void PlaySound()

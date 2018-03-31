@@ -12,70 +12,38 @@ public class MonsterBase : MonoBehaviour {
     GameObject WayPointObj;
     [SerializeField]
     List<GameObject> waypoints;
+    Animator anim;
 
     // Navigation
     NavMeshAgent nav;
     [SerializeField]
     int currentWaypoint;
-    public GameObject currentWayPointobj;
+    private GameObject currentWayPointobj;
     GameObject firstWaypoint, lastWayPoint;
     private void Awake()
     {
         currentWaypoint = 0;
-        StartCoroutine(activateAIAfterWait(0.1f));
+        StartCoroutine(activateAIAfterWait(0.5f));
+        anim = transform.GetChild(2).GetComponent<Animator>();
     }
-    void SetNextDestination()
-    {
-        if (currentWayPointobj != null)
-        {
-            currentWayPointobj.GetComponent<Waypoint>().SetMaterialBack(currentWaypointMat);
-            nav.destination = currentWayPointobj.transform.position;
-         
-        }
-    }
+   
     private void Update()
     {
         CheckDestinationIsReached();
     }
 
-    public void SetCurrentWayPoint(GameObject wpoint) { currentWayPointobj = wpoint; }
+
     void CheckDestinationIsReached()
     {
-        if(nav)
+        if(currentWayPointobj)
         {
-        if ((nav.remainingDistance <= nav.stoppingDistance  ) )
+        if (Vector3.Distance(gameObject.transform.position, currentWayPointobj.transform.position) < 4 )
             {
-                if (currentWayPointobj)
-                {
-                    if (currentWayPointobj.GetComponent<Waypoint>().GetNextWayPoint() != null)
-                    {
-                       // currentWayPointobj.GetComponent<Waypoint>().SetMaterialBack(null);
-                        currentWayPointobj.GetComponent<Waypoint>().SetMaterialBack(null);
-                        currentWayPointobj = currentWayPointobj.GetComponent<Waypoint>().GetNextWayPoint();
-                         currentWayPointobj.GetComponent<Waypoint>().SetMaterialBack(currentWaypointMat);
-                        nav.destination = currentWayPointobj.transform.position;
-                    }
-                }
+                
+                anim.SetBool("Walking", false);
                 //SetNextDestination();
             }
         }
-    }
-    public GameObject GetLastPoint()
-    {
-        if (lastWayPoint)
-        {
-            return lastWayPoint;
-        }
-        return firstWaypoint;
-
-    }
-    public GameObject GetLastWayPoint()
-    {
-        if (lastWayPoint)
-        {
-            return lastWayPoint;
-        }
-        return null;
     }
 
     public void SetWaypoint(GameObject wpoint)
@@ -85,27 +53,19 @@ public class MonsterBase : MonoBehaviour {
     }
     public void SetCurrentWaypoint(GameObject wpoint)
     {
-        if (firstWaypoint == null)
+        if(wpoint)
         {
-            DebugConsole.Log("test");
-            firstWaypoint = wpoint;
-            lastWayPoint = wpoint;
+              anim.SetBool("Walking", true);
+            Destroy(currentWayPointobj);
+             currentWayPointobj = wpoint;
+             //WayPointObj = currentWayPointobj;
+             currentWayPointobj.GetComponent<Waypoint>().SetMaterialBack(currentWaypointMat);
+             nav.destination = currentWayPointobj.transform.position;
         }
-        else
-        {
-            
-             wpoint.GetComponent<Waypoint>().SetPreviousWayPoint(lastWayPoint);
-             firstWaypoint.GetComponent<Waypoint>().SetPreviousWayPoint(wpoint);
-             lastWayPoint = wpoint;
-             lastWayPoint.GetComponent<Waypoint>().SetNextWayPoint(firstWaypoint);
-            // firstWaypoint.GetComponent<Waypoint>().SetPreviousWayPoint(lastWayPoint);
-        }
-
-        if (currentWayPointobj == null)
-        {
-            currentWayPointobj = wpoint;
-        }
-        waypoints.Add(wpoint);
+              //nav.isStopped = false;
+             //SetNextDestination();
+           
+        
     }
 
     IEnumerator activateAIAfterWait(float waitTime)
@@ -115,46 +75,28 @@ public class MonsterBase : MonoBehaviour {
         {
           nav = GetComponent<NavMeshAgent>();
           GetComponent<BoxCollider>().enabled = true;
-         nav.enabled = true;
+          nav.enabled = true;
+          
         }
     }
-
+                         
     private void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(1))
         {
-            if(!nav)
-            {
-                nav.enabled = true;
-            }
-            WayPointObj.GetComponent<Waypoint>().SetIndex(this.gameObject);
+             
+           
             if (BuildController.instance.GetCurrentBuildMode() == eBuildMode.building)
             {
                 BuildController.instance.SetBuildObject(WayPointObj);
-                BuildController.instance.WayPointMode(true);
+                BuildController.instance.WayPointMode(true,this.gameObject);
             }
             else
             {
-                BuildController.instance.WayPointMode(false);
+                BuildController.instance.WayPointMode(false,this.gameObject);
 
             }
         }
-        if (Input.GetMouseButtonDown(2))
-        {
-            if(waypoints.Count > 0)
-            {
-                foreach (GameObject waypoint in waypoints)
-                {
-                    if(waypoint)
-                    {
-                        if(waypoint.GetComponent<Waypoint>())
-                        {
-                        waypoint.GetComponent<Waypoint>().ToggleVisibiltiy();
-
-                        }
-                    }
-                }
-            }
-        }
+        
     }
 }

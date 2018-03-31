@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 33267793146770424}
   - component: {fileID: 23537184174943172}
   - component: {fileID: 65610097603955442}
-  - component: {fileID: 208937291518711362}
   - component: {fileID: 95092373530978354}
   - component: {fileID: 114940061875322268}
   - component: {fileID: 120411600924225022}
@@ -488,18 +487,3 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!208 &208937291518711362
-NavMeshObstacle:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1089833075040286}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5

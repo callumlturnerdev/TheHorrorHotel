@@ -4,8 +4,13 @@ using UnityEngine;
 using needTypes;
 using fearTypes;
 using UnityEngine.UI;
+using UnityEngine.AI;
 public class Buildable : MonoBehaviour {
 
+    [SerializeField]
+    private Transform visInteractPos;
+    NavMeshObstacle navMeshObstacle;
+    bool hasBeenActivated;
     public GameObject floatingTextObj;
     public float particleTimer;
     public int objectID;
@@ -25,7 +30,7 @@ public class Buildable : MonoBehaviour {
     AudioSource audioS;
     // Use this for initialization
     void Start() {
-        
+        hasBeenActivated = false;
         /* 
         if ( transform.childCount > 0 )
         {
@@ -97,15 +102,23 @@ public class Buildable : MonoBehaviour {
         Vector3 trans = new Vector3(this.transform.position.x,this.transform.position.y,this.transform.position.z);
         GameObject obj = Instantiate(particleSmoke) as GameObject;
         GameObject floatText = Instantiate(floatingTextObj) as GameObject;
+        
         floatText.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Text>().text = "-" + itemCost;
         floatText.transform.parent = this.transform;
-      
+        if(GetComponent<NavMeshObstacle>())
+        {
+            navMeshObstacle = GetComponent<NavMeshObstacle>();
+            navMeshObstacle.enabled = true;
+        }
+
         Vector3 floatTrans = new Vector3(gameObject.transform.position.x-20,gameObject.transform.position.y,gameObject.transform.position.z);
           floatText.transform.position = floatTrans;
         floatText.transform.rotation = Quaternion.Euler(0,0,0);
         obj.transform.parent = this.transform;
         obj.transform.position = this.gameObject.transform.position;
+        hasBeenActivated = true;
     }
+    public bool GetHasBeenActivated(){return hasBeenActivated;}
     void UnassignBed()
     {
        if (!GameManager.instance.tirednessObjects.Contains(this.gameObject)) 
@@ -147,4 +160,15 @@ public class Buildable : MonoBehaviour {
     }
 
     public bool IsLargeObject() {return largeObject;}
+    public Transform GetVisInteractPos()
+    {
+        if(visInteractPos)
+        {
+            return visInteractPos;
+        }
+        else
+        {
+            return null;
+        }
+    }
 }

@@ -13,6 +13,7 @@ public class TriggerSender : MonoBehaviour {
 	private bool enableLinking;
 	LineRenderer line;
 	private bool lightLine = false;
+	TriggerSender previousSenderRef; // Ref to the object linking this
 	void Awake () {
 		enableLinking = false;
 		linkedReceiver = null;
@@ -23,6 +24,16 @@ public class TriggerSender : MonoBehaviour {
 		StartCoroutine(EnableTriggerSystem(0.01f));
 	}
 	
+
+	public void PreviousSenderRef(TriggerSender previousRef) // Used to keep a reference to the object linking this one.
+	{
+		previousSenderRef = previousRef;
+	}
+
+	 void OnDestroy()
+	 {
+		 previousSenderRef.UnlinkReceiver();
+	 }
 	// Update is called once per frame
 	void Update () {
 		

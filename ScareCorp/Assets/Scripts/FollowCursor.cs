@@ -30,6 +30,10 @@ public class FollowCursor : MonoBehaviour {
 			{
 				Destroy(heldObj.GetComponent<TriggerReceiver>());
 			}
+			if(heldObj.GetComponent<Waypoint>())
+			{
+				Destroy(heldObj.GetComponent<Waypoint>());
+			}
 			if(heldObj.GetComponent<TriggerSender>())
 			{
 				Destroy(heldObj.GetComponent<TriggerSender>());

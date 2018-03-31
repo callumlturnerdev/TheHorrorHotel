@@ -13,7 +13,7 @@ public class pPlateTrigger : TriggerBase {
 	void OnTriggerEnter(Collider other)
 	{
         reTriggerTimer = 4;
-        if (( other.tag == "scary" ||other.tag == "visitor") && !beenUsed) 
+        if (( other.tag == "visitor") && !beenUsed) 
 		{
 			OnCollision();
         }

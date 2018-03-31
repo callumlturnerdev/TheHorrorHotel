@@ -30,7 +30,7 @@ public class Visitor : MonoBehaviour
     Slider fearSlider;
       [SerializeField]
     GameObject NeedsUI;
-
+    bool currentlyScared = false; 
     public void  InitialiseVisitor(string _name, int _daysStaying, eFearTypes _fear ) 
     {
         name = _name;
@@ -118,6 +118,7 @@ public class Visitor : MonoBehaviour
                 }
             }
         }
+        currentlyScared = true;
        DebugConsole.Log("WRRRRRRRRRRRRROKING");
         newFear = currentFear + amount;
         AddToFear();
@@ -132,36 +133,46 @@ public class Visitor : MonoBehaviour
     IEnumerator waitforSecondsToAddfear(float f)
     {
         yield return new WaitForSeconds(f);
-        DebugConsole.Log("adding fear");
-        AddToFear();
+         if(currentlyScared)
+        {
+            DebugConsole.Log("adding fear");
+            AddToFear();
+        }
 
     }
     void AddToFear()
     {
-        currentFear += 1;
-         fearSlider.value = currentFear;
-         BuildController.instance.AddPoints(1 * 10);
-
-        GameObject floatText = Instantiate(floatingTextObj) as GameObject;
-        floatText.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Text>().color = Color.green;
-        floatText.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Text>().text = "+" + 1 *10;
-        floatText.transform.parent = this.transform;
-      
-        Vector3 floatTrans = new Vector3(gameObject.transform.position.x-20,gameObject.transform.position.y,gameObject.transform.position.z);
-          floatText.transform.position = floatTrans;
-        floatText.transform.rotation = Quaternion.Euler(0,0,0);
-        if(currentFear < newFear)
+        if(currentlyScared)
         {
-            StartCoroutine(waitforSecondsToAddfear(1));
+            currentFear += 4;
+            fearSlider.value = currentFear;
+            BuildController.instance.AddPoints(1*10);
+
+            GameObject floatText = Instantiate(floatingTextObj) as GameObject;
+            floatText.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Text>().color = Color.green;
+            floatText.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Text>().text = "+" + 1 *10;
+            floatText.transform.parent = this.transform;
+        
+            Vector3 floatTrans = new Vector3(gameObject.transform.position.x-20,gameObject.transform.position.y,gameObject.transform.position.z);
+            floatText.transform.position = floatTrans;
+            floatText.transform.rotation = Quaternion.Euler(0,0,0);
+            if(currentFear < newFear)
+            {
+                StartCoroutine(waitforSecondsToAddfear(1));
+            }
         }
     }
     public void TurnOffScareParticle()
     {
        // particleSys.Pause();
+       currentlyScared = false;
         particleSys.Stop();
         DebugConsole.Log("hi", "error");
+        lastFearObject = null;
     }
 
+
+    
    public string GetName(){return name;}
 
 }

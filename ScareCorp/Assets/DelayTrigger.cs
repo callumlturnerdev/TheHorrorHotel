@@ -20,7 +20,6 @@ public class DelayTrigger : TriggerBase {
             LightUpLineRend(null);
 			triggered = true;
 			beenUsed = true;
-			DebugConsole.Log("TRIGGGEREDDDD12");
             StartCoroutine(DelayTheLinkedTrigger(4));
 		}
 	}
@@ -46,7 +45,6 @@ public class DelayTrigger : TriggerBase {
 	IEnumerator DelayTheLinkedTrigger(float t)
 	{
 		yield return new WaitForSeconds(t);
-		DebugConsole.Log("TRIGGGEREDDDD");
 		 if(linkedTrigger) linkedTrigger.ObjectEvent();
 		 StartCoroutine(TurnOffEventTimer(2));
 	}

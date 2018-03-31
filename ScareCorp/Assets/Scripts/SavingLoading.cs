@@ -165,16 +165,18 @@ public class SavingLoading : MonoBehaviour
             for (int i = 0; i < data.visitorCount; i++)
             {
                 GameObject _vis = Instantiate(visitorGameobject) as GameObject;
+                GameManager.instance.AddToTakenBeds(1);
                 SaveVisitor(_vis);
                 AINeeds _visAI = _vis.GetComponent<AINeeds>();
                 Visitor _visScript = _vis.GetComponent<Visitor>();
-                
+                AI _AI = _vis.GetComponent<AI>();
                 _vis.transform.position =  new Vector3( data.visitorPosX[i], 0, data.visitorPosY[i]);
                 _visAI.SetHunger(data.visitorHunger[i]);
                 _visAI.SetTiredness(data.visitorTiredness[i]);
                 _visAI.SetBoredom(data.visitorBoredom[i]);
                 _visAI.SetHygiene(data.visitorHygiene[i]);
                 _visScript.SetCurrentFear(data.visitorCurrentFear[i]);
+                _AI.GetABed();
                 _vis.SetActive(true);
 
             }

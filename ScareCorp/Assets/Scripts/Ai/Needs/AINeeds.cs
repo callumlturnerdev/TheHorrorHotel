@@ -9,7 +9,7 @@ using needTypes;
 public class AINeeds : MonoBehaviour
 {
 
-    private float decreaseRate =0.005f; //0.01f;
+    private float decreaseRate =0.001f; //0.01f;
     [Range(0,1)]
     private float needHunger = 1.0f;
     [Range(0, 1)]

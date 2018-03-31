@@ -15,33 +15,29 @@ public class Waypoint : MonoBehaviour {
 
     Material normalMat;
 	void Awake () {
+        StartCoroutine(WaitToActivate());
+	}
+
+    IEnumerator WaitToActivate()
+    {
+        yield return new WaitForSeconds(0.5f);
         normalMat = this.GetComponent<MeshRenderer>().material;
-        nextWayPoint = null;
+    
         lineToMouse = true;
         line = GetComponent<LineRenderer>();
         cursor = GameObject.FindGameObjectWithTag("cursor");
+        monsterRef = BuildController.instance.GetMonsterRef();
         if (monsterRef != null)
         {
             monsterRef.GetComponent<MonsterBase>().SetCurrentWaypoint(this.gameObject);
         }
-       
-	}
-
-   public GameObject GetNextWayPoint() { return nextWayPoint; }
-    public GameObject GetPreviousWayPoint() { return previousWaypoint; }
-
-    public void SetPreviousWayPoint(GameObject prv)
-    {
-        previousWaypoint = prv;
-        if(previousWaypoint)
+        else
         {
-            previousWaypoint.GetComponent<Waypoint>().SetNextWayPoint(this.gameObject);
+            DebugConsole.Log("NO MONSTEr");
         }
     }
-    public void SetNextWayPoint(GameObject nxt)
-    {
-        nextWayPoint = nxt;
-    }
+    public void DestroyWaypoint(){Destroy(this.gameObject);}
+  
 
     public void SetMaterialBack(Material mat)
     {
@@ -54,14 +50,7 @@ public class Waypoint : MonoBehaviour {
            this.GetComponent<MeshRenderer>().material  = normalMat; 
         }
     }
-    public void DestroyWaypoint()
-    {
-      //  monsterRef.GetComponent<MonsterBase>().RemoveWayPoint(this.gameObject);
-       previousWaypoint.GetComponent<Waypoint>().SetNextWayPoint(nextWayPoint);
-       nextWayPoint.GetComponent<Waypoint>().SetPreviousWayPoint(previousWaypoint);
-       // monsterRef.GetComponent<MonsterBase>().SetWaypoint(nextWayPoint);
-        Destroy(this.gameObject);
-    }
+  
     public void ToggleVisibiltiy()
     {
         this.gameObject.GetComponent<Renderer>().enabled = !GetComponent<Renderer>().enabled;
@@ -71,19 +60,15 @@ public class Waypoint : MonoBehaviour {
     {
         if (lineToMouse)
         {
-            line.SetPosition(0, this.transform.position);
-            if (nextWayPoint != null)
-            {
-                line.SetPosition(1, nextWayPoint.transform.position);
-            }  
+                line.SetPosition(0, this.transform.position);
+                Vector3 monstPos = new Vector3(monsterRef.transform.position.x, this.transform.position.y, monsterRef.transform.position.z);
+                line.SetPosition(1, monstPos);
+             
         }
     }
     
    
-    public void SetIndex(GameObject i)
-    {
-        monsterRef = i;
-    }
+ 
 
     private void Update()
     {

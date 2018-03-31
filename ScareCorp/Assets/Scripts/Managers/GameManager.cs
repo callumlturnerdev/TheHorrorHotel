@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
     public List<Transform> wayPointList;
+    public GameObject leavePoint;
     public static GameManager instance = null;
 
     public delegate void ClickAction();
@@ -88,6 +89,7 @@ public class GameManager : MonoBehaviour {
         hungerObjects.Clear();
         hygieneObjects.Clear();
         tirednessObjects.Clear();
+        hidingPlaces.Clear();
     }
 
     public void AddObject(GameObject obj)
@@ -145,6 +147,7 @@ public class GameManager : MonoBehaviour {
                 case eNeedTypes.tiredness:
                     if(tirednessObjects.Contains(obj))
                         tirednessObjects.Remove(obj);
+                        //maxBeds--;
                     break;
                 case eNeedTypes.none:
                     break;
