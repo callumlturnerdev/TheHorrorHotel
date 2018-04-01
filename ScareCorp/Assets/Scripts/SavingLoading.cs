@@ -106,10 +106,12 @@ public class SavingLoading : MonoBehaviour
             // currentTime = data.time;
             for (int i = 0; i < grids.Count; i++)
             {
+              
                 if (grids[i].GetComponent<BuildOnGrid>())
                 {
                    // grids[i].GetComponent<BuildOnGrid>().LoadMaterial(data.matIDs[i]);
                     grids[i].GetComponent<BuildOnGrid>().LoadObject(objFind.FindObjectBasedOnID(data.objectIDs[i]), data.objectsRots[i]);
+                    grids[i].GetComponent<BuildOnGrid>().SetMaterial(GetComponent<ObjectFinder>().groundMats[data.matIDs[i]]);
                 }
             }
             VisitorLoadData(data);
@@ -130,6 +132,9 @@ public class SavingLoading : MonoBehaviour
 
         for (int i = 0; i < grids.Count; i++)
         {
+
+            data.matIDs[i] = GetComponent<ObjectFinder>().GetMaterialIndexInArray(grids[i].GetComponent<BuildOnGrid>().GetMaterial()); // NEW MATERIAL LOADER --------------------------------------------
+ 
             if (grids[i].GetComponent<BuildOnGrid>())
             {
                 //data.matIDs[i] = grids[i].GetComponent<BuildOnGrid>().GetMatID();
@@ -225,7 +230,7 @@ public class SavingLoading : MonoBehaviour
 
         public float[] objectsRots = new float[1300];
         public int[] objectIDs = new int[1300];
-       // public int[] matIDs =  new int[1300];
+        public int[] matIDs =  new int[1300];
         public float scarepoints;
         public float time;
         public float day;

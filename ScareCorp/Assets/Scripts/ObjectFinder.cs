@@ -7,7 +7,7 @@ using UnityEngine;
 public class ObjectFinder : MonoBehaviour {
 
 	public List<GameObject> obj;
- 
+    public List<Material> groundMats;
     void Awake()
     {
         for(int i = 0; i < obj.Count; i++)
@@ -16,6 +16,18 @@ public class ObjectFinder : MonoBehaviour {
         }
     }
 
+    public int GetMaterialIndexInArray(Material mat)
+    {
+        for(int i = 0; i < groundMats.Count; i++)
+        {
+            Debug.Log(mat.name + " " + groundMats[i].name );
+            if(mat == groundMats[i])
+            {
+                return i;
+            }
+        }
+        return 2;
+    }
     public GameObject FindObjectBasedOnID(int ID)
     {
         if (ID == -1) { return null; }

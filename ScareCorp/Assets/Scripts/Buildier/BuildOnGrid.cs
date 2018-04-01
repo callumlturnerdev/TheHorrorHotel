@@ -246,6 +246,15 @@ public class BuildOnGrid : MonoBehaviour {
         }
     }
 
+    public Material GetMaterial()
+    {
+        return myRend.sharedMaterial;
+    }
+    public void SetMaterial(Material _mat)
+    {
+        originalMat = _mat;
+        myRend.material = _mat;
+    }
 
     public void Materials(GameObject calledGrid)
     {

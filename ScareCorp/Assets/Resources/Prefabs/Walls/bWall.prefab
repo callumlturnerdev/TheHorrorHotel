@@ -366,10 +366,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dbf6c63e1d39b144b1618f210c97ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  visInteractPos: {fileID: 0}
   floatingTextObj: {fileID: 1040756802173086, guid: e1d3d1bf190788145b413cd7f7ea4de7,
     type: 2}
   particleTimer: 0.6
-  objectID: 24
+  objectID: 0
   index: 0
   needtype: 0
   fearType: 0

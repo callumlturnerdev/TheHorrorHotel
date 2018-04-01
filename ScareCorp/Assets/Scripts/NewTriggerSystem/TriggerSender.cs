@@ -32,7 +32,8 @@ public class TriggerSender : MonoBehaviour {
 
 	 void OnDestroy()
 	 {
-		 previousSenderRef.UnlinkReceiver();
+		 if(previousSenderRef)
+		 	previousSenderRef.UnlinkReceiver();
 	 }
 	// Update is called once per frame
 	void Update () {
