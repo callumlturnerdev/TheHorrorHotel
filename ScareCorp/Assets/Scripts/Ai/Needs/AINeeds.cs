@@ -29,10 +29,10 @@ public class AINeeds : MonoBehaviour
         daysToStay = 0;
         daysStayed = 0;
         TimeManager.DayChanged += DayChange;
-        needHunger = 1.0f;
-         needHygiene = 1.0f;
-         needBoredom = 1.0f;
-         needTiredness = 0.4f;
+       // needHunger = 1.0f;
+       //  needHygiene = 1.0f;
+       //  needBoredom = 1.0f;
+       //  needTiredness = 0.4f;
       //  StartCoroutine(WaitFor(1.0f *  TimeManager.instance.GetPlayRate()));
         TimeManager.MinuteTick += MinTick;
     }
@@ -64,12 +64,12 @@ public class AINeeds : MonoBehaviour
        // StartCoroutine(WaitFor(1.0f *  TimeManager.instance.GetPlayRate()));
     }
 
-    public float GetHunger() { return needHunger; }
+    public float GetHunger() { return needHunger;  }
     public float GetBoredom() { return needBoredom; }
     public float GetHygiene() { return needHygiene; }
     public float GetTiredness() { return needTiredness; }
 
-    public void SetHunger(float i) { needHunger = i; }
+    public void SetHunger(float i) { needHunger = i; DebugConsole.Log("Setting hunger to :" + i ); }
     public void SetBoredom(float i) { needBoredom = i; }
     public void SetHygiene(float i) { needHygiene = i; }
     public void SetTiredness(float i) { needTiredness = i; }

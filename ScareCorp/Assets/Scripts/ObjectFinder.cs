@@ -20,7 +20,6 @@ public class ObjectFinder : MonoBehaviour {
     {
         for(int i = 0; i < groundMats.Count; i++)
         {
-            Debug.Log(mat.name + " " + groundMats[i].name );
             if(mat == groundMats[i])
             {
                 return i;

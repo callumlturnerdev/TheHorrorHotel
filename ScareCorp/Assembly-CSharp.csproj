@@ -144,6 +144,10 @@
      <Compile Include="Assets\Scripts\NewTriggerSystem\TriggerReceiver.cs" />
      <Compile Include="Assets\Scripts\NewTriggerSystem\TriggerSender.cs" />
      <Compile Include="Assets\Scripts\ObjectFinder.cs" />
+     <Compile Include="Assets\Scripts\ObjectiveSystem\Objective.cs" />
+     <Compile Include="Assets\Scripts\ObjectiveSystem\ObjectiveBuild.cs" />
+     <Compile Include="Assets\Scripts\ObjectiveSystem\ObjectiveManager.cs" />
+     <Compile Include="Assets\Scripts\ObjectiveSystem\ObjectiveTimed.cs" />
      <Compile Include="Assets\Scripts\Objects\Buildable.cs" />
      <Compile Include="Assets\Scripts\Objects\Chest.cs" />
      <Compile Include="Assets\Scripts\Objects\Painting.cs" />
@@ -169,6 +173,8 @@
      <Compile Include="Assets\Scripts\VisitorController.cs" />
      <Compile Include="Assets\Scripts\Waypoint.cs" />
      <Compile Include="Assets\Scripts\WindMovement.cs" />
+     <Compile Include="Assets\UIColor.cs" />
+     <Compile Include="Assets\UIColorController.cs" />
      <Compile Include="Assets\Unfinity Games\uNote\Examples\uNoteHeroExample.cs" />
      <Compile Include="Assets\Unfinity Games\uNote\Note.cs" />
      <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />

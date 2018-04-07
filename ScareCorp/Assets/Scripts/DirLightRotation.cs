@@ -31,6 +31,11 @@ public class DirLightRotation : MonoBehaviour
     {
         DayLight.GetComponent<Light>().shadowStrength = shadowStrength;
     }
+   
+    void OnDisable()
+    {
+        TimeManager.HourTick -= HourlyTick;
+    }
     void HourlyTick()
     {
         NightLight.transform.LookAt(this.transform);

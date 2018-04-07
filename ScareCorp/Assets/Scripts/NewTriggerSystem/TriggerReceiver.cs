@@ -22,7 +22,7 @@ public class TriggerReceiver : MonoBehaviour {
 
 	private void CreateATriggerSender()
 	{
-		DebugConsole.Log("Making A Sender");
+
 		if(gameObject.GetComponent<TriggerSender>() == null)
 		{
 			gameObject.AddComponent<TriggerSender>();

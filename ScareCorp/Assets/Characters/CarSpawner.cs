@@ -15,12 +15,12 @@ public class CarSpawner : MonoBehaviour {
     void Start()
     {
        // TimeManager.DayChanged += DayChange;
-        TimeManager.ArriveTime += DayChange;
+        //TimeManager.ArriveTime += DayChange;
         canSpawn = true;
         spawnFF = false;
         EventManager.PauseClicked += Pause;
         EventManager.FastFClicked += FastForward;
-
+        GameManager.BedAdded += DayChange;
         //SpawnMoreVisitors (0);
     }
 

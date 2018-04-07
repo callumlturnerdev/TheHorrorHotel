@@ -458,7 +458,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1081237161092626}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -601,7 +601,7 @@ MonoBehaviour:
   floatingTextObj: {fileID: 1040756802173086, guid: e1d3d1bf190788145b413cd7f7ea4de7,
     type: 2}
   particleTimer: 0.6
-  objectID: 13
+  objectID: 24
   index: 0
   needtype: 2
   fearType: 0

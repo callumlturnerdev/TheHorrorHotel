@@ -67,7 +67,6 @@ public class Buildable : MonoBehaviour {
         }
          //obj.transform.position = transform.position;
 
-        DebugConsole.Log("working");
         if(gameObject.GetComponent<Rigidbody>())
         {
             gameObject.GetComponent<Rigidbody>().useGravity = true;

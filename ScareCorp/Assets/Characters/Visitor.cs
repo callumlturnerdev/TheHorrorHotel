@@ -98,19 +98,19 @@ public class Visitor : MonoBehaviour
                 {
                     case eFearTypes.Enviroment:
                         amount = amount * aiScriptRef.enviroment;
-                        Debug.Log("amount" + amount + " * " + "scareMultiplyr " + aiScriptRef.enviroment);
+                       
                         break;
                     case eFearTypes.Gore:
                         amount = amount * aiScriptRef.gore;
-                        Debug.Log("amount" + amount + " * " + "scareMultiplyr " + aiScriptRef.gore);
+                    
                         break;
                     case eFearTypes.JumpScare:
                         amount = amount * aiScriptRef.jumpScare;
-                        Debug.Log("amount" + amount + " * " + "scareMultiplyr " + aiScriptRef.jumpScare);
+                      
                         break;
                     case eFearTypes.Seperation:
                         amount = amount * aiScriptRef.seperation;
-                        Debug.Log("amount" + amount + " * " + "scareMultiplyr " + aiScriptRef.seperation);
+                
                         break;
                     case eFearTypes.none:
                         amount = amount * 1;
@@ -172,7 +172,15 @@ public class Visitor : MonoBehaviour
     }
 
 
-    
-   public string GetName(){return name;}
+    public void SetName(string _n)
+    {
+        GetComponent<AI>().assignedBed.GetComponent<Bed>().AssignBed(_n, this.gameObject);
+        name = _n;
+         visitorName.text = name;
+    }
+   public string GetName()
+   {
+       return name;
+   }
 
 }

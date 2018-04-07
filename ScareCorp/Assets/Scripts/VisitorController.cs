@@ -25,7 +25,7 @@ public class VisitorController : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
+       // DontDestroyOnLoad(this.gameObject);
 
 
 		RandomiseVisitorInfo();

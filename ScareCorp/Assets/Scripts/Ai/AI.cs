@@ -73,7 +73,6 @@ public class AI : MonoBehaviour
     private void Start()
     {
         stateNeeds = GetComponent<AI_StateNeeds>();
-        TimeManager.DepartTime += DayChange;
         TimeManager.PlayRateChange += SetSpeed;
         TimeManager.timeStopped += SetSpeed;
         GameManager.ObjectAdd += GetNeedObjects;
@@ -107,18 +106,7 @@ public class AI : MonoBehaviour
     }
 
  
-    private void DayChange()
-    {
-        if (aiNeeds.CheckIfTimeToLeave())
-        {
-            
-            if(assignedBed)
-            {
-                assignedBed.GetComponent<Bed>().UnassignBed();
-                assignedBed = null;
-            }
-        }
-    }
+    
 
     private void SetSpeed()
     {

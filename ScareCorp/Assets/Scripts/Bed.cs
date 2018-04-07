@@ -12,6 +12,7 @@ public class Bed : MonoBehaviour {
 
 	void OnEnable()
 	{
+		
 		text = this.transform.GetChild(1).transform.GetChild(1).GetComponent<Text>();
 		text.text = "";
 	}

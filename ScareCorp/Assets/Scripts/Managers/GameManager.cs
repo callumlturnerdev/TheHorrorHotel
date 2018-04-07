@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour {
     public List<GameObject> hidingPlaces;
     public static event ClickAction ToggleTopWalls;
 
+    public static event ClickAction BedAdded;
+
     private bool wallsHidden = false;
     public bool GetWallsHidden() { return wallsHidden; }
 
@@ -42,7 +44,7 @@ public class GameManager : MonoBehaviour {
         {
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
         ObjectsAddedEvent();
         screamPoints = 2000;
         //UI stuff
@@ -59,6 +61,7 @@ public class GameManager : MonoBehaviour {
             ToggleWalls();
         }
     }
+    
     public GameObject GetABed() // USed by visitor to assign bed
     {
         GameObject bed = null;
@@ -79,8 +82,12 @@ public class GameManager : MonoBehaviour {
     {
         if(!tirednessObjects.Contains(bed))
         {
-            tirednessObjects.Add(bed);
             
+            tirednessObjects.Add(bed);
+            if(BedAdded != null)
+            {
+                BedAdded();
+            }
         }
     }
     public void ClearObjects()
@@ -112,6 +119,7 @@ public class GameManager : MonoBehaviour {
                     break;
                 case eNeedTypes.tiredness:
                     tirednessObjects.Add(obj);
+                    
                     break;
                 case eNeedTypes.none:
                     break;
@@ -146,6 +154,7 @@ public class GameManager : MonoBehaviour {
                     break;
                 case eNeedTypes.tiredness:
                     if(tirednessObjects.Contains(obj))
+
                         tirednessObjects.Remove(obj);
                         //maxBeds--;
                     break;
@@ -183,7 +192,12 @@ public class GameManager : MonoBehaviour {
     }
     public void AddToBedCount(int n)
     {
+      
         maxBeds += n;
+          if(BedAdded != null)
+            {
+                 BedAdded();
+            }
         UpdateBedCountUI();
     }
     public void AddToTakenBeds(int n)

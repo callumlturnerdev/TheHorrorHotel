@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using buildModes;
-
+using UnityEngine.UI;
 
 public class BuildOnGrid : MonoBehaviour {
 
+    [SerializeField]
+    int gridID;
     [SerializeField]
     GameObject[] gridNeighbours;
     private int neighbourInd;
@@ -53,8 +55,9 @@ public class BuildOnGrid : MonoBehaviour {
                 break;
         }
         FindConnectedGrids();
+        
 	}
-
+    public void SetGridID(int id){gridID = id;}
     void FindConnectedGrids()  // used to find neighbours used for big object placement
     {
         // this function will find the grids connected to this one.
@@ -178,6 +181,13 @@ public class BuildOnGrid : MonoBehaviour {
                     }
                     obj.transform.rotation = Quaternion.Euler(0, BuildController.instance.GetRotation(), 0);
                     builtObjectRotationZ = BuildController.instance.GetRotation();
+
+                if(this.gameObject.GetComponent<ObjectiveBuild>() != null)
+                {
+                    this.gameObject.GetComponent<ObjectiveBuild>().CheckBuiltObject(obj);
+                }
+
+                  
     }
     private void Deleting()
     {
@@ -230,7 +240,7 @@ public class BuildOnGrid : MonoBehaviour {
                 tempToBuild = BuildController.instance.GetCurrentObject();
                 GameObject obj = Instantiate(tempToBuild) as GameObject;
                 ObjectBuiltOnGrid = obj;
-                obj.transform.parent = this.transform;
+                obj.transform.parent = this.gameObject.transform;
                 GameManager.instance.AddObject(this.gameObject);
                 obj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z);
                 beenBuiltOn = true;
@@ -290,7 +300,7 @@ public class BuildOnGrid : MonoBehaviour {
     {
         if (objToLoad != null)
         {
-            GameObject obj = Instantiate(objToLoad) as GameObject;
+            GameObject obj = Instantiate(objToLoad);
             ObjectBuiltOnGrid = obj;
             obj.transform.parent = this.transform;
             GameManager.instance.AddObject(this.gameObject);
@@ -401,7 +411,8 @@ public class BuildOnGrid : MonoBehaviour {
 		return gridArray;
 	}
 
-
+    public int GetGridID() {return gridID;}
+    
 
     void  SelectNeighbourBasedOnRotation() // Gets build rotation and uses this to determine what neighbour to also build on for larger objects
     {

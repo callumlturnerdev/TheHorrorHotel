@@ -59,7 +59,7 @@ public class BuildController : MonoBehaviour {
 		{
 			Destroy (gameObject);
 		}
-		DontDestroyOnLoad (this.gameObject);
+		//DontDestroyOnLoad (this.gameObject);
 		Init ();
 	}
     public GameObject GetMonsterRef() {return monsterRef;}

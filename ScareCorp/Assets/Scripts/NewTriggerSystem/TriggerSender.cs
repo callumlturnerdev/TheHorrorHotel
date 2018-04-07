@@ -5,7 +5,7 @@ using buildModes;
 public class TriggerSender : MonoBehaviour {
 
 	// Use this for initialization
-	[SerializeField]
+
 	GameObject linkedReceiver;
 	[SerializeField]
 	private Material defaultMat;
@@ -15,8 +15,8 @@ public class TriggerSender : MonoBehaviour {
 	private bool lightLine = false;
 	TriggerSender previousSenderRef; // Ref to the object linking this
 	void Awake () {
-		enableLinking = false;
-		linkedReceiver = null;
+		//enableLinking = false;
+		//linkedReceiver = null;
 		line = gameObject.GetComponent<LineRenderer>();
 		defaultMat = Resources.Load("Materials/lineMat") as Material;
 		litMat = Resources.Load("Materials/TriggerMAt") as Material;
@@ -37,7 +37,7 @@ public class TriggerSender : MonoBehaviour {
 	 }
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 
 	void OnMouseOver()
@@ -81,11 +81,20 @@ public class TriggerSender : MonoBehaviour {
 	}
 	public void SetLinkedReceiver(GameObject receiver)
 	{
+		enableLinking = true;
+		line = gameObject.GetComponent<LineRenderer>();
 		if(linkedReceiver != null){UnlinkReceiver();}
-		linkedReceiver = receiver;
+		
+		if(receiver && receiver.GetComponent<TriggerReceiver>())
+		{
+			linkedReceiver = receiver;
+			linkedReceiver.GetComponent<TriggerReceiver>().SetLinkedSender(this.gameObject); //
+
+		}
+		
 		line.SetPosition(0,this.transform.position);
 		line.SetPosition(1,linkedReceiver.transform.position);
-		if(gameObject.GetComponent<TriggerBase>())
+ 		if(gameObject.GetComponent<TriggerBase>())
 		{
 			gameObject.GetComponent<TriggerBase>().SetTriggerObject(linkedReceiver.GetComponent<TriggerBase>());
 		}
@@ -131,6 +140,7 @@ public class TriggerSender : MonoBehaviour {
 		}
 	}
 
+	public GameObject GetLinkedReceiver(){return linkedReceiver;}
 	IEnumerator  EnableTriggerSystem(float t)
 	{
 		yield return new WaitForSeconds(t);

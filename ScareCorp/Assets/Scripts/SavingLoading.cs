@@ -31,9 +31,6 @@ public class SavingLoading : MonoBehaviour
     private void Awake()
     {
        
-       
-
-
         currentVisitors = new List<GameObject>();
         if (saveLoad == null)
         {
@@ -46,6 +43,7 @@ public class SavingLoading : MonoBehaviour
         }
         objFind = gameObject.GetComponent<ObjectFinder>();
         gridBuilderRef = GameObject.FindGameObjectWithTag("gridbuilder").GetComponent<GridBuilder>();
+        GridContainer = GameObject.FindGameObjectWithTag("gridContainer").gameObject;
         
        // grids = gridBuilderRef.grids;
         if (!Directory.Exists(Application.dataPath + "/Saves/"))
@@ -84,8 +82,24 @@ public class SavingLoading : MonoBehaviour
             return false;
         }
     }
+
+    public void LoadLevel(string filepath, string levelname)
+    {
+        SceneManager.LoadScene(levelname);
+        StartCoroutine(LoadOnDelay(filepath));
+    }
+    public IEnumerator LoadOnDelay(string filepath)
+    {
+        DebugConsole.Log("loading");
+        yield return new WaitForSeconds(0.1f);
+        Load(filepath);
+    }
     public void Load(string filepath)
     {
+        DebugConsole.Log("working");
+        
+          objFind = gameObject.GetComponent<ObjectFinder>();
+         gridBuilderRef = GameObject.FindGameObjectWithTag("gridbuilder").GetComponent<GridBuilder>();
          grids = gridBuilderRef.GetGrid();
       
         if (File.Exists(Application.dataPath + "/Saves/" + filepath))
@@ -115,6 +129,7 @@ public class SavingLoading : MonoBehaviour
                 }
             }
             VisitorLoadData(data);
+            LoadTriggerLinks(data);
         }
     }
 
@@ -122,6 +137,9 @@ public class SavingLoading : MonoBehaviour
 
     public void Save(string filepath)
     {
+        objFind = gameObject.GetComponent<ObjectFinder>();
+         gridBuilderRef = GameObject.FindGameObjectWithTag("gridbuilder").GetComponent<GridBuilder>();
+         GridContainer = GameObject.FindGameObjectWithTag("gridContainer").gameObject;
          grids = gridBuilderRef.GetGrid();
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.dataPath + "/Saves/" + filepath);
@@ -158,6 +176,7 @@ public class SavingLoading : MonoBehaviour
             }
         }
         VisitorDataSave(data);
+        SaveTriggerLinks(data);
         bf.Serialize(file, data);
         file.Close();
     }
@@ -182,6 +201,7 @@ public class SavingLoading : MonoBehaviour
                 _visAI.SetHygiene(data.visitorHygiene[i]);
                 _visScript.SetCurrentFear(data.visitorCurrentFear[i]);
                 _AI.GetABed();
+                _visScript.SetName(data.visitorName[i]);
                 _vis.SetActive(true);
 
             }
@@ -202,16 +222,87 @@ public class SavingLoading : MonoBehaviour
                     data.visitorPosX[i] = _visitor.gameObject.transform.position.x;
                     data.visitorPosY[i] = _visitor.gameObject.transform.position.z;
                     data.visitorHunger[i] = _visitorAI.GetHunger();
+                    DebugConsole.Log(_visitorAI.GetHunger().ToString());
                     data.visitorTiredness[i] = _visitorAI.GetTiredness();
                     data.visitorBoredom[i] = _visitorAI.GetBoredom();
                     data.visitorHygiene[i] = _visitorAI.GetHygiene();
                     data.visitorCurrentFear[i] = _visitor.GetCurrentFear();
+                    data.visitorName[i] = _visitor.GetName();
                 }
             }
         }
     }
 
+    void LoadTriggerLinks(PlayerData data)
+    {
 
+        TriggerLinker.instance.ClearSenderReceiver();
+          for (int i = 0; i < grids.Count; i++)
+        {
+            if (grids[i].transform.childCount > 0)
+            {
+                
+               GameObject ObjectOnGrid = grids[i].transform.GetChild(0).gameObject;
+               if(ObjectOnGrid)
+               {
+                    if(ObjectOnGrid.GetComponent<TriggerReceiver>())
+                    {
+                       if(data.linkedGridID[i] != -1) // not null reference to another grid
+                       {
+                           Debug.Log("" +data.linkedGridID[i] );
+                           if(grids[data.linkedGridID[i]].transform.childCount > 0)
+                           {
+                                GameObject objToLink = grids[data.linkedGridID[i]].transform.GetChild(0).gameObject;
+                                ObjectOnGrid.GetComponent<TriggerReceiver>().SetLinkedSender(objToLink);
+                           }
+                       }
+                    }
+                   if(ObjectOnGrid.GetComponent<TriggerSender>()) // Is a pressure plate
+                   {
+                       if(data.linkedGridID[i] != -1) // not null reference to another grid
+                       {
+                           if(grids[data.linkedGridID[i]].transform.childCount > 0)
+                           {
+                            Debug.Log("" +data.linkedGridID[i] );
+                            GameObject objToLink = grids[data.linkedGridID[i]].transform.GetChild(0).gameObject;
+                            Debug.Log(ObjectOnGrid +" + " + objToLink);
+                            ObjectOnGrid.GetComponent<TriggerSender>().SetLinkedReceiver(objToLink);
+                           }
+                       }
+                   }  
+               }
+            }
+        }
+    }
+
+    void SaveTriggerLinks(PlayerData data)
+    {
+          for (int i = 0; i < grids.Count; i++)
+        {
+            
+            if (grids[i].transform.childCount > 0)
+            {
+               GameObject ObjectOnGrid = grids[i].transform.GetChild(0).gameObject;
+               if(ObjectOnGrid)
+               {
+                   if(ObjectOnGrid.GetComponent<TriggerSender>()) // Is a pressure plate
+                   {
+                      if(ObjectOnGrid.GetComponent<TriggerSender>().GetLinkedReceiver())
+                       {
+                           Debug.Log("" + ObjectOnGrid.GetComponent<TriggerSender>().GetLinkedReceiver().transform.parent.GetComponent<BuildOnGrid>().GetGridID());
+                           data.linkedGridID[i] = ObjectOnGrid.GetComponent<TriggerSender>().GetLinkedReceiver().transform.parent.GetComponent<BuildOnGrid>().GetGridID();
+                            Debug.Log("" +data.linkedGridID[i] );
+                       }
+                       else
+                       {
+                           data.linkedGridID[i] = -1;
+                            Debug.Log("" +data.linkedGridID[i] );
+                       }
+                   }  
+               }
+            }
+        }
+    }
     void ClearVisitorData(PlayerData data)
     {
        // Array.Clear(data.visitorPos, 0, data.visitorPos.Length);
@@ -230,12 +321,16 @@ public class SavingLoading : MonoBehaviour
 
         public float[] objectsRots = new float[1300];
         public int[] objectIDs = new int[1300];
+
+        public int[] linkedGridID = new int[1300];
         public int[] matIDs =  new int[1300];
         public float scarepoints;
         public float time;
         public float day;
 
         public int visitorCount = 0;
+        
+        public string[] visitorName = new string[200];
         public float[] visitorPosX = new float[200];
         public float[] visitorPosY = new float[200];
         public float[] visitorHunger = new float[200];

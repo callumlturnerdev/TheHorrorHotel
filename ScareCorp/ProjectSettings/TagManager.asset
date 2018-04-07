@@ -27,6 +27,8 @@ TagManager:
   - save
   - tut
   - Object
+  - gridContainer
+  - objManager
   layers:
   - Default
   - TransparentFX

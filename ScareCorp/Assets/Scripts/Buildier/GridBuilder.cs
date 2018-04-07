@@ -36,6 +36,13 @@ public class GridBuilder : MonoBehaviour {
         {
             grids.Add(grid.gameObject);
         }
+          for (int i = 0; i < grids.Count; i++)
+        {
+            if (grids[i].GetComponent<BuildOnGrid>())
+            {
+                grids[i].GetComponent<BuildOnGrid>().SetGridID(i);
+            }
+        }
 
         saveSys = GameObject.FindGameObjectWithTag("save").GetComponent<SavingLoading>();
 		xPos = this.transform.position.x;
@@ -94,7 +101,7 @@ public class GridBuilder : MonoBehaviour {
                 {
                     Destroy(grid.GetComponent<BuildOnGrid>().GetCurrentlyBuiltObject());
                     grid.GetComponent<BuildOnGrid>().SetCanBuildOnGrid(true);
-                    grid.transform.SetParent(this.transform);
+                  //  grid.transform.SetParent(this.transform);
                 }
             }
 
@@ -103,6 +110,7 @@ public class GridBuilder : MonoBehaviour {
     }
 
     public List<GameObject> GetGrid(){return grids;}
+    
 	void CreateGrid()
 	{
         if (!hasBeenBuilt)

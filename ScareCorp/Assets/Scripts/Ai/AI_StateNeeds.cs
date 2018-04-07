@@ -246,8 +246,8 @@ public class AI_StateNeeds : MonoBehaviour {
 				gameObject.GetComponent<Visitor>().SetCurrentFear(newFear);
 			}
 		}
-		
-		if(!aINeeds.NeedReachedZero() && gameObject.GetComponent<Visitor>().GetCurrentFear() < 99 )
+		Debug.Log(aI.assignedBed);
+		if(!aINeeds.NeedReachedZero() && gameObject.GetComponent<Visitor>().GetCurrentFear() < 99 && aI.assignedBed != null )
 		{
 			DebugConsole.Log(gameObject.GetComponent<Visitor>().GetCurrentFear().ToString());
 			CheckForScared();
