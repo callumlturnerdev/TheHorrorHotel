@@ -42,9 +42,14 @@ public class SavingLoading : MonoBehaviour
             Destroy(gameObject);
         }
         objFind = gameObject.GetComponent<ObjectFinder>();
+        if(GameObject.FindGameObjectWithTag("gridbuilder"))
+        {
         gridBuilderRef = GameObject.FindGameObjectWithTag("gridbuilder").GetComponent<GridBuilder>();
+        }
+         if(GameObject.FindGameObjectWithTag("gridContainer"))
+        {
         GridContainer = GameObject.FindGameObjectWithTag("gridContainer").gameObject;
-        
+        }
        // grids = gridBuilderRef.grids;
         if (!Directory.Exists(Application.dataPath + "/Saves/"))
           {

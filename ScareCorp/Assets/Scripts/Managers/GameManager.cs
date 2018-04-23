@@ -164,7 +164,10 @@ public class GameManager : MonoBehaviour {
                     break;
             }
         }
-        StartCoroutine(WaitforSeconds(1));
+        if(this.isActiveAndEnabled)
+        {
+             StartCoroutine(WaitforSeconds(1));
+        }
     }
 
 
@@ -187,12 +190,10 @@ public class GameManager : MonoBehaviour {
         {
             return true;
         }
-        return false;
-        
+        return false;   
     }
     public void AddToBedCount(int n)
     {
-      
         maxBeds += n;
           if(BedAdded != null)
             {
@@ -229,10 +230,8 @@ public class GameManager : MonoBehaviour {
             return null;
         }
     }
-
     public void UpdateBedCountUI()
     {
-       
         DebugConsole.Log(tirednessObjects.Count.ToString());
        // maxBeds = tirednessObjects.Count;
         bedCountUI.text = "Beds: " + takenBeds + "/" + maxBeds + "";

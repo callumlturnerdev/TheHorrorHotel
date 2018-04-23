@@ -5,6 +5,7 @@ Assets/World.unity
 Assets/Level1.unity
 Assets/Level2.unity
 Assets/Level3.unity
+Assets/Level4.unity
 SceneListEnd?
 3750b7d4d64a5eeaaba713c94db46706 Assembly-CSharp.dll:.MoveTowards
 fbc7720f4c275995eaef1f6df81a3669 Assembly-CSharp.dll:.TriggerLinker
@@ -88,6 +89,8 @@ f61c0793411f10cf5fbfa1473fef5ef2 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 86d36c43c53541d667100dc90b89cfba UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 1b8c02d0aa82fbf036a2b9b2d713eec3 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
 3ecea0c2e43f5d97a17c441bfcf59a7d Assembly-CSharp.dll:UnityEngine.PostProcessing.PostProcessingBehaviour
+dd94f648b6e0520d51dd8a043a6aed4d Assembly-CSharp.dll:.UIColorController
+8aeb476483213390b356217463cc02da Assembly-CSharp.dll:.ObjectiveManager
 7986a0559c16faee2a20d2eed1b0a10a Assembly-CSharp.dll:.ClockTrigger
 80d949838951042e26ebf2a45626babb Assembly-CSharp.dll:.SmoothCameraOrbit
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Chest
@@ -135,6 +138,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.FlipUVs
 14f52cf390a0fa2c65f0a862591656f5 Assembly-CSharp.dll:.ColourVariation
 926293c74a0a5e2361739d950876f23a Assembly-CSharp.dll:.AI_StateNeeds
+696e61254d7583bdb940a6e28ef4bb77 Assembly-CSharp.dll:.UIColor
 e09dbed11d0156ebb62e7435c48e1737 Assembly-CSharp.dll:.SavingLoading
 d2f59e42acb90a8357795bdabb8b2453 Assembly-CSharp.dll:.TimeManager
 112af1c74e3aa8976dea81c8e8ae68e6 Assembly-CSharp.dll:.TutorialDisplay
@@ -150,6 +154,7 @@ e8e5bc82af5afd29651d99cb3d109c66 Assembly-CSharp.dll:.EventManager
 2f66e55bb1fb448724489e561bb27ac8 Assembly-CSharp.dll:.VisitorController
 4111649b0f90f170d705188b21dd34f7 Assembly-CSharp.dll:.wardrobeTrigger
 99a8026f1f9ba3327c6caae71fa2f74f Assembly-CSharp.dll:.HUDObject
+da534089b83c62246592185376d91d19 Assembly-CSharp.dll:.ObjectiveTimed
 5652db1ccbed5a53a4086aea44d9d833 Assembly-CSharp.dll:.MinimizeButton
 dc90b4938e84d4b8d137f9308d1ca3bf Assembly-CSharp.dll:.GameManager
 b40355f195cd5aadc2f49141127b58d7 Assembly-CSharp.dll:.Car
@@ -182,6 +187,7 @@ e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEng
 e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 ce5317d3733b0763862d7114d0ea9d14 Assembly-CSharp.dll:.UIInfoPanel
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Bed
+b6fd0cd7b82cc454a1c919a109c995d4 Assembly-CSharp.dll:.ObjectiveBuild
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
@@ -210,8 +216,3 @@ d0548837983e63914cd1812115ca6576 Assembly-CSharp.dll:UnfinityGames.uNote.uNoteHe
 7f9ab572f68fd53930784930ed71c945 Assembly-CSharp.dll:.VisitorSpawner
 4111649b0f90f170d705188b21dd34f7 Assembly-CSharp.dll:.DelayTrigger
 f96e6bfd375bb4c86aa9daa4587e44f0 Assembly-CSharp.dll:.Objective
-8aeb476483213390b356217463cc02da Assembly-CSharp.dll:.ObjectiveManager
-b6fd0cd7b82cc454a1c919a109c995d4 Assembly-CSharp.dll:.ObjectiveBuild
-da534089b83c62246592185376d91d19 Assembly-CSharp.dll:.ObjectiveTimed
-dd94f648b6e0520d51dd8a043a6aed4d Assembly-CSharp.dll:.UIColorController
-696e61254d7583bdb940a6e28ef4bb77 Assembly-CSharp.dll:.UIColor

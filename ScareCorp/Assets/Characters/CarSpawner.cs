@@ -73,6 +73,7 @@ public class CarSpawner : MonoBehaviour {
     {
         EventManager.PauseClicked -= Pause;
         EventManager.FastFClicked -= FastForward;
+         GameManager.BedAdded -= DayChange;
 
     }
 

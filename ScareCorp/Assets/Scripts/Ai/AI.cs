@@ -113,6 +113,7 @@ public class AI : MonoBehaviour
         if(navAgent)
         {
             navAgent.speed = (1 *  TimeManager.instance.GetPlayRate()) * 3;
+            navAgent.acceleration = navAgent.speed;;
             //if(navAgent.speed == 0){anim.speed = 0;} 
             anim.speed= navAgent.speed;
         }
