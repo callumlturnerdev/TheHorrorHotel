@@ -58,18 +58,19 @@ public class AI_StateNeeds : MonoBehaviour {
 						aI.UpdateStateUI("Scared");
 						aI.navAgent.isStopped = false;
 						aI.navAgent.speed = 4;
-						//if(aI.hidingPlaces.Count)
-						//currentNeedObject  = aI.SelectTarget(aI.hidingPlaces);
-
+						currentNeedObject = null;
+						if(aI.hidingPlaces.Count >0)
+						{
+							currentNeedObject  = aI.SelectTarget(aI.hidingPlaces);
+						}
 						float randPitch =  Random.Range(0.9f,1.1f);
 						gameObject.GetComponent<AudioSource>().pitch = randPitch; // Add some random variation in the pitch.
 						gameObject.GetComponent<AudioSource>().Play(); // play scream sound effect.
 
-						if( aI.hidingPlaces.Count > 0 && currentNeedObject)
+						if( aI.hidingPlaces.Count > 0)//&& currentNeedObject)
 						{
 							nav.destination = currentNeedObject.GetComponent<Buildable>().GetVisInteractPos().position;
-							currentNeed = eNeedTypes.hidden;
-							
+							currentNeed = eNeedTypes.hidden;						
 						}
 						else
 						{

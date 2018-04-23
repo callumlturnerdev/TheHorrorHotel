@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using buildModes;
 public class SnapToMouse : MonoBehaviour
 {
 
@@ -53,9 +53,17 @@ public class SnapToMouse : MonoBehaviour
     void Update()
     {
 
-        if (BuildController.instance.GetInDeleteMode())
+        if(BuildController.instance.GetCurrentBuildMode() == eBuildMode.deleting)
         {
             line.material = lineRendMats[1];
+        }
+        else if(BuildController.instance.GetCurrentBuildMode() == eBuildMode.waypoints)
+        {
+            line.material = lineRendMats[2];
+        }
+        else if(BuildController.instance.GetCurrentBuildMode() == eBuildMode.trigger)
+        {
+            line.material = lineRendMats[3];
         }
         else
         {

@@ -109,6 +109,10 @@ public class Buildable : MonoBehaviour {
             navMeshObstacle = GetComponent<NavMeshObstacle>();
             navMeshObstacle.enabled = true;
         }
+        if(GetComponent<SphereCollider>())
+        {
+            GetComponent<SphereCollider>().enabled = true;
+        }
 
         Vector3 floatTrans = new Vector3(gameObject.transform.position.x-20,gameObject.transform.position.y,gameObject.transform.position.z);
           floatText.transform.position = floatTrans;

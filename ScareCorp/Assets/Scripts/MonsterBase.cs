@@ -97,6 +97,10 @@ public class MonsterBase : MonoBehaviour {
 
             }
         }
+        if(Input.GetMouseButtonDown(0) && BuildController.instance.GetCurrentBuildMode() == eBuildMode.deleting)
+        {
+            Destroy(this.gameObject);
+        }
         
     }
 }

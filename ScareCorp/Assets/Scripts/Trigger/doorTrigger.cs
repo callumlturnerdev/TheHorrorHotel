@@ -15,7 +15,7 @@ public class doorTrigger : TriggerBase {
 
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "visitor")
+        if (collision.gameObject.tag == "visitor" || collision.gameObject.tag == "scary")
         {
            OnCollision();
         }

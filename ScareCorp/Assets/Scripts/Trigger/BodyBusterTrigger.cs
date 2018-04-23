@@ -22,10 +22,7 @@ public class BodyBusterTrigger : TriggerBase {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "visitor")
-        {
-            anim.SetTrigger("Scare");
-        }
+  
     }
 
 public override void ObjectOffEvent()
