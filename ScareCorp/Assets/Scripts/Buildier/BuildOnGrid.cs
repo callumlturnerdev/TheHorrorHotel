@@ -166,18 +166,19 @@ public class BuildOnGrid : MonoBehaviour {
        
         GameObject obj = Instantiate(tempToBuild) as GameObject;
                     ObjectBuiltOnGrid = obj;
-                    if(!ObjectBuiltOnGrid.GetComponent<MonsterBase>())//  Checks if built object isnt a monster
+                    obj.transform.parent = this.transform;
+                   if(!ObjectBuiltOnGrid.GetComponent<MonsterBase>())//  Checks if built object isnt a monster
                     { 
-                        obj.transform.parent = this.transform;
                         beenBuiltOn = true;
                         isHighlighted = false;
                         canBuildOn = false;
                     }
+                  else {obj.transform.parent =null;}
+                   //GameManager.instance.AddObject(this.gameObject);
                    
                     obj.GetComponent<Buildable>().ActivateGravity();
                     audioS.clip = clips[1];
                     audioS.Play();
-                    GameManager.instance.AddObject(this.gameObject);
                     obj.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z);
                     //canBuildOn = false;
                    

@@ -43,13 +43,16 @@ public class BuildController : MonoBehaviour {
     bool SnapMode = true;
     public bool paintMode = false;
     // UI elements
+    [Header("UI elements")]
     Text ScreamPointsUI;
+    Text MonsterCostUI;
      float screamPoints = 6000;
-
+     float monsterCost  = 0;
      private GameObject monsterRef;
 
     // Use this for initialization
     void Awake () {
+        monsterCost = 0;
         audioS = gameObject.AddComponent(typeof(AudioSource))as AudioSource;
         audioS.clip = rotateSound;
         inDeleteMode = false;
@@ -76,8 +79,10 @@ public class BuildController : MonoBehaviour {
         currentObject = defaultBuildObject;
 		playerCursor = GameObject.FindGameObjectWithTag ("cursor");
 		heldObjectRef = playerCursor.transform.GetChild (0).gameObject;
+        TimeManager.HourTick += HourTicked;
        // EventManager.DeleteClicked += DeleteMode;
         HUDSetup();
+        UpdateHUD();
     }
 
     void HUDSetup()
@@ -87,13 +92,27 @@ public class BuildController : MonoBehaviour {
             ScreamPointsUI = GameObject.FindGameObjectWithTag("ScarePoints").GetComponent<Text>();
             ScreamPointsUI.text = " "  + screamPoints;
         }
+        if (GameObject.FindGameObjectWithTag("monsterCost") != null)
+        {
+            MonsterCostUI = GameObject.FindGameObjectWithTag("monsterCost").GetComponent<Text>();
+            MonsterCostUI.text = " "  + monsterCost;
+        }
     }
 
+    void HourTicked()
+    {
+        screamPoints  -= monsterCost;
+        UpdateHUD();
+    }
     void UpdateHUD()
     {
         if (ScreamPointsUI)
         {
             ScreamPointsUI.text = " " + screamPoints ;
+        }
+        if(MonsterCostUI)
+        {
+            MonsterCostUI.text = " " + monsterCost;
         }
     }
 
@@ -103,6 +122,12 @@ public class BuildController : MonoBehaviour {
         UpdateHUD();
     }
 
+    public void AddMonsterCost(float cost)
+    {
+        monsterCost += cost;
+        UpdateHUD();
+    }
+    public float GetMonsterCost(){return monsterCost;}
     public bool CheckCost(float cost)
     {
         if (screamPoints >= cost)
@@ -114,6 +139,11 @@ public class BuildController : MonoBehaviour {
         return false;
     }
 
+  
+    void OnDisable()
+    {
+         TimeManager.DayChanged -= HourTicked;
+    }
 	// Update is called once per frame
 	void Update () {
 

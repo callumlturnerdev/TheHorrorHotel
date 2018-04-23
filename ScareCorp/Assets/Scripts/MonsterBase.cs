@@ -20,6 +20,10 @@ public class MonsterBase : MonoBehaviour {
     int currentWaypoint;
     private GameObject currentWayPointobj;
     GameObject firstWaypoint, lastWayPoint;
+
+  
+    [SerializeField]
+    float monsterCostPerDay = 100;
     private void Awake()
     {
         currentWaypoint = 0;
@@ -32,7 +36,15 @@ public class MonsterBase : MonoBehaviour {
         CheckDestinationIsReached();
     }
 
-
+   
+    void OnDestroy()
+    {
+        if(GetComponent<BoxCollider>().enabled == true) // Temp way to only trigger on world monsters.
+        {
+        BuildController.instance.AddMonsterCost(-monsterCostPerDay);
+        }
+        Destroy(currentWayPointobj);
+    }
     void CheckDestinationIsReached()
     {
         if(currentWayPointobj)
@@ -76,7 +88,7 @@ public class MonsterBase : MonoBehaviour {
           nav = GetComponent<NavMeshAgent>();
           GetComponent<BoxCollider>().enabled = true;
           nav.enabled = true;
-          
+          BuildController.instance.AddMonsterCost(monsterCostPerDay);
         }
     }
                          

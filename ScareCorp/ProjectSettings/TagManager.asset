@@ -29,6 +29,7 @@ TagManager:
   - Object
   - gridContainer
   - objManager
+  - monsterCost
   layers:
   - Default
   - TransparentFX

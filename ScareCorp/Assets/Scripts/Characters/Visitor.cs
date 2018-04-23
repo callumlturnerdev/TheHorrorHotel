@@ -60,7 +60,7 @@ public class Visitor : MonoBehaviour
 
     public void SetNextFearObject(GameObject newFearObject)
     {
-        lastFearObject = newFearObject.transform.parent.gameObject;
+        lastFearObject = newFearObject;//newFearObject.transform.parent.gameObject;
     }
     void OnCollisionEnter(Collision other)
     {

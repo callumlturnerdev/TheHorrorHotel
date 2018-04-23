@@ -197,7 +197,7 @@ f671a42aea5f34fec6a4450a3668c615 Assembly-CSharp.dll:UnityEngine.PostProcessing.
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 69742a69dc826e952c3b5d9f10a2421d Assembly-CSharp.dll:.CarSpawner
 8341be78f80f8f2bb0bc29ef6b37081f Assembly-CSharp.dll:.SnapToMouse
-36f8f6ee8bccfcde6365c82338d0eb21 Assembly-CSharp.dll:.MonsterBase
+18359045ef2bc343c5cb2a5ac0eb8885 Assembly-CSharp.dll:.MonsterBase
 ede19998a4cb6070a007bb644b1e3282 Assembly-CSharp.dll:.TriggerSender
 9718c3655aafdc56917fc52e3475ead8 Assembly-CSharp.dll:.DirLightRotation
 7986a0559c16faee2a20d2eed1b0a10a Assembly-CSharp.dll:.doorTrigger

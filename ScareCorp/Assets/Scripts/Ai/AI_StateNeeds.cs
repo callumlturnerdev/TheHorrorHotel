@@ -297,7 +297,7 @@ public class AI_StateNeeds : MonoBehaviour {
 			//currentNeed = eNeedTypes.hygiene;
 			aI.UpdateStateUI("Leaving");
 
-			if(Vector3.Distance(this.transform.position, GameManager.instance.leavePoint.transform.position)< 100)
+			if(Vector3.Distance(this.transform.position, GameManager.instance.leavePoint.transform.position)< 10)
 			{
 				nav.isStopped = true;
 				ArrivalAction(currentNeed);
