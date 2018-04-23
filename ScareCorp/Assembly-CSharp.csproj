@@ -51,10 +51,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Characters\Car.cs" />
-     <Compile Include="Assets\Characters\CarSpawner.cs" />
-     <Compile Include="Assets\Characters\Visitor.cs" />
-     <Compile Include="Assets\Characters\VisitorSpawner.cs" />
      <Compile Include="Assets\DelayTrigger.cs" />
      <Compile Include="Assets\LoopTrigger.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
@@ -122,6 +118,10 @@
      <Compile Include="Assets\Scripts\Buildier\BuildController.cs" />
      <Compile Include="Assets\Scripts\Buildier\BuildOnGrid.cs" />
      <Compile Include="Assets\Scripts\Buildier\GridBuilder.cs" />
+     <Compile Include="Assets\Scripts\Characters\Car.cs" />
+     <Compile Include="Assets\Scripts\Characters\CarSpawner.cs" />
+     <Compile Include="Assets\Scripts\Characters\Visitor.cs" />
+     <Compile Include="Assets\Scripts\Characters\VisitorSpawner.cs" />
      <Compile Include="Assets\Scripts\CheckFileExists.cs" />
      <Compile Include="Assets\Scripts\ColourVariation.cs" />
      <Compile Include="Assets\Scripts\Controls\CameraControls.cs" />

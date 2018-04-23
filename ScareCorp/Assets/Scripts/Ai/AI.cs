@@ -215,6 +215,13 @@ public class AI : MonoBehaviour
     
     }
 
+  
+    void OnDisable()
+    {
+          TimeManager.PlayRateChange -= SetSpeed;
+            TimeManager.timeStopped -= SetSpeed;
+            GameManager.ObjectAdd -= GetNeedObjects;
+    }
     private void UpdateNeeds()
     {
         hunger = aiNeeds.GetHunger();

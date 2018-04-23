@@ -58,8 +58,13 @@ public class AI_StateNeeds : MonoBehaviour {
 						aI.UpdateStateUI("Scared");
 						aI.navAgent.isStopped = false;
 						aI.navAgent.speed = 4;
-						currentNeedObject  = aI.SelectTarget(aI.hidingPlaces);
-					
+						//if(aI.hidingPlaces.Count)
+						//currentNeedObject  = aI.SelectTarget(aI.hidingPlaces);
+
+						float randPitch =  Random.Range(0.9f,1.1f);
+						gameObject.GetComponent<AudioSource>().pitch = randPitch; // Add some random variation in the pitch.
+						gameObject.GetComponent<AudioSource>().Play(); // play scream sound effect.
+
 						if( aI.hidingPlaces.Count > 0 && currentNeedObject)
 						{
 							nav.destination = currentNeedObject.GetComponent<Buildable>().GetVisInteractPos().position;
@@ -134,6 +139,7 @@ public class AI_StateNeeds : MonoBehaviour {
 	void OnDisable()
 	{
 		TimeManager.MinuteTick -= MinTick;
+		TimeManager.HourTick -= HourlyTick;
 	}
 	void ArrivalAction(eNeedTypes currentNeed)
 	{
@@ -161,12 +167,14 @@ public class AI_StateNeeds : MonoBehaviour {
 				break;
 
 				case eNeedTypes.hidden:
-					
-					aI.UpdateStateUI("Hiding");
-					
-					 aI.fearTarget = null;
-					DisableScared();
-					StartCoroutine(StopHiding(10));
+					if(currentNeedObject != GameManager.instance.leavePoint)
+					{
+						aI.UpdateStateUI("Hiding");
+						
+						aI.fearTarget = null;
+						DisableScared();
+						StartCoroutine(StopHiding(10));
+					}
 					
 				break;
 
@@ -288,12 +296,17 @@ public class AI_StateNeeds : MonoBehaviour {
 			//currentNeed = eNeedTypes.hygiene;
 			aI.UpdateStateUI("Leaving");
 
-			if(Vector3.Distance(this.transform.position, GameManager.instance.leavePoint.transform.position)< 5)
+			if(Vector3.Distance(this.transform.position, GameManager.instance.leavePoint.transform.position)< 100)
 			{
 				nav.isStopped = true;
 				ArrivalAction(currentNeed);
-				GameManager.instance.AddBed(aI.assignedBed);
-				Destroy(gameObject);
+				StartCoroutine(DestroyVisitor());
+				// Below  help 'simulate' that the visitor is gone while waiting for the timer.
+				this.gameObject.GetComponent<ParticleSystem>().Stop();
+				this.gameObject.GetComponent<Visitor>().NeedsUI.transform.parent.gameObject.SetActive(false); // Kind of  a dodgy way to go about this consider refactoring this in future.
+				this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
+				
+				
 			}
 		}
 	}
@@ -303,8 +316,8 @@ public class AI_StateNeeds : MonoBehaviour {
 		if(aI )
 		{
 		
-			aI.eyes.transform.Rotate(0, aI.searchingTurnSpeed*2 * Time.deltaTime, 0);
-       		 RaycastHit hit;
+		aI.eyes.transform.Rotate(0, aI.searchingTurnSpeed*2 * Time.deltaTime, 0);
+    	 RaycastHit hit;
          Debug.DrawRay(aI.eyes.position, aI.eyes.forward.normalized *20, Color.green);
 
         //int layerMask = 1 << 12 | 1<< 11;
@@ -364,6 +377,14 @@ public class AI_StateNeeds : MonoBehaviour {
 		yield return new WaitForSeconds(seconds);
 		targetingNeed = true;
 			currentlyScared = false;
+	}
+
+	IEnumerator DestroyVisitor()
+	{
+	
+		yield return new WaitForSeconds(20);
+		GameManager.instance.AddBed(aI.assignedBed);
+		Destroy(gameObject);
 	}
 
 }
