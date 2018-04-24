@@ -33,12 +33,17 @@ public class TriggerSender : MonoBehaviour {
 	 void OnDestroy()
 	 {
 		 if(previousSenderRef)
-		 	previousSenderRef.UnlinkReceiver();
-	 }
-	// Update is called once per frame
-	void Update () {
+		 	{previousSenderRef.UnlinkReceiver();}
 
-	}
+		if(linkedReceiver)
+			{
+				if(linkedReceiver.GetComponent<TriggerSender>())
+				{
+					linkedReceiver.GetComponent<TriggerSender>().RevertToReceiver(); 
+				}
+			}	
+	 }
+
 
 	void OnMouseOver()
 	{
@@ -48,20 +53,18 @@ public class TriggerSender : MonoBehaviour {
 			{
 				BuildController.instance.TrigggerMode(true);
 			}
-
 			TriggerLinker.instance.SetCurrentSender(this.gameObject);
+			enableLinking = false;
 		}
-		if(Input.GetMouseButtonDown(1) && Input.GetKeyDown(KeyCode.LeftShift))
+		if(Input.GetMouseButtonDown(2) && BuildController.instance.GetCurrentBuildMode() != eBuildMode.deleting)
 		{
 			if(BuildController.instance.GetCurrentBuildMode() != eBuildMode.trigger)
 			{
 				BuildController.instance.TrigggerMode(true);
 			}
-
 			TriggerLinker.instance.SetCurrentSender(this.gameObject);
 			if(BuildController.instance.GetCurrentBuildMode() == eBuildMode.trigger)
 			{
-				
 				UnlinkReceiver();
 			}
 		}
@@ -81,7 +84,7 @@ public class TriggerSender : MonoBehaviour {
 	}
 	public void SetLinkedReceiver(GameObject receiver)
 	{
-		enableLinking = true;
+		//enableLinking = true;
 		line = gameObject.GetComponent<LineRenderer>();
 		if(linkedReceiver != null){UnlinkReceiver();}
 		

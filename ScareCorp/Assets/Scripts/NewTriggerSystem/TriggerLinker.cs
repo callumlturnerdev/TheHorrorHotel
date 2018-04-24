@@ -43,7 +43,6 @@ public class TriggerLinker : MonoBehaviour {
 		}
 	}
 
-
 	private void AttemptConnection()
 	{
 		if(tSender != null && tReciever != null)

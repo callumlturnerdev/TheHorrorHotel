@@ -147,6 +147,7 @@
      <Compile Include="Assets\Scripts\ObjectiveSystem\Objective.cs" />
      <Compile Include="Assets\Scripts\ObjectiveSystem\ObjectiveBuild.cs" />
      <Compile Include="Assets\Scripts\ObjectiveSystem\ObjectiveManager.cs" />
+     <Compile Include="Assets\Scripts\ObjectiveSystem\ObjectiveScore.cs" />
      <Compile Include="Assets\Scripts\ObjectiveSystem\ObjectiveTimed.cs" />
      <Compile Include="Assets\Scripts\Objects\Buildable.cs" />
      <Compile Include="Assets\Scripts\Objects\Chest.cs" />

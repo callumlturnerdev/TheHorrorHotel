@@ -15,7 +15,6 @@ public class ObjectFinder : MonoBehaviour {
             obj[i].GetComponent<Buildable>().SetIndex(i);
         }
     }
-
     public int GetMaterialIndexInArray(Material mat)
     {
         for(int i = 0; i < groundMats.Count; i++)

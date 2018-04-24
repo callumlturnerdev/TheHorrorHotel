@@ -381,12 +381,13 @@ MonoBehaviour:
   floatingTextObj: {fileID: 1040756802173086, guid: e1d3d1bf190788145b413cd7f7ea4de7,
     type: 2}
   particleTimer: 0.6
-  objectID: 25
+  objectID: 1
   index: 0
   needtype: 0
   fearType: 0
   uses: 999999
   needFulfillment: 0
+  currentUsers: []
   itemCost: 10
   priority: 0
   largeObject: 0
@@ -423,9 +424,9 @@ NavMeshObstacle:
   m_Enabled: 0
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 1.15, y: 10, z: 1.15}
+  m_Extents: {x: 1, y: 1, z: 1}
   m_MoveThreshold: 0.1
   m_Carve: 1
-  m_CarveOnlyStationary: 1
+  m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5

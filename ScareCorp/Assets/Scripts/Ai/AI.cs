@@ -257,14 +257,69 @@ public class AI : MonoBehaviour
         if (e.Count > 1)
         {
             e.Sort(SortByDistance);
+            List<GameObject>freeItem = new List<GameObject>();
+            foreach(GameObject t in e)
+            {
+                if(t.GetComponent<Buildable>())
+                {
+                    if(t.GetComponent<Buildable>().currentUsers.Count < 1)
+                    {
+                        
+                        freeItem.Add(t);
+                    }
+                }
+            }
+            if(freeItem.Count > 0)
+            {
+                return freeItem[0];
+            }
             //e.Reverse();
         }
                 return e[0];
     }
 
+    public GameObject SelectHygieneTarget(List<GameObject> e)
+    {
+        foreach (GameObject _e in e)
+        {
+            if (_e == null)
+            {
+                e.Remove(_e);
+            }
+        }
+        if (e.Count > 1)
+        {
+            e.Sort(SortByDistance);
+            List<GameObject>freeItem = new List<GameObject>();
+            foreach(GameObject t in e)
+            {
+                if(t.GetComponent<Buildable>())
+                {
+                    if(t.GetComponent<Buildable>().currentUsers.Count < 1)
+                    {
+                        
+                        freeItem.Add(t);
+                    }
+                }
+            }
+            if(freeItem.Count > 0)
+            {
+                return freeItem[0];
+            }
+            //e.Reverse();
+        }
+                return null;
+    }
+
+
      int SortByDistance( GameObject p1, GameObject p2)
     {
             return Vector2.Distance(transform.position,p1.transform.position).CompareTo(Vector2.Distance(transform.position, p2.transform.position));
+    }
+
+    int SortByCurrentUsers( GameObject p1, GameObject p2)
+    {
+            return p1.GetComponent<Buildable>().currentUsers.Count.CompareTo(p2.GetComponent<Buildable>().currentUsers.Count);
     }
     static int SortByPriority(GameObject p1, GameObject p2)
     {

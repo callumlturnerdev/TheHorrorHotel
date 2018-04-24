@@ -44,6 +44,10 @@ public class AI_StateNeeds : MonoBehaviour {
 					currentNeedObject = aI.SelectTarget(aI.boredomObjects);
 					if(currentNeedObject)
 					{
+						if(currentNeedObject.GetComponent<Buildable>())
+						{
+							currentNeedObject.GetComponent<Buildable>().AddCurrentUser(this.gameObject);
+						}
 						nav.isStopped = false;
 						nav.destination = currentNeedObject.GetComponent<Buildable>().GetVisInteractPos().position;
 						currentNeed = eNeedTypes.boredom;
@@ -62,6 +66,10 @@ public class AI_StateNeeds : MonoBehaviour {
 						if(aI.hidingPlaces.Count >0)
 						{
 							currentNeedObject  = aI.SelectTarget(aI.hidingPlaces);
+							if(currentNeedObject.GetComponent<Buildable>())
+							{
+								currentNeedObject.GetComponent<Buildable>().AddCurrentUser(this.gameObject);
+							}
 						}
 						float randPitch =  Random.Range(0.9f,1.1f);
 						gameObject.GetComponent<AudioSource>().pitch = randPitch; // Add some random variation in the pitch.
@@ -88,6 +96,10 @@ public class AI_StateNeeds : MonoBehaviour {
 					currentNeedObject  = aI.SelectTarget(aI.hungerObjects);
 					if(currentNeedObject)
 					{
+						if(currentNeedObject.GetComponent<Buildable>())
+						{
+							currentNeedObject.GetComponent<Buildable>().AddCurrentUser(this.gameObject);
+						}
 						nav.isStopped = false;
 						nav.destination = currentNeedObject.GetComponent<Buildable>().GetVisInteractPos().position;
 						currentNeed = eNeedTypes.hunger;
@@ -97,9 +109,13 @@ public class AI_StateNeeds : MonoBehaviour {
 				break;
 
 				case eNeedTypes.hygiene:
-					currentNeedObject  = aI.SelectTarget(aI.hygieneObjects);
+					currentNeedObject  = aI.SelectHygieneTarget(aI.hygieneObjects);
 					if(currentNeedObject)
 					{
+						if(currentNeedObject.GetComponent<Buildable>())
+						{
+							currentNeedObject.GetComponent<Buildable>().AddCurrentUser(this.gameObject);
+						}
 						nav.isStopped = false;
 						nav.destination = currentNeedObject.GetComponent<Buildable>().GetVisInteractPos().position;
 						currentNeed = eNeedTypes.hygiene;
@@ -155,7 +171,10 @@ public class AI_StateNeeds : MonoBehaviour {
 					
 					if(aINeeds.GetBoredom() > 0.9f)
 						{
-							
+							if(currentNeedObject.GetComponent<Buildable>())
+								{
+									currentNeedObject.GetComponent<Buildable>().RemoveCurrentUser(this.gameObject);
+								}
 							targetingNeed = false;
 							ChangeNeedState(aINeeds.FindMostUrgentNeed());
 						}
@@ -171,7 +190,10 @@ public class AI_StateNeeds : MonoBehaviour {
 					if(currentNeedObject != GameManager.instance.leavePoint)
 					{
 						aI.UpdateStateUI("Hiding");
-						
+						if(currentNeedObject.GetComponent<Buildable>())
+						{
+							currentNeedObject.GetComponent<Buildable>().RemoveCurrentUser(this.gameObject);
+						}
 						aI.fearTarget = null;
 						DisableScared();
 						StartCoroutine(StopHiding(10));
@@ -183,7 +205,10 @@ public class AI_StateNeeds : MonoBehaviour {
 					
 					if(aINeeds.GetHunger() > 0.9f)
 						{
-							
+							if(currentNeedObject.GetComponent<Buildable>())
+							{
+								currentNeedObject.GetComponent<Buildable>().RemoveCurrentUser(this.gameObject);
+							}
 							targetingNeed = false;
 							ChangeNeedState(aINeeds.FindMostUrgentNeed());
 						}
@@ -199,7 +224,10 @@ public class AI_StateNeeds : MonoBehaviour {
 					
 					if(aINeeds.GetHygiene() > 0.9f)
 						{
-							
+							if(currentNeedObject.GetComponent<Buildable>())
+							{
+								currentNeedObject.GetComponent<Buildable>().RemoveCurrentUser(this.gameObject);
+							}
 							targetingNeed = false;
 							ChangeNeedState(aINeeds.FindMostUrgentNeed());
 						}
@@ -266,14 +294,18 @@ public class AI_StateNeeds : MonoBehaviour {
 				{
 					if( currentNeedObject && currentNeedObject.GetComponent<Buildable>())
 					{
-					if((Vector3.Distance(this.transform.position, currentNeedObject.GetComponent<Buildable>().GetVisInteractPos().position) < 2)  && targetingNeed == true)
+						float distance = 3.5f;
+						if(currentNeed ==  eNeedTypes.tiredness){distance = 2;}
+						if(currentNeed ==  eNeedTypes.hygiene){distance = 2;}
+					if((Vector3.Distance(this.transform.position, currentNeedObject.GetComponent<Buildable>().GetVisInteractPos().position) < distance)  && targetingNeed == true)
 					{
 						nav.isStopped = true;
 						ArrivalAction(currentNeed);
 					}
 					}
 					else
-					{
+					{	
+						currentNeedObject = null;
 						ChangeNeedState(aINeeds.FindMostUrgentNeed());
 					}
 				}
@@ -300,14 +332,13 @@ public class AI_StateNeeds : MonoBehaviour {
 			if(Vector3.Distance(this.transform.position, GameManager.instance.leavePoint.transform.position)< 10)
 			{
 				nav.isStopped = true;
-				ArrivalAction(currentNeed);
+				//ArrivalAction(currentNeed);
+				
 				StartCoroutine(DestroyVisitor());
 				// Below  help 'simulate' that the visitor is gone while waiting for the timer.
 				this.gameObject.GetComponent<ParticleSystem>().Stop();
 				this.gameObject.GetComponent<Visitor>().NeedsUI.transform.parent.gameObject.SetActive(false); // Kind of  a dodgy way to go about this consider refactoring this in future.
-				this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-				
-				
+				this.gameObject.transform.GetChild(0).gameObject.SetActive(false);				
 			}
 		}
 	}
@@ -329,6 +360,10 @@ public class AI_StateNeeds : MonoBehaviour {
                 Debug.DrawRay(aI.eyes.position, aI.eyes.forward.normalized * 20, Color.red);
             if (hit.transform.gameObject.tag == "scary")
             {
+				if(currentNeedObject.GetComponent<Buildable>())
+				{
+					currentNeedObject.GetComponent<Buildable>().RemoveCurrentUser(this.gameObject);
+				}
                 aI.fearTarget = hit.transform.gameObject;
                 aI.gameObject.GetComponent<Visitor>().SetNextFearObject(hit.transform.gameObject);
 				currentlyScared = true;
@@ -384,6 +419,7 @@ public class AI_StateNeeds : MonoBehaviour {
 	{
 	
 		yield return new WaitForSeconds(20);
+		Debug.Log("Destorying visitor and adding bed");
 		GameManager.instance.AddBed(aI.assignedBed);
 		Destroy(gameObject);
 	}

@@ -17,9 +17,12 @@ public class Buildable : MonoBehaviour {
     public int index;
     public eNeedTypes needtype;
     public eFearTypes fearType;
+
+    [Header("NeedItem")]
     public float uses =999999;
     [Range(0,1)]
     public float needFulfillment;
+    public List<GameObject> currentUsers; //Keeps track of current user count.
     public float itemCost;
     [Range(0,10)]
     public int priority;
@@ -30,6 +33,7 @@ public class Buildable : MonoBehaviour {
     AudioSource audioS;
     // Use this for initialization
     void Start() {
+        currentUsers = new List<GameObject>();
         hasBeenActivated = false;
         /* 
         if ( transform.childCount > 0 )
@@ -88,6 +92,22 @@ public class Buildable : MonoBehaviour {
         StartCoroutine(PlaySmokeParticle(particleTimer));
           
         
+    }
+
+    public void AddCurrentUser(GameObject obj)
+    {
+        if(!currentUsers.Contains(obj))
+        {
+            currentUsers.Add(obj);
+        }
+    }
+
+    public void RemoveCurrentUser(GameObject obj)
+    {
+        if(currentUsers.Contains(obj))
+        {
+            currentUsers.Remove(obj);
+        }
     }
     IEnumerator DestroyRigidBodies()
     {

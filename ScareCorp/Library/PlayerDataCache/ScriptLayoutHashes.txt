@@ -216,3 +216,4 @@ d0548837983e63914cd1812115ca6576 Assembly-CSharp.dll:UnfinityGames.uNote.uNoteHe
 7f9ab572f68fd53930784930ed71c945 Assembly-CSharp.dll:.VisitorSpawner
 4111649b0f90f170d705188b21dd34f7 Assembly-CSharp.dll:.DelayTrigger
 f96e6bfd375bb4c86aa9daa4587e44f0 Assembly-CSharp.dll:.Objective
+202c13aa8564e456673a520c0c759716 Assembly-CSharp.dll:.ObjectiveScore

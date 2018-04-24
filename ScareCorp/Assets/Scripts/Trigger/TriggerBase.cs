@@ -62,7 +62,7 @@ abstract public class TriggerBase : MonoBehaviour {
 				BuildController.instance.TrigggerMode(true);
 			}
 		}
-		if(Input.GetMouseButtonDown(2))
+		if(Input.GetMouseButtonDown(0) && BuildController.instance.GetCurrentBuildMode() != eBuildMode.deleting)
 		{
 			OnCollision();
 		}

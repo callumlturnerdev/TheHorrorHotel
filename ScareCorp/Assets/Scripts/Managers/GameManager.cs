@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour {
     
     public void AddBed(GameObject bed)
     {
+        
         if(!tirednessObjects.Contains(bed))
         {
             
