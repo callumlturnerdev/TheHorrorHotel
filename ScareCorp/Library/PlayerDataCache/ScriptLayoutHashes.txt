@@ -106,7 +106,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 31aaf521b3ef8699466676591ea0efd4 UnityEngine.Timeline.dll:UnityEngine.Timeline.GroupTrack
 31aaf521b3ef8699466676591ea0efd4 UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 df374c01140c2d578bf70cbd60073d1d UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
-3db64e80c461b490f3b240b7d120db77 Assembly-CSharp.dll:.Buildable
+80c3f75c2c302c52013498e80d2c1d18 Assembly-CSharp.dll:.Buildable
 fb13663d7889d300df0bf8eadea8b666 Assembly-CSharp.dll:.Painting
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -155,7 +155,7 @@ e8e5bc82af5afd29651d99cb3d109c66 Assembly-CSharp.dll:.EventManager
 4111649b0f90f170d705188b21dd34f7 Assembly-CSharp.dll:.wardrobeTrigger
 99a8026f1f9ba3327c6caae71fa2f74f Assembly-CSharp.dll:.HUDObject
 da534089b83c62246592185376d91d19 Assembly-CSharp.dll:.ObjectiveTimed
-5652db1ccbed5a53a4086aea44d9d833 Assembly-CSharp.dll:.MinimizeButton
+9061228541ac991aab97554bdef84f21 Assembly-CSharp.dll:.MinimizeButton
 dc90b4938e84d4b8d137f9308d1ca3bf Assembly-CSharp.dll:.GameManager
 b40355f195cd5aadc2f49141127b58d7 Assembly-CSharp.dll:.Car
 eeced0c719f4bf4f08a7bd12b09ff58e Assembly-CSharp.dll:.HUDGetElements
@@ -186,6 +186,7 @@ e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEng
 9a12bc147a1116fe31667509591333b3 Assembly-CSharp.dll:.VanishOnKeyPress
 e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 ce5317d3733b0763862d7114d0ea9d14 Assembly-CSharp.dll:.UIInfoPanel
+202c13aa8564e456673a520c0c759716 Assembly-CSharp.dll:.ObjectiveScore
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Bed
 b6fd0cd7b82cc454a1c919a109c995d4 Assembly-CSharp.dll:.ObjectiveBuild
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
@@ -216,4 +217,7 @@ d0548837983e63914cd1812115ca6576 Assembly-CSharp.dll:UnfinityGames.uNote.uNoteHe
 7f9ab572f68fd53930784930ed71c945 Assembly-CSharp.dll:.VisitorSpawner
 4111649b0f90f170d705188b21dd34f7 Assembly-CSharp.dll:.DelayTrigger
 f96e6bfd375bb4c86aa9daa4587e44f0 Assembly-CSharp.dll:.Objective
-202c13aa8564e456673a520c0c759716 Assembly-CSharp.dll:.ObjectiveScore
+8a99f30d08eed5644324896381ac91c5 Assembly-CSharp.dll:.FakeWallTrigger
+8a99f30d08eed5644324896381ac91c5 Assembly-CSharp.dll:.ChairTrigger
+9df572a217e9a657da16df51278c94db Assembly-CSharp.dll:.AnimateText
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Grimm

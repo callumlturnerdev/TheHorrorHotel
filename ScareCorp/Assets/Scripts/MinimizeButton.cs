@@ -8,6 +8,7 @@ public class MinimizeButton : MonoBehaviour {
 	AudioClip UIClick;
 	AudioSource audioS;
 	public List<GameObject> objectsToHide;
+	public List<GameObject> objectsToShow;
 	public GameObject headerToMove;
 	private Vector2 trans;
 	private bool isHidden = false;
@@ -49,6 +50,13 @@ public class MinimizeButton : MonoBehaviour {
 			else
 			{
 				obj.SetActive(false);
+				if(objectsToShow.Count > 0)
+				{
+					foreach(GameObject ob in objectsToShow)
+					{
+						ob.SetActive(true);
+					}
+				}
 			}
 		}
 		isHidden = !isHidden;

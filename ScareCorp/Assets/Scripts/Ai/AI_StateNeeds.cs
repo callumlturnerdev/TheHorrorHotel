@@ -65,17 +65,20 @@ public class AI_StateNeeds : MonoBehaviour {
 						currentNeedObject = null;
 						if(aI.hidingPlaces.Count >0)
 						{
-							currentNeedObject  = aI.SelectTarget(aI.hidingPlaces);
-							if(currentNeedObject.GetComponent<Buildable>())
+							currentNeedObject  = aI.SelectHygieneTarget(aI.hidingPlaces);
+							if(currentNeedObject)
 							{
-								currentNeedObject.GetComponent<Buildable>().AddCurrentUser(this.gameObject);
+								if(currentNeedObject.GetComponent<Buildable>())
+								{
+									currentNeedObject.GetComponent<Buildable>().AddCurrentUser(this.gameObject);
+								}
 							}
 						}
 						float randPitch =  Random.Range(0.9f,1.1f);
 						gameObject.GetComponent<AudioSource>().pitch = randPitch; // Add some random variation in the pitch.
 						gameObject.GetComponent<AudioSource>().Play(); // play scream sound effect.
 
-						if( aI.hidingPlaces.Count > 0)//&& currentNeedObject)
+						if(currentNeedObject)//&& currentNeedObject)
 						{
 							nav.destination = currentNeedObject.GetComponent<Buildable>().GetVisInteractPos().position;
 							currentNeed = eNeedTypes.hidden;						
@@ -296,7 +299,7 @@ public class AI_StateNeeds : MonoBehaviour {
 					{
 						float distance = 3.5f;
 						if(currentNeed ==  eNeedTypes.tiredness){distance = 2;}
-						if(currentNeed ==  eNeedTypes.hygiene){distance = 2;}
+						if(currentNeed ==  eNeedTypes.hygiene){distance = 1.5f;}
 					if((Vector3.Distance(this.transform.position, currentNeedObject.GetComponent<Buildable>().GetVisInteractPos().position) < distance)  && targetingNeed == true)
 					{
 						nav.isStopped = true;

@@ -51,7 +51,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AnimateText.cs" />
      <Compile Include="Assets\DelayTrigger.cs" />
+     <Compile Include="Assets\Grimm.cs" />
      <Compile Include="Assets\LoopTrigger.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
@@ -157,8 +159,10 @@
      <Compile Include="Assets\Scripts\SaveButton.cs" />
      <Compile Include="Assets\Scripts\SavingLoading.cs" />
      <Compile Include="Assets\Scripts\Trigger\BodyBusterTrigger.cs" />
+     <Compile Include="Assets\Scripts\Trigger\ChairTrigger.cs" />
      <Compile Include="Assets\Scripts\Trigger\ClockTrigger.cs" />
      <Compile Include="Assets\Scripts\Trigger\doorTrigger.cs" />
+     <Compile Include="Assets\Scripts\Trigger\FakeWallTrigger.cs" />
      <Compile Include="Assets\Scripts\Trigger\pPlateToggleTrigger.cs" />
      <Compile Include="Assets\Scripts\Trigger\pPlateTrigger.cs" />
      <Compile Include="Assets\Scripts\Trigger\torchTrigger.cs" />
