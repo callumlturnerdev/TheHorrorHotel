@@ -70,19 +70,20 @@ public class AI : MonoBehaviour
     [Header("UI")] 
     public Slider hungerSlider,hygieneSlider,boredomSlider,tirednessSlider,fearSlider;
     private bool timerFinished;
+    public bool paused;
     private void Start()
     {
         stateNeeds = GetComponent<AI_StateNeeds>();
         TimeManager.PlayRateChange += SetSpeed;
-        TimeManager.timeStopped += SetSpeed;
+        TimeManager.timeStopped += Pause;
         GameManager.ObjectAdd += GetNeedObjects;
         
         
         // FEAR SETUP
-        enviroment = Random.Range(0,1.0F);
-        gore = Random.Range(0, 1.0F);
-        jumpScare = Random.Range(0, 1.0F);
-        seperation = Random.Range(0, 1.0F);
+        enviroment = Random.Range(0.3F,0.7F);
+        gore = Random.Range(0.3F, 0.7F);
+        jumpScare = Random.Range(0.3F, 0.7F);
+        seperation = Random.Range(0.3F, 0.7F);
 
 
         // NEEDS SETUP
@@ -107,7 +108,20 @@ public class AI : MonoBehaviour
 
  
     
-
+    private void Pause()
+    {
+        if(paused)
+        {
+            SetSpeed();
+            paused = false;
+        }
+        else
+        {
+            navAgent.speed = 0;
+            anim.speed = navAgent.speed;
+            paused = true;
+        }
+    }
     private void SetSpeed()
     {
         if(navAgent)
@@ -219,7 +233,7 @@ public class AI : MonoBehaviour
     void OnDisable()
     {
           TimeManager.PlayRateChange -= SetSpeed;
-            TimeManager.timeStopped -= SetSpeed;
+            TimeManager.timeStopped -= Pause;
             GameManager.ObjectAdd -= GetNeedObjects;
     }
     private void UpdateNeeds()

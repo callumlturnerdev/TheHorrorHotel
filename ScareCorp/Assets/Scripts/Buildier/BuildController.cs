@@ -102,6 +102,10 @@ public class BuildController : MonoBehaviour {
     void HourTicked()
     {
         screamPoints  -= monsterCost;
+        if(screamPoints < 0)
+        {
+            screamPoints = 0;
+        }
         UpdateHUD();
     }
     void UpdateHUD()

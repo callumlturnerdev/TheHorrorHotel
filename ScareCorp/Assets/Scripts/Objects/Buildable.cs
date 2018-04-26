@@ -93,7 +93,21 @@ public class Buildable : MonoBehaviour {
           
         
     }
-
+    public bool ContainsOtherUser(GameObject obj)
+    {
+        if(currentUsers.Count > 0)
+        {
+           if(currentUsers[0].Equals(obj))
+           {
+               return false;
+           }
+           else
+           {
+               return false;
+           }
+        }
+        return false;
+    }
     public void AddCurrentUser(GameObject obj)
     {
         if(!currentUsers.Contains(obj))

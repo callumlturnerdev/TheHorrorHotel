@@ -24,6 +24,7 @@ public class AINeeds : MonoBehaviour
 
     public float searchDuration = 4f;
     public float searchingTurnSpeed = 120f;
+    private bool paused = false;
     private void Start()
     {
         daysToStay = 0;
@@ -35,10 +36,17 @@ public class AINeeds : MonoBehaviour
        //  needTiredness = 0.4f;
       //  StartCoroutine(WaitFor(1.0f *  TimeManager.instance.GetPlayRate()));
         TimeManager.MinuteTick += MinTick;
+        TimeManager.timeStopped += Pause;
+    }
+
+    void Pause()
+    {
+        paused = !paused;
     }
     void OnDisable()
     {
         TimeManager.MinuteTick -= MinTick;
+         TimeManager.timeStopped += Pause;
     }
     private void DayChange()
     {
@@ -57,11 +65,14 @@ public class AINeeds : MonoBehaviour
 
     private void UpdateNeeds()
     {
-        needHunger =  Mathf.Clamp(needHunger -= decreaseRate, 0,1);
-        needHygiene = Mathf.Clamp(needHygiene -= decreaseRate, 0, 1);
-        needBoredom = Mathf.Clamp(needBoredom -= decreaseRate, 0, 1);
-        needTiredness = Mathf.Clamp(needTiredness -= decreaseRate, 0, 1);
-       // StartCoroutine(WaitFor(1.0f *  TimeManager.instance.GetPlayRate()));
+        if(!paused)
+        {
+            needHunger =  Mathf.Clamp(needHunger -= decreaseRate, 0,1);
+            needHygiene = Mathf.Clamp(needHygiene -= decreaseRate, 0, 1);
+            needBoredom = Mathf.Clamp(needBoredom -= decreaseRate, 0, 1);
+            needTiredness = Mathf.Clamp(needTiredness -= decreaseRate, 0, 1);
+        // StartCoroutine(WaitFor(1.0f *  TimeManager.instance.GetPlayRate()));
+        }
     }
 
     public float GetHunger() { return needHunger;  }

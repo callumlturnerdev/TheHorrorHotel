@@ -54,7 +54,10 @@ public class MinimizeButton : MonoBehaviour {
 				{
 					foreach(GameObject ob in objectsToShow)
 					{
-						ob.SetActive(true);
+						if(ob)
+						{
+							ob.SetActive(true);
+						}
 					}
 				}
 			}

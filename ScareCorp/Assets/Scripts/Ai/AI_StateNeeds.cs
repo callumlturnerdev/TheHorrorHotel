@@ -70,7 +70,14 @@ public class AI_StateNeeds : MonoBehaviour {
 							{
 								if(currentNeedObject.GetComponent<Buildable>())
 								{
-									currentNeedObject.GetComponent<Buildable>().AddCurrentUser(this.gameObject);
+									if(currentNeedObject.GetComponent<Buildable>().currentUsers.Count > 0)
+									{
+										currentNeedObject = null;
+									}
+									else
+									{
+										currentNeedObject.GetComponent<Buildable>().AddCurrentUser(this.gameObject);
+									}
 								}
 							}
 						}
@@ -80,6 +87,7 @@ public class AI_StateNeeds : MonoBehaviour {
 
 						if(currentNeedObject)//&& currentNeedObject)
 						{
+							currentNeedObject.GetComponent<Buildable>().AddCurrentUser(this.gameObject);
 							nav.destination = currentNeedObject.GetComponent<Buildable>().GetVisInteractPos().position;
 							currentNeed = eNeedTypes.hidden;						
 						}
@@ -112,7 +120,8 @@ public class AI_StateNeeds : MonoBehaviour {
 				break;
 
 				case eNeedTypes.hygiene:
-					currentNeedObject  = aI.SelectHygieneTarget(aI.hygieneObjects);
+					currentNeedObject = null;
+					currentNeedObject = aI.SelectTarget(aI.hygieneObjects);
 					if(currentNeedObject)
 					{
 						if(currentNeedObject.GetComponent<Buildable>())
@@ -122,7 +131,7 @@ public class AI_StateNeeds : MonoBehaviour {
 						nav.isStopped = false;
 						nav.destination = currentNeedObject.GetComponent<Buildable>().GetVisInteractPos().position;
 						currentNeed = eNeedTypes.hygiene;
-						aI.UpdateStateUI("Dirty");
+						aI.UpdateStateUI("Washing");
 						targetingNeed =true;
 					}
 				break;
@@ -184,8 +193,11 @@ public class AI_StateNeeds : MonoBehaviour {
 						else
 						{
 							aI.UpdateStateUI("Reading");
-							float newBoredom = aINeeds.GetBoredom() + 0.01f;
-							aINeeds.SetBoredom(newBoredom);
+							if(aI.paused == false)
+							{
+								float newBoredom = aINeeds.GetBoredom() + 0.01f;
+								aINeeds.SetBoredom(newBoredom);
+							}
 						}
 				break;
 
@@ -193,13 +205,13 @@ public class AI_StateNeeds : MonoBehaviour {
 					if(currentNeedObject != GameManager.instance.leavePoint)
 					{
 						aI.UpdateStateUI("Hiding");
-						if(currentNeedObject.GetComponent<Buildable>())
-						{
-							currentNeedObject.GetComponent<Buildable>().RemoveCurrentUser(this.gameObject);
-						}
+					
 						aI.fearTarget = null;
 						DisableScared();
+						if(aI.paused == false)
+						{
 						StartCoroutine(StopHiding(10));
+						}
 					}
 					
 				break;
@@ -218,8 +230,11 @@ public class AI_StateNeeds : MonoBehaviour {
 						else
 						{
 							aI.UpdateStateUI("Eating");
+						if(aI.paused == false)
+						{
 							float newF = aINeeds.GetHunger() + 0.01f;
 							aINeeds.SetHunger(newF);
+						}
 						}
 				break;
 
@@ -237,8 +252,11 @@ public class AI_StateNeeds : MonoBehaviour {
 						else
 						{
 							aI.UpdateStateUI("Washing");
-							float newF = aINeeds.GetHygiene() + 0.01f;
-							aINeeds.SetHygiene(newF);
+							if(aI.paused == false)
+							{
+								float newF = aINeeds.GetHygiene() + 0.01f;
+								aINeeds.SetHygiene(newF);
+							}
 						}
 				break;
 
@@ -253,8 +271,11 @@ public class AI_StateNeeds : MonoBehaviour {
 					else
 					{
 						aI.UpdateStateUI("Sleeping");
-						float newTiredness = aINeeds.GetTiredness() + 0.01f;
-						aINeeds.SetTiredness(newTiredness);
+						if(aI.paused == false)
+						{
+							float newTiredness = aINeeds.GetTiredness() + 0.01f;
+							aINeeds.SetTiredness(newTiredness);
+						}
 					}
 				break;
 
@@ -278,52 +299,59 @@ public class AI_StateNeeds : MonoBehaviour {
 	}
 	void MinTick()
 	{
-		if(currentNeed == eNeedTypes.hidden  && nav.isStopped == true)
+		if(aI.paused == false)
 		{
-			if(gameObject.GetComponent<Visitor>().GetCurrentFear() > 0)
-			{
-				float newFear = gameObject.GetComponent<Visitor>().GetCurrentFear() - 0.50f;
-				gameObject.GetComponent<Visitor>().SetCurrentFear(newFear);
-			}
-		}
-		Debug.Log(aI.assignedBed);
-		if(!aINeeds.NeedReachedZero() && gameObject.GetComponent<Visitor>().GetCurrentFear() < 99 && aI.assignedBed != null )
-		{
-			DebugConsole.Log(gameObject.GetComponent<Visitor>().GetCurrentFear().ToString());
-			CheckForScared();
-			if(nav)
-			{
-				if(nav.isActiveAndEnabled && currentNeed != eNeedTypes.none)
+			if(Vector3.Distance(this.transform.position, GameManager.instance.leavePoint.transform.position)< 10)
 				{
-					if( currentNeedObject && currentNeedObject.GetComponent<Buildable>())
+					Leave();
+				}
+			if(currentNeed == eNeedTypes.hidden  && nav &&  nav.isStopped == true)
+			{
+				if(gameObject.GetComponent<Visitor>().GetCurrentFear() > 0)
+				{
+					float newFear = gameObject.GetComponent<Visitor>().GetCurrentFear() - 0.50f;
+					gameObject.GetComponent<Visitor>().SetCurrentFear(newFear);
+				}
+			}
+			Debug.Log(aI.assignedBed);
+			if(!aINeeds.NeedReachedZero() && gameObject.GetComponent<Visitor>().GetCurrentFear() < 80 && aI.assignedBed != null )
+			{
+				DebugConsole.Log(gameObject.GetComponent<Visitor>().GetCurrentFear().ToString());
+				CheckForScared();
+				if(nav)
+				{
+					if(nav.isActiveAndEnabled && currentNeed != eNeedTypes.none)
 					{
-						float distance = 3.5f;
-						if(currentNeed ==  eNeedTypes.tiredness){distance = 2;}
-						if(currentNeed ==  eNeedTypes.hygiene){distance = 1.5f;}
-					if((Vector3.Distance(this.transform.position, currentNeedObject.GetComponent<Buildable>().GetVisInteractPos().position) < distance)  && targetingNeed == true)
-					{
-						nav.isStopped = true;
-						ArrivalAction(currentNeed);
-					}
-					}
-					else
-					{	
-						currentNeedObject = null;
-						ChangeNeedState(aINeeds.FindMostUrgentNeed());
+						if( currentNeedObject && currentNeedObject.GetComponent<Buildable>())
+						{
+							float distance = 2.2f;
+							if(currentNeed ==  eNeedTypes.tiredness){distance = 2;}
+							if(currentNeed ==  eNeedTypes.hygiene){distance = 1.5f;}
+						if((Vector3.Distance(this.transform.position, currentNeedObject.GetComponent<Buildable>().GetVisInteractPos().position) < distance)  && targetingNeed == true)
+						{
+							nav.isStopped = true;
+							ArrivalAction(currentNeed);
+						}
+						}
+						else
+						{	
+							currentNeedObject = null;
+							ChangeNeedState(aINeeds.FindMostUrgentNeed());
+						}
 					}
 				}
 			}
-		}
-		else
-		{
-			Leave();
+			else
+			{
+				Leave();
+			}
 		}
 	}
 	
 	void Leave()
 	{
 		// Add code so that they leave.
-		if(GameManager.instance.leavePoint && nav)
+		if(GameManager.instance.leavePoint)
 		{
 
 			nav.isStopped = false;
@@ -332,16 +360,18 @@ public class AI_StateNeeds : MonoBehaviour {
 			//currentNeed = eNeedTypes.hygiene;
 			aI.UpdateStateUI("Leaving");
 
-			if(Vector3.Distance(this.transform.position, GameManager.instance.leavePoint.transform.position)< 10)
+			if(Vector3.Distance(this.transform.position, GameManager.instance.leavePoint.transform.position)<10)
 			{
 				nav.isStopped = true;
 				//ArrivalAction(currentNeed);
 				
-				StartCoroutine(DestroyVisitor());
+				//StartCoroutine(DestroyVisitor());
 				// Below  help 'simulate' that the visitor is gone while waiting for the timer.
 				this.gameObject.GetComponent<ParticleSystem>().Stop();
-				this.gameObject.GetComponent<Visitor>().NeedsUI.transform.parent.gameObject.SetActive(false); // Kind of  a dodgy way to go about this consider refactoring this in future.
-				this.gameObject.transform.GetChild(0).gameObject.SetActive(false);				
+					Debug.Log("Destorying visitor and adding bed");
+					GameManager.instance.AddBed(aI.assignedBed);
+					BuildController.instance.AddPoints(-300);
+					Destroy(gameObject);			
 			}
 		}
 	}
@@ -350,28 +380,27 @@ public class AI_StateNeeds : MonoBehaviour {
     {
 		if(aI )
 		{
-		
-		aI.eyes.transform.Rotate(0, aI.searchingTurnSpeed*2 * Time.deltaTime, 0);
-    	 RaycastHit hit;
-         Debug.DrawRay(aI.eyes.position, aI.eyes.forward.normalized *20, Color.green);
+			if(aI.paused == false)
+			{
+			aI.eyes.transform.Rotate(0, aI.searchingTurnSpeed*2 * Time.deltaTime, 0);
+			RaycastHit hit;
+			Debug.DrawRay(aI.eyes.position, aI.eyes.forward.normalized *20, Color.green);
 
-        //int layerMask = 1 << 12 | 1<< 11;
-	 
-      if (Physics.Raycast(aI.eyes.position, aI.eyes.forward.normalized * 20, out hit, 20, LMask
-            ))
-            {
-                Debug.DrawRay(aI.eyes.position, aI.eyes.forward.normalized * 20, Color.red);
-            if (hit.transform.gameObject.tag == "scary")
-            {
-				if(currentNeedObject.GetComponent<Buildable>())
+			//int layerMask = 1 << 12 | 1<< 11;
+		
+		if (Physics.Raycast(aI.eyes.position, aI.eyes.forward.normalized * 20, out hit, 20, LMask
+				))
 				{
-					currentNeedObject.GetComponent<Buildable>().RemoveCurrentUser(this.gameObject);
+					Debug.DrawRay(aI.eyes.position, aI.eyes.forward.normalized * 20, Color.red);
+				if (hit.transform.gameObject.tag == "scary")
+				{
+					
+					aI.fearTarget = hit.transform.gameObject;
+					aI.gameObject.GetComponent<Visitor>().SetNextFearObject(hit.transform.gameObject);
+					currentlyScared = true;
 				}
-                aI.fearTarget = hit.transform.gameObject;
-                aI.gameObject.GetComponent<Visitor>().SetNextFearObject(hit.transform.gameObject);
-				currentlyScared = true;
-            }
-        }
+			}
+				}
 		}
     }
 
@@ -402,6 +431,10 @@ public class AI_StateNeeds : MonoBehaviour {
 	IEnumerator StopHiding(float seconds)
 	{
 		yield return new WaitForSeconds(seconds);
+			if(currentNeedObject.GetComponent<Buildable>() && !currentlyScared)
+						{
+							currentNeedObject.GetComponent<Buildable>().RemoveCurrentUser(this.gameObject);
+						}
 		ChangeNeedState(aINeeds.FindMostUrgentNeed());
 	}
 	void DisableScared()
@@ -422,9 +455,7 @@ public class AI_StateNeeds : MonoBehaviour {
 	{
 	
 		yield return new WaitForSeconds(20);
-		Debug.Log("Destorying visitor and adding bed");
-		GameManager.instance.AddBed(aI.assignedBed);
-		Destroy(gameObject);
+	
 	}
 
 }
