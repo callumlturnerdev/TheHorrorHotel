@@ -499,7 +499,7 @@ MonoBehaviour:
   uses: 999999
   needFulfillment: 0
   currentUsers: []
-  itemCost: 10
+  itemCost: 5
   priority: 0
   largeObject: 0
   particleSmoke: {fileID: 1828968560238090, guid: ea773fed8314f4144a294a382ee98f84,

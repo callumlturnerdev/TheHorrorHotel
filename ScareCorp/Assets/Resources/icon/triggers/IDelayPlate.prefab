@@ -219,7 +219,7 @@ MonoBehaviour:
   itemToBuild: {fileID: 1304685447563428, guid: 80bba393ce1a5314fbedd05bc64b8864,
     type: 2}
   name: Delayer
-  description: Link to objects to trigger them on collision with visitor.
+  description: Delays trigger between objects
   DeleteModeObj: 0
 --- !u!114 &114972266819356164
 MonoBehaviour:

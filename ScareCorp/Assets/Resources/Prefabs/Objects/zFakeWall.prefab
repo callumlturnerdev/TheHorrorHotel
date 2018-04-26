@@ -462,7 +462,7 @@ MonoBehaviour:
     type: 2}
   particleTimer: 0.6
   objectID: 30
-  index: 0
+  index: 34
   needtype: 0
   fearType: 2
   uses: 99999

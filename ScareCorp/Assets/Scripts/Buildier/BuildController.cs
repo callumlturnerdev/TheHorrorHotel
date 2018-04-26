@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnfinityGames.uNote;
+
 using buildModes;
 
 namespace buildModes
@@ -27,9 +27,6 @@ public class BuildController : MonoBehaviour {
 
 	// USED TO PASS ON MAT INDEX TO BUILT OBJECT
 	public int materialIndex = 0;
-
-    [Note("TEst", "other")]
-    public NoteData scriptNote;
 	private float rotZ = 0;
 	private bool rotated = false;
 

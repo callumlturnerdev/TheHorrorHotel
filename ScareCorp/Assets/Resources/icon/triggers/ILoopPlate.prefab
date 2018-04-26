@@ -219,7 +219,7 @@ MonoBehaviour:
   itemToBuild: {fileID: 1304685447563428, guid: 929f8dded44eaf549a2c0747fad1554b,
     type: 2}
   name: Looper
-  description: Link to objects to trigger them on collision with visitor.
+  description: Repeats anything its linked into.
   DeleteModeObj: 0
 --- !u!114 &114972266819356164
 MonoBehaviour:

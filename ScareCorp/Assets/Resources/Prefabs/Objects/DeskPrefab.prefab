@@ -765,6 +765,7 @@ MonoBehaviour:
   fearType: 0
   uses: 999999
   needFulfillment: 0
+  currentUsers: []
   itemCost: 25
   priority: 0
   largeObject: 0

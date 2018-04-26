@@ -219,7 +219,7 @@ MonoBehaviour:
   itemToBuild: {fileID: 1377449833355412, guid: 51c3d4e8198dbe84082add42753abd8f,
     type: 2}
   name: Chair
-  description: Simple Decoration
+  description: Trigger Item
   DeleteModeObj: 0
 --- !u!114 &114972266819356164
 MonoBehaviour:

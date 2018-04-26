@@ -607,7 +607,8 @@ MonoBehaviour:
   fearType: 0
   uses: 9999
   needFulfillment: 0.4
-  itemCost: 25
+  currentUsers: []
+  itemCost: 100
   priority: 0
   largeObject: 1
   particleSmoke: {fileID: 1828968560238090, guid: ea773fed8314f4144a294a382ee98f84,

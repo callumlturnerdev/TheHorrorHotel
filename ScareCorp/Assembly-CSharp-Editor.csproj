@@ -51,23 +51,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Gamedev Toolbelt\Editor\TODOs\Menus\LeaveReview.cs" />
-     <Compile Include="Assets\Gamedev Toolbelt\Editor\TODOs\Menus\OtherAssetsFromIH.cs" />
-     <Compile Include="Assets\Gamedev Toolbelt\Editor\TODOs\Preferences.cs" />
-     <Compile Include="Assets\Gamedev Toolbelt\Editor\TODOs\QQQ.cs" />
-     <Compile Include="Assets\Gamedev Toolbelt\Editor\TODOs\QQQOps.cs" />
-     <Compile Include="Assets\Gamedev Toolbelt\Editor\TODOs\QQQPriority.cs" />
-     <Compile Include="Assets\Gamedev Toolbelt\Editor\TODOs\ScriptsPostProcessor.cs" />
-     <Compile Include="Assets\Gamedev Toolbelt\Editor\TODOs\Secondary windows\WindowAdd.cs" />
-     <Compile Include="Assets\Gamedev Toolbelt\Editor\TODOs\Secondary windows\WindowEdit.cs" />
-     <Compile Include="Assets\Gamedev Toolbelt\Editor\TODOs\Secondary windows\WindowWelcome.cs" />
-     <Compile Include="Assets\Gamedev Toolbelt\Editor\TODOs\TODO.cs" />
-     <Compile Include="Assets\Gamedev Toolbelt\Editor\TODOs\Utils\Constants.cs" />
-     <Compile Include="Assets\Gamedev Toolbelt\Editor\TODOs\Utils\Controls.cs" />
-     <Compile Include="Assets\Gamedev Toolbelt\Editor\TODOs\Utils\DrawingUtils.cs" />
-     <Compile Include="Assets\Gamedev Toolbelt\Editor\TODOs\Utils\IO.cs" />
-     <Compile Include="Assets\Gamedev Toolbelt\Editor\TODOs\Utils\RGBA.cs" />
-     <Compile Include="Assets\Gamedev Toolbelt\Editor\TODOs\WindowMain.cs" />
      <Compile Include="Assets\PostProcessing\Editor\Attributes\PostProcessingModelEditorAttribute.cs" />
      <Compile Include="Assets\PostProcessing\Editor\Models\AmbientOcclusionModelEditor.cs" />
      <Compile Include="Assets\PostProcessing\Editor\Models\AntialiasingModelEditor.cs" />
@@ -102,10 +85,6 @@
      <Compile Include="Assets\PostProcessing\Editor\Utils\EditorResources.cs" />
      <Compile Include="Assets\PostProcessing\Editor\Utils\FxStyles.cs" />
      <Compile Include="Assets\PostProcessing\Editor\Utils\ReflectionUtils.cs" />
-     <Compile Include="Assets\Unfinity Games\uNote\Editor\NoteInspector.cs" />
-     <None Include="Assets\Gamedev Toolbelt\Editor\TODOs\Docs\README.txt" />
-     <None Include="Assets\Gamedev Toolbelt\Editor\TODOs\Docs\CHANGELOG.txt" />
-     <None Include="Assets\Gamedev Toolbelt\Editor\TODOs\exclude.txt" />
  <Reference Include="Assembly-UnityScript">
  <HintPath>E:/_DEV/_UNITY/TheHorrorHotel/TheHorrorHotel/ScareCorp/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
  </Reference>
@@ -174,15 +153,6 @@
  </Reference>
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
  <HintPath>E:/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
- </Reference>
- <Reference Include="UnfinityGames.Shared">
- <HintPath>E:/_DEV/_UNITY/TheHorrorHotel/TheHorrorHotel/ScareCorp/Assets/Unfinity Games/Shared/Editor/UnfinityGames.Shared.dll</HintPath>
- </Reference>
- <Reference Include="uNote.Attributes">
- <HintPath>E:/_DEV/_UNITY/TheHorrorHotel/TheHorrorHotel/ScareCorp/Assets/Unfinity Games/uNote/Attributes/uNote.Attributes.dll</HintPath>
- </Reference>
- <Reference Include="uNote.Editor">
- <HintPath>E:/_DEV/_UNITY/TheHorrorHotel/TheHorrorHotel/ScareCorp/Assets/Unfinity Games/uNote/Editor/uNote.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>C:/Users/Callum/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>

@@ -1,11 +1,11 @@
 WindowsStandalone
 SceneListBegin?
-Assets/Menu.unity
-Assets/World.unity
-Assets/Level1.unity
-Assets/Level2.unity
-Assets/Level3.unity
-Assets/Level4.unity
+Assets/Scenes/Menu.unity
+Assets/Scenes/World.unity
+Assets/Scenes/Level1.unity
+Assets/Scenes/Level2.unity
+Assets/Scenes/Level3.unity
+Assets/Scenes/Level4.unity
 SceneListEnd?
 3750b7d4d64a5eeaaba713c94db46706 Assembly-CSharp.dll:.MoveTowards
 fbc7720f4c275995eaef1f6df81a3669 Assembly-CSharp.dll:.TriggerLinker
@@ -151,7 +151,6 @@ d2f59e42acb90a8357795bdabb8b2453 Assembly-CSharp.dll:.TimeManager
 205965134a5874db410d674ebdf33ba7 Assembly-CSharp.dll:.ExampleWheelController
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
-bbe3d76231ead5f5eb71abec8de405a5 Assembly-CSharp.dll:UnfinityGames.uNote.Note
 e6973dfb34d618499bdeaef37de88cd2 Assembly-UnityScript.dll:.GameObjectSpawner
 e8e5bc82af5afd29651d99cb3d109c66 Assembly-CSharp.dll:.EventManager
 2f66e55bb1fb448724489e561bb27ac8 Assembly-CSharp.dll:.VisitorController
@@ -207,7 +206,7 @@ ede19998a4cb6070a007bb644b1e3282 Assembly-CSharp.dll:.TriggerSender
 7986a0559c16faee2a20d2eed1b0a10a Assembly-CSharp.dll:.doorTrigger
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Grimm
 7986a0559c16faee2a20d2eed1b0a10a Assembly-CSharp.dll:.pPlateTrigger
-170ce90232a82d264bf8bb2fcbb03f26 Assembly-CSharp.dll:.BuildController
+d2319313212deb0aa33dd7cdbb3bc554 Assembly-CSharp.dll:.BuildController
 0f988db53173a523f4c0221b98674a0f Assembly-CSharp.dll:.SaveButton
 81d3fa35f3270744d8c271fbb7597c65 Assembly-CSharp.dll:.DestroyAfterTime
 6e45cd25660e7579428264ddc3d1472b Assembly-CSharp.dll:.Waypoint
@@ -217,7 +216,6 @@ f4070dfad302ad874c61bd9cddd2f33a Assembly-CSharp.dll:.DebugConsole
 9fe9d5c1efdd2995226f1e74119aec11 Assembly-CSharp.dll:.BuildOnGrid
 accd54b99dab18d45c0105a4a7fa9c92 Assembly-CSharp.dll:.FollowCursor
 7e3a42f9022edc7e51aa597de24cf63d Assembly-CSharp.dll:.SwapCategory
-d0548837983e63914cd1812115ca6576 Assembly-CSharp.dll:UnfinityGames.uNote.uNoteHeroExample
 7f9ab572f68fd53930784930ed71c945 Assembly-CSharp.dll:.VisitorSpawner
 4111649b0f90f170d705188b21dd34f7 Assembly-CSharp.dll:.DelayTrigger
 f96e6bfd375bb4c86aa9daa4587e44f0 Assembly-CSharp.dll:.Objective
