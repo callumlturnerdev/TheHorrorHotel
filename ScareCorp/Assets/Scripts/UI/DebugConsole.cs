@@ -58,7 +58,7 @@ public class DebugConsole : MonoBehaviour
     public ArrayList guis = new ArrayList();
     public ArrayList colors = new ArrayList();
     public bool draggable = true;                  // Can the output be dragged around at runtime by default? 
-    public bool visible = true;                    // Does output show on screen by default or do we have to enable it with code? 
+    private bool visible = false;                    // Does output show on screen by default or do we have to enable it with code? 
     public bool pixelCorrect = false; // set to be pixel Correct linespacing
     public static bool isVisible
     {

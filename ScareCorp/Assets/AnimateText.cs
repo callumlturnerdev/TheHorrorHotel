@@ -22,7 +22,7 @@ public class AnimateText : MonoBehaviour {
        while(i < strComplete.Length){
 		   UpdateUI(str);
           str += strComplete[i++];
-          yield return new WaitForSeconds(0.04f);
+          yield return new WaitForSeconds(0.03f);
        }
 	   
 	   grim.Talking(false);
