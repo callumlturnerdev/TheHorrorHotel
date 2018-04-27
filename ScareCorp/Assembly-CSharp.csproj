@@ -51,7 +51,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\AutoLoad.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Attributes\TrackballAttribute.cs" />
@@ -173,6 +172,7 @@
      <Compile Include="Assets\Scripts\UI\UIColor.cs" />
      <Compile Include="Assets\Scripts\UI\UIColorController.cs" />
      <Compile Include="Assets\Scripts\UI\UIInfoPanel.cs" />
+     <Compile Include="Assets\Scripts\Utility\AutoLoad.cs" />
      <Compile Include="Assets\Scripts\Utility\CheckFileExists.cs" />
      <Compile Include="Assets\Scripts\Utility\ColourVariation.cs" />
      <Compile Include="Assets\Scripts\Utility\DestroyAfterTime.cs" />

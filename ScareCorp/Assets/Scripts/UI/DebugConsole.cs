@@ -286,7 +286,10 @@ public class DebugConsole : MonoBehaviour
             while (x < guis.Count)
             {
                 GameObject gui = (GameObject)guis[x];
-                gui.GetComponent<GUIText>().text = "";
+                if(gui)
+                {
+                    gui.GetComponent<GUIText>().text = "";
+                }
                 //increment and loop
                 x += 1;
             }

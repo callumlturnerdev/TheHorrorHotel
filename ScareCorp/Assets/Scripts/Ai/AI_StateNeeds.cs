@@ -305,12 +305,15 @@ public class AI_StateNeeds : MonoBehaviour {
 				{
 					Leave();
 				}
-			if(currentNeed == eNeedTypes.hidden  && nav &&  nav.isStopped == true)
+			if(nav)
 			{
-				if(gameObject.GetComponent<Visitor>().GetCurrentFear() > 0)
+				if(currentNeed == eNeedTypes.hidden   &&  nav.isStopped == true)
 				{
-					float newFear = gameObject.GetComponent<Visitor>().GetCurrentFear() - 0.50f;
-					gameObject.GetComponent<Visitor>().SetCurrentFear(newFear);
+					if(gameObject.GetComponent<Visitor>().GetCurrentFear() > 0)
+					{
+						float newFear = gameObject.GetComponent<Visitor>().GetCurrentFear() - 0.50f;
+						gameObject.GetComponent<Visitor>().SetCurrentFear(newFear);
+					}
 				}
 			}
 			Debug.Log(aI.assignedBed);
@@ -353,16 +356,22 @@ public class AI_StateNeeds : MonoBehaviour {
 		// Add code so that they leave.
 		if(GameManager.instance.leavePoint)
 		{
-
-			nav.isStopped = false;
-			currentNeedObject = GameManager.instance.leavePoint;
-			nav.destination = currentNeedObject.transform.position;
+			if(nav)
+			{
+				nav.isStopped = false;
+			
+				currentNeedObject = GameManager.instance.leavePoint;
+				nav.destination = currentNeedObject.transform.position;
+			}
 			//currentNeed = eNeedTypes.hygiene;
 			aI.UpdateStateUI("Leaving");
 
 			if(Vector3.Distance(this.transform.position, GameManager.instance.leavePoint.transform.position)<10)
 			{
-				nav.isStopped = true;
+				if(nav)
+				{
+					nav.isStopped = true;
+				}
 				//ArrivalAction(currentNeed);
 				
 				//StartCoroutine(DestroyVisitor());
@@ -431,7 +440,7 @@ public class AI_StateNeeds : MonoBehaviour {
 	IEnumerator StopHiding(float seconds)
 	{
 		yield return new WaitForSeconds(seconds);
-			if(currentNeedObject.GetComponent<Buildable>() && !currentlyScared)
+			if(currentNeedObject.GetComponent<Buildable>())
 						{
 							currentNeedObject.GetComponent<Buildable>().RemoveCurrentUser(this.gameObject);
 						}
