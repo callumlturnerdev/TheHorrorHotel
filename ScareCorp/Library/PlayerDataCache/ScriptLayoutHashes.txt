@@ -1,11 +1,11 @@
 WindowsStandalone
 SceneListBegin?
-Assets/Scenes/Menu.unity
-Assets/Scenes/World.unity
-Assets/Scenes/Level1.unity
-Assets/Scenes/Level2.unity
-Assets/Scenes/Level3.unity
-Assets/Scenes/Level4.unity
+Assets/Menu.unity
+Assets/World.unity
+Assets/Level1.unity
+Assets/Level2.unity
+Assets/Level3.unity
+Assets/Level4.unity
 SceneListEnd?
 3750b7d4d64a5eeaaba713c94db46706 Assembly-CSharp.dll:.MoveTowards
 fbc7720f4c275995eaef1f6df81a3669 Assembly-CSharp.dll:.TriggerLinker
@@ -145,6 +145,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 e09dbed11d0156ebb62e7435c48e1737 Assembly-CSharp.dll:.SavingLoading
 d2f59e42acb90a8357795bdabb8b2453 Assembly-CSharp.dll:.TimeManager
 112af1c74e3aa8976dea81c8e8ae68e6 Assembly-CSharp.dll:.TutorialDisplay
+40414ac34d614864ffcc0cbdaee114c9 Assembly-CSharp.dll:.AutoLoad
 935bbda22829838f867764192c44242c Assembly-CSharp.dll:.torchTrigger
 049f4fd5a6b637f642bb5c1a5ccc93da Assembly-CSharp.dll:.Visitor
 8a99f30d08eed5644324896381ac91c5 Assembly-CSharp.dll:.BodyBusterTrigger
@@ -155,7 +156,7 @@ e6973dfb34d618499bdeaef37de88cd2 Assembly-UnityScript.dll:.GameObjectSpawner
 e8e5bc82af5afd29651d99cb3d109c66 Assembly-CSharp.dll:.EventManager
 2f66e55bb1fb448724489e561bb27ac8 Assembly-CSharp.dll:.VisitorController
 4111649b0f90f170d705188b21dd34f7 Assembly-CSharp.dll:.wardrobeTrigger
-99a8026f1f9ba3327c6caae71fa2f74f Assembly-CSharp.dll:.HUDObject
+193b5c8a4351d3c11ff4725e99806b31 Assembly-CSharp.dll:.HUDObject
 da534089b83c62246592185376d91d19 Assembly-CSharp.dll:.ObjectiveTimed
 9061228541ac991aab97554bdef84f21 Assembly-CSharp.dll:.MinimizeButton
 dc90b4938e84d4b8d137f9308d1ca3bf Assembly-CSharp.dll:.GameManager
@@ -207,7 +208,7 @@ ede19998a4cb6070a007bb644b1e3282 Assembly-CSharp.dll:.TriggerSender
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Grimm
 7986a0559c16faee2a20d2eed1b0a10a Assembly-CSharp.dll:.pPlateTrigger
 d2319313212deb0aa33dd7cdbb3bc554 Assembly-CSharp.dll:.BuildController
-0f988db53173a523f4c0221b98674a0f Assembly-CSharp.dll:.SaveButton
+750dc0d56df9219461d4ceb4328a1d89 Assembly-CSharp.dll:.SaveButton
 81d3fa35f3270744d8c271fbb7597c65 Assembly-CSharp.dll:.DestroyAfterTime
 6e45cd25660e7579428264ddc3d1472b Assembly-CSharp.dll:.Waypoint
 8bbc4d887ec3e1951ccf0444ae6ddbbb Assembly-CSharp.dll:.WallCheck

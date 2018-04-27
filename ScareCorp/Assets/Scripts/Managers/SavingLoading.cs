@@ -91,12 +91,16 @@ public class SavingLoading : MonoBehaviour
     public void LoadLevel(string filepath, string levelname)
     {
         SceneManager.LoadScene(levelname);
-        StartCoroutine(LoadOnDelay(filepath));
+        if(filepath != "")
+        {
+            StartCoroutine(LoadOnDelay(filepath));
+        }
     }
-    public IEnumerator LoadOnDelay(string filepath)
+     IEnumerator LoadOnDelay(string filepath)
     {
-        DebugConsole.Log("loading");
+      
         yield return new WaitForSeconds(0.1f);
+         Debug.Log("loaded: " + filepath);
         Load(filepath);
     }
     public void Load(string filepath)

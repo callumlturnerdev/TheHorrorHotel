@@ -20,10 +20,23 @@ public class HUDObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public string name;
     public string description;
     private Image image;
+
+    GameObject bg;
+    public Color bgColor;
     [SerializeField]
     private bool DeleteModeObj; // Really dodgy way to approach this should replace at some point
     void Awake()
     {
+        if(this.transform.childCount > 0)
+        {
+            bg = this.transform.GetChild(0).gameObject;
+            if(bg.GetComponent<Image>())
+            {
+                bg.GetComponent<Image>().color = bgColor;
+            }
+        }
+
+       
         audioS = gameObject.AddComponent(typeof(AudioSource)) as AudioSource;     
         infoPanel = GameObject.FindGameObjectWithTag("UIInfoPanel").GetComponent<UIInfoPanel>();
         image = GetComponent<Image>();

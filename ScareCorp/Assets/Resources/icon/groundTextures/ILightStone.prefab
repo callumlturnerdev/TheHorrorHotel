@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.40768704, g: 0.3671064, b: 0.71323526, a: 0.197}
+  m_Color: {r: 1, g: 0.6, b: 0, a: 0.272}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -220,6 +220,7 @@ MonoBehaviour:
     type: 2}
   name: Light Stone
   description: Simple Ground Material
+  bgColor: {r: 1, g: 0.6, b: 0, a: 0.52156866}
   DeleteModeObj: 0
 --- !u!114 &114972266819356164
 MonoBehaviour:

@@ -164,11 +164,11 @@ public class BuildController : MonoBehaviour {
         {
             UINeedsEnabled = !UINeedsEnabled;
         }
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKey(KeyCode.L))
         {
             screamPoints = 0;
         }
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKey(KeyCode.K))
         {
             screamPoints += 100;
         }

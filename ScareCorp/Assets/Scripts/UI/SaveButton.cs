@@ -6,6 +6,7 @@ public class SaveButton : MonoBehaviour {
 
 	// Use this for initialization
 	public string sceneToLoad;
+	public bool loadSave = true;
 	private string SavePathName;
 	private SavingLoading saveSys;
 	 public UnityEngine.UI.InputField slot1;
@@ -30,8 +31,15 @@ public class SaveButton : MonoBehaviour {
 	}
 	public void LoadData()
 	{
+		if(!loadSave)
+		{
+			saveSys.LoadLevel("", sceneToLoad);
+		}
+		else
+		{
 		//saveSys.Load("/"+slot1.text.ToString()+".dat");
-		saveSys.LoadLevel("/"+sceneToLoad+".dat", sceneToLoad);
+			saveSys.LoadLevel("/"+sceneToLoad+".dat", sceneToLoad);
+		}
 	}
 	public void SetSavePath(UnityEngine.UI.InputField str)
 	{
